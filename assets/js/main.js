@@ -41,10 +41,12 @@
     });
   }
 
-  /* ---------- Formulário de diagnóstico (validação client-side) ---------- */
+  /* ---------- Formulário de diagnóstico ---------- */
   var form = document.getElementById('form-diagnostico');
   if (form) {
     var feedback = document.getElementById('form-feedback');
+    var formError = document.getElementById('form-error');
+    var WEBHOOK = 'https://webhook.licitacaogc.com.br/webhook/advocacia';
 
     var setError = function (field, on) {
       var wrap = field.closest('.field') || field.closest('.consent');
@@ -53,9 +55,10 @@
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (formError) formError.classList.remove('is-visible');
+
       var valid = true;
       var firstInvalid = null;
-
       form.querySelectorAll('[required]').forEach(function (field) {
         var ok;
         if (field.type === 'checkbox') {
@@ -76,15 +79,32 @@
         return;
       }
 
-      /* Sem back-end nesta entrega: exibe confirmação de triagem.
-         Conectar a um endpoint/serviço de e-mail antes de publicar. */
-      form.setAttribute('hidden', '');
-      if (feedback) {
-        feedback.classList.add('is-visible');
-        feedback.setAttribute('tabindex', '-1');
-        feedback.focus();
-        feedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
+      /* Envia todo o conteúdo do formulário (campos + arquivos PDF) ao
+         webhook do N8N, em multipart/form-data. O modo no-cors garante a
+         entrega independentemente da configuração de CORS no N8N. */
+      var btn = form.querySelector('button[type="submit"]');
+      var btnLabel = btn ? btn.textContent : '';
+      if (btn) { btn.disabled = true; btn.textContent = 'Enviando…'; }
+
+      fetch(WEBHOOK, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: new FormData(form)
+      }).then(function () {
+        form.setAttribute('hidden', '');
+        if (feedback) {
+          feedback.classList.add('is-visible');
+          feedback.setAttribute('tabindex', '-1');
+          feedback.focus();
+          feedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }).catch(function () {
+        if (btn) { btn.disabled = false; btn.textContent = btnLabel; }
+        if (formError) {
+          formError.classList.add('is-visible');
+          formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
     });
 
     form.addEventListener('input', function (e) {

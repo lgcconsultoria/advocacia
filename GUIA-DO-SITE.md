@@ -114,12 +114,21 @@ Instagram @douglassadvogado · mapa do Google embutido na página de Contato.
 
 ## 5. Formulário de diagnóstico — integração
 
-O formulário (`diagnostico.html`) tem **validação client-side** e, ao enviar,
-exibe a mensagem de confirmação. **Não há back-end** nesta entrega: nada é
-enviado. Antes de publicar, conecte o `<form id="form-diagnostico">` a um
-destino — serviço de formulário (Formspree, Basin, Web3Forms) ou endpoint
-próprio que receba `multipart/form-data`. Os campos de upload (PDF) exigem
-back-end. Garanta tratamento dos dados em conformidade com a LGPD.
+Ao enviar, o formulário (`diagnostico.html`) valida os campos e envia **todo o
+conteúdo** — inclusive os arquivos PDF — por `POST` em `multipart/form-data`
+para o webhook do N8N:
+
+`https://webhook.licitacaogc.com.br/webhook/advocacia`
+
+O envio usa `fetch` em modo `no-cors`, o que garante a entrega
+independentemente da configuração de CORS no N8N. Os campos chegam ao N8N com
+os nomes dos atributos `name` do formulário (`nome`, `email`, `telefone`,
+`cidade`, `perfil`, `frente`, `prazo`, `data_limite`, `processo`,
+`numero_processo`, `descricao`, `objetivo`, `documento_principal`,
+`documentos_extra`, `origem`, `aceite_privacidade`, `aceite_termo`). As saídas
+(e-mail, planilha, CRM) são configuradas no próprio N8N. Em caso de falha de
+rede, o site exibe uma mensagem de erro com o e-mail de contato como
+alternativa. O tratamento dos dados deve observar a LGPD.
 
 ---
 

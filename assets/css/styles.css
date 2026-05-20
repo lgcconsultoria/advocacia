@@ -388,6 +388,7 @@ figure { margin: 0; }
 
 /* ---------- Forms ---------- */
 .form { display: grid; gap: 1.6rem; }
+.form[hidden] { display: none; }
 .form fieldset { border: 0; border-top: 1px solid var(--line); margin: 0; padding: 1.6rem 0 0; }
 .form fieldset:first-of-type { border-top: 0; padding-top: 0; }
 .form legend {
@@ -433,6 +434,12 @@ figure { margin: 0; }
 }
 .form-feedback.is-visible { display: block; }
 .form-feedback h3 { color: var(--brand-deep); }
+.form-error {
+  display: none; padding: 1.1rem 1.3rem; border-radius: var(--radius-lg);
+  background: #fbeceb; border: 1px solid #e2b4af; color: #8c2f26; margin-bottom: 1rem;
+}
+.form-error.is-visible { display: block; }
+.form-error a { color: #8c2f26; }
 .field-error { color: var(--danger); font-size: .82rem; display: none; }
 .field.has-error .field-error, .consent.has-error .field-error { display: block; }
 .field.has-error input, .field.has-error select, .field.has-error textarea { border-color: var(--danger); }
