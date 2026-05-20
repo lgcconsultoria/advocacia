@@ -96,20 +96,19 @@ tratamento que dá profundidade e integra as imagens à identidade.
 
 ## 4. Dados do escritório e placeholders
 
-**Dados já aplicados:** Douglas Senturião Advocacia · Advogado responsável:
-Douglas Senturião, OAB/SC nº 73.764 · São Paulo/SP ·
-Av. Brigadeiro Faria Lima, 1768 — São Paulo/SP · Telefone/WhatsApp
-(67) 99167-5629 · contato@douglassenturiao.adv.br ·
-domínio `douglassenturiao.adv.br` · Instagram @douglassadvogado.
+**Dados aplicados no site:** Douglas Senturião Advocacia · Advogado
+responsável: Douglas Senturião, Bacharel em Direito, OAB/SC nº 73.764 ·
+Av. Brigadeiro Faria Lima, 1768 — São Paulo/SP — CEP 01451-001 ·
+Telefone/WhatsApp (67) 99167-5629 · contato@douglassenturiao.adv.br ·
+privacidade@douglassenturiao.adv.br · domínio `douglassenturiao.adv.br` ·
+Instagram @douglassadvogado · mapa do Google embutido na página de Contato.
 
-**A confirmar / completar antes de publicar:**
+**Ajustes finais recomendados antes de publicar:**
 
-| Item | Onde | Observação |
-| --- | --- | --- |
-| Complemento do endereço (sala/conjunto) e CEP | `contato.html`, rodapé, LGPD | Substituir `CEP 00000-000` |
-| `privacidade@douglassenturiao.adv.br` | política de privacidade | Confirmar e-mail do encarregado (DPO) |
-| Formação do advogado | `sobre.html` | Graduação, pós-graduação e publicações |
-| Bloco de mapa | `contato.html` | Inserir mapa estático ou `iframe` do endereço |
+- Criar as caixas de e-mail `contato@` e `privacidade@` no domínio.
+- Revisar o item de cookies da Política de Privacidade conforme as
+  ferramentas de medição efetivamente utilizadas no site.
+- Conferir todo o conteúdo jurídico com o advogado responsável.
 
 ---
 
