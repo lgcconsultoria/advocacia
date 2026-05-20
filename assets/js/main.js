@@ -79,6 +79,22 @@
         return;
       }
 
+      /* Preenche os campos ocultos de automação: data/hora do envio,
+         página de origem, site de referência e parâmetros de campanha. */
+      var meta = {
+        enviado_em: new Date().toISOString(),
+        pagina_origem: window.location.href,
+        referencia: document.referrer || 'acesso direto'
+      };
+      var params = new URLSearchParams(window.location.search);
+      ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) {
+        meta[k] = params.get(k) || '';
+      });
+      Object.keys(meta).forEach(function (k) {
+        var el = form.querySelector('input[name="' + k + '"]');
+        if (el) el.value = meta[k];
+      });
+
       /* Envia todo o conteúdo do formulário (campos + arquivos PDF) ao
          webhook do N8N, em multipart/form-data. O modo no-cors garante a
          entrega independentemente da configuração de CORS no N8N. */

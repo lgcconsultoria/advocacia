@@ -109,6 +109,15 @@
       <form id="form-diagnostico" class="form" novalidate
             action="https://webhook.licitacaogc.com.br/webhook/advocacia" method="post" enctype="multipart/form-data" aria-label="Formulário de diagnóstico jurídico inicial">
 
+        <!-- Campos ocultos para automação no N8N -->
+        <input type="hidden" name="formulario" value="Diagnóstico jurídico inicial">
+        <input type="hidden" name="enviado_em">
+        <input type="hidden" name="pagina_origem">
+        <input type="hidden" name="referencia">
+        <input type="hidden" name="utm_source">
+        <input type="hidden" name="utm_medium">
+        <input type="hidden" name="utm_campaign">
+
         <!-- Seção 1 -->
         <fieldset>
           <legend>1. Identificação</legend>

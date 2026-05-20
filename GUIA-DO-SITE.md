@@ -125,9 +125,19 @@ independentemente da configuração de CORS no N8N. Os campos chegam ao N8N com
 os nomes dos atributos `name` do formulário (`nome`, `email`, `telefone`,
 `cidade`, `perfil`, `frente`, `prazo`, `data_limite`, `processo`,
 `numero_processo`, `descricao`, `objetivo`, `documento_principal`,
-`documentos_extra`, `origem`, `aceite_privacidade`, `aceite_termo`). As saídas
-(e-mail, planilha, CRM) são configuradas no próprio N8N. Em caso de falha de
-rede, o site exibe uma mensagem de erro com o e-mail de contato como
+`documentos_extra`, `origem`, `aceite_privacidade`, `aceite_termo`).
+
+Junto seguem **campos ocultos para automação**, preenchidos automaticamente:
+
+- `formulario` — identificador fixo ("Diagnóstico jurídico inicial").
+- `enviado_em` — data e hora do envio (ISO 8601).
+- `pagina_origem` — URL da página onde o formulário foi enviado.
+- `referencia` — site de onde o visitante chegou (ou "acesso direto").
+- `utm_source`, `utm_medium`, `utm_campaign` — parâmetros de campanha lidos
+  da URL, úteis para atribuição de marketing (anúncios, Instagram).
+
+As saídas (e-mail, planilha, CRM) são configuradas no próprio N8N. Em caso de
+falha de rede, o site exibe uma mensagem de erro com o e-mail de contato como
 alternativa. O tratamento dos dados deve observar a LGPD.
 
 ---
