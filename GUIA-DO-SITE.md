@@ -1,7 +1,7 @@
 # Guia do site — Douglas Senturião Advocacia
 
 Site institucional de escritório-boutique de Direito Administrativo, em
-Florianópolis/SC. Documento de referência para o escritório, o web designer,
+São Paulo/SP. Documento de referência para o escritório, o web designer,
 o(a) social media e o(a) copywriter.
 
 ---
@@ -97,22 +97,19 @@ tratamento que dá profundidade e integra as imagens à identidade.
 ## 4. Dados do escritório e placeholders
 
 **Dados já aplicados:** Douglas Senturião Advocacia · Advogado responsável:
-Douglas Senturião, OAB/SC nº 73.764 · Florianópolis/SC ·
-Rod. José Carlos Daux, 5500 — Saco Grande — Florianópolis/SC.
+Douglas Senturião, OAB/SC nº 73.764 · São Paulo/SP ·
+Av. Brigadeiro Faria Lima, 1768 — São Paulo/SP · Telefone/WhatsApp
+(67) 99167-5629 · contato@douglassenturiao.adv.br ·
+domínio `douglassenturiao.adv.br` · Instagram @douglassadvogado.
 
-**A confirmar / substituir antes de publicar** (procurar e substituir nos
-arquivos `.html`, `sitemap.xml`, `robots.txt`):
+**A confirmar / completar antes de publicar:**
 
-| Placeholder | Onde | Substituir por |
+| Item | Onde | Observação |
 | --- | --- | --- |
-| `douglassenturiao.adv.br` | canonical, OG, sitemap, robots, e-mails | Domínio definitivo |
-| `contato@douglassenturiao.adv.br` | rodapé, contato | E-mail real |
-| `privacidade@douglassenturiao.adv.br` | política de privacidade | E-mail do encarregado (DPO) |
-| `(48) 0000-0000` | rodapé, contato | Telefone/WhatsApp real |
-| `CEP 00000-000` | contato, LGPD | CEP e complemento (sala/conjunto) |
-| Formação do advogado | `sobre.html` | Graduação, pós e publicações |
-| Bloco de mapa | `contato.html` | Mapa estático ou `iframe` do endereço |
-| `og-image.png` | meta OG | Opcional: revisar arte de compartilhamento |
+| Complemento do endereço (sala/conjunto) e CEP | `contato.html`, rodapé, LGPD | Substituir `CEP 00000-000` |
+| `privacidade@douglassenturiao.adv.br` | política de privacidade | Confirmar e-mail do encarregado (DPO) |
+| Formação do advogado | `sobre.html` | Graduação, pós-graduação e publicações |
+| Bloco de mapa | `contato.html` | Inserir mapa estático ou `iframe` do endereço |
 
 ---
 
