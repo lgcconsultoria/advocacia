@@ -225,8 +225,10 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 .grid { display: grid; gap: 1.4rem; }
 .grid-2 { grid-template-columns: 1fr; }
 .grid-3 { grid-template-columns: 1fr; }
-@media (min-width: 620px) { .grid-2 { grid-template-columns: 1fr 1fr; } .grid-3 { grid-template-columns: 1fr 1fr; } }
+.grid-4 { grid-template-columns: 1fr; }
+@media (min-width: 560px) { .grid-2 { grid-template-columns: 1fr 1fr; } .grid-3 { grid-template-columns: 1fr 1fr; } .grid-4 { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 920px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 980px) { .grid-4 { grid-template-columns: repeat(4, 1fr); } }
 
 .card {
   background: var(--paper-pure); border: 1px solid var(--line);
@@ -362,6 +364,37 @@ figure { margin: 0; }
   border: 1px solid rgba(29,27,154,.2); border-radius: 999px; padding: .25rem .8rem;
   margin-bottom: .9rem;
 }
+.section--ink .founder-body .oab {
+  color: #9b9af0; background: rgba(255,255,255,.06); border-color: var(--ink-line);
+}
+
+/* Card de autor (rodapé dos artigos) */
+.author-card {
+  display: grid; gap: 1.3rem; align-items: center;
+  background: var(--paper-alt); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); padding: 1.5rem; margin: 2.8rem 0 1rem;
+}
+@media (min-width: 560px) { .author-card { grid-template-columns: auto 1fr; } }
+.author-card img {
+  width: 116px; height: 116px; border-radius: 50%;
+  object-fit: cover; object-position: 50% 18%;
+}
+.author-card .author-name { font-family: var(--font-display); font-weight: 700; color: var(--ink); font-size: 1.12rem; margin: 0 0 .1rem; }
+.author-card .author-oab { font-size: .8rem; color: var(--brand); font-weight: 700; letter-spacing: .04em; margin-bottom: .55rem; }
+.author-card p { margin: 0; font-size: .95rem; color: var(--text-muted); }
+
+/* Botão flutuante de WhatsApp */
+.wa-float {
+  position: fixed; right: 20px; bottom: 20px; z-index: 90;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--brand); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 22px rgba(28,28,34,.3);
+  transition: transform .18s var(--ease), background .18s var(--ease);
+}
+.wa-float:hover { background: var(--brand-deep); color: #fff; transform: translateY(-2px); }
+.wa-float svg { width: 30px; height: 30px; }
+@media (max-width: 480px) { .wa-float { right: 16px; bottom: 16px; width: 52px; height: 52px; } }
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--ink); color: var(--text-light); font-size: .92rem; }

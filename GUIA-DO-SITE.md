@@ -105,10 +105,19 @@ Instagram @douglassadvogado · mapa do Google embutido na página de Contato.
 
 **Ajustes finais recomendados antes de publicar:**
 
+- Substituir as 3 fotos de perfil pelos arquivos definitivos, mantendo os
+  mesmos nomes: `assets/img/douglas-estudio.jpg` (seção "O advogado", na
+  Home), `assets/img/douglas-institucional.jpg` (bloco "Quem escreve", no
+  blog) e `assets/img/douglas-autor.jpg` (card de autor dos artigos, exibido
+  em recorte circular — usar foto com o rosto centralizado).
 - Criar as caixas de e-mail `contato@` e `privacidade@` no domínio.
 - Revisar o item de cookies da Política de Privacidade conforme as
   ferramentas de medição efetivamente utilizadas no site.
 - Conferir todo o conteúdo jurídico com o advogado responsável.
+
+**Contato e WhatsApp.** O telefone (67) 99167-5629 está ligado ao WhatsApp
+(`wa.me/5567991675629`) no rodapé, na página de Contato e em um botão
+flutuante presente em todas as páginas.
 
 ---
 
