@@ -9,31 +9,28 @@ o(a) social media e o(a) copywriter.
 ## 1. Arquitetura do site
 
 Site **estático** (HTML + CSS + JavaScript), sem build e sem dependências —
-abre direto no navegador e pode ser hospedado em qualquer serviço de arquivos
-estáticos (Netlify, Vercel, GitHub Pages, Cloudflare Pages, hospedagem comum).
+pode ser hospedado em qualquer serviço de arquivos estáticos (Netlify,
+Vercel, GitHub Pages, Cloudflare Pages, hospedagem comum).
+
+As páginas usam **URLs limpas, sem `.html`**: cada página é um `index.html`
+dentro da sua própria pasta (ex.: `sobre/index.html` é servido em `/sobre/`).
+Os links internos são raiz-relativos (`/sobre/`, `/assets/...`), então
+funcionam em qualquer host quando o site está publicado na raiz do domínio.
 
 ```
 advocacia/
-├── index.html                  Home
-├── sobre.html                  Sobre o escritório
-├── diagnostico.html            Diagnóstico jurídico + formulário estratégico
-├── contato.html                Contato institucional
-├── politica-de-privacidade.html  LGPD
-├── aviso-publicidade.html      Aviso de publicidade (OAB)
-├── areas/  (índice + 8 áreas de atuação)
-├── blog/   (índice + 2 artigos modelo)
+├── index.html                       Home  (/)
+├── sobre/index.html                 Sobre  (/sobre/)
+├── diagnostico/index.html           Diagnóstico + formulário  (/diagnostico/)
+├── contato/index.html               Contato  (/contato/)
+├── politica-de-privacidade/index.html   LGPD
+├── aviso-publicidade/index.html     Aviso de publicidade (OAB)
+├── areas/   índice + 8 áreas, cada uma em sua pasta
+├── blog/    índice + 5 artigos, cada um em sua pasta
 ├── assets/
-│   ├── css/styles.css          Folha de estilos única (design system)
-│   ├── js/main.js              Menu, filtro do blog, validação do formulário
-│   └── img/
-│       ├── logo-horizontal.png        logo principal (azul) — cabeçalho
-│       ├── logo-horizontal-light.png  logo claro — rodapé / fundos escuros
-│       ├── logo-mark.png / logo-mark-light.png   monograma DS
-│       ├── favicon.png · apple-touch-icon.png
-│       ├── og-image.png               imagem de compartilhamento
-│       ├── douglas-retrato.jpg        foto — hero da Home
-│       ├── douglas-poltrona.jpg       foto — página Sobre
-│       └── douglas-perfil.jpg         foto — perfil do advogado
+│   ├── css/styles.css               Folha de estilos única (design system)
+│   ├── js/main.js                   Menu, filtro do blog, formulário, WhatsApp
+│   └── img/   logos, favicon, og-image e fotos
 ├── robots.txt
 └── sitemap.xml
 ```
@@ -41,30 +38,31 @@ advocacia/
 Cada página tem a mesma estrutura: **header fixo** (logo + menu + CTA
 "Diagnóstico inicial") → **hero** → **blocos de conteúdo** → **CTA final** →
 **footer** (identificação OAB + contato + aviso ético + links institucionais).
+Um **botão flutuante de WhatsApp** aparece em todas as páginas.
 
 ---
 
 ## 2. Mapa de páginas
 
-| Página | Caminho | Função |
+| Página | Endereço | Função |
 | --- | --- | --- |
 | Home | `/` | Posicionamento, áreas, método, conversão |
-| Sobre | `/sobre.html` | Identidade, princípios, advogado responsável |
+| Sobre | `/sobre/` | Identidade, princípios, advogado responsável |
 | Áreas (índice) | `/areas/` | Grade das 8 áreas |
-| Mandado de Segurança | `/areas/mandado-de-seguranca.html` | Área de atuação |
-| Licitações Públicas | `/areas/licitacoes.html` | Área de atuação |
-| Contratos Públicos | `/areas/contratos-publicos.html` | Área de atuação |
-| Concursos Públicos | `/areas/concursos.html` | Área de atuação |
-| Servidores Públicos | `/areas/servidores.html` | Área de atuação |
-| Defesa de Agentes Públicos | `/areas/defesa-agentes.html` | Área de atuação |
-| Habeas Data | `/areas/habeas-data.html` | Área de atuação |
-| Execuções e Cobranças | `/areas/execucoes.html` | Área de atuação |
-| Diagnóstico | `/diagnostico.html` | Página de conversão + formulário |
-| Contato | `/contato.html` | Dados institucionais e localização |
+| Mandado de Segurança | `/areas/mandado-de-seguranca/` | Área de atuação |
+| Licitações Públicas | `/areas/licitacoes/` | Área de atuação |
+| Contratos Públicos | `/areas/contratos-publicos/` | Área de atuação |
+| Concursos Públicos | `/areas/concursos/` | Área de atuação |
+| Servidores Públicos | `/areas/servidores/` | Área de atuação |
+| Defesa de Agentes Públicos | `/areas/defesa-agentes/` | Área de atuação |
+| Habeas Data | `/areas/habeas-data/` | Área de atuação |
+| Execuções e Cobranças | `/areas/execucoes/` | Área de atuação |
+| Diagnóstico | `/diagnostico/` | Página de conversão + formulário |
+| Contato | `/contato/` | Dados institucionais e localização |
 | Blog | `/blog/` | Índice de artigos |
-| Artigo | `/blog/[slug].html` | Conteúdo técnico |
-| Política de Privacidade | `/politica-de-privacidade.html` | LGPD |
-| Aviso de Publicidade | `/aviso-publicidade.html` | Enquadramento ético OAB |
+| Artigo | `/blog/[slug]/` | Conteúdo técnico |
+| Política de Privacidade | `/politica-de-privacidade/` | LGPD |
+| Aviso de Publicidade | `/aviso-publicidade/` | Enquadramento ético OAB |
 
 ---
 
