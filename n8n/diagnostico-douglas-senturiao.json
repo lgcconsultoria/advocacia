@@ -1,0 +1,176 @@
+{
+  "name": "Diagnóstico — Site Douglas Senturião Advocacia",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Diagnóstico do site — Douglas Senturião\n\nRecebe o formulário do site e entrega os dados em **Slack**, **e-mail (Gmail)** e **WhatsApp**.\n\n### Antes de ativar\n1. **Webhook** — a URL de produção precisa terminar em `/webhook/advocacia` (endereço já usado no site).\n2. **Slack** — conecte a credencial e selecione o canal.\n3. **Gmail** — conecte a credencial OAuth2 e confira o destinatário.\n4. **WhatsApp** — conecte a credencial da WhatsApp Business Cloud API, informe o *Phone Number ID* (remetente) e o número que vai receber os avisos.\n5. Clique em **Active**, no topo.\n\n⚠️ O WhatsApp Cloud API só envia texto livre dentro da janela de 24h; fora dela, é preciso um *template* aprovado pela Meta.",
+        "height": 430,
+        "width": 460
+      },
+      "id": "8f1a0001-0000-4000-8000-000000000001",
+      "name": "Anotações",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -620,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "advocacia",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "8f1a0001-0000-4000-8000-000000000002",
+      "name": "Webhook — Formulário",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        360
+      ],
+      "webhookId": "advocacia-diagnostico"
+    },
+    {
+      "parameters": {
+        "mode": "manual",
+        "includeOtherFields": true,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f1",
+              "name": "assunto",
+              "value": "=Novo diagnóstico — {{ $json.body.nome }} ({{ $json.body.frente }})",
+              "type": "string"
+            },
+            {
+              "id": "f2",
+              "name": "texto",
+              "value": "=🔔 *Novo diagnóstico jurídico*\n\n👤 *{{ $json.body.nome }}*\n✉️ {{ $json.body.email }}\n📱 {{ $json.body.telefone }}\n📍 {{ $json.body.cidade }}  ·  Perfil: {{ $json.body.perfil }}\n\n⚖️ *Frente:* {{ $json.body.frente }}\n⏳ *Prazo em curso:* {{ $json.body.prazo }}{{ $json.body.data_limite ? ' — até ' + $json.body.data_limite : '' }}\n📂 *Processo:* {{ $json.body.processo }}{{ $json.body.numero_processo ? ' — nº ' + $json.body.numero_processo : '' }}\n\n📝 *Descrição:*\n{{ $json.body.descricao }}\n\n🎯 *Objetivo:* {{ $json.body.objetivo || '—' }}\n\n🌐 Origem: {{ $json.body.origem || '—' }}  ·  UTM: {{ $json.body.utm_source || '—' }} / {{ $json.body.utm_medium || '—' }} / {{ $json.body.utm_campaign || '—' }}\n🔗 {{ $json.body.pagina_origem }}\n🕒 {{ $json.body.enviado_em }}",
+              "type": "string"
+            },
+            {
+              "id": "f3",
+              "name": "html",
+              "value": "=<div style=\"font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#23232b;max-width:620px\"><h2 style=\"color:#1d1b9a;margin:0 0 2px\">Novo diagnóstico jurídico</h2><p style=\"color:#777;margin:0 0 18px\">Formulário do site — Douglas Senturião Advocacia</p><h3 style=\"color:#1d1b9a;border-bottom:1px solid #e0e0e6;padding-bottom:5px;margin:18px 0 8px\">Contato</h3><p style=\"margin:0;line-height:1.7\"><b>Nome / razão social:</b> {{ $json.body.nome }}<br><b>CPF / CNPJ:</b> {{ $json.body.documento || \"—\" }}<br><b>E-mail:</b> {{ $json.body.email }}<br><b>Telefone / WhatsApp:</b> {{ $json.body.telefone }}<br><b>Cidade / UF:</b> {{ $json.body.cidade }}<br><b>Perfil:</b> {{ $json.body.perfil }}</p><h3 style=\"color:#1d1b9a;border-bottom:1px solid #e0e0e6;padding-bottom:5px;margin:18px 0 8px\">Demanda</h3><p style=\"margin:0;line-height:1.7\"><b>Frente:</b> {{ $json.body.frente }}<br><b>Prazo em curso:</b> {{ $json.body.prazo }}{{ $json.body.data_limite ? \" — data-limite: \" + $json.body.data_limite : \"\" }}<br><b>Processo em andamento:</b> {{ $json.body.processo }}{{ $json.body.numero_processo ? \" — nº \" + $json.body.numero_processo : \"\" }}</p><p style=\"margin:14px 0 4px\"><b>Descrição do caso:</b></p><div style=\"white-space:pre-wrap;background:#f4f4f7;border-radius:6px;padding:12px;line-height:1.6\">{{ $json.body.descricao }}</div><p style=\"margin:14px 0 4px\"><b>Resultado buscado:</b></p><div style=\"white-space:pre-wrap;background:#f4f4f7;border-radius:6px;padding:12px;line-height:1.6\">{{ $json.body.objetivo || \"—\" }}</div><h3 style=\"color:#1d1b9a;border-bottom:1px solid #e0e0e6;padding-bottom:5px;margin:18px 0 8px\">Origem e consentimento</h3><p style=\"margin:0;line-height:1.7;color:#555\"><b>Como conheceu:</b> {{ $json.body.origem || \"—\" }}<br><b>Página de origem:</b> {{ $json.body.pagina_origem }}<br><b>Referência:</b> {{ $json.body.referencia }}<br><b>UTM:</b> {{ $json.body.utm_source || \"—\" }} / {{ $json.body.utm_medium || \"—\" }} / {{ $json.body.utm_campaign || \"—\" }}<br><b>Aceite LGPD / termo:</b> {{ $json.body.aceite_privacidade }} / {{ $json.body.aceite_termo }}<br><b>Enviado em:</b> {{ $json.body.enviado_em }}</p></div>",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8f1a0001-0000-4000-8000-000000000003",
+      "name": "Organizar dados",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "post",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "",
+          "mode": "list",
+          "cachedResultName": ""
+        },
+        "messageType": "text",
+        "text": "={{ $json.texto }}",
+        "otherOptions": {}
+      },
+      "id": "8f1a0001-0000-4000-8000-000000000004",
+      "name": "Slack — Notificar",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        520,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "sendTo": "contato@douglassenturiao.adv.br",
+        "subject": "={{ $json.assunto }}",
+        "emailType": "html",
+        "message": "={{ $json.html }}",
+        "options": {}
+      },
+      "id": "8f1a0001-0000-4000-8000-000000000005",
+      "name": "Gmail — Enviar e-mail",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        520,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "phoneNumberId": "",
+        "recipientPhoneNumber": "5567991675629",
+        "messageType": "text",
+        "textBody": "={{ $json.texto }}",
+        "additionalFields": {}
+      },
+      "id": "8f1a0001-0000-4000-8000-000000000006",
+      "name": "WhatsApp — Notificar",
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        520,
+        580
+      ],
+      "continueOnFail": true
+    }
+  ],
+  "connections": {
+    "Webhook — Formulário": {
+      "main": [
+        [
+          {
+            "node": "Organizar dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Organizar dados": {
+      "main": [
+        [
+          {
+            "node": "Slack — Notificar",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Gmail — Enviar e-mail",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "WhatsApp — Notificar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}
