@@ -8,32 +8,38 @@ o(a) social media e o(a) copywriter.
 
 ## 1. Arquitetura do site
 
-Site **estático** (HTML + CSS + JavaScript), sem build e sem dependências —
-pode ser hospedado em qualquer serviço de arquivos estáticos (Netlify,
-Vercel, GitHub Pages, Cloudflare Pages, hospedagem comum).
+Aplicação **Next.js 16 (App Router) + React 19 + Tailwind CSS v4**, com **Motion**
+e **Lenis** para o movimento discreto, **Radix UI** para componentes acessíveis
+e **Keystatic** como CMS headless git-based. Otimizado para deploy na **Vercel**.
+Detalhes técnicos e instruções de execução estão no `README.md`.
 
-As páginas usam **URLs limpas, sem `.html`**: cada página é um `index.html`
-dentro da sua própria pasta (ex.: `sobre/index.html` é servido em `/sobre/`).
-Os links internos são raiz-relativos (`/sobre/`, `/assets/...`), então
-funcionam em qualquer host quando o site está publicado na raiz do domínio.
+As páginas usam **URLs limpas, sem `.html`** (roteamento do App Router). O
+conteúdo editável (áreas, artigos e configurações) vive em `content/` e pode ser
+editado pela interface do CMS em `/keystatic` — sem mexer no código.
 
 ```
 advocacia/
-├── index.html                       Home  (/)
-├── sobre/index.html                 Sobre  (/sobre/)
-├── diagnostico/index.html           Diagnóstico + formulário  (/diagnostico/)
-├── contato/index.html               Contato  (/contato/)
-├── politica-de-privacidade/index.html   LGPD
-├── aviso-publicidade/index.html     Aviso de publicidade (OAB)
-├── areas/   índice + 8 áreas, cada uma em sua pasta
-├── blog/    índice + 5 artigos, cada um em sua pasta
-├── assets/
-│   ├── css/styles.css               Folha de estilos única (design system)
-│   ├── js/main.js                   Menu, filtro do blog, formulário, WhatsApp
-│   └── img/   logos, favicon, og-image e fotos
-├── robots.txt
-└── sitemap.xml
+├── app/
+│   ├── (site)/            Páginas públicas (Home, Sobre, Áreas, Blog,
+│   │                      Diagnóstico, Contato, LGPD, Aviso de Publicidade)
+│   ├── keystatic/         Admin do CMS
+│   ├── layout.tsx         Fontes, metadata, viewport
+│   └── sitemap.ts robots.ts
+├── components/            Header, Footer, Reveal (Motion), SmoothScroll (Lenis),
+│                          FaqAccordion (Radix), formulário de diagnóstico
+├── lib/                   reader do Keystatic + renderizador Markdoc
+├── content/
+│   ├── areas/             8 áreas de atuação (.mdoc)
+│   ├── posts/             5 artigos do blog (.mdoc)
+│   └── settings/          Dados do escritório (contato, OAB, WhatsApp)
+├── app/globals.css        Design system (tokens da marca + componentes)
+└── public/assets/img/     Logos, favicon, og-image e fotos
 ```
+
+O `sitemap.xml` e o `robots.txt` são **gerados dinamicamente** a partir do
+conteúdo. O `assets/js/main.js` e o `assets/css/styles.css` do site estático
+antigo foram substituídos, respectivamente, pelos componentes React e pelo
+design system em `app/globals.css`.
 
 Cada página tem a mesma estrutura: **header fixo** (logo + menu + CTA
 "Diagnóstico inicial") → **hero** → **blocos de conteúdo** → **CTA final** →
