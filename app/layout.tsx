@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.senturiaoadv.com.br'),
   title: {
     default:
-      'Douglas Senturião Advocacia — Direito Administrativo estratégico em São Paulo',
+      'Douglas Senturião Advocacia — Direito Administrativo, Cível e Empresarial',
     template: '%s — Douglas Senturião Advocacia',
   },
   description:
