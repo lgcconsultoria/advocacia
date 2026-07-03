@@ -70,11 +70,11 @@ export default async function PostPage({
       jobTitle: 'Advogado',
     },
     publisher: { '@type': 'Organization', name: settings.firmName },
-    mainEntityOfPage: `https://www.douglassenturiao.adv.br/blog/${slug}`,
+    mainEntityOfPage: `https://www.senturiaoadv.com.br/blog/${slug}`,
     inLanguage: 'pt-BR',
   };
 
-  const base = 'https://www.douglassenturiao.adv.br';
+  const base = 'https://www.senturiaoadv.com.br';
   const breadcrumbLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',

@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.douglassenturiao.adv.br'),
+  metadataBase: new URL('https://www.senturiaoadv.com.br'),
   title: {
     default:
       'Douglas Senturião Advocacia — Direito Administrativo estratégico em São Paulo',
