@@ -5,12 +5,12 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   title: 'Sobre o escritório',
   description:
-    'Escritório-boutique de Direito Administrativo em São Paulo. Trabalhamos por caso, não por volume: leitura precisa do ato, tese sólida e velocidade na reação.',
+    'Escritório-boutique com raiz no Direito Administrativo, em São Paulo, e atuação também no contencioso cível e empresarial. Trabalhamos por caso, não por volume: leitura precisa do caso, tese sólida e velocidade na reação.',
   alternates: { canonical: '/sobre' },
   openGraph: {
     title: 'Sobre o escritório — Douglas Senturião Advocacia',
     description:
-      'Um escritório técnico, dedicado ao Direito Administrativo. Cada matéria tem advogado responsável e plano processual escrito.',
+      'Um escritório técnico, com raiz no Direito Administrativo e atuação no contencioso cível e empresarial. Cada matéria tem advogado responsável e plano processual escrito.',
     url: '/sobre',
   },
 };
@@ -25,9 +25,10 @@ export default function SobrePage() {
             <span aria-hidden="true">›</span>
             Sobre
           </nav>
-          <h1>Um escritório técnico, dedicado ao Direito Administrativo.</h1>
+          <h1>Um escritório técnico, com raiz no Direito Administrativo.</h1>
           <p className="lead">
-            Trabalhamos por caso, não por volume. Cada matéria tem advogado
+            Trabalhamos por caso, não por volume. Cada matéria — do embate com o
+            Poder Público às disputas cíveis e empresariais — tem advogado
             responsável, plano processual escrito e canal direto com o cliente.
           </p>
         </div>
@@ -43,17 +44,19 @@ export default function SobrePage() {
               e o público.
             </h2>
             <p>
-              Somos um escritório-boutique de Direito Administrativo sediado em
-              São Paulo. Fomos estruturados para resolver, com profundidade,
-              problemas que nascem na fronteira entre o setor privado e o Poder
-              Público — e para responder no tempo certo.
+              Somos um escritório-boutique sediado em São Paulo, com raiz no
+              Direito Administrativo. Fomos estruturados para resolver, com
+              profundidade, problemas que nascem na fronteira entre o setor
+              privado e o Poder Público — e a mesma disciplina conduz frentes
+              selecionadas do direito cível e empresarial.
             </p>
             <p>
-              Acreditamos que advocacia administrativa bem feita exige três
-              coisas inegociáveis: <strong>leitura precisa do ato impugnado</strong>,{' '}
+              Acreditamos que advocacia bem feita exige três coisas
+              inegociáveis: <strong>leitura precisa do caso</strong>,{' '}
               <strong>tese juridicamente sólida</strong> e{' '}
               <strong>velocidade na reação</strong>. Toda a nossa rotina é
-              desenhada em torno desses três pilares.
+              desenhada em torno desses três pilares — seja diante da
+              Administração, seja num litígio entre particulares.
             </p>
           </div>
           <figure className="framed framed--bl">
@@ -111,7 +114,7 @@ export default function SobrePage() {
       <section className="section">
         <div className="container container--narrow">
           <p className="eyebrow">Quem confia em nós</p>
-          <h2>Empresas, servidores, agentes públicos e cidadãos.</h2>
+          <h2>Do embate com a Administração ao conflito entre particulares.</h2>
           <p>
             Empresas com contratos administrativos em curso. Licitantes em
             disputa por adjudicação. Servidores em processo administrativo
@@ -121,8 +124,14 @@ export default function SobrePage() {
             ato de autoridade.
           </p>
           <p>
+            E também famílias em processos de divórcio, guarda e alimentos;
+            pessoas que buscam proteção diante da violência doméstica; credores e
+            devedores em disputas de cobrança e execução; sócios e empresas em
+            questões contratuais e societárias.
+          </p>
+          <p>
             O que esses perfis têm em comum é a necessidade de uma resposta
-            técnica e tempestiva diante da Administração Pública.
+            técnica, tempestiva e conduzida com discrição.
           </p>
         </div>
       </section>
@@ -147,12 +156,13 @@ export default function SobrePage() {
               <span className="oab">OAB/SC nº 73.764</span>
               <h3>Douglas Senturião</h3>
               <p>
-                Advogado dedicado ao Direito Administrativo, com atuação em
-                mandado de segurança, licitações, contratos públicos,
-                servidores, concursos, defesa de agentes públicos, habeas data e
-                execuções contra a Fazenda Pública. Cada caso é conduzido com
-                diagnóstico técnico, tese fundamentada e plano processual
-                escrito.
+                Advogado com raiz no Direito Administrativo — mandado de
+                segurança, licitações, contratos públicos, servidores, concursos,
+                defesa de agentes públicos, habeas data e execuções contra a
+                Fazenda Pública —, atuando também no contencioso cível e
+                empresarial: família, dívidas e obrigações, direito empresarial e
+                crimes licitatórios. Cada caso é conduzido com diagnóstico
+                técnico, tese fundamentada e plano processual escrito.
               </p>
               <p className="muted">
                 Bacharel em Direito, inscrito na Ordem dos Advogados do Brasil —

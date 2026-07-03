@@ -59,13 +59,13 @@ export default async function HomePage() {
         <div className="container hero-inner">
           <div className="hero-grid">
             <div className="hero-copy">
-              <p className="eyebrow">Direito Administrativo e Contencioso · Atuação em todo o Brasil</p>
-              <h1>Direito Administrativo estratégico para quem decide rápido.</h1>
+              <p className="eyebrow">Direito Administrativo · Cível · Empresarial — Atuação em todo o Brasil</p>
+              <h1>Estratégia jurídica para quem tem um conflito e um prazo.</h1>
               <p className="lead">
-                Quando o conflito é com o Poder Público, o tempo de reação muda o
-                resultado. Cuidamos do diagnóstico, da tese e do plano
-                processual desde o primeiro contato — para empresas, servidores,
-                agentes públicos e cidadãos.
+                Seja um embate com o Poder Público ou uma disputa cível ou
+                empresarial, o tempo de reação muda o resultado. Cuidamos do
+                diagnóstico, da tese e do plano processual desde o primeiro
+                contato — com a técnica de um escritório-boutique.
               </p>
               <div className="hero-actions">
                 <Link className="btn btn-primary btn-lg" href="/diagnostico">
@@ -101,23 +101,24 @@ export default async function HomePage() {
         <div className="container split">
           <Reveal>
             <p className="eyebrow">Quem somos</p>
-            <h2>Um escritório dedicado ao Direito Administrativo.</h2>
+            <h2>Um escritório-boutique com raiz no Direito Administrativo.</h2>
             <p className="lead">
-              Escritório-boutique com sede em São Paulo e atuação em todo o
-              Brasil. Trabalhamos para empresas, cidadãos, servidores e agentes
-              públicos em conflitos com a Administração Pública — do contencioso
-              urgente ao acompanhamento de longo prazo.
+              Sede em São Paulo e atuação em todo o Brasil. Nossa força está no
+              contencioso contra o Poder Público — e a mesma disciplina técnica
+              conduz frentes selecionadas do direito cível e empresarial, do
+              caso urgente ao acompanhamento de longo prazo.
             </p>
             <p>
               Cada caso é conduzido com pesquisa própria e contato direto com o
-              advogado responsável, sem peças padronizadas. Em direito público,
-              o tempo de reação pesa tanto quanto a tese — e o escritório é
-              organizado para responder rápido.
+              advogado responsável, sem peças padronizadas. Quando há prazo em
+              curso, o tempo de reação pesa tanto quanto a tese — e o escritório
+              é organizado para responder rápido.
             </p>
             <p>
-              A mesma disciplina técnica se estende a frentes selecionadas do
-              contencioso cível e empresarial — família, dívidas e obrigações,
-              contratos e sociedades, e a defesa em crimes licitatórios.
+              Atendemos empresas, cidadãos, servidores e agentes públicos, mas
+              também famílias e pessoas em conflitos cíveis, credores e devedores
+              em disputas de cobrança, e sócios e empresas em questões
+              societárias e contratuais.
             </p>
             <Link className="btn btn-ghost" href="/sobre">
               Sobre o escritório
@@ -127,7 +128,7 @@ export default async function HomePage() {
             <p className="eyebrow">O que sustenta o trabalho</p>
             <div className="deflist">
               <div className="item">
-                <h3>Leitura precisa do ato</h3>
+                <h3>Leitura precisa do caso</h3>
                 <p>
                   O diagnóstico vem antes da peça: é ele que aponta o vício e o
                   instrumento certo.
@@ -139,7 +140,7 @@ export default async function HomePage() {
               </div>
               <div className="item">
                 <h3>Velocidade na reação</h3>
-                <p>Em direito público, mover-se na semana errada pode custar o caso.</p>
+                <p>Quando há prazo, mover-se na semana errada pode custar o caso.</p>
               </div>
             </div>
           </Reveal>
@@ -163,9 +164,11 @@ export default async function HomePage() {
               <span className="oab">{settings.oab}</span>
               <p>
                 Há mais de dez anos dedicado ao direito público, com atuação
-                concentrada em licitações e contratos administrativos. Acompanha
-                cada caso de perto — do primeiro diagnóstico à sustentação — e
-                atende clientes em todo o Brasil, de forma presencial ou remota.
+                concentrada em licitações e contratos administrativos — e a mesma
+                disciplina aplicada a causas cíveis e empresariais selecionadas.
+                Acompanha cada caso de perto, do primeiro diagnóstico à
+                sustentação, e atende em todo o Brasil, de forma presencial ou
+                remota.
               </p>
               <Link className="btn btn-ghost" href="/sobre">
                 Conhecer o escritório
@@ -179,10 +182,16 @@ export default async function HomePage() {
         <div className="container">
           <Reveal className="section-head">
             <p className="eyebrow">Áreas de atuação</p>
-            <h2>Onde o problema é com o Poder Público, atuamos com método.</h2>
+            <h2>Duas frentes, a mesma disciplina técnica.</h2>
             <p className="lead">
-              Oito frentes de direito público, cada uma com regime jurídico
-              próprio e prazos específicos.
+              Do contencioso contra o Poder Público às disputas cíveis e
+              empresariais. Cada área tem regime jurídico próprio e prazos
+              específicos — e é conduzida com o mesmo método.
+            </p>
+          </Reveal>
+          <Reveal as="div">
+            <p className="eyebrow" style={{ marginBottom: '1.4rem' }}>
+              Direito Público
             </p>
           </Reveal>
           <RevealGroup className="grid grid-4">
@@ -202,17 +211,12 @@ export default async function HomePage() {
 
           {areasCivel.length > 0 && (
             <>
-              <Reveal
-                className="section-head"
-                as="div"
-              >
-                <p className="eyebrow" style={{ marginTop: '3rem' }}>
+              <Reveal as="div">
+                <p
+                  className="eyebrow"
+                  style={{ marginTop: '3rem', marginBottom: '1.4rem' }}
+                >
                   Contencioso Cível e Empresarial
-                </p>
-                <h2>A mesma disciplina, aplicada ao contencioso privado.</h2>
-                <p className="lead">
-                  Frentes selecionadas em que o método do escritório — diagnóstico,
-                  tese e plano por escrito — faz diferença.
                 </p>
               </Reveal>
               <RevealGroup className="grid grid-4">
@@ -278,12 +282,13 @@ export default async function HomePage() {
           <Reveal>
             <p className="eyebrow">Para quem trabalhamos</p>
             <h2>
-              Quem nos procura tem um ponto em comum: um conflito com a
-              Administração.
+              Quem nos procura tem um ponto em comum: um conflito que precisa de
+              estratégia.
             </h2>
             <p>
-              Atendemos por agendamento, com triagem técnica inicial. Se há prazo
-              em curso, ele orienta a prioridade do atendimento.
+              Público ou privado, pessoa ou empresa — atendemos por agendamento,
+              com triagem técnica inicial. Se há prazo em curso, ele orienta a
+              prioridade do atendimento.
             </p>
             <Link className="btn btn-primary" href="/diagnostico">
               Solicitar diagnóstico inicial
