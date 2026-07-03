@@ -109,8 +109,8 @@ export function DiagnosticoForm() {
         <div className="form-error is-visible" role="alert">
           Não foi possível enviar o formulário agora. Verifique a conexão e tente
           novamente em instantes — ou escreva para{' '}
-          <a href="mailto:contato@senturiaoadv.com.br">
-            contato@senturiaoadv.com.br
+          <a href="mailto:douglas@senturiaoadv.com.br">
+            douglas@senturiaoadv.com.br
           </a>
           .
         </div>

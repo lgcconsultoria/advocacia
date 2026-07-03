@@ -139,7 +139,7 @@ export default config({
         oab: fields.text({ label: 'OAB', defaultValue: 'OAB/SC nº 73.764' }),
         phone: fields.text({ label: 'Telefone/WhatsApp', defaultValue: '(67) 99167-5629' }),
         whatsapp: fields.text({ label: 'WhatsApp (E.164, só dígitos)', defaultValue: '5567991675629' }),
-        email: fields.text({ label: 'E-mail de contato', defaultValue: 'contato@senturiaoadv.com.br' }),
+        email: fields.text({ label: 'E-mail de contato', defaultValue: 'douglas@senturiaoadv.com.br' }),
         instagram: fields.text({ label: 'Instagram (handle)', defaultValue: 'douglassadvogado' }),
         address: fields.text({ label: 'Endereço', multiline: true, defaultValue: 'Av. Brigadeiro Faria Lima, 1768 — São Paulo/SP — CEP 01451-001' }),
       },
