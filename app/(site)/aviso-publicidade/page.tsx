@@ -96,8 +96,8 @@ export default function AvisoPublicidadePage() {
             Douglas Senturião Advocacia — sociedade de advogados inscrita na
             OAB/SC sob o nº 0.000. Endereço: Av. Brigadeiro Faria Lima, 1768 — São
             Paulo/SP. Contato:{' '}
-            <a href="mailto:contato@senturiaoadv.com.br">
-              contato@senturiaoadv.com.br
+            <a href="mailto:douglas@senturiaoadv.com.br">
+              douglas@senturiaoadv.com.br
             </a>
             .
           </p>

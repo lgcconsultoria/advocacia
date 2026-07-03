@@ -103,7 +103,7 @@ tratamento que dá profundidade e integra as imagens à identidade.
 **Dados aplicados no site:** Douglas Senturião Advocacia · Advogado
 responsável: Douglas Senturião, Bacharel em Direito, OAB/SC nº 73.764 ·
 Av. Brigadeiro Faria Lima, 1768 — São Paulo/SP — CEP 01451-001 ·
-Telefone/WhatsApp (67) 99167-5629 · contato@senturiaoadv.com.br ·
+Telefone/WhatsApp (67) 99167-5629 · douglas@senturiaoadv.com.br ·
 domínio `senturiaoadv.com.br` ·
 Instagram @douglassadvogado · mapa do Google embutido na página de Contato.
 
@@ -114,7 +114,7 @@ Instagram @douglassadvogado · mapa do Google embutido na página de Contato.
   Home), `assets/img/douglas-institucional.jpg` (bloco "Quem escreve", no
   blog) e `assets/img/douglas-autor.jpg` (card de autor dos artigos, exibido
   em recorte circular — usar foto com o rosto centralizado).
-- Manter ativa a caixa `contato@senturiaoadv.com.br` (usada em todo o site, inclusive como canal LGPD).
+- Manter ativa a caixa `douglas@senturiaoadv.com.br` (usada em todo o site, inclusive como canal LGPD).
 - Revisar o item de cookies da Política de Privacidade conforme as
   ferramentas de medição efetivamente utilizadas no site.
 - Conferir todo o conteúdo jurídico com o advogado responsável.

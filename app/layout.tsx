@@ -22,6 +22,12 @@ export const metadata: Metadata = {
     icon: '/assets/img/favicon.png',
     apple: '/assets/img/apple-touch-icon.png',
   },
+  // Código de verificação do Google Search Console: defina a variável de
+  // ambiente GOOGLE_SITE_VERIFICATION na Vercel (Settings → Environment
+  // Variables) e faça redeploy — sem precisar alterar o código.
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
 };
 
 export const viewport: Viewport = {
