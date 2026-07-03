@@ -29,7 +29,7 @@ advocacia/
 │                          FaqAccordion (Radix), formulário de diagnóstico
 ├── lib/                   reader do Keystatic + renderizador Markdoc
 ├── content/
-│   ├── areas/             8 áreas de atuação (.mdoc)
+│   ├── areas/             13 áreas de atuação (.mdoc), em 2 grupos
 │   ├── posts/             5 artigos do blog (.mdoc)
 │   └── settings/          Dados do escritório (contato, OAB, WhatsApp)
 ├── app/globals.css        Design system (tokens da marca + componentes)
@@ -54,7 +54,7 @@ Um **botão flutuante de WhatsApp** aparece em todas as páginas.
 | --- | --- | --- |
 | Home | `/` | Posicionamento, áreas, método, conversão |
 | Sobre | `/sobre/` | Identidade, princípios, advogado responsável |
-| Áreas (índice) | `/areas/` | Grade das 8 áreas |
+| Áreas (índice) | `/areas/` | Grade das áreas: Direito Público + Contencioso Cível e Empresarial |
 | Mandado de Segurança | `/areas/mandado-de-seguranca/` | Área de atuação |
 | Licitações Públicas | `/areas/licitacoes/` | Área de atuação |
 | Contratos Públicos | `/areas/contratos-publicos/` | Área de atuação |
@@ -103,8 +103,8 @@ tratamento que dá profundidade e integra as imagens à identidade.
 **Dados aplicados no site:** Douglas Senturião Advocacia · Advogado
 responsável: Douglas Senturião, Bacharel em Direito, OAB/SC nº 73.764 ·
 Av. Brigadeiro Faria Lima, 1768 — São Paulo/SP — CEP 01451-001 ·
-Telefone/WhatsApp (67) 99167-5629 · contato@douglassenturiao.adv.br ·
-privacidade@douglassenturiao.adv.br · domínio `douglassenturiao.adv.br` ·
+Telefone/WhatsApp (67) 99167-5629 · contato@senturiaoadv.com.br ·
+domínio `senturiaoadv.com.br` ·
 Instagram @douglassadvogado · mapa do Google embutido na página de Contato.
 
 **Ajustes finais recomendados antes de publicar:**
@@ -114,7 +114,7 @@ Instagram @douglassadvogado · mapa do Google embutido na página de Contato.
   Home), `assets/img/douglas-institucional.jpg` (bloco "Quem escreve", no
   blog) e `assets/img/douglas-autor.jpg` (card de autor dos artigos, exibido
   em recorte circular — usar foto com o rosto centralizado).
-- Criar as caixas de e-mail `contato@` e `privacidade@` no domínio.
+- Manter ativa a caixa `contato@senturiaoadv.com.br` (usada em todo o site, inclusive como canal LGPD).
 - Revisar o item de cookies da Política de Privacidade conforme as
   ferramentas de medição efetivamente utilizadas no site.
 - Conferir todo o conteúdo jurídico com o advogado responsável.

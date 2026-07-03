@@ -46,8 +46,8 @@ export default function ContatoPage() {
               <div className="item">
                 <h3>E-mail</h3>
                 <p>
-                  <a href="mailto:contato@douglassenturiao.adv.br">
-                    contato@douglassenturiao.adv.br
+                  <a href="mailto:contato@senturiaoadv.com.br">
+                    contato@senturiaoadv.com.br
                   </a>
                 </p>
               </div>

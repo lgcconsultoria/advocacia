@@ -5,20 +5,22 @@ import { AreaIcon } from '@/components/area-icon';
 import { Reveal, RevealGroup, RevealItem } from '@/components/reveal';
 
 export const metadata: Metadata = {
-  title: 'Áreas de atuação — Direito Administrativo',
+  title: 'Áreas de atuação — Direito Administrativo e Contencioso',
   description:
-    'Áreas de atuação em Direito Administrativo: mandado de segurança, licitações, contratos públicos, concursos, servidores, defesa de agentes públicos, habeas data e execuções.',
+    'Áreas de atuação: mandado de segurança, licitações, contratos públicos, concursos, servidores, defesa de agentes, habeas data, execuções — e contencioso cível e empresarial: família, violência doméstica, dívidas e obrigações, empresarial e crimes licitatórios.',
   alternates: { canonical: '/areas' },
   openGraph: {
-    title: 'Áreas de atuação — Direito Administrativo',
+    title: 'Áreas de atuação — Direito Administrativo e Contencioso',
     description:
-      'Oito frentes de direito público, cada uma com regime jurídico próprio e prazos específicos.',
+      'Frentes de direito público e de contencioso cível e empresarial, cada uma com regime jurídico próprio e prazos específicos.',
     url: '/areas',
   },
 };
 
 export default async function AreasPage() {
   const areas = await getAreas();
+  const areasPublico = areas.filter((a) => a.group !== 'civel');
+  const areasCivel = areas.filter((a) => a.group === 'civel');
 
   return (
     <>
@@ -29,18 +31,24 @@ export default async function AreasPage() {
             <span aria-hidden="true">›</span>
             Áreas de atuação
           </nav>
-          <h1>Áreas de atuação em Direito Administrativo.</h1>
+          <h1>Áreas de atuação.</h1>
           <p className="lead">
-            Oito frentes de direito público. Cada uma tem instrumento próprio,
-            prazo específico e exige diagnóstico antes da peça.
+            O núcleo do escritório é o Direito Administrativo — e a mesma
+            disciplina técnica se estende a frentes selecionadas do contencioso
+            cível e empresarial. Cada área tem instrumento próprio, prazo
+            específico e exige diagnóstico antes da peça.
           </p>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
+          <div className="section-head">
+            <p className="eyebrow">Direito Público</p>
+            <h2>O conflito é com a Administração.</h2>
+          </div>
           <RevealGroup className="grid grid-3">
-            {areas.map((area) => (
+            {areasPublico.map((area) => (
               <RevealItem key={area.slug}>
                 <Link className="card area-card" href={`/areas/${area.slug}`}>
                   <span className="card-icon" aria-hidden="true">
@@ -55,6 +63,31 @@ export default async function AreasPage() {
           </RevealGroup>
         </div>
       </section>
+
+      {areasCivel.length > 0 && (
+        <section className="section section--alt">
+          <div className="container">
+            <div className="section-head">
+              <p className="eyebrow">Contencioso Cível e Empresarial</p>
+              <h2>O conflito é entre particulares.</h2>
+            </div>
+            <RevealGroup className="grid grid-3">
+              {areasCivel.map((area) => (
+                <RevealItem key={area.slug}>
+                  <Link className="card area-card" href={`/areas/${area.slug}`}>
+                    <span className="card-icon" aria-hidden="true">
+                      <AreaIcon icon={area.icon} />
+                    </span>
+                    <h3>{area.title}</h3>
+                    <p>{area.summary}</p>
+                    <span className="card-link">Ver área →</span>
+                  </Link>
+                </RevealItem>
+              ))}
+            </RevealGroup>
+          </div>
+        </section>
+      )}
 
       <section className="section section--tight cta-band">
         <div className="container">

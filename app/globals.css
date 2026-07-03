@@ -195,8 +195,9 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 .hero-meta dd { margin: 0; font-size: .88rem; color: var(--text-light); }
 
 .hero-photo { position: relative; }
-.hero-photo img {
-  position: relative; z-index: 1; width: 100%;
+.hero-photo img,
+.hero-photo video {
+  position: relative; z-index: 1; width: 100%; height: auto; display: block;
   border-radius: var(--radius-lg);
   box-shadow: 0 30px 60px rgba(0,0,0,.45);
 }
@@ -466,7 +467,7 @@ figure { margin: 0; }
 @media (min-width: 620px) { .field-row { grid-template-columns: 1fr 1fr; } }
 .field label, .field .label { font-weight: 600; font-size: .92rem; color: var(--ink); }
 .field .req { color: var(--danger); }
-.field .hint { font-size: .82rem; color: var(--text-muted); }
+.hint { font-size: .82rem; color: var(--text-muted); }
 .field input[type="text"],
 .field input[type="email"],
 .field input[type="tel"],

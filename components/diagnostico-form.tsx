@@ -8,6 +8,8 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const REQUIRED_TEXT = ['nome', 'email', 'telefone', 'cidade', 'descricao'];
 const REQUIRED_RADIO = ['perfil', 'prazo', 'processo'];
 const REQUIRED_CONSENT = ['aceite_privacidade', 'aceite_termo'];
+const FILE_FIELDS = ['documento_principal', 'documentos_extra'];
+const MAX_FILE_MB = 10;
 
 export function DiagnosticoForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -47,6 +49,14 @@ export function DiagnosticoForm() {
     let consentMissing = false;
     for (const name of REQUIRED_CONSENT) {
       if (!data.get(name)) consentMissing = true;
+    }
+
+    for (const name of FILE_FIELDS) {
+      const files = data.getAll(name);
+      const tooBig = files.some(
+        (f) => f instanceof File && f.size > MAX_FILE_MB * 1024 * 1024
+      );
+      if (tooBig) invalid.add(name);
     }
 
     setErrors(invalid);
@@ -99,8 +109,8 @@ export function DiagnosticoForm() {
         <div className="form-error is-visible" role="alert">
           Não foi possível enviar o formulário agora. Verifique a conexão e tente
           novamente em instantes — ou escreva para{' '}
-          <a href="mailto:contato@douglassenturiao.adv.br">
-            contato@douglassenturiao.adv.br
+          <a href="mailto:contato@senturiaoadv.com.br">
+            contato@senturiaoadv.com.br
           </a>
           .
         </div>
@@ -191,14 +201,23 @@ export function DiagnosticoForm() {
             </label>
             <select id="frente" name="frente" required defaultValue="">
               <option value="" disabled>Selecione uma frente</option>
-              <option value="mandado-de-seguranca">Mandado de Segurança</option>
-              <option value="licitacoes">Licitações Públicas</option>
-              <option value="contratos">Contratos Públicos</option>
-              <option value="servidores">Servidores Públicos</option>
-              <option value="concursos">Concursos Públicos</option>
-              <option value="improbidade">Defesa em Improbidade / TCU / TCE / CGU</option>
-              <option value="habeas-data">Habeas Data</option>
-              <option value="execucoes">Execução / Cobrança</option>
+              <optgroup label="Direito Público">
+                <option value="mandado-de-seguranca">Mandado de Segurança</option>
+                <option value="licitacoes">Licitações Públicas</option>
+                <option value="contratos">Contratos Públicos</option>
+                <option value="servidores">Servidores Públicos</option>
+                <option value="concursos">Concursos Públicos</option>
+                <option value="improbidade">Defesa em Improbidade / TCU / TCE / CGU</option>
+                <option value="habeas-data">Habeas Data</option>
+                <option value="execucoes">Execução contra a Fazenda Pública</option>
+              </optgroup>
+              <optgroup label="Contencioso Cível e Empresarial">
+                <option value="familia">Direito de Família</option>
+                <option value="violencia-domestica">Violência Doméstica (Maria da Penha)</option>
+                <option value="dividas-obrigacoes">Dívidas, Cobrança e Obrigações</option>
+                <option value="empresarial">Direito Empresarial</option>
+                <option value="crimes-licitatorios">Crimes Licitatórios</option>
+              </optgroup>
               <option value="outro">Outro / não tenho certeza</option>
             </select>
             <span className="field-error">Selecione a frente do seu caso.</span>
@@ -276,17 +295,23 @@ export function DiagnosticoForm() {
 
         <fieldset>
           <legend>4. Documentos</legend>
-          <div className="field">
+          <div className={cls('documento_principal')}>
             <label htmlFor="documento-principal">
               Anexar ato, decisão, edital ou contrato pertinente
             </label>
             <input type="file" id="documento-principal" name="documento_principal" accept=".pdf" />
             <span className="hint">Formato PDF, até 10 MB.</span>
+            <span className="field-error">
+              O arquivo excede o limite de 10 MB. Reduza o PDF ou envie por e-mail.
+            </span>
           </div>
-          <div className="field">
+          <div className={cls('documentos_extra')}>
             <label htmlFor="documentos-extra">Outros documentos relevantes</label>
             <input type="file" id="documentos-extra" name="documentos_extra" accept=".pdf" multiple />
-            <span className="hint">Opcional. Formato PDF.</span>
+            <span className="hint">Opcional. Formato PDF, até 10 MB por arquivo.</span>
+            <span className="field-error">
+              Um dos arquivos excede o limite de 10 MB. Reduza o PDF ou envie por e-mail.
+            </span>
           </div>
         </fieldset>
 
