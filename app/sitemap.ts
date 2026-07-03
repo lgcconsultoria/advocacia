@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { getAreas, getPosts } from '@/lib/reader';
 
-const BASE = 'https://www.douglassenturiao.adv.br';
+const BASE = 'https://www.senturiaoadv.com.br';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [areas, posts] = await Promise.all([getAreas(), getPosts()]);

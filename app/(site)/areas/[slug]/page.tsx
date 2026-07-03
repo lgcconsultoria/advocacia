@@ -56,7 +56,7 @@ export default async function AreaPage({
     })),
   };
 
-  const base = 'https://www.douglassenturiao.adv.br';
+  const base = 'https://www.senturiaoadv.com.br';
   const breadcrumbLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
