@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: '%s — Douglas Senturião Advocacia',
   },
   description:
-    'Escritório de Direito Administrativo com atuação em todo o Brasil. Mandado de segurança, licitações, contratos públicos, servidores, concursos, defesa de agentes públicos, habeas data e execuções.',
+    'Escritório de Direito Administrativo com atuação em todo o Brasil. Mandado de segurança, licitações, contratos públicos, servidores, concursos, defesa de agentes públicos, habeas data e execuções — e contencioso cível e empresarial: família, dívidas e obrigações, direito empresarial e crimes licitatórios.',
   robots: { index: true, follow: true },
   openGraph: {
     type: 'website',

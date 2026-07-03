@@ -20,7 +20,7 @@ export async function getSettings() {
       oab: 'OAB/SC nº 73.764',
       phone: '(67) 99167-5629',
       whatsapp: '5567991675629',
-      email: 'contato@douglassenturiao.adv.br',
+      email: 'contato@senturiaoadv.com.br',
       instagram: 'douglassadvogado',
       address: 'Av. Brigadeiro Faria Lima, 1768 — São Paulo/SP — CEP 01451-001',
     }

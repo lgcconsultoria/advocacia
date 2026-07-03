@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getAreas, getPosts, getSettings } from '@/lib/reader';
 import { AreaIcon } from '@/components/area-icon';
+import { HeroVideo } from '@/components/hero-video';
 import { Reveal, RevealGroup, RevealItem } from '@/components/reveal';
 import { JsonLd } from '@/components/json-ld';
 
@@ -12,13 +13,15 @@ export default async function HomePage() {
     getSettings(),
   ]);
   const featured = posts.slice(0, 2);
+  const areasPublico = areas.filter((a) => a.group !== 'civel');
+  const areasCivel = areas.filter((a) => a.group === 'civel');
 
   const legalServiceLd = {
     '@context': 'https://schema.org',
     '@type': 'LegalService',
     name: settings.firmName,
     description:
-      'Escritório-boutique de Direito Administrativo em São Paulo, com atuação em mandado de segurança, licitações, contratos públicos, servidores, concursos, defesa de agentes públicos, habeas data e execuções.',
+      'Escritório-boutique de Direito Administrativo em São Paulo, com atuação em mandado de segurança, licitações, contratos públicos, servidores, concursos, defesa de agentes públicos, habeas data e execuções — e frentes selecionadas de contencioso cível e empresarial.',
     url: 'https://www.senturiaoadv.com.br/',
     image: 'https://www.senturiaoadv.com.br/assets/img/og-image.png',
     telephone: '+55-67-99167-5629',
@@ -56,7 +59,7 @@ export default async function HomePage() {
         <div className="container hero-inner">
           <div className="hero-grid">
             <div className="hero-copy">
-              <p className="eyebrow">Direito Administrativo · Atuação em todo o Brasil</p>
+              <p className="eyebrow">Direito Administrativo e Contencioso · Atuação em todo o Brasil</p>
               <h1>Direito Administrativo estratégico para quem decide rápido.</h1>
               <p className="lead">
                 Quando o conflito é com o Poder Público, o tempo de reação muda o
@@ -74,13 +77,7 @@ export default async function HomePage() {
               </div>
             </div>
             <div className="hero-photo">
-              <Image
-                src="/assets/img/douglas-retrato.jpg"
-                alt="Douglas Senturião, advogado de Direito Administrativo em São Paulo"
-                width={1100}
-                height={1650}
-                priority
-              />
+              <HeroVideo />
             </div>
           </div>
           <dl className="hero-meta">
@@ -116,6 +113,11 @@ export default async function HomePage() {
               advogado responsável, sem peças padronizadas. Em direito público,
               o tempo de reação pesa tanto quanto a tese — e o escritório é
               organizado para responder rápido.
+            </p>
+            <p>
+              A mesma disciplina técnica se estende a frentes selecionadas do
+              contencioso cível e empresarial — família, dívidas e obrigações,
+              contratos e sociedades, e a defesa em crimes licitatórios.
             </p>
             <Link className="btn btn-ghost" href="/sobre">
               Sobre o escritório
@@ -184,7 +186,7 @@ export default async function HomePage() {
             </p>
           </Reveal>
           <RevealGroup className="grid grid-4">
-            {areas.map((area) => (
+            {areasPublico.map((area) => (
               <RevealItem key={area.slug}>
                 <Link className="card area-card" href={`/areas/${area.slug}`}>
                   <span className="card-icon" aria-hidden="true">
@@ -197,6 +199,38 @@ export default async function HomePage() {
               </RevealItem>
             ))}
           </RevealGroup>
+
+          {areasCivel.length > 0 && (
+            <>
+              <Reveal
+                className="section-head"
+                as="div"
+              >
+                <p className="eyebrow" style={{ marginTop: '3rem' }}>
+                  Contencioso Cível e Empresarial
+                </p>
+                <h2>A mesma disciplina, aplicada ao contencioso privado.</h2>
+                <p className="lead">
+                  Frentes selecionadas em que o método do escritório — diagnóstico,
+                  tese e plano por escrito — faz diferença.
+                </p>
+              </Reveal>
+              <RevealGroup className="grid grid-4">
+                {areasCivel.map((area) => (
+                  <RevealItem key={area.slug}>
+                    <Link className="card area-card" href={`/areas/${area.slug}`}>
+                      <span className="card-icon" aria-hidden="true">
+                        <AreaIcon icon={area.icon} />
+                      </span>
+                      <h3>{area.title}</h3>
+                      <p>{area.summary}</p>
+                      <span className="card-link">Ver área →</span>
+                    </Link>
+                  </RevealItem>
+                ))}
+              </RevealGroup>
+            </>
+          )}
         </div>
       </section>
 
@@ -262,6 +296,8 @@ export default async function HomePage() {
             <li>Candidatos eliminados ou prejudicados em concursos.</li>
             <li>Cidadãos e empresas atingidos por ato administrativo ilegal.</li>
             <li>Credores da Fazenda Pública.</li>
+            <li>Famílias e pessoas em conflitos cíveis que pedem discrição.</li>
+            <li>Empresas em disputas contratuais, societárias e de cobrança.</li>
           </ul>
         </div>
       </section>

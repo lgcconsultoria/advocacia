@@ -153,8 +153,8 @@ export default function PoliticaDePrivacidadePage() {
             Para exercer os seus direitos ou esclarecer dúvidas sobre esta
             política, o titular pode entrar em contato com o encarregado pelo
             tratamento de dados pessoais pelo e-mail{' '}
-            <a href="mailto:privacidade@douglassenturiao.adv.br">
-              privacidade@douglassenturiao.adv.br
+            <a href="mailto:contato@senturiaoadv.com.br">
+              contato@senturiaoadv.com.br
             </a>
             .
           </p>

@@ -9,6 +9,16 @@ const ICON_OPTIONS = [
   { label: 'Defesa (escudo + check)', value: 'shield-check' },
   { label: 'Dados / registros', value: 'database' },
   { label: 'Execução / cobrança', value: 'ledger' },
+  { label: 'Família / pessoas', value: 'users' },
+  { label: 'Proteção (escudo + coração)', value: 'shield-heart' },
+  { label: 'Empresarial (maleta)', value: 'briefcase' },
+  { label: 'Penal / defesa em documento', value: 'doc-shield' },
+  { label: 'Dívidas / valores', value: 'coins' },
+] as const;
+
+const GROUP_OPTIONS = [
+  { label: 'Direito Público', value: 'publico' },
+  { label: 'Contencioso Cível e Empresarial', value: 'civel' },
 ] as const;
 
 export default config({
@@ -35,6 +45,11 @@ export default config({
           name: { label: 'Título (nome curto)', description: 'Usado em cards e navegação.' },
         }),
         order: fields.integer({ label: 'Ordem de exibição', defaultValue: 0 }),
+        group: fields.select({
+          label: 'Grupo de atuação',
+          options: GROUP_OPTIONS,
+          defaultValue: 'publico',
+        }),
         icon: fields.select({
           label: 'Ícone',
           options: ICON_OPTIONS,
@@ -124,7 +139,7 @@ export default config({
         oab: fields.text({ label: 'OAB', defaultValue: 'OAB/SC nº 73.764' }),
         phone: fields.text({ label: 'Telefone/WhatsApp', defaultValue: '(67) 99167-5629' }),
         whatsapp: fields.text({ label: 'WhatsApp (E.164, só dígitos)', defaultValue: '5567991675629' }),
-        email: fields.text({ label: 'E-mail de contato', defaultValue: 'contato@douglassenturiao.adv.br' }),
+        email: fields.text({ label: 'E-mail de contato', defaultValue: 'contato@senturiaoadv.com.br' }),
         instagram: fields.text({ label: 'Instagram (handle)', defaultValue: 'douglassadvogado' }),
         address: fields.text({ label: 'Endereço', multiline: true, defaultValue: 'Av. Brigadeiro Faria Lima, 1768 — São Paulo/SP — CEP 01451-001' }),
       },
