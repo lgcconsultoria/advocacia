@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getAreas, getPosts, getSettings } from '@/lib/reader';
@@ -5,6 +6,18 @@ import { AreaIcon } from '@/components/area-icon';
 import { HeroVideo } from '@/components/hero-video';
 import { Reveal, RevealGroup, RevealItem } from '@/components/reveal';
 import { JsonLd } from '@/components/json-ld';
+
+export const metadata: Metadata = {
+  // Título voltado ao termo de maior busca ("advogado direito administrativo")
+  // + cidade, mantendo o H1 do hero acolhedor para todas as áreas.
+  title: {
+    absolute:
+      'Advogado de Direito Administrativo em São Paulo | Douglas Senturião Advocacia',
+  },
+  description:
+    'Advogado de Direito Administrativo em São Paulo: mandado de segurança, licitações, contratos públicos, servidores e concursos — e contencioso cível e empresarial. Diagnóstico técnico com retorno em até 1 dia útil.',
+  alternates: { canonical: '/' },
+};
 
 export default async function HomePage() {
   const [areas, posts, settings] = await Promise.all([
@@ -18,15 +31,22 @@ export default async function HomePage() {
 
   const legalServiceLd = {
     '@context': 'https://schema.org',
-    '@type': 'LegalService',
+    '@type': ['LegalService', 'Attorney'],
+    '@id': 'https://www.senturiaoadv.com.br/#escritorio',
     name: settings.firmName,
+    alternateName: 'Advogado de Direito Administrativo — Douglas Senturião',
     description:
       'Escritório-boutique de Direito Administrativo em São Paulo, com atuação em mandado de segurança, licitações, contratos públicos, servidores, concursos, defesa de agentes públicos, habeas data e execuções — e frentes selecionadas de contencioso cível e empresarial.',
     url: 'https://www.senturiaoadv.com.br/',
     image: 'https://www.senturiaoadv.com.br/assets/img/og-image.png',
-    telephone: '+55-67-99167-5629',
+    logo: 'https://www.senturiaoadv.com.br/assets/img/logo-horizontal.png',
+    telephone: `+55${settings.whatsapp.replace(/^55/, '').replace(/\D/g, '')}`,
     email: settings.email,
-    areaServed: 'Brasil',
+    priceRange: '$$',
+    areaServed: [
+      { '@type': 'City', name: 'São Paulo' },
+      { '@type': 'Country', name: 'Brasil' },
+    ],
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Av. Brigadeiro Faria Lima, 1768',
@@ -34,6 +54,13 @@ export default async function HomePage() {
       addressRegion: 'SP',
       postalCode: '01451-001',
       addressCountry: 'BR',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'Atendimento',
+      telephone: `+55${settings.whatsapp.replace(/^55/, '').replace(/\D/g, '')}`,
+      email: settings.email,
+      availableLanguage: 'Portuguese',
     },
     knowsAbout: areas.map((a) => a.title),
     sameAs: [`https://instagram.com/${settings.instagram}`],
