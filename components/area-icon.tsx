@@ -88,6 +88,15 @@ const PATHS: Record<string, React.ReactNode> = {
       <path d="M17.5 15.2v3.6M15.7 17h3.6" />
     </>
   ),
+  percent: (
+    <>
+      <path d="M6 2.5h8l4 4v15H6z" />
+      <path d="M14 2.5v4h4" />
+      <circle cx="10" cy="12" r="1.6" />
+      <circle cx="14.5" cy="17" r="1.6" />
+      <path d="m15 10.5-6 8" />
+    </>
+  ),
 };
 
 export function AreaIcon({ icon }: { icon: string }) {

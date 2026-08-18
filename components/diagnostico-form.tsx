@@ -217,6 +217,7 @@ export function DiagnosticoForm() {
                 <option value="dividas-obrigacoes">Dívidas, Cobrança e Obrigações</option>
                 <option value="empresarial">Direito Empresarial</option>
                 <option value="crimes-licitatorios">Crimes Licitatórios</option>
+                <option value="tributario">Reforma Tributária (IBS/CBS)</option>
               </optgroup>
               <option value="outro">Outro / não tenho certeza</option>
             </select>

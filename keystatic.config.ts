@@ -14,6 +14,7 @@ const ICON_OPTIONS = [
   { label: 'Empresarial (maleta)', value: 'briefcase' },
   { label: 'Penal / defesa em documento', value: 'doc-shield' },
   { label: 'Dívidas / valores', value: 'coins' },
+  { label: 'Tributário (percentual)', value: 'percent' },
 ] as const;
 
 const GROUP_OPTIONS = [
