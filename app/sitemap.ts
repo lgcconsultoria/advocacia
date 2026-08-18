@@ -1,10 +1,11 @@
 import type { MetadataRoute } from 'next';
 import { getAreas, getPosts } from '@/lib/reader';
+import { getModelos } from '@/lib/modelos';
 
 const BASE = 'https://www.senturiaoadv.com.br';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [areas, posts] = await Promise.all([getAreas(), getPosts()]);
+  const [areas, posts, modelos] = await Promise.all([getAreas(), getPosts(), getModelos()]);
 
   const staticRoutes = [
     '',
@@ -12,6 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/areas',
     '/blog',
     '/diagnostico',
+    '/modelos',
     '/contato',
     '/politica-de-privacidade',
     '/aviso-publicidade',
@@ -34,5 +36,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...areaRoutes, ...postRoutes];
+  const modeloRoutes = modelos.map((m) => ({
+    url: `${BASE}/modelos/${m.slug}`,
+    changeFrequency: 'monthly' as const,
+    priority: 0.9,
+  }));
+
+  return [...staticRoutes, ...areaRoutes, ...postRoutes, ...modeloRoutes];
 }
