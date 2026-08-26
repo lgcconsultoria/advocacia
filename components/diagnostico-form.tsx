@@ -8,13 +8,27 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const REQUIRED_TEXT = ['nome', 'email', 'telefone', 'cidade', 'frente', 'descricao'];
 const REQUIRED_RADIO = ['perfil', 'prazo', 'processo'];
 const REQUIRED_CONSENT = ['aceite_privacidade', 'aceite_termo'];
-const REQUEST_KEY = 'senturiao:diagnostico:idempotency-key';
+const REQUEST_STATE = 'senturiao:diagnostico:request-state-v1';
 
-function requestKey(): string {
-  const existing = window.sessionStorage.getItem(REQUEST_KEY);
-  if (existing) return existing;
+async function payloadDigest(payload: unknown): Promise<string> {
+  const bytes = new TextEncoder().encode(JSON.stringify(payload));
+  const digest = await window.crypto.subtle.digest('SHA-256', bytes);
+  return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
+}
+
+async function requestKey(payload: unknown): Promise<string> {
+  const digest = await payloadDigest(payload);
+  const raw = window.sessionStorage.getItem(REQUEST_STATE);
+  if (raw) {
+    try {
+      const existing = JSON.parse(raw) as { key?: unknown; digest?: unknown };
+      if (typeof existing.key === 'string' && existing.digest === digest) return existing.key;
+    } catch {
+      // Estado legado ou corrompido: uma nova submissão ganha uma nova chave.
+    }
+  }
   const created = `site:diagnostico:${window.crypto.randomUUID()}`;
-  window.sessionStorage.setItem(REQUEST_KEY, created);
+  window.sessionStorage.setItem(REQUEST_STATE, JSON.stringify({ key: created, digest }));
   return created;
 }
 
@@ -110,7 +124,7 @@ export function DiagnosticoForm() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Idempotency-Key': requestKey(),
+          'Idempotency-Key': await requestKey(body),
         },
         body: JSON.stringify(body),
       });
@@ -122,7 +136,7 @@ export function DiagnosticoForm() {
       if (!response.ok || result.ok !== true || result.status !== 'persisted') {
         throw new Error(result.reason_code || 'persistence-not-confirmed');
       }
-      window.sessionStorage.removeItem(REQUEST_KEY);
+      window.sessionStorage.removeItem(REQUEST_STATE);
       setStatus('sent');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch {
@@ -171,20 +185,13 @@ export function DiagnosticoForm() {
       >
         <fieldset>
           <legend>1. Identificação</legend>
-          <div className="field-row">
-            <div className={cls('nome')}>
-              <label htmlFor="nome">
-                Nome completo ou razão social{' '}
-                <span className="req" aria-hidden="true">*</span>
-              </label>
-              <input type="text" id="nome" name="nome" autoComplete="name" required />
-              <span className="field-error">Informe o seu nome ou a razão social.</span>
-            </div>
-            <div className="field">
-              <label htmlFor="documento">CPF ou CNPJ</label>
-              <input type="text" id="documento" name="documento" inputMode="numeric" />
-              <span className="hint">Opcional.</span>
-            </div>
+          <div className={cls('nome')}>
+            <label htmlFor="nome">
+              Nome completo ou razão social{' '}
+              <span className="req" aria-hidden="true">*</span>
+            </label>
+            <input type="text" id="nome" name="nome" autoComplete="name" required />
+            <span className="field-error">Informe o seu nome ou a razão social.</span>
           </div>
           <div className="field-row">
             <div className={cls('email')}>

@@ -60,7 +60,7 @@ app/
 │   ├── page.tsx       Home
 │   ├── areas/         Índice + [slug] (data-driven)
 │   ├── blog/          Índice + [slug] (artigos em Markdoc)
-│   ├── diagnostico/   Formulário de triagem (webhook N8N)
+│   ├── diagnostico/   Formulário com ACK persistido pelo Senturião OS
 │   ├── sobre/ contato/ politica-de-privacidade/ aviso-publicidade/
 ├── keystatic/         Admin do CMS
 ├── api/keystatic/     Route handler do CMS
