@@ -2,14 +2,21 @@
 
 import { useRef, useState, type FormEvent } from 'react';
 
-const WEBHOOK = 'https://webhook.licitacaogc.com.br/webhook/advocacia';
+const OS = process.env.NEXT_PUBLIC_OS_URL ?? 'https://senturiao-os.vercel.app';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const REQUIRED_TEXT = ['nome', 'email', 'telefone', 'cidade', 'descricao'];
+const REQUIRED_TEXT = ['nome', 'email', 'telefone', 'cidade', 'frente', 'descricao'];
 const REQUIRED_RADIO = ['perfil', 'prazo', 'processo'];
 const REQUIRED_CONSENT = ['aceite_privacidade', 'aceite_termo'];
-const FILE_FIELDS = ['documento_principal', 'documentos_extra'];
-const MAX_FILE_MB = 10;
+const REQUEST_KEY = 'senturiao:diagnostico:idempotency-key';
+
+function requestKey(): string {
+  const existing = window.sessionStorage.getItem(REQUEST_KEY);
+  if (existing) return existing;
+  const created = `site:diagnostico:${window.crypto.randomUUID()}`;
+  window.sessionStorage.setItem(REQUEST_KEY, created);
+  return created;
+}
 
 export function DiagnosticoForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -51,14 +58,6 @@ export function DiagnosticoForm() {
       if (!data.get(name)) consentMissing = true;
     }
 
-    for (const name of FILE_FIELDS) {
-      const files = data.getAll(name);
-      const tooBig = files.some(
-        (f) => f instanceof File && f.size > MAX_FILE_MB * 1024 * 1024
-      );
-      if (tooBig) invalid.add(name);
-    }
-
     setErrors(invalid);
     setConsentError(consentMissing);
 
@@ -82,7 +81,48 @@ export function DiagnosticoForm() {
 
     setStatus('sending');
     try {
-      await fetch(WEBHOOK, { method: 'POST', mode: 'no-cors', body: data });
+      const body = {
+        nome: String(data.get('nome') ?? '').trim(),
+        email: String(data.get('email') ?? '').trim(),
+        telefone: String(data.get('telefone') ?? '').replace(/\D/g, ''),
+        cidade: String(data.get('cidade') ?? '').trim(),
+        perfil: String(data.get('perfil') ?? ''),
+        frente: String(data.get('frente') ?? ''),
+        prazo: String(data.get('prazo') ?? ''),
+        data_limite: String(data.get('data_limite') ?? ''),
+        processo: String(data.get('processo') ?? ''),
+        numero_processo: String(data.get('numero_processo') ?? ''),
+        descricao: String(data.get('descricao') ?? '').trim(),
+        objetivo: String(data.get('objetivo') ?? '').trim(),
+        origem: String(data.get('origem') ?? '') || 'site-diagnostico',
+        aceite_privacidade: data.get('aceite_privacidade') === 'sim',
+        aceite_termo: data.get('aceite_termo') === 'sim',
+        public_contract_status: 'unknown',
+        utm: {
+          utm_source: params.get('utm_source') || '',
+          utm_medium: params.get('utm_medium') || '',
+          utm_campaign: params.get('utm_campaign') || '',
+          pagina: window.location.href,
+          referencia: document.referrer || 'acesso direto',
+        },
+      };
+      const response = await fetch(`${OS}/api/intake/diagnostico`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Idempotency-Key': requestKey(),
+        },
+        body: JSON.stringify(body),
+      });
+      const result = (await response.json()) as {
+        ok?: boolean;
+        status?: string;
+        reason_code?: string;
+      };
+      if (!response.ok || result.ok !== true || result.status !== 'persisted') {
+        throw new Error(result.reason_code || 'persistence-not-confirmed');
+      }
+      window.sessionStorage.removeItem(REQUEST_KEY);
       setStatus('sent');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch {
@@ -95,9 +135,9 @@ export function DiagnosticoForm() {
       <div className="form-feedback is-visible" role="status" aria-live="polite" tabIndex={-1}>
         <h3 style={{ marginBottom: '.3rem' }}>Recebemos a sua mensagem.</h3>
         <p className="mb-0">
-          Em até 1 dia útil retornaremos com a triagem técnica inicial e os
-          próximos passos. Se o seu caso envolver prazo em curso, ele orientará a
-          prioridade do atendimento.
+          A próxima etapa é uma conversa diagnóstica inicial. Se forem necessários,
+          os documentos serão solicitados depois dessa conversa, já com orientação
+          sobre o que realmente deve ser enviado.
         </p>
       </div>
     );
@@ -204,10 +244,10 @@ export function DiagnosticoForm() {
               <optgroup label="Direito Público">
                 <option value="mandado-de-seguranca">Mandado de Segurança</option>
                 <option value="licitacoes">Licitações Públicas</option>
-                <option value="contratos">Contratos Públicos</option>
+                <option value="contratos-publicos">Contratos Públicos</option>
                 <option value="servidores">Servidores Públicos</option>
                 <option value="concursos">Concursos Públicos</option>
-                <option value="improbidade">Defesa em Improbidade / TCU / TCE / CGU</option>
+                <option value="defesa-agentes">Defesa em Improbidade / TCU / TCE / CGU</option>
                 <option value="habeas-data">Habeas Data</option>
                 <option value="execucoes">Execução contra a Fazenda Pública</option>
               </optgroup>
@@ -295,29 +335,7 @@ export function DiagnosticoForm() {
         </fieldset>
 
         <fieldset>
-          <legend>4. Documentos</legend>
-          <div className={cls('documento_principal')}>
-            <label htmlFor="documento-principal">
-              Anexar ato, decisão, edital ou contrato pertinente
-            </label>
-            <input type="file" id="documento-principal" name="documento_principal" accept=".pdf" />
-            <span className="hint">Formato PDF, até 10 MB.</span>
-            <span className="field-error">
-              O arquivo excede o limite de 10 MB. Reduza o PDF ou envie por e-mail.
-            </span>
-          </div>
-          <div className={cls('documentos_extra')}>
-            <label htmlFor="documentos-extra">Outros documentos relevantes</label>
-            <input type="file" id="documentos-extra" name="documentos_extra" accept=".pdf" multiple />
-            <span className="hint">Opcional. Formato PDF, até 10 MB por arquivo.</span>
-            <span className="field-error">
-              Um dos arquivos excede o limite de 10 MB. Reduza o PDF ou envie por e-mail.
-            </span>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>5. Origem</legend>
+          <legend>4. Origem</legend>
           <div className="field">
             <label htmlFor="origem">Como conheceu o escritório?</label>
             <select id="origem" name="origem" defaultValue="">
@@ -333,7 +351,7 @@ export function DiagnosticoForm() {
         </fieldset>
 
         <fieldset>
-          <legend>6. Privacidade e termo de não constituição</legend>
+          <legend>5. Privacidade e termo de não constituição</legend>
           <div className={consentError ? 'consent has-error' : 'consent'}>
             <label className="choice">
               <input type="checkbox" name="aceite_privacidade" value="sim" required />
@@ -364,9 +382,9 @@ export function DiagnosticoForm() {
 
         <div className="form-actions">
           <button type="submit" className="btn btn-primary btn-lg" disabled={status === 'sending'}>
-            {status === 'sending' ? 'Enviando…' : 'Enviar para triagem'}
+            {status === 'sending' ? 'Enviando…' : 'Solicitar conversa diagnóstica'}
           </button>
-          <span className="hint">Retorno em até 1 dia útil.</span>
+          <span className="hint">Documentos serão solicitados depois, somente se necessários.</span>
         </div>
       </form>
     </>
