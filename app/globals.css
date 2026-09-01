@@ -560,7 +560,14 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 .cta-band .cta-actions { display: flex; flex-wrap: wrap; gap: .8rem; }
 .cta-band .btn-primary { background: #fff; color: var(--brand-700); border-color: #fff; }
 .cta-band .btn-primary:hover { background: var(--paper-alt); border-color: var(--paper-alt); color: var(--brand-deep); }
-.cta-band .btn-ghost { color: var(--on-accent); border-color: rgba(255,255,255,.45); }
+/* border-color era rgba(255,255,255,.45) fixo: dava 3,57:1 (passa WCAG
+   1.4.11, >=3:1) contra o fundo #1D1B9A do claro, mas o fundo de .cta-band
+   é var(--brand)/var(--accent), que no escuro vira #8B87F0 — a mesma borda
+   cairia para 1,74:1. Trocado por --on-accent (branco no claro, brand-900
+   no escuro), que acompanha o tema. 60% (valor sugerido inicialmente) mede
+   2,93:1 no escuro — abaixo do mínimo; 70% mede 3,54:1 no escuro e 6,73:1
+   no claro, então usamos 70%. Medido com lib/contrast.ts. */
+.cta-band .btn-ghost { color: var(--on-accent); border-color: color-mix(in srgb, var(--on-accent) 70%, transparent); }
 .cta-band .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,.1); color: var(--on-accent); }
 
 /* ---------- Notices ---------- */

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { contrastRatio } from '@/lib/contrast';
+import { contrastRatio, mixOverBackground } from '@/lib/contrast';
 
 const T = {
   paper: '#FFFFFF',
@@ -58,5 +58,27 @@ describe('contraste dos tokens', () => {
   it('a cor de erro atinge AA nas superfícies claras', () => {
     expect(contrastRatio('#B3261E', '#FFFFFF')).toBeGreaterThanOrEqual(4.5);
     expect(contrastRatio('#B3261E', '#F4F4F7')).toBeGreaterThanOrEqual(4.5);
+  });
+});
+
+// Bordas de elemento não textual — WCAG 1.4.11 exige só 3:1, e a técnica
+// para cores translúcidas é compor sobre o fundo conhecido antes de medir
+// (mixOverBackground simula o color-mix(...,transparent) do CSS).
+describe('contraste de borda — .btn-ghost sobre fundos reativos ao tema (WCAG 1.4.11)', () => {
+  const onAccentClaro = '#FFFFFF';
+  const onAccentEscuro = '#0F0E52'; // brand-900
+  const accentClaro = '#1D1B9A'; // brand-700 — fundo do .cta-band no claro
+  const accentEscuro = '#8B87F0'; // fundo do .cta-band no escuro
+
+  it('.cta-band .btn-ghost: borda color-mix(on-accent 70%) atinge >=3:1 nos dois temas', () => {
+    const bordaClara = mixOverBackground(onAccentClaro, accentClaro, 70);
+    const bordaEscura = mixOverBackground(onAccentEscuro, accentEscuro, 70);
+    expect(contrastRatio(bordaClara, accentClaro)).toBeGreaterThanOrEqual(3);
+    expect(contrastRatio(bordaEscura, accentEscuro)).toBeGreaterThanOrEqual(3);
+  });
+
+  it('.cta-band .btn-ghost: 60% (valor descartado) fica abaixo de 3:1 no escuro — documenta por que 70% foi escolhido', () => {
+    const bordaEscura60 = mixOverBackground(onAccentEscuro, accentEscuro, 60);
+    expect(contrastRatio(bordaEscura60, accentEscuro)).toBeLessThan(3);
   });
 });
