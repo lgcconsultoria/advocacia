@@ -566,6 +566,11 @@ figure { margin: 0; }
 }
 .footer-bottom .ethic { max-width: 70ch; }
 .footer-bottom a { color: var(--text-light); }
+.link-button {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  color: inherit; font: inherit; text-decoration: underline;
+  text-underline-offset: 3px;
+}
 
 /* ---------- Forms ---------- */
 .form { display: grid; gap: 1.6rem; }
@@ -716,6 +721,33 @@ figure { margin: 0; }
   transform: none !important;
   animation: none !important;
 }
+
+/* ---------- Banner de consentimento ---------- */
+.consent-banner {
+  position: fixed; inset: auto 0 0 0; z-index: 120;
+  background: var(--surface-raised); border-top: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  max-height: 100vh; overflow-y: auto;
+}
+.consent-banner-inner {
+  max-width: var(--container); margin-inline: auto;
+  padding: 1.4rem var(--gutter); display: grid; gap: 1.2rem;
+}
+@media (min-width: 920px) { .consent-banner-inner { grid-template-columns: 1fr auto; align-items: center; } }
+.consent-banner h2 { font-size: 1.05rem; margin-bottom: .3rem; }
+.consent-banner p { font-size: .92rem; color: var(--text-muted); margin-bottom: .8rem; }
+.consent-options { list-style: none; padding: 0; margin: 0; display: grid; gap: .4rem; font-size: .9rem; }
+.consent-options .choice { display: flex; align-items: flex-start; gap: .55rem; cursor: pointer; }
+.consent-options input[type='checkbox'] { margin-top: .2rem; flex-shrink: 0; width: 18px; height: 18px; }
+.consent-options input[type='checkbox']:disabled { opacity: .6; cursor: not-allowed; }
+.consent-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+.consent-actions .btn { flex: 1 1 auto; min-height: 44px; }
+
+/* O botão flutuante de WhatsApp fica sob o banner (z-index menor). Enquanto
+   o banner de consentimento está aberto, ele some para não ficar coberto —
+   e, portanto, inclicável — atrás da barra; o WhatsApp continua acessível
+   pelo rodapé enquanto isso. */
+body:has(.consent-banner) .wa-float { display: none; }
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {

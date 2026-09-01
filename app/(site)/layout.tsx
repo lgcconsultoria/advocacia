@@ -1,6 +1,7 @@
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { WhatsappFloat } from '@/components/whatsapp-float';
+import { ConsentBanner } from '@/components/consent-banner';
 import SmoothScroll from '@/components/smooth-scroll';
 import { getAreas, getSettings } from '@/lib/reader';
 
@@ -21,6 +22,7 @@ export default async function SiteLayout({
       <SiteHeader />
       <main id="conteudo">{children}</main>
       <SiteFooter areas={areaLinks} settings={settings} />
+      <ConsentBanner />
       <WhatsappFloat whatsapp={settings.whatsapp} />
     </>
   );
