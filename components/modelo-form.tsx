@@ -53,11 +53,12 @@ export function ModeloForm({ slug, documento }: { slug: string; documento: strin
       });
       const j = (await r.json()) as { url?: string; erro?: string };
       if (!r.ok || !j.url) throw new Error(j.erro || 'Falha ao gerar o material.');
+      const url = j.url;
 
       track('material_download', { slug });
-      setLink(j.url);
+      setLink(url);
       setEstado('pronto');
-      window.location.href = j.url;
+      window.location.href = url;
     } catch (err) {
       setMsgErro(err instanceof Error ? err.message : 'Não foi possível enviar agora.');
       setEstado('erro');
