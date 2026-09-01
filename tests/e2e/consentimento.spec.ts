@@ -62,10 +62,23 @@ test('sem consentimento, nenhum script de terceiro é solicitado', async ({ page
 // ambiente sumirem, ou se anexar() parar de disparar o script do vendor.
 test('com consentimento de análise, o vendor de analytics É solicitado', async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('button', { name: 'Aceitar todos' }).click();
-  const requisicao = await page.waitForRequest(
-    (r) => /googletagmanager|clarity\.ms/.test(r.url()),
-    { timeout: 10_000 },
-  );
+  // `anexar()` injeta o <script src="/vendor/ga4.js"> de forma síncrona
+  // dentro do próprio handler de clique (writeConsent -> dispatchEvent ->
+  // aplicar() -> anexar()), e o navegador dispara a requisição ao vendor
+  // quase no mesmo instante. Se `waitForRequest()` só começar a escutar
+  // DEPOIS do `await click()`, o round-trip do clique (IPC até o browser e
+  // de volta) é tempo suficiente para a requisição já ter disparado e
+  // passado — o listener nasce tarde demais para vê-la. Isso fazia o teste
+  // falhar quase sempre no timeout de 10s (raramente "salvo" por uma
+  // requisição posterior e não relacionada dos mesmos domínios). Registrar
+  // a escuta e o clique em paralelo com `Promise.all` elimina a corrida:
+  // a escuta já está armada antes do clique disparar o evento.
+  const [requisicao] = await Promise.all([
+    page.waitForRequest(
+      (r) => /googletagmanager|clarity\.ms/.test(r.url()),
+      { timeout: 10_000 },
+    ),
+    page.getByRole('button', { name: 'Aceitar todos' }).click(),
+  ]);
   expect(requisicao.url()).toMatch(/googletagmanager|clarity\.ms/);
 });
