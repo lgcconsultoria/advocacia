@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   },
   description:
     'Escritório de Direito Administrativo com atuação em todo o Brasil. Mandado de segurança, licitações, contratos públicos, servidores, concursos, defesa de agentes públicos, habeas data e execuções — e contencioso cível e empresarial: família, dívidas e obrigações, direito empresarial e crimes licitatórios.',
+  alternates: {
+    types: { 'application/atom+xml': '/feed.xml' },
+  },
   robots: { index: true, follow: true },
   openGraph: {
     type: 'website',
