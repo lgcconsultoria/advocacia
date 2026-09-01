@@ -357,21 +357,39 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 @media (min-width: 980px) { .grid-4 { grid-template-columns: repeat(4, 1fr); } }
 
 .card {
-  background: var(--paper-pure); border: 1px solid var(--line);
+  background: var(--surface-raised); border: 1px solid var(--border);
   border-radius: var(--radius-lg); padding: 1.6rem; height: 100%;
-  transition: transform .18s var(--ease), box-shadow .18s var(--ease), border-color .18s var(--ease);
+  transition: transform .16s var(--ease), border-color .16s var(--ease), background .16s var(--ease);
 }
-.area-card { display: flex; flex-direction: column; text-decoration: none; color: var(--text); }
-.area-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--brand); color: var(--text); }
+
+.area-card {
+  display: grid;
+  /* ícone · título · descrição (cresce) · link */
+  grid-template-rows: auto auto 1fr auto;
+  text-decoration: none; color: var(--text);
+}
+/* Reserva duas linhas para o título: "Mandado de Segurança" e
+   "Defesa de Agentes Públicos" passam a ocupar a mesma altura. */
+.area-card h3 { margin-bottom: .35rem; min-height: 2.6em; min-height: 2lh; }
+.area-card p { color: var(--text-muted); font-size: .96rem; margin-bottom: 1rem; }
 .area-card .card-icon {
-  color: var(--brand); margin-bottom: 1rem;
-  width: 52px; height: 52px; border-radius: 50%;
+  color: var(--accent); margin-bottom: 1rem;
+  width: 48px; height: 48px; flex: none; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   background: var(--accent-soft);
 }
-.area-card h3 { margin-bottom: .35rem; }
-.area-card p { color: var(--text-muted); font-size: .96rem; margin-bottom: 1rem; }
-.area-card .card-link { margin-top: auto; font-weight: 600; font-size: .9rem; color: var(--brand); display: inline-flex; align-items: center; gap: .35rem; }
+.area-card .card-link {
+  font-weight: 600; font-size: .9rem; color: var(--accent);
+  display: inline-flex; align-items: center; gap: .35rem;
+}
+/* A borda é o separador padrão do sistema; a sombra fica reservada
+   a elementos flutuantes. */
+.area-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 2%, var(--surface-raised));
+  color: var(--text);
+}
 .area-card:hover .card-link { gap: .6rem; }
 
 /* ---------- Steps ---------- */
@@ -655,7 +673,14 @@ figure { margin: 0; }
 .post-list { display: grid; gap: 1.4rem; }
 @media (min-width: 720px) { .post-list { grid-template-columns: 1fr 1fr; } }
 .post-card { display: flex; flex-direction: column; text-decoration: none; color: var(--text); }
-.post-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--brand); color: var(--text); }
+/* A borda é o separador padrão do sistema; a sombra fica reservada
+   a elementos flutuantes. */
+.post-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 2%, var(--surface-raised));
+  color: var(--text);
+}
 .post-tag {
   align-self: flex-start; font-size: .72rem; font-weight: 700; letter-spacing: .08em;
   text-transform: uppercase; color: var(--accent); background: var(--accent-soft);
