@@ -51,3 +51,21 @@ test('sem consentimento, nenhum script de terceiro é solicitado', async ({ page
   await page.waitForTimeout(500);
   expect(terceiros).toEqual([]);
 });
+
+// Teste-espelho do anterior: sem ele, o teste acima poderia estar passando
+// por vacuidade — por exemplo se as variáveis NEXT_PUBLIC_GA_ID/CLARITY_ID/
+// META_PIXEL_ID que env-gateiam components/analytics.tsx não estivessem
+// definidas no ambiente (é o caso do CI antes desta correção: nada as
+// exportava, então nenhum vendor carregaria nem SOB consentimento — e
+// "nenhum script solicitado" seria verdade por um motivo errado). Este
+// teste falha se o gate de consentimento quebrar, se as variáveis de
+// ambiente sumirem, ou se anexar() parar de disparar o script do vendor.
+test('com consentimento de análise, o vendor de analytics É solicitado', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Aceitar todos' }).click();
+  const requisicao = await page.waitForRequest(
+    (r) => /googletagmanager|clarity\.ms/.test(r.url()),
+    { timeout: 10_000 },
+  );
+  expect(requisicao.url()).toMatch(/googletagmanager|clarity\.ms/);
+});
