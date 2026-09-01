@@ -289,7 +289,17 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 .hero-inner { position: relative; z-index: 1; padding-block: clamp(2.8rem, 2rem + 5vw, 5rem); }
 .hero-grid { display: grid; gap: clamp(2rem, 4vw, 3.4rem); align-items: center; }
 @media (min-width: 940px) { .hero-grid { grid-template-columns: 1.04fr .96fr; } }
-.hero h1 { color: #fff; max-width: 16ch; }
+/* max-width era 16ch. A unidade `ch` depende da métrica do glifo — no
+   domready, com a fonte de fallback do next/font, 16ch computava 351,31px;
+   depois do swap para a Archivo real virava 380,80px. Quando as duas
+   atualizações não caem no mesmo frame, o h1 passa por um estado
+   transitório de 4 linhas e volta a 3 — o CLS medido (0,0563 em 2 de 3
+   execuções, CPU 4x + Fast 4G) vinha daqui: 42px é exatamente uma linha do
+   h1 (40px × line-height 1.05). Trocado por `em`, que só depende do
+   font-size (estável no swap) — 9,52em reproduz os mesmos 380,80px
+   (40px×9,52) e 609,28px (64px×9,52) já medidos com a Archivo real, então
+   a quebra de linha não muda. */
+.hero h1 { color: #fff; max-width: 9.52em; }
 .hero .lead { font-size: 1.18rem; max-width: 52ch; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 1.7rem; }
 .hero-meta {
@@ -363,7 +373,10 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
   pointer-events: none;
 }
 .page-hero .container { position: relative; z-index: 1; padding-block: clamp(2.6rem, 2rem + 4vw, 4.4rem); }
-.page-hero h1 { color: #fff; max-width: 18ch; }
+/* Mesmo mecanismo do .hero h1 acima: 18ch trocado por 10,71em, que
+   reproduz os mesmos 428,40px (40px×10,71) e 685,44px (64px×10,71) já
+   medidos com a Archivo real — a quebra de linha não muda. */
+.page-hero h1 { color: #fff; max-width: 10.71em; }
 .page-hero .lead { color: var(--text-light); max-width: 60ch; }
 .breadcrumb { font-size: .82rem; color: var(--text-light); margin-bottom: 1rem; }
 .breadcrumb a { color: var(--text-light); text-decoration: none; }
