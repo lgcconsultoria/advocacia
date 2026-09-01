@@ -48,6 +48,7 @@
   --accent-hover:    var(--brand-800);
   --accent-soft:     var(--brand-50);
   --on-accent:       #FFFFFF;
+  --danger:          var(--urgent);
 
   /* Apelidos legados: mantêm as ~500 linhas seguintes funcionando
      sem reescrita. Removidos quando o CSS for migrado por completo. */
@@ -59,7 +60,6 @@
   --text-light:   var(--text-on-inverse);
   --paper-pure:   var(--surface-raised);
   --paper-alt:    var(--surface-alt);
-  --danger:       var(--urgent);
 
   --radius:     4px;
   --radius-lg:  10px;
@@ -91,6 +91,7 @@
     --accent-hover:    #A8A5F5;
     --accent-soft:     #1A1930;
     --on-accent:       var(--brand-900);
+    --danger:          #FF8A80;
   }
 }
 
@@ -110,6 +111,7 @@
   --accent-hover:    #A8A5F5;
   --accent-soft:     #1A1930;
   --on-accent:       var(--brand-900);
+  --danger:          #FF8A80;
 }
 
 :root { color-scheme: light; }
@@ -576,10 +578,10 @@ figure { margin: 0; }
 .form-feedback h3 { color: var(--text-strong); }
 .form-error {
   display: none; padding: 1.1rem 1.3rem; border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--urgent) 10%, var(--surface-raised)); border: 1px solid color-mix(in srgb, var(--urgent) 40%, transparent); color: var(--urgent); margin-bottom: 1rem;
+  background: color-mix(in srgb, var(--danger) 10%, var(--surface-raised)); border: 1px solid color-mix(in srgb, var(--danger) 40%, transparent); color: var(--danger); margin-bottom: 1rem;
 }
 .form-error.is-visible { display: block; }
-.form-error a { color: var(--urgent); }
+.form-error a { color: var(--danger); }
 .field-error { color: var(--danger); font-size: .82rem; display: none; }
 .field.has-error .field-error, .consent.has-error .field-error { display: block; }
 .field.has-error input, .field.has-error select, .field.has-error textarea { border-color: var(--danger); }

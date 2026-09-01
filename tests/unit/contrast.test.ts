@@ -47,4 +47,16 @@ describe('contraste dos tokens', () => {
     expect(contrastRatio('#FFFFFF', T.brand700)).toBeGreaterThanOrEqual(4.5);
     expect(contrastRatio('#0F0E52', T.darkAccent)).toBeGreaterThanOrEqual(4.5);
   });
+
+  it('a cor de erro atinge AA nas três superfícies escuras', () => {
+    const erroEscuro = '#FF8A80';
+    expect(contrastRatio(erroEscuro, '#101016')).toBeGreaterThanOrEqual(4.5);
+    expect(contrastRatio(erroEscuro, '#1D1D27')).toBeGreaterThanOrEqual(4.5);
+    expect(contrastRatio(erroEscuro, '#17171F')).toBeGreaterThanOrEqual(4.5);
+  });
+
+  it('a cor de erro atinge AA nas superfícies claras', () => {
+    expect(contrastRatio('#B3261E', '#FFFFFF')).toBeGreaterThanOrEqual(4.5);
+    expect(contrastRatio('#B3261E', '#F4F4F7')).toBeGreaterThanOrEqual(4.5);
+  });
 });
