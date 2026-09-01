@@ -19,10 +19,10 @@ export default async function SiteLayout({
       <a className="skip-link" href="#conteudo">
         Ir para o conteúdo
       </a>
+      <ConsentBanner />
       <SiteHeader />
       <main id="conteudo">{children}</main>
       <SiteFooter areas={areaLinks} settings={settings} />
-      <ConsentBanner />
       <WhatsappFloat whatsapp={settings.whatsapp} />
     </>
   );
