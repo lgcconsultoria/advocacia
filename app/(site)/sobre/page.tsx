@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Backdrop } from '@/components/backdrop';
 
 export const metadata: Metadata = {
   title: 'Sobre o escritório',
@@ -19,6 +20,7 @@ export default function SobrePage() {
   return (
     <>
       <section className="page-hero">
+        <Backdrop variant="grid" />
         <div className="container">
           <nav className="breadcrumb" aria-label="Trilha de navegação">
             <Link href="/">Início</Link>
@@ -65,6 +67,7 @@ export default function SobrePage() {
               alt="Douglas Senturião analisando um processo"
               width={1100}
               height={1650}
+              sizes="(min-width: 900px) 45vw, 92vw"
             />
           </figure>
         </div>
@@ -150,6 +153,7 @@ export default function SobrePage() {
                 alt="Retrato de Douglas Senturião, advogado"
                 width={1100}
                 height={1650}
+                sizes="(min-width: 760px) 40vw, 92vw"
               />
             </div>
             <div className="founder-body">

@@ -36,8 +36,9 @@ export function SiteHeader() {
             className="brand-logo"
             src="/assets/img/logo-horizontal.png"
             alt="Douglas Senturião Advocacia"
-            width={1151}
-            height={399}
+            width={266}
+            height={92}
+            sizes="133px"
             priority
           />
         </Link>

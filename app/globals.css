@@ -158,7 +158,14 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 .section--tight { padding-block: clamp(2.2rem, 1.6rem + 3vw, 3.5rem); }
 .section--alt { background: var(--paper-alt); }
 .section--paper { background: var(--paper-pure); }
-.section--ink { background: var(--surface-inverse); color: var(--text-light); }
+.section--ink {
+  background: var(--surface-inverse); color: var(--text-light);
+  position: relative; overflow: hidden;
+}
+/* O Backdrop entra como primeiro filho da section (irmão do .container).
+   Sem isto, um filho position:static pinta ANTES de um irmão position:
+   absolute na ordem de pintura do CSS — o grafismo cobriria o conteúdo. */
+.section--ink > .container { position: relative; z-index: 1; }
 .section--ink h1, .section--ink h2, .section--ink h3 { color: #fff; }
 .skip-link {
   position: absolute; left: -999px; top: 0; z-index: 200;
@@ -331,6 +338,15 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 }
 .hero-video-toggle:hover { background: rgba(8,8,12,.75); }
 @media (prefers-reduced-motion: reduce) { .hero-media .hero-video { display: none; } }
+
+/* ---------- Backdrop (grafismo SVG decorativo, Tarefa 13) ----------
+   Puramente ornamental: aria-hidden, sem captura de clique e sempre atrás
+   do conteúdo real (ver z-index dos containers de .page-hero/.section--ink
+   logo abaixo). */
+.backdrop {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  color: var(--border-inverse); opacity: .35; pointer-events: none;
+}
 
 /* ---------- Page hero (interior) ---------- */
 .page-hero { background: var(--surface-inverse); color: var(--text-light); position: relative; overflow: hidden; }

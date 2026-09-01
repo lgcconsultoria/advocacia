@@ -7,6 +7,7 @@ import { HeroVideo } from '@/components/hero-video';
 import { Reveal, RevealGroup, RevealItem } from '@/components/reveal';
 import { JsonLd } from '@/components/json-ld';
 import { TrackLink } from '@/components/track-link';
+import { Backdrop } from '@/components/backdrop';
 
 export const metadata: Metadata = {
   // Título voltado ao termo de maior busca ("advogado direito administrativo")
@@ -186,6 +187,7 @@ export default async function HomePage() {
       </section>
 
       <section className="section section--ink">
+        <Backdrop variant="arcs" />
         <div className="container">
           <div className="founder">
             <div className="founder-photo">
@@ -194,6 +196,7 @@ export default async function HomePage() {
                 alt="Douglas Senturião, advogado responsável pelo escritório"
                 width={1100}
                 height={1650}
+                sizes="(min-width: 760px) 40vw, 92vw"
               />
             </div>
             <div className="founder-body">

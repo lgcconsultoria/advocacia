@@ -25,8 +25,9 @@ export function SiteFooter({ areas, settings }: FooterProps) {
             className="footer-logo"
             src="/assets/img/logo-horizontal-light.png"
             alt={settings.firmName}
-            width={1151}
-            height={399}
+            width={300}
+            height={104}
+            sizes="150px"
           />
           <p>
             Escritório-boutique dedicado a conflitos entre o setor privado, o
