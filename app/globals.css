@@ -473,6 +473,22 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 .deflist .item h3 { font-size: 1.06rem; margin-bottom: .2rem; }
 .deflist .item p { margin: 0; color: var(--text-muted); font-size: .98rem; }
 
+/* ---------- Bloco de prazos (área) ---------- */
+.deadline-list { list-style: none; padding: 0; margin: 0; display: grid; gap: .8rem; }
+.deadline-item {
+  display: grid; gap: .3rem 1.2rem; align-items: baseline; margin: 0;
+  background: var(--surface-raised); border: 1px solid var(--border);
+  border-left: 3px solid var(--danger); border-radius: var(--radius-lg);
+  padding: 1.1rem 1.3rem;
+}
+@media (min-width: 700px) { .deadline-item { grid-template-columns: 10rem 1fr; } }
+.deadline-prazo {
+  margin: 0; font-family: var(--font-display-stack); font-weight: 700;
+  font-size: 1.15rem; color: var(--danger); font-variant-numeric: tabular-nums;
+}
+.deadline-item h3 { font-size: 1.02rem; margin: 0 0 .2rem; }
+.deadline-item .hint { margin: 0; }
+
 /* ---------- Prose ---------- */
 .prose { max-width: 68ch; }
 .prose h2 { margin-top: 2.4rem; }

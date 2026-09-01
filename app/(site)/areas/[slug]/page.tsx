@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getArea, getAreas } from '@/lib/reader';
+import { getArea, getAreas, getPostsByArea } from '@/lib/reader';
 import { renderMarkdoc } from '@/lib/markdoc';
-import { Reveal } from '@/components/reveal';
+import { Reveal, RevealItem } from '@/components/reveal';
 import { FaqAccordion } from '@/components/faq-accordion';
 import { JsonLd } from '@/components/json-ld';
 import { TrackLink } from '@/components/track-link';
 import { TrackView } from '@/components/track-view';
+import { OAB_NOTICE } from '@/lib/legal-notice';
 
 export async function generateStaticParams() {
   const areas = await getAreas();
@@ -47,6 +48,7 @@ export default async function AreaPage({
   const intro = await area.intro();
   const hasAchieves = area.achieves.length > 0;
   const hasNotice = area.notice.title || area.notice.body;
+  const relacionados = await getPostsByArea(area.areaKey ?? '');
 
   const faqLd = {
     '@context': 'https://schema.org',
@@ -147,6 +149,78 @@ export default async function AreaPage({
         </div>
       </section>
 
+      {area.deadlines.length > 0 && (
+        <section className="section section--alt">
+          <div className="container">
+            <Reveal className="section-head">
+              <p className="eyebrow">Prazos</p>
+              <h2>{area.deadlinesTitle || 'O prazo'}</h2>
+              <p className="lead">
+                Mover-se na semana errada pode custar o caso. Estes são os prazos que
+                orientam a reação nesta matéria.
+              </p>
+            </Reveal>
+            <ul className="deadline-list">
+              {area.deadlines.map((d, i) => (
+                <li className="deadline-item" key={i}>
+                  <p className="deadline-prazo" data-prazo>{d.prazo}</p>
+                  <div>
+                    <h3>{d.label}</h3>
+                    {d.base && <p className="hint">{d.base}</p>}
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <p className="hint" style={{ marginTop: '1.2rem' }}>
+              Informação de caráter geral. Prazos variam conforme o caso concreto e a
+              contagem depende da data de ciência — não substitui análise individualizada.
+            </p>
+          </div>
+        </section>
+      )}
+
+      {area.decisive.length > 0 && (
+        <section className="section">
+          <div className="container">
+            <Reveal className="section-head">
+              <p className="eyebrow">Técnica</p>
+              <h2>{area.decisiveTitle || 'O que costuma decidir o caso'}</h2>
+            </Reveal>
+            <div className="deflist">
+              {area.decisive.map((d, i) => (
+                <div className="item" key={i}>
+                  <h3>{d.title}</h3>
+                  <p>{d.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {relacionados.length > 0 && (
+        <section className="section section--alt">
+          <div className="container">
+            <Reveal className="section-head">
+              <p className="eyebrow">Conteúdo técnico</p>
+              <h2>Artigos sobre {area.title.toLowerCase()}.</h2>
+            </Reveal>
+            <div className="post-list related-posts">
+              {relacionados.map((p, i) => (
+                <RevealItem key={p.slug} index={i}>
+                  <Link className="card post-card" href={`/blog/${p.slug}`}>
+                    <span className="post-tag">{p.area}</span>
+                    <h3>{p.title}</h3>
+                    <p>{p.description}</p>
+                    <span className="post-meta"><span>{p.readingTime}</span></span>
+                  </Link>
+                </RevealItem>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {area.faq.length > 0 && (
         <section className="section section--alt">
           <div className="container">
@@ -158,6 +232,12 @@ export default async function AreaPage({
           </div>
         </section>
       )}
+
+      <section className="section section--tight">
+        <div className="container container--narrow">
+          <div className="notice">{OAB_NOTICE}</div>
+        </div>
+      </section>
 
       <section className="section section--tight cta-band">
         <div className="container">
