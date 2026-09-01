@@ -48,8 +48,8 @@ export default async function AreasPage() {
             <h2>O conflito é com a Administração.</h2>
           </div>
           <RevealGroup className="grid grid-3">
-            {areasPublico.map((area) => (
-              <RevealItem key={area.slug}>
+            {areasPublico.map((area, i) => (
+              <RevealItem key={area.slug} index={i}>
                 <Link className="card area-card" href={`/areas/${area.slug}`}>
                   <span className="card-icon" aria-hidden="true">
                     <AreaIcon icon={area.icon} />
@@ -72,8 +72,8 @@ export default async function AreasPage() {
               <h2>O conflito é entre particulares.</h2>
             </div>
             <RevealGroup className="grid grid-3">
-              {areasCivel.map((area) => (
-                <RevealItem key={area.slug}>
+              {areasCivel.map((area, i) => (
+                <RevealItem key={area.slug} index={i}>
                   <Link className="card area-card" href={`/areas/${area.slug}`}>
                     <span className="card-icon" aria-hidden="true">
                       <AreaIcon icon={area.icon} />

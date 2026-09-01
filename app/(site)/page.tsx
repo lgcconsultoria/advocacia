@@ -151,7 +151,7 @@ export default async function HomePage() {
               Sobre o escritório
             </Link>
           </Reveal>
-          <Reveal className="aside-card" delay={0.1}>
+          <Reveal className="aside-card" index={1}>
             <p className="eyebrow">O que sustenta o trabalho</p>
             <div className="deflist">
               <div className="item">
@@ -222,8 +222,8 @@ export default async function HomePage() {
             </p>
           </Reveal>
           <RevealGroup className="grid grid-4">
-            {areasPublico.map((area) => (
-              <RevealItem key={area.slug}>
+            {areasPublico.map((area, i) => (
+              <RevealItem key={area.slug} index={i}>
                 <Link className="card area-card" href={`/areas/${area.slug}`}>
                   <span className="card-icon" aria-hidden="true">
                     <AreaIcon icon={area.icon} />
@@ -247,8 +247,8 @@ export default async function HomePage() {
                 </p>
               </Reveal>
               <RevealGroup className="grid grid-4">
-                {areasCivel.map((area) => (
-                  <RevealItem key={area.slug}>
+                {areasCivel.map((area, i) => (
+                  <RevealItem key={area.slug} index={i}>
                     <Link className="card area-card" href={`/areas/${area.slug}`}>
                       <span className="card-icon" aria-hidden="true">
                         <AreaIcon icon={area.icon} />
