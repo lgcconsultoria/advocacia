@@ -42,4 +42,9 @@ describe('contraste dos tokens', () => {
     expect(contrastRatio(T.darkMuted, T.darkSurface)).toBeGreaterThanOrEqual(4.5);
     expect(contrastRatio(T.darkAccent, T.darkSurface)).toBeGreaterThanOrEqual(4.5);
   });
+
+  it('texto sobre o acento atinge AA nos dois temas', () => {
+    expect(contrastRatio('#FFFFFF', T.brand700)).toBeGreaterThanOrEqual(4.5);
+    expect(contrastRatio('#0F0E52', T.darkAccent)).toBeGreaterThanOrEqual(4.5);
+  });
 });
