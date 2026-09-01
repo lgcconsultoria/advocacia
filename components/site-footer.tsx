@@ -39,7 +39,7 @@ export function SiteFooter({ areas, settings }: FooterProps) {
           </p>
         </div>
         <div>
-          <h4>Áreas</h4>
+          <h2 className="footer-heading">Áreas</h2>
           <ul className="footer-links">
             {areas.map((a) => (
               <li key={a.slug}>
@@ -49,7 +49,7 @@ export function SiteFooter({ areas, settings }: FooterProps) {
           </ul>
         </div>
         <div>
-          <h4>Institucional</h4>
+          <h2 className="footer-heading">Institucional</h2>
           <ul className="footer-links">
             <li><Link href="/sobre">Sobre o escritório</Link></li>
             <li><Link href="/blog">Blog</Link></li>
@@ -59,7 +59,7 @@ export function SiteFooter({ areas, settings }: FooterProps) {
             <li><Link href="/aviso-publicidade">Aviso de Publicidade</Link></li>
             <li><ConsentReopen /></li>
           </ul>
-          <h4 style={{ marginTop: '1.6rem' }}>Contato</h4>
+          <h2 className="footer-heading" style={{ marginTop: '1.6rem' }}>Contato</h2>
           <ul className="footer-contact">
             <li>
               <TrackAnchor

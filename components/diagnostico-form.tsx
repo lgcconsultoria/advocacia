@@ -146,6 +146,7 @@ export function DiagnosticoForm() {
               <label htmlFor="nome">
                 Nome completo ou razão social{' '}
                 <span className="req" aria-hidden="true">*</span>
+                <span className="sr-only">(obrigatório)</span>
               </label>
               <input type="text" id="nome" name="nome" autoComplete="name" required />
               <span className="field-error">Informe o seu nome ou a razão social.</span>
@@ -160,6 +161,7 @@ export function DiagnosticoForm() {
             <div className={cls('email')}>
               <label htmlFor="email">
                 E-mail <span className="req" aria-hidden="true">*</span>
+                <span className="sr-only">(obrigatório)</span>
               </label>
               <input type="email" id="email" name="email" autoComplete="email" required />
               <span className="field-error">Informe um e-mail válido.</span>
@@ -167,6 +169,7 @@ export function DiagnosticoForm() {
             <div className={cls('telefone')}>
               <label htmlFor="telefone">
                 Telefone / WhatsApp <span className="req" aria-hidden="true">*</span>
+                <span className="sr-only">(obrigatório)</span>
               </label>
               <input
                 type="tel"
@@ -182,6 +185,7 @@ export function DiagnosticoForm() {
           <div className={cls('cidade')}>
             <label htmlFor="cidade">
               Cidade / UF <span className="req" aria-hidden="true">*</span>
+              <span className="sr-only">(obrigatório)</span>
             </label>
             <input type="text" id="cidade" name="cidade" placeholder="São Paulo / SP" required />
             <span className="field-error">Informe a cidade e a UF.</span>
@@ -189,6 +193,7 @@ export function DiagnosticoForm() {
           <div className={cls('perfil')}>
             <span className="label">
               Você é: <span className="req" aria-hidden="true">*</span>
+              <span className="sr-only">(obrigatório)</span>
             </span>
             <div className="choice-group">
               <label className="choice"><input type="radio" name="perfil" value="pessoa-fisica" /> Pessoa física</label>
@@ -208,6 +213,7 @@ export function DiagnosticoForm() {
             <label htmlFor="frente">
               Qual frente melhor descreve o seu caso?{' '}
               <span className="req" aria-hidden="true">*</span>
+              <span className="sr-only">(obrigatório)</span>
             </label>
             <select id="frente" name="frente" required defaultValue="">
               <option value="" disabled>Selecione uma frente</option>
@@ -236,6 +242,7 @@ export function DiagnosticoForm() {
           <div className={cls('prazo')}>
             <span className="label">
               Há prazo em curso? <span className="req" aria-hidden="true">*</span>
+              <span className="sr-only">(obrigatório)</span>
             </span>
             <div className="choice-group">
               <label className="choice"><input type="radio" name="prazo" value="sim" /> Sim</label>
@@ -256,6 +263,7 @@ export function DiagnosticoForm() {
             <span className="label">
               Já existe processo administrativo ou judicial em andamento?{' '}
               <span className="req" aria-hidden="true">*</span>
+              <span className="sr-only">(obrigatório)</span>
             </span>
             <div className="choice-group">
               <label className="choice"><input type="radio" name="processo" value="nao" /> Não</label>
@@ -278,6 +286,7 @@ export function DiagnosticoForm() {
             <label htmlFor="descricao">
               Descreva objetivamente o que aconteceu{' '}
               <span className="req" aria-hidden="true">*</span>
+              <span className="sr-only">(obrigatório)</span>
             </label>
             <textarea
               id="descricao"

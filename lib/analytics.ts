@@ -4,6 +4,11 @@ export type EventName =
   | 'view_area_page'
   | 'cta_click'
   | 'whatsapp_click'
+  // Documentado no plano de medição (§6 do design), atrelado a rodapé/
+  // contato — mas sem uso hoje: o projeto não tem nenhum link `tel:`, o
+  // contato por telefone acontece via WhatsApp (`whatsapp_click`). Mantido
+  // no tipo para não exigir realinhamento do plano de medição no GA4 caso
+  // um link `tel:` direto seja adicionado no futuro.
   | 'phone_click'
   | 'email_click'
   | 'material_download'
