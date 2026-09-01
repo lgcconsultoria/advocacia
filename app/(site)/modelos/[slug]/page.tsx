@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getModelo, getModelos } from '@/lib/modelos';
 import { ModeloForm } from '@/components/modelo-form';
-import { MetaPixel } from '@/components/meta-pixel';
 import { Reveal } from '@/components/reveal';
 import { JsonLd } from '@/components/json-ld';
+import { TrackLink } from '@/components/track-link';
 
 export const revalidate = 300;
 
@@ -37,7 +37,6 @@ export default async function ModeloPage({
 
   return (
     <>
-      <MetaPixel />
       <JsonLd
         data={{
           '@context': 'https://schema.org',
@@ -105,9 +104,14 @@ export default async function ModeloPage({
               A triagem técnica inicial é gratuita e não constitui mandato. Envie os
               documentos e retornamos em até 1 dia útil.
             </p>
-            <Link href="/diagnostico" className="btn btn-primary btn-lg">
+            <TrackLink
+              href="/diagnostico"
+              className="btn btn-primary btn-lg"
+              event="cta_click"
+              params={{ origem: `modelos/${slug}#cta-final`, destino: '/diagnostico' }}
+            >
               Enviar caso para triagem
-            </Link>
+            </TrackLink>
           </Reveal>
         </div>
       </section>

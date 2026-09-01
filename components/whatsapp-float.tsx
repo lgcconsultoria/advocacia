@@ -1,18 +1,42 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
+import { TrackAnchor } from './track-anchor';
+
+/** Rótulo humano da página atual, para a mensagem pré-preenchida. */
+function contextoDaRota(pathname: string): string {
+  if (pathname.startsWith('/areas/')) {
+    const slug = pathname.split('/')[2] ?? '';
+    return `a página de ${slug.replace(/-/g, ' ')}`;
+  }
+  if (pathname.startsWith('/blog/')) return 'um artigo do blog';
+  if (pathname.startsWith('/modelos')) return 'a página de materiais';
+  if (pathname.startsWith('/diagnostico')) return 'a página de diagnóstico';
+  if (pathname.startsWith('/areas')) return 'a página de áreas de atuação';
+  if (pathname.startsWith('/contato')) return 'a página de contato';
+  return 'o site';
+}
+
 export function WhatsappFloat({ whatsapp }: { whatsapp: string }) {
+  const pathname = usePathname();
+  const contexto = contextoDaRota(pathname);
   const text = encodeURIComponent(
-    'Olá, gostaria de agendar um atendimento.'
+    `Olá, vim de ${contexto} e gostaria de agendar um atendimento.`
   );
+
   return (
-    <a
+    <TrackAnchor
       className="wa-float"
       href={`https://wa.me/${whatsapp}?text=${text}`}
       target="_blank"
       rel="noopener"
       aria-label="Falar no WhatsApp"
+      event="whatsapp_click"
+      params={{ origem: pathname }}
     >
       <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" focusable="false">
         <path d="M16.04 4C9.93 4 4.98 8.95 4.98 15.06c0 2.05.56 3.97 1.54 5.62L4.9 27.1l6.6-1.6a11 11 0 0 0 4.54.98h.01c6.11 0 11.06-4.95 11.06-11.06C27.11 8.95 22.15 4 16.04 4Zm0 20.27h-.01a9.2 9.2 0 0 1-4.68-1.28l-.34-.2-3.92.95.99-3.82-.22-.36a9.16 9.16 0 0 1-1.4-4.87c0-5.06 4.12-9.18 9.2-9.18 2.46 0 4.76.96 6.5 2.7a9.13 9.13 0 0 1 2.69 6.49c0 5.07-4.12 9.19-9.2 9.19Zm5.05-6.88c-.28-.14-1.64-.81-1.89-.9-.25-.09-.43-.14-.62.14-.18.28-.71.9-.87 1.08-.16.18-.32.2-.6.07-.28-.14-1.17-.43-2.23-1.38-.82-.73-1.38-1.64-1.54-1.92-.16-.28-.02-.43.12-.57.13-.13.28-.32.42-.49.14-.16.18-.28.28-.46.09-.18.05-.35-.02-.49-.07-.14-.62-1.5-.85-2.06-.22-.54-.45-.46-.62-.47-.16-.01-.35-.01-.53-.01-.18 0-.49.07-.74.35-.25.28-.97.95-.97 2.31s1 2.68 1.14 2.86c.14.18 1.96 3 4.75 4.2.66.29 1.18.46 1.58.59.67.21 1.27.18 1.75.11.53-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33Z" />
       </svg>
-    </a>
+    </TrackAnchor>
   );
 }

@@ -6,6 +6,8 @@ import { renderMarkdoc } from '@/lib/markdoc';
 import { Reveal } from '@/components/reveal';
 import { FaqAccordion } from '@/components/faq-accordion';
 import { JsonLd } from '@/components/json-ld';
+import { TrackLink } from '@/components/track-link';
+import { TrackView } from '@/components/track-view';
 
 export async function generateStaticParams() {
   const areas = await getAreas();
@@ -76,6 +78,7 @@ export default async function AreaPage({
     <>
       <JsonLd data={breadcrumbLd} />
       {area.faq.length > 0 && <JsonLd data={faqLd} />}
+      <TrackView event="view_area_page" params={{ area: slug }} />
 
       <section className="page-hero">
         <div className="container">
@@ -126,13 +129,15 @@ export default async function AreaPage({
                 <li key={i}>{item}</li>
               ))}
             </ul>
-            <Link
+            <TrackLink
               className="btn btn-primary btn-block"
               href="/diagnostico"
               style={{ marginTop: '1.2rem' }}
+              event="cta_click"
+              params={{ origem: `areas/${slug}#sidebar`, destino: '/diagnostico' }}
             >
               {area.sidebarCta}
-            </Link>
+            </TrackLink>
             {area.sidebarNote && (
               <p className="hint" style={{ marginTop: '.8rem' }}>
                 {area.sidebarNote}
@@ -161,9 +166,14 @@ export default async function AreaPage({
             <p>{area.ctaText}</p>
           </div>
           <div className="cta-actions">
-            <Link className="btn btn-primary btn-lg" href="/diagnostico">
+            <TrackLink
+              className="btn btn-primary btn-lg"
+              href="/diagnostico"
+              event="cta_click"
+              params={{ origem: `areas/${slug}#cta-final`, destino: '/diagnostico' }}
+            >
               {area.sidebarCta}
-            </Link>
+            </TrackLink>
           </div>
         </div>
       </section>

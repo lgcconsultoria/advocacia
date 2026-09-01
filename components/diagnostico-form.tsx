@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState, type FormEvent } from 'react';
+import { track } from '@/lib/analytics';
 
 const WEBHOOK = 'https://webhook.licitacaogc.com.br/webhook/advocacia';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -13,6 +14,7 @@ const MAX_FILE_MB = 10;
 
 export function DiagnosticoForm() {
   const formRef = useRef<HTMLFormElement>(null);
+  const iniciado = useRef(false);
   const [errors, setErrors] = useState<Set<string>>(new Set());
   const [consentError, setConsentError] = useState(false);
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>(
@@ -84,6 +86,10 @@ export function DiagnosticoForm() {
     try {
       await fetch(WEBHOOK, { method: 'POST', mode: 'no-cors', body: data });
       setStatus('sent');
+      track('generate_lead', {
+        frente: String(data.get('frente') ?? ''),
+        tem_prazo: String(data.get('prazo') ?? ''),
+      });
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch {
       setStatus('error');
@@ -123,6 +129,10 @@ export function DiagnosticoForm() {
         noValidate
         onSubmit={onSubmit}
         onInput={(e) => {
+          if (!iniciado.current) {
+            iniciado.current = true;
+            track('form_start');
+          }
           const el = e.target as HTMLInputElement;
           if (el.name) clearError(el.name);
           if (REQUIRED_CONSENT.includes(el.name)) setConsentError(false);

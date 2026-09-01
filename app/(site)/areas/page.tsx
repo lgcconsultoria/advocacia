@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { getAreas } from '@/lib/reader';
 import { AreaIcon } from '@/components/area-icon';
 import { Reveal, RevealGroup, RevealItem } from '@/components/reveal';
+import { TrackLink } from '@/components/track-link';
 
 export const metadata: Metadata = {
   title: 'Áreas de atuação — Direito Administrativo e Contencioso',
@@ -99,9 +100,14 @@ export default async function AreasPage() {
             </p>
           </div>
           <div className="cta-actions">
-            <Link className="btn btn-primary btn-lg" href="/diagnostico">
+            <TrackLink
+              className="btn btn-primary btn-lg"
+              href="/diagnostico"
+              event="cta_click"
+              params={{ origem: 'areas#cta-final', destino: '/diagnostico' }}
+            >
               Solicitar diagnóstico
-            </Link>
+            </TrackLink>
           </div>
         </div>
       </section>

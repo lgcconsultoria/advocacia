@@ -6,6 +6,7 @@ import { AreaIcon } from '@/components/area-icon';
 import { HeroVideo } from '@/components/hero-video';
 import { Reveal, RevealGroup, RevealItem } from '@/components/reveal';
 import { JsonLd } from '@/components/json-ld';
+import { TrackLink } from '@/components/track-link';
 
 export const metadata: Metadata = {
   // Título voltado ao termo de maior busca ("advogado direito administrativo")
@@ -95,12 +96,22 @@ export default async function HomePage() {
                 contato — com a técnica de um escritório-boutique.
               </p>
               <div className="hero-actions">
-                <Link className="btn btn-primary btn-lg" href="/diagnostico">
+                <TrackLink
+                  className="btn btn-primary btn-lg"
+                  href="/diagnostico"
+                  event="cta_click"
+                  params={{ origem: 'home#hero', destino: '/diagnostico' }}
+                >
                   Solicitar diagnóstico inicial
-                </Link>
-                <Link className="btn btn-ghost btn-lg" href="/areas">
+                </TrackLink>
+                <TrackLink
+                  className="btn btn-ghost btn-lg"
+                  href="/areas"
+                  event="cta_click"
+                  params={{ origem: 'home#hero', destino: '/areas' }}
+                >
                   Conhecer as áreas de atuação
-                </Link>
+                </TrackLink>
               </div>
             </div>
             <div className="hero-photo">
@@ -317,9 +328,14 @@ export default async function HomePage() {
               com triagem técnica inicial. Se há prazo em curso, ele orienta a
               prioridade do atendimento.
             </p>
-            <Link className="btn btn-primary" href="/diagnostico">
+            <TrackLink
+              className="btn btn-primary"
+              href="/diagnostico"
+              event="cta_click"
+              params={{ origem: 'home#para-quem', destino: '/diagnostico' }}
+            >
               Solicitar diagnóstico inicial
-            </Link>
+            </TrackLink>
           </Reveal>
           <ul className="checklist">
             <li>Empresas que contratam com o Poder Público.</li>
@@ -386,12 +402,22 @@ export default async function HomePage() {
             </p>
           </div>
           <div className="cta-actions">
-            <Link className="btn btn-primary btn-lg" href="/diagnostico">
+            <TrackLink
+              className="btn btn-primary btn-lg"
+              href="/diagnostico"
+              event="cta_click"
+              params={{ origem: 'home#cta-final', destino: '/diagnostico' }}
+            >
               Solicitar diagnóstico
-            </Link>
-            <Link className="btn btn-ghost btn-lg" href="/contato">
+            </TrackLink>
+            <TrackLink
+              className="btn btn-ghost btn-lg"
+              href="/contato"
+              event="cta_click"
+              params={{ origem: 'home#cta-final', destino: '/contato' }}
+            >
               Falar com o escritório
-            </Link>
+            </TrackLink>
           </div>
         </div>
       </section>

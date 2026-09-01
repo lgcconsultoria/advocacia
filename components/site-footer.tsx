@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ConsentReopen } from '@/components/consent-reopen';
+import { TrackAnchor } from '@/components/track-anchor';
 
 type FooterProps = {
   areas: { slug: string; title: string }[];
@@ -59,16 +60,24 @@ export function SiteFooter({ areas, settings }: FooterProps) {
           <h4 style={{ marginTop: '1.6rem' }}>Contato</h4>
           <ul className="footer-contact">
             <li>
-              <a href={`mailto:${settings.email}`}>{settings.email}</a>
+              <TrackAnchor
+                href={`mailto:${settings.email}`}
+                event="email_click"
+                params={{ origem: 'rodape' }}
+              >
+                {settings.email}
+              </TrackAnchor>
             </li>
             <li>
-              <a
+              <TrackAnchor
                 href={`https://wa.me/${settings.whatsapp}`}
                 target="_blank"
                 rel="noopener"
+                event="whatsapp_click"
+                params={{ origem: 'rodape' }}
               >
                 {settings.phone}
-              </a>{' '}
+              </TrackAnchor>{' '}
               — atendimento por agendamento
             </li>
             <li>

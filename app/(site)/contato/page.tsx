@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { TrackAnchor } from '@/components/track-anchor';
+import { TrackLink } from '@/components/track-link';
 
 export const metadata: Metadata = {
   title: 'Contato — Douglas Senturião Advocacia | Direito Administrativo em São Paulo',
@@ -46,17 +48,27 @@ export default function ContatoPage() {
               <div className="item">
                 <h3>E-mail</h3>
                 <p>
-                  <a href="mailto:douglas@senturiaoadv.com.br">
+                  <TrackAnchor
+                    href="mailto:douglas@senturiaoadv.com.br"
+                    event="email_click"
+                    params={{ origem: 'contato' }}
+                  >
                     douglas@senturiaoadv.com.br
-                  </a>
+                  </TrackAnchor>
                 </p>
               </div>
               <div className="item">
                 <h3>Telefone / WhatsApp comercial</h3>
                 <p>
-                  <a href="https://wa.me/5567991675629" target="_blank" rel="noopener">
+                  <TrackAnchor
+                    href="https://wa.me/5567991675629"
+                    target="_blank"
+                    rel="noopener"
+                    event="whatsapp_click"
+                    params={{ origem: 'contato' }}
+                  >
                     (67) 99167-5629
-                  </a>{' '}
+                  </TrackAnchor>{' '}
                   — atendimento exclusivamente para agendamento.
                 </p>
               </div>
@@ -87,13 +99,15 @@ export default function ContatoPage() {
               frente, prazo e documentos — e garante uma triagem técnica mais
               precisa do que uma mensagem livre.
             </p>
-            <Link
+            <TrackLink
               className="btn btn-primary btn-block"
               href="/diagnostico"
               style={{ marginTop: '.4rem' }}
+              event="cta_click"
+              params={{ origem: 'contato#aside', destino: '/diagnostico' }}
             >
               Solicitar diagnóstico inicial
-            </Link>
+            </TrackLink>
             <p className="hint" style={{ marginTop: '.9rem' }}>
               Para questões institucionais que não envolvam um caso concreto,
               escreva para o e-mail acima.
