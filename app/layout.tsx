@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { headers } from 'next/headers';
 import { archivo, inter } from '@/lib/fonts';
 import './globals.css';
 
@@ -35,15 +36,22 @@ export const viewport: Viewport = {
   themeColor: '#1d1b9a',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // O middleware grava o nonce da requisição em `x-nonce`. Sob
+  // script-src com 'strict-dynamic', um <script> escrito à mão no HTML
+  // (diferente dos scripts que o próprio Next injeta) só executa se
+  // carregar esse nonce — sem ele o bootstrap.js seria bloqueado e o
+  // tema/reveal quebrariam silenciosamente.
+  const nonce = (await headers()).get('x-nonce') ?? undefined;
+
   return (
     <html lang="pt-BR" className={`${archivo.variable} ${inter.variable}`}>
       <head>
-        <script src="/bootstrap.js" />
+        <script src="/bootstrap.js" nonce={nonce} />
       </head>
       <body>{children}</body>
     </html>
