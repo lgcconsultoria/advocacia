@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { ConsentReopen } from '@/components/consent-reopen';
+import { TrackAnchor } from '@/components/track-anchor';
+import { OAB_NOTICE } from '@/lib/legal-notice';
 
 type FooterProps = {
   areas: { slug: string; title: string }[];
@@ -23,8 +26,9 @@ export function SiteFooter({ areas, settings }: FooterProps) {
             className="footer-logo"
             src="/assets/img/logo-horizontal-light.png"
             alt={settings.firmName}
-            width={1151}
-            height={399}
+            width={300}
+            height={104}
+            sizes="150px"
           />
           <p>
             Escritório-boutique dedicado a conflitos entre o setor privado, o
@@ -35,7 +39,7 @@ export function SiteFooter({ areas, settings }: FooterProps) {
           </p>
         </div>
         <div>
-          <h4>Áreas</h4>
+          <h2 className="footer-heading">Áreas</h2>
           <ul className="footer-links">
             {areas.map((a) => (
               <li key={a.slug}>
@@ -45,7 +49,7 @@ export function SiteFooter({ areas, settings }: FooterProps) {
           </ul>
         </div>
         <div>
-          <h4>Institucional</h4>
+          <h2 className="footer-heading">Institucional</h2>
           <ul className="footer-links">
             <li><Link href="/sobre">Sobre o escritório</Link></li>
             <li><Link href="/blog">Blog</Link></li>
@@ -53,20 +57,29 @@ export function SiteFooter({ areas, settings }: FooterProps) {
             <li><Link href="/contato">Contato</Link></li>
             <li><Link href="/politica-de-privacidade">Política de Privacidade</Link></li>
             <li><Link href="/aviso-publicidade">Aviso de Publicidade</Link></li>
+            <li><ConsentReopen /></li>
           </ul>
-          <h4 style={{ marginTop: '1.6rem' }}>Contato</h4>
+          <h2 className="footer-heading" style={{ marginTop: '1.6rem' }}>Contato</h2>
           <ul className="footer-contact">
             <li>
-              <a href={`mailto:${settings.email}`}>{settings.email}</a>
+              <TrackAnchor
+                href={`mailto:${settings.email}`}
+                event="email_click"
+                params={{ origem: 'rodape' }}
+              >
+                {settings.email}
+              </TrackAnchor>
             </li>
             <li>
-              <a
+              <TrackAnchor
                 href={`https://wa.me/${settings.whatsapp}`}
                 target="_blank"
                 rel="noopener"
+                event="whatsapp_click"
+                params={{ origem: 'rodape' }}
               >
                 {settings.phone}
-              </a>{' '}
+              </TrackAnchor>{' '}
               — atendimento por agendamento
             </li>
             <li>
@@ -82,12 +95,7 @@ export function SiteFooter({ areas, settings }: FooterProps) {
         </div>
       </div>
       <div className="container footer-bottom">
-        <p className="ethic">
-          Conteúdo institucional de caráter informativo, em conformidade com o
-          Código de Ética e Disciplina da OAB, o Estatuto da Advocacia (Lei
-          8.906/94) e o Provimento CFOAB nº 205/2021. Não constitui oferta de
-          serviços nem aconselhamento jurídico individualizado.
-        </p>
+        <p className="ethic">{OAB_NOTICE}</p>
         <p>
           © <span>{new Date().getFullYear()}</span> {settings.firmName}
         </p>

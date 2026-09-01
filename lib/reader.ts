@@ -64,3 +64,10 @@ export async function getPost(slug: string) {
   const data = await reader.collections.posts.read(slug);
   return data ? { ...data, slug } : null;
 }
+
+/** Artigos da mesma taxonomia de uma área, do mais recente para o mais antigo. */
+export async function getPostsByArea(areaKey: string, limite = 3) {
+  if (!areaKey) return [];
+  const posts = await getPosts();
+  return posts.filter((p) => p.areaKey === areaKey).slice(0, limite);
+}

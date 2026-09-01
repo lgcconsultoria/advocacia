@@ -5,6 +5,8 @@ import { notFound } from 'next/navigation';
 import { getPost, getPosts, getSettings } from '@/lib/reader';
 import { renderMarkdoc, extractToc } from '@/lib/markdoc';
 import { JsonLd } from '@/components/json-ld';
+import { ReadProgress } from '@/components/read-progress';
+import { TrackLink } from '@/components/track-link';
 
 export async function generateStaticParams() {
   const posts = await getPosts();
@@ -94,6 +96,7 @@ export default async function PostPage({
     <>
       <JsonLd data={articleLd} />
       <JsonLd data={breadcrumbLd} />
+      <ReadProgress slug={slug} />
 
       <section className="page-hero">
         <div className="container">
@@ -179,9 +182,14 @@ export default async function PostPage({
             </p>
           </div>
           <div className="cta-actions">
-            <Link className="btn btn-primary btn-lg" href="/diagnostico">
+            <TrackLink
+              className="btn btn-primary btn-lg"
+              href="/diagnostico"
+              event="cta_click"
+              params={{ origem: `blog/${slug}#cta-final`, destino: '/diagnostico' }}
+            >
               Enviar caso para análise
-            </Link>
+            </TrackLink>
           </div>
         </div>
       </section>

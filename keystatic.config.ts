@@ -85,6 +85,43 @@ export default config({
           },
           { label: 'Aviso em destaque' }
         ),
+        deadlinesTitle: fields.text({
+          label: 'Título da seção de prazos',
+          defaultValue: 'O prazo',
+        }),
+        deadlines: fields.array(
+          fields.object({
+            label: fields.text({ label: 'Situação' }),
+            prazo: fields.text({ label: 'Prazo' }),
+            base: fields.text({ label: 'Base legal', multiline: true }),
+          }),
+          {
+            label: 'Prazos legais da matéria',
+            description:
+              'O ativo mais distintivo do site. Cada item vira uma linha do bloco de prazos.',
+            itemLabel: (props) => `${props.fields.label.value} — ${props.fields.prazo.value}`,
+          }
+        ),
+        decisiveTitle: fields.text({
+          label: 'Título da seção técnica',
+          defaultValue: 'O que costuma decidir o caso',
+        }),
+        decisive: fields.array(
+          fields.object({
+            title: fields.text({ label: 'Ponto' }),
+            body: fields.text({ label: 'Explicação', multiline: true }),
+          }),
+          {
+            label: 'O que costuma decidir o caso',
+            itemLabel: (props) => props.fields.title.value,
+          }
+        ),
+        areaKey: fields.text({
+          label: 'Chave da área (para artigos relacionados)',
+          description:
+            'Deve bater com o campo "Chave da área" usado nos artigos do blog.',
+          defaultValue: '',
+        }),
         sidebarTitle: fields.text({
           label: 'Título da barra lateral',
           defaultValue: 'O que enviar para análise',

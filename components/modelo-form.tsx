@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState, type FormEvent } from 'react';
-import { pixelEvento } from './meta-pixel';
+import { track } from '@/lib/analytics';
 
 const OS = process.env.NEXT_PUBLIC_OS_URL ?? 'https://senturiao-os.vercel.app';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -53,11 +53,12 @@ export function ModeloForm({ slug, documento }: { slug: string; documento: strin
       });
       const j = (await r.json()) as { url?: string; erro?: string };
       if (!r.ok || !j.url) throw new Error(j.erro || 'Falha ao gerar o material.');
+      const url = j.url;
 
-      pixelEvento('Lead', { content_name: documento, content_category: slug });
-      setLink(j.url);
+      track('material_download', { slug });
+      setLink(url);
       setEstado('pronto');
-      window.location.href = j.url;
+      window.location.href = url;
     } catch (err) {
       setMsgErro(err instanceof Error ? err.message : 'Não foi possível enviar agora.');
       setEstado('erro');

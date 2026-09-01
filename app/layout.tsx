@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from 'next';
+import { headers } from 'next/headers';
+import { archivo, inter } from '@/lib/fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -10,6 +12,9 @@ export const metadata: Metadata = {
   },
   description:
     'Escritório de Direito Administrativo com atuação em todo o Brasil. Mandado de segurança, licitações, contratos públicos, servidores, concursos, defesa de agentes públicos, habeas data e execuções — e contencioso cível e empresarial: família, dívidas e obrigações, direito empresarial e crimes licitatórios.',
+  alternates: {
+    types: { 'application/atom+xml': '/feed.xml' },
+  },
   robots: { index: true, follow: true },
   openGraph: {
     type: 'website',
@@ -34,24 +39,22 @@ export const viewport: Viewport = {
   themeColor: '#1d1b9a',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // O middleware grava o nonce da requisição em `x-nonce`. Sob
+  // script-src com 'strict-dynamic', um <script> escrito à mão no HTML
+  // (diferente dos scripts que o próprio Next injeta) só executa se
+  // carregar esse nonce — sem ele o bootstrap.js seria bloqueado e o
+  // tema/reveal quebrariam silenciosamente.
+  const nonce = (await headers()).get('x-nonce') ?? undefined;
+
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className={`${archivo.variable} ${inter.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
+        <script src="/bootstrap.js" nonce={nonce} />
       </head>
       <body>{children}</body>
     </html>
