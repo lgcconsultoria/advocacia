@@ -808,6 +808,22 @@ figure { margin: 0; }
    pelo rodapé enquanto isso. */
 body:has(.consent-banner) .wa-float { display: none; }
 
+/* ---------- Mapa sob interação (P11) ---------- */
+.map-embed {
+  position: relative; aspect-ratio: 16 / 9;
+  border: 1px solid var(--border); border-radius: var(--radius-lg);
+  overflow: hidden; background: var(--surface-alt);
+}
+@media (max-width: 640px) { .map-embed { aspect-ratio: 4 / 3; } }
+.map-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
+.map-placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .7rem; padding: 1.5rem; text-align: center; color: var(--text-muted);
+}
+.map-placeholder p { margin: 0; font-size: .92rem; max-width: 40ch; }
+.map-placeholder a { font-size: .85rem; }
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

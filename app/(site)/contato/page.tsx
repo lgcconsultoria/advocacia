@@ -4,6 +4,7 @@ import { TrackAnchor } from '@/components/track-anchor';
 import { TrackLink } from '@/components/track-link';
 import { getSettings } from '@/lib/reader';
 import { HeroAside } from '@/components/hero-aside';
+import { MapEmbed } from '@/components/map-embed';
 
 export const metadata: Metadata = {
   title: 'Contato — Douglas Senturião Advocacia | Direito Administrativo em São Paulo',
@@ -129,25 +130,10 @@ export default async function ContatoPage() {
           <h2 className="mb-0" style={{ marginBottom: '1.2rem' }}>
             São Paulo/SP
           </h2>
-          <div
-            style={{
-              border: '1px solid var(--line)',
-              borderRadius: 'var(--radius-lg)',
-              overflow: 'hidden',
-              background: 'var(--paper-pure)',
-            }}
-          >
-            <iframe
-              title="Mapa — Av. Brigadeiro Faria Lima, 1768, São Paulo/SP"
-              src="https://www.google.com/maps?q=Av.%20Brigadeiro%20Faria%20Lima%2C%201768%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001451-001&output=embed"
-              width="100%"
-              height="420"
-              style={{ border: 0, display: 'block' }}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            ></iframe>
-          </div>
+          <MapEmbed
+            query={settings.address}
+            titulo="Localização do escritório no Google Maps"
+          />
         </div>
       </section>
 
