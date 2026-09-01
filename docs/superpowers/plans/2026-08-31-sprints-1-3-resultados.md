@@ -6,42 +6,130 @@ Commit medido: HEAD desta branch, após as tarefas 1–16 (`feat/sprints-1-3`).
 Este documento registra os critérios do §11 do spec que não são automatizáveis por teste.
 **Todo número abaixo é o resultado real medido — inclui os que ficaram abaixo da meta.**
 
+**Revisão (2026-09-01, mesma data)**: as medições de Lighthouse e de Core Web Vitals foram refeitas
+3 vezes cada, num ambiente isolado, com os JSONs/logs brutos preservados fora de `/tmp` (em
+`.superpowers/sdd/2026-08-31-sprints-1-3/evidence/`, não versionado em git — mesma convenção dos
+demais artefatos internos de tarefa deste repositório) e a saída de `jq`/dos scripts colada
+literalmente abaixo. Onde os números novos divergiram da primeira rodada (execução única), o
+documento foi atualizado com o valor novo e a divergência está explicada no lugar — ver §1 (desktop
+Performance 85→100) e §2.2 (CLS intermitente sob CPU throttled, achado novo). O número oficial contra
+cada meta continua sendo o do Lighthouse simulado; as medições CDP são evidência complementar.
+
 ---
 
 ## 1. Lighthouse
 
-Comandos exatamente como no brief da Tarefa 16 (§ Step 4), contra o build de produção local:
+Comandos exatamente como no brief da Tarefa 16 (§ Step 4), contra o build de produção local.
+**Rodado 3 vezes para cada perfil** (desktop e mobile), em sequência, num ambiente isolado (só o
+servidor de produção na porta 3100 ativo — nenhum outro build/servidor concorrente da sessão, ao
+contrário da primeira rodada de medição, ver "Divergência" abaixo). Os JSONs brutos das 6 execuções
+estão preservados em `.superpowers/sdd/2026-08-31-sprints-1-3/evidence/lh-{desktop,mobile}-{1,2,3}.json`
+(não estão em `/tmp`; não estão no git — ver nota sobre `.gitignore` no relatório da tarefa).
 
 ```
-npx lighthouse http://localhost:3100 --preset=desktop --quiet --chrome-flags="--headless" --output=json --output-path=/tmp/dsa/lh-desktop.json
-npx lighthouse http://localhost:3100 --form-factor=mobile --throttling-method=simulate --quiet --chrome-flags="--headless" --output=json --output-path=/tmp/dsa/lh-mobile.json
+npx lighthouse http://localhost:3100 --preset=desktop --quiet --chrome-flags="--headless" --output=json --output-path=.../evidence/lh-desktop-N.json
+npx lighthouse http://localhost:3100 --form-factor=mobile --throttling-method=simulate --quiet --chrome-flags="--headless" --output=json --output-path=.../evidence/lh-mobile-N.json
 ```
 
 Chrome usado: "Chrome for Testing" 151.0.7922.34 (o Chromium instalado pelo Playwright — não
 havia Chrome/Chromium do sistema no ambiente de medição). Lighthouse 13.4.1.
 
-| Categoria | Desktop | Mobile | Meta |
+### Saída bruta (`jq` sobre os 6 JSONs)
+
+Comando rodado sobre cada arquivo:
+
+```bash
+jq '{
+  performance: .categories.performance.score,
+  accessibility: .categories.accessibility.score,
+  best_practices: .categories["best-practices"].score,
+  seo: .categories.seo.score,
+  lcp_numericValue: .audits["largest-contentful-paint"].numericValue,
+  lcp_displayValue: .audits["largest-contentful-paint"].displayValue,
+  cls_numericValue: .audits["cumulative-layout-shift"].numericValue,
+  tbt_numericValue: .audits["total-blocking-time"].numericValue,
+  tbt_displayValue: .audits["total-blocking-time"].displayValue
+}' lh-<perfil>-<N>.json
+```
+
+Saída literal das 6 execuções:
+
+```
+=== desktop run 1 ===
+{ "performance": 1, "accessibility": 1, "best_practices": 1, "seo": 1,
+  "lcp_numericValue": 809.1826500000004, "lcp_displayValue": "0.8 s",
+  "cls_numericValue": 0, "tbt_numericValue": 0, "tbt_displayValue": "0 ms" }
+=== desktop run 2 ===
+{ "performance": 1, "accessibility": 1, "best_practices": 1, "seo": 1,
+  "lcp_numericValue": 788.156, "lcp_displayValue": "0.8 s",
+  "cls_numericValue": 0, "tbt_numericValue": 0, "tbt_displayValue": "0 ms" }
+=== desktop run 3 ===
+{ "performance": 1, "accessibility": 1, "best_practices": 1, "seo": 1,
+  "lcp_numericValue": 782.2532500000001, "lcp_displayValue": "0.8 s",
+  "cls_numericValue": 0, "tbt_numericValue": 0, "tbt_displayValue": "0 ms" }
+=== mobile run 1 ===
+{ "performance": 0.88, "accessibility": 1, "best_practices": 1, "seo": 1,
+  "lcp_numericValue": 3864.8232000000007, "lcp_displayValue": "3.9 s",
+  "cls_numericValue": 0, "tbt_numericValue": 24, "tbt_displayValue": "20 ms" }
+=== mobile run 2 ===
+{ "performance": 0.88, "accessibility": 1, "best_practices": 1, "seo": 1,
+  "lcp_numericValue": 3944.9226, "lcp_displayValue": "3.9 s",
+  "cls_numericValue": 0, "tbt_numericValue": 25, "tbt_displayValue": "30 ms" }
+=== mobile run 3 ===
+{ "performance": 0.88, "accessibility": 1, "best_practices": 1, "seo": 1,
+  "lcp_numericValue": 3877.4686, "lcp_displayValue": "3.9 s",
+  "cls_numericValue": 0, "tbt_numericValue": 25, "tbt_displayValue": "30 ms" }
+```
+
+### Mediana de 3 execuções
+
+| Categoria | Desktop (mediana de 3) | Mobile (mediana de 3) | Meta |
 |---|---|---|---|
-| Performance | **85** | **88** | ≥95 — **abaixo da meta** |
+| Performance | **100** (1, 1, 1 — sem variação) | **88** (0,88 nas 3) | ≥95 |
 | Acessibilidade | **100** | **100** | ≥95 — atingida |
 | Boas Práticas | **100** | **100** | ≥95 — atingida |
 | SEO | **100** | **100** | ≥95 — atingida |
+| LCP | 788 ms (mediana; 782–809 ms) | 3.877 s (mediana; 3.865–3.945 s) | — |
+| TBT | 0 ms (as 3) | 25 ms (mediana; 20–30 ms) | — |
 
-3 das 4 categorias batem a meta em ambos os perfis, com folga. **Performance fica abaixo do alvo
-nos dois perfis** (85 desktop, 88 mobile).
+**Resultado: Performance desktop atinge a meta (100 ≥ 95); Performance mobile continua abaixo da
+meta (88 < 95).** As outras 3 categorias batem a meta nos dois perfis, com folga.
 
-### Por que Performance não bateu 95
+### Divergência em relação à primeira rodada de medição — desktop 85 → 100
 
-- **Desktop**: LCP 1,0 s e FCP 0,4 s são bons; o que pesa é *Total Blocking Time* = 230 ms — tempo de
-  main thread ocupado durante o carregamento, correlacionado ao JS transferido na home (ver §3, JS
-  acima do orçamento de 150 KB).
-- **Mobile**: LCP 3,9 s é o maior redutor de nota (ver §2). CLS = 0 e TBT = 80 ms já estão bons; o
+A primeira rodada desta tarefa (rodada única, não mediana) registrou **Performance desktop = 85**,
+com TBT = 230 ms. Esta segunda rodada, com 3 execuções isoladas, deu **100 nas 3**, com TBT = 0 ms
+nas 3. Isso é uma divergência grande (85 → 100), não uma variação de ruído normal, e preciso
+explicá-la em vez de simplesmente substituir o número.
+
+**Causa mais provável**: a medição original de desktop foi feita na mesma sessão em que eu já tinha
+rodado, minutos antes, um `npm run build` que — por contenção de recursos da máquina com outros
+processos `node` daquela sessão (builds e servidores anteriores ainda vivos) — levou **~20 minutos**
+para compilar, um valor completamente anômalo para este projeto (a compilação isolada de agora leva
+6–7s). Registrei essa anomalia no relatório da tarefa na hora, mas não conectei os pontos até esta
+correção: **é muito provável que o Lighthouse original também tenha rodado sob a mesma contenção de
+CPU**, o que infla artificialmente o Total Blocking Time (tempo de main thread ocupado é sensível a
+quantos outros processos disputam a CPU no momento da medição) e derruba a nota de Performance. A
+mediana mobile (88, TBT 20–30 ms) não mudou entre as duas rodadas — mobile já usa throttling
+simulado agressivo do próprio Lighthouse, que domina qualquer ruído de CPU do host; desktop, sem
+throttling, é o perfil mais exposto a esse tipo de contaminação ambiental.
+
+**Registro 100 como o número oficial de Performance desktop**, por ser reproduzido de forma idêntica
+em 3 execuções isoladas nesta rodada, contra 1 execução não isolada na rodada anterior. O 85 original
+fica documentado aqui como não confiável, não como "meta não batida" — não é uma correção que
+esconde um número ruim; é a troca de uma medição contaminada por uma medição repetida e estável.
+
+### Por que Mobile não bate 95
+
+- LCP mediana 3,877 s é o maior redutor de nota. CLS = 0 e TBT mediana = 25 ms já estão bons; o
   gargalo mobile é majoritariamente o tempo até o maior elemento pintar sob a rede/CPU simulada do
   Lighthouse (perfil "mobile" do `--throttling-method=simulate`, que emula uma condição mais
   pesada que 4G real — ver nota metodológica em §2).
-- Causa raiz comum às duas: **o JS inicial da home excede o orçamento de 150 KB** (§3). Reduzi-lo
-  exigiria mover mais componentes interativos (cabeçalho, tema, consentimento, reveal, Lenis) para
-  menos JS no cliente — mudança arquitetural fora do escopo desta tarefa de medição e portão.
+- O JS inicial da home excede o orçamento de 150 KB (§3), o que contribui para o tempo até
+  interatividade, mas o `bootup-time` (0,3 s) e o `mainthread-work-breakdown` (1,2 s) do próprio
+  relatório mobile pontuam nota máxima — ou seja, no modelo simulado do Lighthouse, o tempo de
+  execução de JS em si não é o gargalo dominante do LCP; é o tempo de rede/CPU simulado até o
+  elemento poder pintar.
 
 Não desliguei nenhuma auditoria do Lighthouse nem usei modo mais permissivo para inflar o número.
 
@@ -53,7 +141,7 @@ Duas medições, com metodologia explícita para cada uma — os números **não
 artificialmente, porque metodologias diferentes de "throttled" produzem números diferentes, e forçar
 concordância entre eles seria inventar precisão que não existe.
 
-### 2.1 Lighthouse mobile (fonte primária — comando do brief, `--throttling-method=simulate`)
+### 2.1 Lighthouse mobile (fonte primária — comando do brief, `--throttling-method=simulate`) — **número oficial**
 
 O Lighthouse mobile usa o modelo "Lantern" de simulação: aplica uma condição de rede e CPU
 sintéticas equivalentes a um aparelho de gama média em conexão degradada — mais pesada que um "4G
@@ -61,17 +149,18 @@ bom" típico (confirmado nos `audits.network-rtt` / `network-server-latency` do 
 retornam 0 ms de latência real de localhost, ou seja, todo o atraso reportado vem do modelo
 simulado, não da rede física).
 
-| Métrica | Valor medido | Meta | Resultado |
+Mediana de 3 execuções (saída bruta em §1):
+
+| Métrica | Valor medido (mediana de 3) | Meta | Resultado |
 |---|---|---|---|
-| LCP | **3,9 s** | ≤1,8 s | **abaixo da meta** |
-| CLS | **0** | ≤0,05 | atingida |
+| LCP | **3,877 s** (3,865–3,945 s nas 3 execuções) | ≤1,8 s | **abaixo da meta** |
+| CLS | **0** (0 nas 3 execuções, sem variação) | ≤0,05 | atingida |
 | INP | não produzido pelo Lighthouse em modo lab sem interação real (ver 2.2) | ≤150 ms | — |
 
-O elemento de LCP identificado pelo Lighthouse é o parágrafo de abertura do hero
-(`p.lead`, "Seja um embate com o Poder Público…") — texto, não o vídeo/imagem do hero. O
-`bootup-time` (0,3 s) e o `mainthread-work-breakdown` (1,2 s) pontuam nota máxima, ou seja, o tempo
-de execução de JS em si não é o gargalo dominante no modelo simulado; o modelo penaliza sobretudo o
-tempo de rede/CPU até o elemento poder pintar.
+Praticamente idêntico ao valor da rodada anterior (3,9 s single-run) — **sem divergência relevante**
+aqui, ao contrário do desktop em §1. O elemento de LCP identificado pelo Lighthouse é o parágrafo de
+abertura do hero (`p.lead`, "Seja um embate com o Poder Público…") — texto, não o vídeo/imagem do
+hero. `bootup-time` e `mainthread-work-breakdown` pontuam nota máxima nas 3 execuções.
 
 ### 2.2 Medição direta via CDP (perfil "Fast 4G" real + interação real) — complementar
 
@@ -80,28 +169,92 @@ complementar: uma sessão Playwright com throttling de rede explícito via Chrom
 (`Network.emulateNetworkConditions`: 4 Mbps down / 3 Mbps up / 20 ms RTT — perfil "Fast 4G" do
 Chrome DevTools) e `Emulation.setCPUThrottlingRate(4)`, medindo LCP/CLS/INP via
 `PerformanceObserver` nativo do navegador, com uma interação real pós-hidratação (abrir e fechar o
-menu mobile).
+menu mobile). Script completo preservado em
+`.superpowers/sdd/2026-08-31-sprints-1-3/evidence/cwv-fast4g.mjs`, saída bruta das 3 execuções em
+`cwv-fast4g-run{1,2,3}.log` na mesma pasta.
 
-| Métrica | Valor medido | Meta | Resultado |
+Saída literal das 3 execuções:
+
+```
+=== run 1 ===
+Perfil de rede: Fast 4G via CDP (4 Mbps down / 3 Mbps up / 20 ms RTT), CPU 4x slowdown
+Tempo de load (evento load, ms): 1173
+LCP (ms): 560.0
+CLS: 0.0000
+INP aproximado (ms): 72.0
+=== run 2 ===
+Tempo de load (evento load, ms): 1136
+LCP (ms): 484.0
+CLS: 0.0563
+INP aproximado (ms): 64.0
+=== run 3 ===
+Tempo de load (evento load, ms): 1131
+LCP (ms): 484.0
+CLS: 0.0563
+INP aproximado (ms): 56.0
+```
+
+| Métrica | Mediana de 3 | Meta | Resultado |
 |---|---|---|---|
-| LCP | 608 ms | ≤1,8 s | atingida |
-| CLS | 0 | ≤0,05 | atingida |
-| INP (aproximado)¹ | ≈104 ms | ≤150 ms | atingida |
+| LCP | 484 ms (484–560 ms) | ≤1,8 s | atingida |
+| CLS | **0,0563** (0 / 0,0563 / 0,0563) | ≤0,05 | **abaixo da meta em 2 das 3 execuções** |
+| INP (aproximado)¹ | 64 ms (56–72 ms) | ≤150 ms | atingida |
 
 ¹ Aproximação via maior `duration` de entradas do `PerformanceObserver({type:'event'})` após a
 interação — não é o INP de campo (CrUX), que exige o site em produção com tráfego real. O site
 ainda não está publicado, então não existe dado de campo a reportar; isto é uma estimativa de
 laboratório.
 
+**Divergência em relação à primeira rodada**: a medição original (execução única) tinha dado LCP
+608 ms e CLS 0 — dentro da meta nos dois. Com 3 execuções, o LCP variou pouco (484–560 ms, sempre
+dentro da meta) mas **o CLS apareceu em 2 das 3 execuções em 0,0563, acima da meta de 0,05** — a
+primeira rodada, por sorte de amostragem de 1 execução só, pegou justamente a única das três que deu
+0.
+
+**Achado novo, não corrigido nesta rodada**: para isolar se o deslocamento de layout vinha da minha
+interação sintética (abrir/fechar o menu mobile) ou do carregamento da página em si, rodei uma
+variante do script **sem nenhuma interação** (`cwv-fast4g-noclick.mjs`, mesmo perfil de rede/CPU),
+também 3 vezes:
+
+```
+=== no-click run 1 ===
+CLS sem interação com o menu: 0.0000
+Entradas de layout-shift: []
+=== no-click run 2 ===
+CLS sem interação com o menu: 0.0563
+Entradas de layout-shift: [{"value":0.028138881737745192,"startTime":561.2999999523163},
+                            {"value":0.028138881737745192,"startTime":676.3999999761581}]
+=== no-click run 3 ===
+CLS sem interação com o menu: 0.0563
+Entradas de layout-shift: [{"value":0.028138881737745192,"startTime":590.1000000238419},
+                            {"value":0.028138881737745192,"startTime":695.5}]
+```
+
+O CLS de 0,0563 **não** depende da interação com o menu — acontece (2 de 3 vezes) só com o
+carregamento da página, sob CPU 4× mais lenta, como duas entradas idênticas de 0,0281 cada, entre
+~560 ms e ~700 ms após a navegação. Não investiguei o elemento/causa exata (não haveria tempo de
+corrigir nesta rodada de qualquer forma, e não fui autorizado a mexer em código de produção agora).
+**Registro isto como uma preocupação para acompanhamento**: sob CPU mais lenta que a de
+desenvolvimento, existe um deslocamento de layout intermitente (~2/3 das cargas, neste teste) que o
+Lighthouse não capturou (CLS = 0 nas 6 execuções de Lighthouse, §1) porque o perfil "mobile" do
+Lighthouse usa seu próprio modelo de CPU/rede simulado, diferente do CPU-throttling físico via CDP
+usado aqui. Recomendo investigar antes do lançamento — meu palpite não confirmado é troca de fonte
+(`font-display`) ou o vídeo/imagem do hero estabelecendo sua caixa tardiamente, mas isso é
+especulação meu, não uma causa verificada, e não deve ser tratado como fato até ser investigado.
+
 ### Leitura conjunta
 
-Os dois métodos concordam em CLS (0, sólido) e discordam em LCP por causa do perfil de rede/CPU
-simulado: o Lighthouse mobile usa uma condição propositalmente mais pesada que "4G" comum, e é o
-número que registro como resultado oficial da meta (por ser o comando explicitamente pedido no
-brief e o mais conservador). Sob uma condição de 4G mais realista com CPU 4× mais lenta, a home
-carrega em bem menos que 1,8 s. **Registro o número do Lighthouse (3,9 s) como o resultado real da
-meta de LCP, abaixo do alvo**, e a medição CDP como evidência de que a arquitetura não tem um
-problema estrutural de LCP fora do pior caso simulado.
+Os dois métodos concordam em LCP dentro da meta sob rede real (CDP) e discordam do Lighthouse
+simulado por causa do perfil de rede/CPU: o Lighthouse mobile usa uma condição propositalmente mais
+pesada que "4G" comum, e **continua sendo o número que registro como resultado oficial da meta**
+(por ser o comando explicitamente pedido no brief e o mais conservador — não invertido por esta
+correção). Sob uma condição de 4G mais realista com CPU 4× mais lenta, a home carrega em bem menos
+que 1,8 s de LCP. **Registro o número do Lighthouse (mediana 3,877 s) como o resultado real da meta
+de LCP, abaixo do alvo**, e a medição CDP como evidência de que a arquitetura não tem um problema
+estrutural de LCP fora do pior caso simulado — mas a medição CDP com 3 execuções revelou, por outro
+lado, um problema de CLS intermitente que a rodada única anterior (e o próprio Lighthouse) não
+haviam capturado. Isso é registrado como achado novo em aberto, não como meta oficial revista — a
+meta oficial de CLS continua "atingida" porque o Lighthouse (a fonte oficial) deu 0 nas 6 execuções.
 
 ---
 
@@ -216,17 +369,27 @@ Nenhuma das seis larguras produz rolagem horizontal na home.
 
 ## 6. Itens abaixo da meta — resumo
 
+Números desta seção são **mediana de 3 execuções** onde aplicável (Lighthouse, CDP) — ver §1 e §2
+para a saída bruta e a metodologia completa.
+
 | Item | Medido | Meta | Motivo |
 |---|---|---|---|
-| Lighthouse Performance (desktop) | 85 | ≥95 | TBT 230 ms, correlacionado ao JS acima do orçamento |
-| Lighthouse Performance (mobile) | 88 | ≥95 | LCP 3,9 s no modelo simulado do Lighthouse |
-| LCP mobile (Lighthouse simulado) | 3,9 s | ≤1,8 s | Modelo de rede/CPU do Lighthouse mobile é mais pesado que 4G real; ver §2.2 para medição sob perfil Fast 4G real (608 ms, dentro da meta) |
+| Lighthouse Performance (mobile) | 88 (mediana de 3) | ≥95 | LCP 3,877 s no modelo simulado do Lighthouse |
+| LCP mobile (Lighthouse simulado) | 3,877 s (mediana de 3) | ≤1,8 s | Modelo de rede/CPU do Lighthouse mobile é mais pesado que 4G real; ver §2.2 para medição sob perfil Fast 4G real (mediana 484 ms, dentro da meta) |
 | JS inicial da home | 180,8 KB | ≤150 KB | Piso de React+Next.js (109,1 KB) + Lenis (17,2 KB, mantido por decisão de produto) + código de app (~54,5 KB); `motion` removido mas já não pesava nada |
+| CLS sob CPU 4× throttled (CDP, complementar) | 0,0563 em 2 de 3 execuções | ≤0,05 | **Achado novo desta rodada** (§2.2) — intermitente, não capturado pelo Lighthouse (CLS oficial = 0 nas 6 execuções); não investigado a fundo nem corrigido nesta tarefa, registrado para acompanhamento |
+
+**Corrigido nesta rodada**: Lighthouse Performance desktop, que na primeira medição (execução única)
+tinha dado 85, agora mede **100 de forma estável em 3 execuções isoladas** — divergência explicada em
+§1 (provável contaminação de CPU por processos concorrentes na sessão da primeira medição). Bate a
+meta.
 
 Itens que **bateram** a meta: Acessibilidade (100/100), Boas Práticas (100/100), SEO (100/100) nos
-dois perfis; CLS (0 nas duas medições); INP (~104 ms na medição direta); peso total da home
-(656,2 KB); maior asset (172,0 KB); nenhuma rolagem horizontal nas 6 larguras testadas; zero
-violações de axe-core (todos os níveis de impacto, não só sério/crítico) nas 10 rotas auditadas.
+dois perfis, estáveis nas 6 execuções; Performance desktop (100, mediana de 3); CLS oficial via
+Lighthouse (0 nas 6 execuções); INP (mediana 64 ms na medição direta); LCP sob perfil Fast 4G real
+(mediana 484 ms); peso total da home (656,2 KB); maior asset (172,0 KB); nenhuma rolagem horizontal
+nas 6 larguras testadas; zero violações de axe-core (todos os níveis de impacto, não só
+sério/crítico) nas 10 rotas auditadas.
 
 ---
 
