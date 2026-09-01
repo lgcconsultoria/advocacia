@@ -11,8 +11,12 @@ import { readConsent, writeConsent } from '@/lib/consent';
  */
 export function ConsentBanner() {
   const [aberto, setAberto] = useState(false);
-  const [analytics, setAnalytics] = useState(true);
-  const [marketing, setMarketing] = useState(true);
+  // Desmarcadas por padrão: a orientação da ANPD desfavorece caixa
+  // pré-marcada como forma de consentimento. "Salvar escolha" com as duas
+  // desmarcadas equivale a "Recusar todos" — nada muda de fato, exceto que
+  // agora é preciso um clique explícito em cada categoria para habilitá-la.
+  const [analytics, setAnalytics] = useState(false);
+  const [marketing, setMarketing] = useState(false);
 
   useEffect(() => {
     if (readConsent() === null) setAberto(true);
