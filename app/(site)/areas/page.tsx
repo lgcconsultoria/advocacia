@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getAreas } from '@/lib/reader';
+import { getAreas, getSettings } from '@/lib/reader';
 import { AreaIcon } from '@/components/area-icon';
 import { Reveal, RevealGroup, RevealItem } from '@/components/reveal';
 import { TrackLink } from '@/components/track-link';
+import { HeroAside } from '@/components/hero-aside';
 
 export const metadata: Metadata = {
   title: 'Áreas de atuação — Direito Administrativo e Contencioso',
@@ -22,23 +23,27 @@ export default async function AreasPage() {
   const areas = await getAreas();
   const areasPublico = areas.filter((a) => a.group !== 'civel');
   const areasCivel = areas.filter((a) => a.group === 'civel');
+  const settings = await getSettings();
 
   return (
     <>
       <section className="page-hero">
         <div className="container">
-          <nav className="breadcrumb" aria-label="Trilha de navegação">
-            <Link href="/">Início</Link>
-            <span aria-hidden="true">›</span>
-            Áreas de atuação
-          </nav>
-          <h1>Áreas de atuação.</h1>
-          <p className="lead">
-            O núcleo do escritório é o Direito Administrativo — e a mesma
-            disciplina técnica se estende a frentes selecionadas do contencioso
-            cível e empresarial. Cada área tem instrumento próprio, prazo
-            específico e exige diagnóstico antes da peça.
-          </p>
+          <div className="page-hero-copy">
+            <nav className="breadcrumb" aria-label="Trilha de navegação">
+              <Link href="/">Início</Link>
+              <span aria-hidden="true">›</span>
+              Áreas de atuação
+            </nav>
+            <h1>Áreas de atuação.</h1>
+            <p className="lead">
+              O núcleo do escritório é o Direito Administrativo — e a mesma
+              disciplina técnica se estende a frentes selecionadas do contencioso
+              cível e empresarial. Cada área tem instrumento próprio, prazo
+              específico e exige diagnóstico antes da peça.
+            </p>
+          </div>
+          <HeroAside whatsapp={settings.whatsapp} contexto="áreas de atuação" />
         </div>
       </section>
 

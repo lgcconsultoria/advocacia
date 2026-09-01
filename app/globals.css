@@ -347,6 +347,40 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 .breadcrumb a:hover { color: #fff; text-decoration: underline; }
 .breadcrumb span { color: #9b9af0; margin: 0 .4rem; }
 
+/* ---------- Cartão de contexto do hero interno (P9) ----------
+   Preenche a coluna direita que ficava vazia no desktop. O texto e o
+   breadcrumb do hero vivem em .page-hero-copy (coluna 1); o cartão fica
+   na coluna 2. Sem cartão, o hero colapsa em coluna única legível em vez
+   de deixar metade da largura em branco. */
+.page-hero .container { display: grid; gap: clamp(1.6rem, 4vw, 3rem); }
+@media (min-width: 980px) {
+  .page-hero .container { grid-template-columns: 1.35fr .65fr; align-items: center; }
+}
+.page-hero .container:not(:has(.hero-aside)) { display: block; }
+.page-hero .container:not(:has(.hero-aside)) .lead { max-width: 68ch; }
+.page-hero-copy { min-width: 0; }
+
+.hero-aside {
+  background: color-mix(in srgb, var(--paper) 6%, transparent);
+  border: 1px solid var(--border-inverse);
+  border-radius: var(--radius-lg); padding: 1.5rem;
+}
+.hero-aside p { color: var(--text-on-inverse); font-size: .94rem; }
+.hero-aside-eyebrow {
+  display: flex; align-items: center; gap: .45rem;
+  font-size: .78rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--brand-100); margin-bottom: .7rem;
+}
+.hero-aside-actions { display: grid; gap: .6rem; margin: 1.1rem 0 .9rem; }
+.hero-aside-note { font-size: .78rem; color: var(--ink-300); margin: 0; }
+/* .btn-ghost padrão usa --text-strong/--line, pensados para fundo claro.
+   Dentro do cartão (fundo escuro) precisa da paleta inversa. */
+.hero-aside .btn-ghost { color: var(--text-on-inverse); border-color: var(--border-inverse); }
+.hero-aside .btn-ghost:hover {
+  border-color: var(--text-on-inverse);
+  background: color-mix(in srgb, var(--paper) 8%, transparent);
+}
+
 /* ---------- Grid / cards ---------- */
 .grid { display: grid; gap: 1.4rem; }
 .grid-2 { grid-template-columns: 1fr; }

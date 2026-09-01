@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { TrackAnchor } from '@/components/track-anchor';
 import { TrackLink } from '@/components/track-link';
+import { getSettings } from '@/lib/reader';
+import { HeroAside } from '@/components/hero-aside';
 
 export const metadata: Metadata = {
   title: 'Contato — Douglas Senturião Advocacia | Direito Administrativo em São Paulo',
@@ -16,22 +18,27 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ContatoPage() {
+export default async function ContatoPage() {
+  const settings = await getSettings();
+
   return (
     <>
       <section className="page-hero">
         <div className="container">
-          <nav className="breadcrumb" aria-label="Trilha de navegação">
-            <Link href="/">Início</Link>
-            <span aria-hidden="true">›</span>
-            Contato
-          </nav>
-          <h1>Fale com o escritório.</h1>
-          <p className="lead">
-            Atendimento por agendamento. Para que possamos entender o seu caso, o
-            caminho mais rápido é o formulário de diagnóstico — retornamos em até 1
-            dia útil com a triagem inicial e os próximos passos.
-          </p>
+          <div className="page-hero-copy">
+            <nav className="breadcrumb" aria-label="Trilha de navegação">
+              <Link href="/">Início</Link>
+              <span aria-hidden="true">›</span>
+              Contato
+            </nav>
+            <h1>Fale com o escritório.</h1>
+            <p className="lead">
+              Atendimento por agendamento. Para que possamos entender o seu caso, o
+              caminho mais rápido é o formulário de diagnóstico — retornamos em até 1
+              dia útil com a triagem inicial e os próximos passos.
+            </p>
+          </div>
+          <HeroAside whatsapp={settings.whatsapp} contexto="contato" />
         </div>
       </section>
 
