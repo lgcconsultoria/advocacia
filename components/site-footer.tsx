@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ConsentReopen } from '@/components/consent-reopen';
 import { TrackAnchor } from '@/components/track-anchor';
+import { OAB_NOTICE } from '@/lib/legal-notice';
 
 type FooterProps = {
   areas: { slug: string; title: string }[];
@@ -94,12 +95,7 @@ export function SiteFooter({ areas, settings }: FooterProps) {
         </div>
       </div>
       <div className="container footer-bottom">
-        <p className="ethic">
-          Conteúdo institucional de caráter informativo, em conformidade com o
-          Código de Ética e Disciplina da OAB, o Estatuto da Advocacia (Lei
-          8.906/94) e o Provimento CFOAB nº 205/2021. Não constitui oferta de
-          serviços nem aconselhamento jurídico individualizado.
-        </p>
+        <p className="ethic">{OAB_NOTICE}</p>
         <p>
           © <span>{new Date().getFullYear()}</span> {settings.firmName}
         </p>

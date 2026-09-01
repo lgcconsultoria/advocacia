@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { SiteHeader } from '@/components/site-header';
+import { OAB_NOTICE, FIRM_NAME, LAWYER_NAME, OAB } from '@/lib/legal-notice';
 
 // app/error.tsx é obrigatoriamente Client Component (exigência do Next.js
 // para error boundaries) e por isso não pode `await` funções de servidor
@@ -13,14 +14,10 @@ import { SiteHeader } from '@/components/site-header';
 // Solução: SiteHeader já é Client Component, então é reaproveitado
 // normalmente. Para o rodapé, em vez de replicar toda a grade de links
 // do SiteFooter (que depende de dados assíncronos), mantém-se só o
-// aviso legal obrigatório — com o texto idêntico ao de
-// components/site-footer.tsx — usando o nome do escritório e o número
-// da OAB exatamente como definidos em lib/reader.ts (mesmos valores
-// que getSettings() usa como fallback), portanto nenhum dado é
-// inventado aqui.
-const FIRM_NAME = 'Douglas Senturião Advocacia';
-const LAWYER_NAME = 'Douglas Senturião';
-const OAB = 'OAB/SC nº 73.764';
+// aviso legal obrigatório — importado de lib/legal-notice.ts, a mesma
+// fonte que components/site-footer.tsx usa, para que uma correção do
+// aviso alcance as duas páginas sem depender de ninguém lembrar de
+// editar as duas cópias.
 
 export default function Error({ reset }: { error: Error; reset: () => void }) {
   return (
@@ -54,13 +51,7 @@ export default function Error({ reset }: { error: Error; reset: () => void }) {
       </main>
       <footer className="site-footer">
         <div className="container footer-bottom">
-          <p className="ethic">
-            Conteúdo institucional de caráter informativo, em conformidade
-            com o Código de Ética e Disciplina da OAB, o Estatuto da
-            Advocacia (Lei 8.906/94) e o Provimento CFOAB nº 205/2021. Não
-            constitui oferta de serviços nem aconselhamento jurídico
-            individualizado.
-          </p>
+          <p className="ethic">{OAB_NOTICE}</p>
           <p>
             © <span>{new Date().getFullYear()}</span> {FIRM_NAME} ·{' '}
             {LAWYER_NAME} · {OAB}
