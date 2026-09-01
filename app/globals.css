@@ -397,8 +397,17 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 .hero-aside-actions { display: grid; gap: .6rem; margin: 1.1rem 0 .9rem; }
 .hero-aside-note { font-size: .78rem; color: var(--ink-300); margin: 0; }
 /* .btn-ghost padrão usa --text-strong/--line, pensados para fundo claro.
-   Dentro do cartão (fundo escuro) precisa da paleta inversa. */
-.hero-aside .btn-ghost { color: var(--text-on-inverse); border-color: var(--border-inverse); }
+   Dentro do cartão (fundo escuro) precisa da paleta inversa.
+   border-color era --border-inverse (sólida): 1,42:1 no claro e 1,44:1 no
+   escuro contra o fundo do cartão (color-mix(paper 6%, transparent) sobre
+   --surface-inverse) — abaixo do mínimo de 3:1 do WCAG 1.4.11. A mesma
+   troca do item 1 (color-mix com --on-accent) NÃO serve aqui: --on-accent
+   no escuro é --brand-900, quase preto, e mixado sobre um cartão já quase
+   preto mede ~1:1. Usamos --text-on-inverse — o mesmo token que .hero-aside
+   p já usa para texto, pensado para ficar sobre --surface-inverse e igual
+   nos dois temas — que mede 4,24:1 no claro e 4,58:1 no escuro a 60%.
+   Medido com lib/contrast.ts. */
+.hero-aside .btn-ghost { color: var(--text-on-inverse); border-color: color-mix(in srgb, var(--text-on-inverse) 60%, transparent); }
 .hero-aside .btn-ghost:hover {
   border-color: var(--text-on-inverse);
   background: color-mix(in srgb, var(--paper) 8%, transparent);

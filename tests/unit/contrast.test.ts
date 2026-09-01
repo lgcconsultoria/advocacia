@@ -81,4 +81,21 @@ describe('contraste de borda — .btn-ghost sobre fundos reativos ao tema (WCAG 
     const bordaEscura60 = mixOverBackground(onAccentEscuro, accentEscuro, 60);
     expect(contrastRatio(bordaEscura60, accentEscuro)).toBeLessThan(3);
   });
+
+  it('.hero-aside .btn-ghost: borda color-mix(text-on-inverse 60%) atinge >=3:1 nos dois temas', () => {
+    const textoSobreInverso = '#C6C6D6'; // --text-on-inverse — igual nos dois temas
+    // Fundo do cartão: color-mix(paper 6%, transparent) sobre --surface-inverse.
+    const cartaoClaro = mixOverBackground('#FFFFFF', '#16161D', 6); // surface-inverse claro = ink-900
+    const cartaoEscuro = mixOverBackground('#FFFFFF', '#08080C', 6); // surface-inverse escuro
+    const bordaClara = mixOverBackground(textoSobreInverso, cartaoClaro, 60);
+    const bordaEscura = mixOverBackground(textoSobreInverso, cartaoEscuro, 60);
+    expect(contrastRatio(bordaClara, cartaoClaro)).toBeGreaterThanOrEqual(3);
+    expect(contrastRatio(bordaEscura, cartaoEscuro)).toBeGreaterThanOrEqual(3);
+  });
+
+  it('.hero-aside .btn-ghost: usar --on-accent (abordagem literal do item 1) falharia no escuro — por isso usamos --text-on-inverse', () => {
+    const cartaoEscuro = mixOverBackground('#FFFFFF', '#08080C', 6);
+    const bordaComOnAccent = mixOverBackground(onAccentEscuro, cartaoEscuro, 60);
+    expect(contrastRatio(bordaComOnAccent, cartaoEscuro)).toBeLessThan(3);
+  });
 });
