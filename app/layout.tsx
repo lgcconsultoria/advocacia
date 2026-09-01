@@ -42,6 +42,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
+        <script src="/bootstrap.js" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

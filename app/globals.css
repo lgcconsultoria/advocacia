@@ -195,6 +195,15 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 .btn-lg { padding: 1rem 1.9rem; font-size: 1rem; }
 
 /* ---------- Header ---------- */
+.theme-toggle {
+  width: 44px; height: 44px; flex: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  background: transparent; color: var(--text); cursor: pointer;
+  transition: border-color .16s var(--ease), background .16s var(--ease);
+}
+.theme-toggle:hover { border-color: var(--text-strong); background: var(--surface-alt); }
+
 .site-header {
   position: sticky; top: 0; z-index: 100;
   background: color-mix(in srgb, var(--surface) 93%, transparent);

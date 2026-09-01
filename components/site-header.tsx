@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { ThemeToggle } from './theme-toggle';
 
 const NAV = [
   { href: '/sobre', label: 'Sobre' },
@@ -66,6 +67,7 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
+          <ThemeToggle />
           <Link className="btn btn-primary header-cta" href="/diagnostico">
             Diagnóstico inicial
           </Link>
