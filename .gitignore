@@ -28,10 +28,3 @@ next-env.d.ts
 
 # keystatic local cache
 /.keystatic
-
-# testes
-/test-results
-/playwright-report
-/blob-report
-/playwright/.cache
-tsconfig.tsbuildinfo

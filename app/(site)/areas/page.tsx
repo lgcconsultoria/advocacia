@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getAreas, getSettings } from '@/lib/reader';
+import { getAreas } from '@/lib/reader';
 import { AreaIcon } from '@/components/area-icon';
 import { Reveal, RevealGroup, RevealItem } from '@/components/reveal';
-import { TrackLink } from '@/components/track-link';
-import { HeroAside } from '@/components/hero-aside';
 
 export const metadata: Metadata = {
   title: 'Áreas de atuação — Direito Administrativo e Contencioso',
@@ -23,27 +21,23 @@ export default async function AreasPage() {
   const areas = await getAreas();
   const areasPublico = areas.filter((a) => a.group !== 'civel');
   const areasCivel = areas.filter((a) => a.group === 'civel');
-  const settings = await getSettings();
 
   return (
     <>
       <section className="page-hero">
         <div className="container">
-          <div className="page-hero-copy">
-            <nav className="breadcrumb" aria-label="Trilha de navegação">
-              <Link href="/">Início</Link>
-              <span aria-hidden="true">›</span>
-              Áreas de atuação
-            </nav>
-            <h1>Áreas de atuação.</h1>
-            <p className="lead">
-              O núcleo do escritório é o Direito Administrativo — e a mesma
-              disciplina técnica se estende a frentes selecionadas do contencioso
-              cível e empresarial. Cada área tem instrumento próprio, prazo
-              específico e exige diagnóstico antes da peça.
-            </p>
-          </div>
-          <HeroAside whatsapp={settings.whatsapp} contexto="áreas de atuação" />
+          <nav className="breadcrumb" aria-label="Trilha de navegação">
+            <Link href="/">Início</Link>
+            <span aria-hidden="true">›</span>
+            Áreas de atuação
+          </nav>
+          <h1>Áreas de atuação.</h1>
+          <p className="lead">
+            O núcleo do escritório é o Direito Administrativo — e a mesma
+            disciplina técnica se estende a frentes selecionadas do contencioso
+            cível e empresarial. Cada área tem instrumento próprio, prazo
+            específico e exige diagnóstico antes da peça.
+          </p>
         </div>
       </section>
 
@@ -54,8 +48,8 @@ export default async function AreasPage() {
             <h2>O conflito é com a Administração.</h2>
           </div>
           <RevealGroup className="grid grid-3">
-            {areasPublico.map((area, i) => (
-              <RevealItem key={area.slug} index={i}>
+            {areasPublico.map((area) => (
+              <RevealItem key={area.slug}>
                 <Link className="card area-card" href={`/areas/${area.slug}`}>
                   <span className="card-icon" aria-hidden="true">
                     <AreaIcon icon={area.icon} />
@@ -78,8 +72,8 @@ export default async function AreasPage() {
               <h2>O conflito é entre particulares.</h2>
             </div>
             <RevealGroup className="grid grid-3">
-              {areasCivel.map((area, i) => (
-                <RevealItem key={area.slug} index={i}>
+              {areasCivel.map((area) => (
+                <RevealItem key={area.slug}>
                   <Link className="card area-card" href={`/areas/${area.slug}`}>
                     <span className="card-icon" aria-hidden="true">
                       <AreaIcon icon={area.icon} />
@@ -105,14 +99,9 @@ export default async function AreasPage() {
             </p>
           </div>
           <div className="cta-actions">
-            <TrackLink
-              className="btn btn-primary btn-lg"
-              href="/diagnostico"
-              event="cta_click"
-              params={{ origem: 'areas#cta-final', destino: '/diagnostico' }}
-            >
+            <Link className="btn btn-primary btn-lg" href="/diagnostico">
               Solicitar diagnóstico
-            </TrackLink>
+            </Link>
           </div>
         </div>
       </section>

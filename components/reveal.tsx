@@ -1,67 +1,111 @@
-import type { CSSProperties, ElementType, ReactNode } from 'react';
+'use client';
 
-/** Stagger de no máximo 6 itens (0..5), conforme §4.1 do briefing. */
-const MAX_STAGGER = 5;
+import { motion, useReducedMotion, type HTMLMotionProps } from 'motion/react';
+import type { ElementType, ReactNode } from 'react';
 
 type RevealProps = {
   children: ReactNode;
   className?: string;
+  delay?: number;
   as?: ElementType;
-  /** Posição no lote. Acima de 5 o atraso satura — 14 cards nunca fazem cascata. */
-  index?: number;
+  y?: number;
 };
 
-function revealStyle(index: number): CSSProperties {
-  return { '--reveal-i': Math.min(index, MAX_STAGGER) } as CSSProperties;
-}
-
 /**
- * Marca um bloco para entrada suave. O estado padrão no CSS é VISÍVEL:
- * a ocultação só existe sob `html.js`, adicionada por /bootstrap.js.
- * Sem JavaScript, nada aqui esconde conteúdo.
+ * Discreet, intentional scroll reveal. Fades and lifts content into view once.
+ * Fully disabled under prefers-reduced-motion (content renders in its final
+ * state), so it never becomes an accessibility barrier.
  */
 export function Reveal({
   children,
   className,
-  as: Tag = 'div',
-  index = 0,
+  delay = 0,
+  as = 'div',
+  y = 18,
 }: RevealProps) {
-  return (
-    <Tag
-      className={className ? `${className} reveal` : 'reveal'}
-      style={revealStyle(index)}
-    >
-      {children}
-    </Tag>
-  );
+  const reduce = useReducedMotion();
+  const MotionTag = motion[as as keyof typeof motion] as ElementType;
+
+  if (reduce) {
+    const Tag = as;
+    return <Tag className={className}>{children}</Tag>;
+  }
+
+  const props: HTMLMotionProps<'div'> = {
+    className,
+    initial: { opacity: 0, y },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: '-60px' },
+    transition: { duration: 0.6, delay, ease: [0.22, 0.61, 0.36, 1] },
+  };
+
+  return <MotionTag {...props}>{children}</MotionTag>;
 }
 
-/** Contêiner de um lote. Não anima por si — apenas agrupa. */
+/**
+ * Reveal a group of children in sequence (stagger). Each direct child should be
+ * wrapped by <RevealItem/>.
+ */
 export function RevealGroup({
   children,
   className,
-  as: Tag = 'div',
+  as = 'div',
 }: {
   children: ReactNode;
   className?: string;
   as?: ElementType;
 }) {
-  return <Tag className={className}>{children}</Tag>;
+  const reduce = useReducedMotion();
+  const MotionTag = motion[as as keyof typeof motion] as ElementType;
+
+  if (reduce) {
+    const Tag = as;
+    return <Tag className={className}>{children}</Tag>;
+  }
+
+  return (
+    <MotionTag
+      className={className}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ staggerChildren: 0.09 }}
+    >
+      {children}
+    </MotionTag>
+  );
 }
 
-/** Item de um lote. O chamador passa o índice para escalonar a entrada. */
 export function RevealItem({
   children,
   className,
-  as: Tag = 'div',
-  index = 0,
-}: RevealProps) {
+  as = 'div',
+}: {
+  children: ReactNode;
+  className?: string;
+  as?: ElementType;
+}) {
+  const reduce = useReducedMotion();
+  const MotionTag = motion[as as keyof typeof motion] as ElementType;
+
+  if (reduce) {
+    const Tag = as;
+    return <Tag className={className}>{children}</Tag>;
+  }
+
   return (
-    <Tag
-      className={className ? `${className} reveal` : 'reveal'}
-      style={revealStyle(index)}
+    <MotionTag
+      className={className}
+      variants={{
+        hidden: { opacity: 0, y: 16 },
+        show: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.55, ease: [0.22, 0.61, 0.36, 1] },
+        },
+      }}
     >
       {children}
-    </Tag>
+    </MotionTag>
   );
 }

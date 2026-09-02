@@ -6,8 +6,6 @@ import { AreaIcon } from '@/components/area-icon';
 import { HeroVideo } from '@/components/hero-video';
 import { Reveal, RevealGroup, RevealItem } from '@/components/reveal';
 import { JsonLd } from '@/components/json-ld';
-import { TrackLink } from '@/components/track-link';
-import { Backdrop } from '@/components/backdrop';
 
 export const metadata: Metadata = {
   // Título voltado ao termo de maior busca ("advogado direito administrativo")
@@ -97,22 +95,12 @@ export default async function HomePage() {
                 contato — com a técnica de um escritório-boutique.
               </p>
               <div className="hero-actions">
-                <TrackLink
-                  className="btn btn-primary btn-lg"
-                  href="/diagnostico"
-                  event="cta_click"
-                  params={{ origem: 'home#hero', destino: '/diagnostico' }}
-                >
+                <Link className="btn btn-primary btn-lg" href="/diagnostico">
                   Solicitar diagnóstico inicial
-                </TrackLink>
-                <TrackLink
-                  className="btn btn-ghost btn-lg"
-                  href="/areas"
-                  event="cta_click"
-                  params={{ origem: 'home#hero', destino: '/areas' }}
-                >
+                </Link>
+                <Link className="btn btn-ghost btn-lg" href="/areas">
                   Conhecer as áreas de atuação
-                </TrackLink>
+                </Link>
               </div>
             </div>
             <div className="hero-photo">
@@ -163,7 +151,7 @@ export default async function HomePage() {
               Sobre o escritório
             </Link>
           </Reveal>
-          <Reveal className="aside-card" index={1}>
+          <Reveal className="aside-card" delay={0.1}>
             <p className="eyebrow">O que sustenta o trabalho</p>
             <div className="deflist">
               <div className="item">
@@ -187,7 +175,6 @@ export default async function HomePage() {
       </section>
 
       <section className="section section--ink">
-        <Backdrop variant="arcs" />
         <div className="container">
           <div className="founder">
             <div className="founder-photo">
@@ -196,7 +183,6 @@ export default async function HomePage() {
                 alt="Douglas Senturião, advogado responsável pelo escritório"
                 width={1100}
                 height={1650}
-                sizes="(min-width: 760px) 40vw, 92vw"
               />
             </div>
             <div className="founder-body">
@@ -236,8 +222,8 @@ export default async function HomePage() {
             </p>
           </Reveal>
           <RevealGroup className="grid grid-4">
-            {areasPublico.map((area, i) => (
-              <RevealItem key={area.slug} index={i}>
+            {areasPublico.map((area) => (
+              <RevealItem key={area.slug}>
                 <Link className="card area-card" href={`/areas/${area.slug}`}>
                   <span className="card-icon" aria-hidden="true">
                     <AreaIcon icon={area.icon} />
@@ -261,8 +247,8 @@ export default async function HomePage() {
                 </p>
               </Reveal>
               <RevealGroup className="grid grid-4">
-                {areasCivel.map((area, i) => (
-                  <RevealItem key={area.slug} index={i}>
+                {areasCivel.map((area) => (
+                  <RevealItem key={area.slug}>
                     <Link className="card area-card" href={`/areas/${area.slug}`}>
                       <span className="card-icon" aria-hidden="true">
                         <AreaIcon icon={area.icon} />
@@ -331,14 +317,9 @@ export default async function HomePage() {
               com triagem técnica inicial. Se há prazo em curso, ele orienta a
               prioridade do atendimento.
             </p>
-            <TrackLink
-              className="btn btn-primary"
-              href="/diagnostico"
-              event="cta_click"
-              params={{ origem: 'home#para-quem', destino: '/diagnostico' }}
-            >
+            <Link className="btn btn-primary" href="/diagnostico">
               Solicitar diagnóstico inicial
-            </TrackLink>
+            </Link>
           </Reveal>
           <ul className="checklist">
             <li>Empresas que contratam com o Poder Público.</li>
@@ -405,22 +386,12 @@ export default async function HomePage() {
             </p>
           </div>
           <div className="cta-actions">
-            <TrackLink
-              className="btn btn-primary btn-lg"
-              href="/diagnostico"
-              event="cta_click"
-              params={{ origem: 'home#cta-final', destino: '/diagnostico' }}
-            >
+            <Link className="btn btn-primary btn-lg" href="/diagnostico">
               Solicitar diagnóstico
-            </TrackLink>
-            <TrackLink
-              className="btn btn-ghost btn-lg"
-              href="/contato"
-              event="cta_click"
-              params={{ origem: 'home#cta-final', destino: '/contato' }}
-            >
+            </Link>
+            <Link className="btn btn-ghost btn-lg" href="/contato">
               Falar com o escritório
-            </TrackLink>
+            </Link>
           </div>
         </div>
       </section>

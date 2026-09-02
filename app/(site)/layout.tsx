@@ -1,8 +1,6 @@
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { WhatsappFloat } from '@/components/whatsapp-float';
-import { ConsentBanner } from '@/components/consent-banner';
-import { Analytics } from '@/components/analytics';
 import SmoothScroll from '@/components/smooth-scroll';
 import { getAreas, getSettings } from '@/lib/reader';
 
@@ -20,8 +18,6 @@ export default async function SiteLayout({
       <a className="skip-link" href="#conteudo">
         Ir para o conteúdo
       </a>
-      <Analytics />
-      <ConsentBanner />
       <SiteHeader />
       <main id="conteudo">{children}</main>
       <SiteFooter areas={areaLinks} settings={settings} />

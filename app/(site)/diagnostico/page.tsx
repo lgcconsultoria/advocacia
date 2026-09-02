@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { DiagnosticoForm } from '@/components/diagnostico-form';
-import { getSettings } from '@/lib/reader';
-import { HeroAside } from '@/components/hero-aside';
 
 export const metadata: Metadata = {
   title: 'Diagnóstico jurídico inicial',
@@ -17,30 +15,22 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function DiagnosticoPage() {
-  const settings = await getSettings();
-
+export default function DiagnosticoPage() {
   return (
     <>
       <section className="page-hero">
         <div className="container">
-          <div className="page-hero-copy">
-            <nav className="breadcrumb" aria-label="Trilha de navegação">
-              <Link href="/">Início</Link>
-              <span aria-hidden="true">›</span>
-              Diagnóstico jurídico inicial
-            </nav>
-            <h1>Diagnóstico jurídico inicial.</h1>
-            <p className="lead">
-              Uma triagem técnica do seu caso: identificamos a frente aplicável, o
-              instrumento cabível e o tempo de reação. Retornamos em até 1 dia útil
-              com os próximos passos.
-            </p>
-          </div>
-          <HeroAside
-            whatsapp={settings.whatsapp}
-            contexto="diagnóstico jurídico inicial"
-          />
+          <nav className="breadcrumb" aria-label="Trilha de navegação">
+            <Link href="/">Início</Link>
+            <span aria-hidden="true">›</span>
+            Diagnóstico jurídico inicial
+          </nav>
+          <h1>Diagnóstico jurídico inicial.</h1>
+          <p className="lead">
+            Uma triagem técnica do seu caso: identificamos a frente aplicável, o
+            instrumento cabível e o tempo de reação. Retornamos em até 1 dia útil
+            com os próximos passos.
+          </p>
         </div>
       </section>
 

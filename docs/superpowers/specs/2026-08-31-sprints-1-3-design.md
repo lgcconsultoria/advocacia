@@ -269,57 +269,27 @@ por teste (§9.3), não por estimativa.
 
 ## 5. P7 — Segurança
 
-### 5.1 A decisão: nonce via middleware
+### 5.1 A decisão: zero scripts inline
 
-> **Correção de 2026-09-01.** A versão anterior desta seção decidia por "zero scripts
-> inline, logo `script-src 'self'` sem nonce". **A premissa era falsa.** O runtime do
-> App Router do Next emite scripts inline `self.__next_f.push(...)` no HTML servido
-> para transmitir o payload RSC — verificado no build deste projeto. Eles não são
-> removíveis sem desligar o streaming de RSC. Sob `script-src 'self'` sem
-> `unsafe-inline` e sem nonce, seriam bloqueados e a hidratação quebraria.
+O caminho canônico do Next para CSP sem `unsafe-inline` é nonce via middleware.
+Nonce muda a cada resposta, o que **força renderização dinâmica em todas as páginas**
+e destrói o TTFB de 39 ms — um ativo que o briefing manda preservar.
 
-Restam duas configurações possíveis, e elas são excludentes:
+Alternativa escolhida: **eliminar os scripts inline**, e não autorizá-los.
 
-| | CSP forte | Cache de CDN no HTML |
-|---|---|---|
-| **A — nonce via middleware** | sim | não |
-| **B — `'unsafe-inline'`** | não | sim |
-
-O motivo de serem excludentes: um nonce em página cacheada publicamente é um nonce
-público. O atacante lê o HTML, lê o nonce, usa o nonce. Cachear HTML com nonce é
-teatro de segurança, não segurança.
-
-**Escolha: A.** É o que o briefing original pediu literalmente no §4.7
-(`Content-Security-Policy (nonce, sem unsafe-inline)`), e é o caminho suportado
-pelo Next: quando o middleware põe `'nonce-<valor>'` no header de CSP, o Next
-propaga esse nonce para os próprios scripts inline dele.
-
-Consequências assumidas:
-
-- As páginas passam a ser renderizadas dinamicamente. O TTFB deixa de ser os 39 ms
-  do HTML estático em CDN e passa a depender da origem.
-- **O item de cache de CDN do P13 não é entregue para HTML.** `stale-while-revalidate`
-  fica valendo para o que pode ser cacheado sem nonce: assets de `/_next/static`
-  (já imutáveis), `/feed.xml`, `/sitemap.xml`, `/robots.txt` e o conteúdo de
-  `/assets`. Isso é uma meta do briefing não atingida, e está registrado como tal.
-- O LCP alvo (≤1,8 s) não é ameaçado por um TTFB de origem na casa dos 100 ms.
-
-Os arquivos de mesma origem continuam existindo e continuam valendo a pena, agora
-por higiene e não por necessidade de CSP:
-
-- Bootstrap de tema e reveal → `public/bootstrap.js`
-- Inicialização de GA4, Clarity e Meta Pixel → `public/vendor/*.js`
+- Bootstrap de tema e reveal → `public/bootstrap.js` (mesma origem)
+- Inicialização de GA4, Clarity e Meta Pixel → `public/vendor/*.js` (mesma origem)
 - JSON-LD permanece inline: `type="application/ld+json"` não é executável e não é
-  governado por `script-src`
+  bloqueado por `script-src` em nenhum navegador atual
 
-Quanto menos inline próprio, menor a superfície que depende do nonce.
+Resultado: `script-src 'self' <hosts>` — sem nonce, sem `unsafe-inline`, páginas
+100% estáticas. Resolve o P7 e destrava o P13 (cache de CDN) na mesma decisão.
 
 ### 5.2 Política
 
 ```
 default-src 'self';
-script-src 'self' 'nonce-<gerado por requisição>' 'strict-dynamic'
-           https://www.googletagmanager.com https://connect.facebook.net
+script-src 'self' https://www.googletagmanager.com https://connect.facebook.net
            https://www.clarity.ms https://va.vercel-scripts.com;
 style-src 'self' 'unsafe-inline';
 img-src 'self' data: blob: https://www.google-analytics.com https://www.facebook.com
@@ -358,24 +328,11 @@ envio para uma Server Action.
 CMS usa recursos que o CSP do site quebraria. Só o site público carrega a política
 estrita.
 
-### 5.4 Cache (P13) — parcialmente não entregue
+### 5.4 Cache (P13)
 
-A escolha do §5.1 (nonce por requisição) **exclui** cache público de HTML: uma página
-cacheada carrega um nonce cacheado, que qualquer visitante lê. O item "HTML sem cache
-de CDN" do P13 fica, portanto, **não atendido para HTML**, por decisão consciente, em
-favor do P7.
-
-`Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400` é aplicado ao que
-pode ser cacheado sem nonce:
-
-- `/feed.xml`, `/sitemap.xml`, `/robots.txt`
-- `/assets/**` (imagens, vídeo, logos)
-- `/bootstrap.js` e `/vendor/*.js`
-
-Assets versionados de `/_next/static` já vêm imutáveis do Next.
-
-Se, na verificação final, o TTFB dinâmico se mostrar ruim a ponto de ameaçar o LCP
-alvo, a decisão do §5.1 deve ser reaberta com o número em mãos — não antes.
+`Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400` nas rotas
+estáticas do site, substituindo o `max-age=0, must-revalidate` atual. Assets
+versionados de `/_next/static` já vêm imutáveis do Next.
 
 ---
 

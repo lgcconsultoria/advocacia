@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getModelo, getModelos } from '@/lib/modelos';
 import { ModeloForm } from '@/components/modelo-form';
+import { MetaPixel } from '@/components/meta-pixel';
 import { Reveal } from '@/components/reveal';
 import { JsonLd } from '@/components/json-ld';
-import { TrackLink } from '@/components/track-link';
 
 export const revalidate = 300;
 
@@ -37,6 +37,7 @@ export default async function ModeloPage({
 
   return (
     <>
+      <MetaPixel />
       <JsonLd
         data={{
           '@context': 'https://schema.org',
@@ -59,15 +60,11 @@ export default async function ModeloPage({
 
           <div className="split" style={{ marginTop: '2rem' }}>
             <div>
-              {/* Sem Reveal aqui: é o topo da página, acima da dobra — a
-                  restrição global proíbe animar o que já entra visível.
-                  Sob animation-timeline: view() o efeito já era nulo, mas
-                  no fallback com IntersectionObserver (Safari/Firefox) o
-                  h1 entrava com fade e deslocamento. Mesmo defeito que a
-                  Tarefa 11 corrigiu em /modelos. */}
-              <p className="eyebrow">Material gratuito</p>
-              <h1>{m.chamada}</h1>
-              <p className="lead">{m.linha}</p>
+              <Reveal>
+                <p className="eyebrow">Material gratuito</p>
+                <h1>{m.chamada}</h1>
+                <p className="lead">{m.linha}</p>
+              </Reveal>
 
               <Reveal>
                 <h2 style={{ marginTop: '2.5rem' }}>O que você leva</h2>
@@ -108,14 +105,9 @@ export default async function ModeloPage({
               A triagem técnica inicial é gratuita e não constitui mandato. Envie os
               documentos e retornamos em até 1 dia útil.
             </p>
-            <TrackLink
-              href="/diagnostico"
-              className="btn btn-primary btn-lg"
-              event="cta_click"
-              params={{ origem: `modelos/${slug}#cta-final`, destino: '/diagnostico' }}
-            >
+            <Link href="/diagnostico" className="btn btn-primary btn-lg">
               Enviar caso para triagem
-            </TrackLink>
+            </Link>
           </Reveal>
         </div>
       </section>

@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getModelos } from '@/lib/modelos';
-import { getSettings } from '@/lib/reader';
-import { HeroAside } from '@/components/hero-aside';
 import { Reveal } from '@/components/reveal';
 
 export const metadata: Metadata = {
@@ -15,18 +13,11 @@ export const metadata: Metadata = {
 
 export default async function ModelosIndex() {
   const modelos = await getModelos();
-  const settings = await getSettings();
-
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <div className="page-hero-copy">
-            <nav className="breadcrumb" aria-label="Trilha de navegação">
-              <Link href="/">Início</Link>
-              <span aria-hidden="true">›</span>
-              Materiais gratuitos
-            </nav>
+      <section className="section">
+        <div className="container container--narrow">
+          <Reveal>
             <p className="eyebrow">Materiais gratuitos</p>
             <h1>Modelos editáveis para quem precisa agir antes do prazo acabar.</h1>
             <p className="lead">
@@ -34,8 +25,7 @@ export default async function ModelosIndex() {
               notas de orientação que normalmente ficam de fora dos modelos que circulam
               por aí. Em .docx, para você editar no Word.
             </p>
-          </div>
-          <HeroAside whatsapp={settings.whatsapp} contexto="materiais gratuitos" />
+          </Reveal>
         </div>
       </section>
 
@@ -44,7 +34,7 @@ export default async function ModelosIndex() {
           <div className="grid grid-2">
             {modelos.map((m) => (
               <Reveal key={m.slug}>
-                <Link href={`/modelos/${m.slug}`} className="card area-card">
+                <Link href={`/modelos/${m.slug}`} className="area-card">
                   <p className="eyebrow">{m.documento}</p>
                   <h3>{m.chamada}</h3>
                   <p>{m.linha}</p>
