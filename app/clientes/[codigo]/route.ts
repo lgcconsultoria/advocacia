@@ -81,11 +81,10 @@ function telaDeSenha(p: PaginaCifrada): string {
   const bytes = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
   const f = document.getElementById('f'), btn = document.getElementById('abrir'), erro = document.getElementById('erro');
   if (!window.crypto || !crypto.subtle) { erro.textContent = 'Este navegador não consegue abrir o documento. Use uma versão atual do Chrome, Safari, Edge ou Firefox.'; btn.disabled = true; return; }
-  f.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  async function abrir(senha) {
     erro.textContent = ''; btn.disabled = true; btn.textContent = 'Abrindo…';
     try {
-      const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(f.senha.value.trim()), 'PBKDF2', false, ['deriveKey']);
+      const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(senha), 'PBKDF2', false, ['deriveKey']);
       const chave = await crypto.subtle.deriveKey({ name: 'PBKDF2', salt: bytes(C.sal), iterations: C.iteracoes, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
       const html = new TextDecoder().decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: bytes(C.iv) }, chave, bytes(C.dados)));
       document.open(); document.write(html); document.close();
@@ -93,7 +92,12 @@ function telaDeSenha(p: PaginaCifrada): string {
       erro.textContent = 'Senha incorreta. Confira maiúsculas, minúsculas e hífens e tente de novo.';
       btn.disabled = false; btn.textContent = 'Abrir documento'; f.senha.select();
     }
-  });
+  }
+  f.addEventListener('submit', (e) => { e.preventDefault(); abrir(f.senha.value.trim()); });
+  // Link de acesso direto: a chave vem depois de "#k=" e nunca é enviada ao servidor.
+  // Sai da barra de endereço antes de abrir, para não aparecer em tela compartilhada.
+  const m = /^#k=([^&]+)/.exec(location.hash);
+  if (m) { const chave = decodeURIComponent(m[1]); history.replaceState(null, '', location.pathname); abrir(chave); }
 })();
 </script>
 </body>
