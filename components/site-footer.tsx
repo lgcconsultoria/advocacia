@@ -56,6 +56,7 @@ export function SiteFooter({ areas, settings }: FooterProps) {
             <li><Link href="/diagnostico">Diagnóstico jurídico inicial</Link></li>
             <li><Link href="/contato">Contato</Link></li>
             <li><Link href="/politica-de-privacidade">Política de Privacidade</Link></li>
+            <li><Link href="/exclusao-de-dados">Exclusão de dados</Link></li>
             <li><Link href="/aviso-publicidade">Aviso de Publicidade</Link></li>
             <li><ConsentReopen /></li>
           </ul>
