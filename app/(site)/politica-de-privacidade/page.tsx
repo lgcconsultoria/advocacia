@@ -29,7 +29,7 @@ export default function PoliticaDePrivacidadePage() {
 
       <section className="section">
         <div className="container container--narrow prose">
-          <p className="muted">Última atualização: 20 de maio de 2026.</p>
+          <p className="muted">Última atualização: 5 de outubro de 2026.</p>
 
           <h2>1. Controlador dos dados</h2>
           <p>
@@ -65,6 +65,17 @@ export default function PoliticaDePrivacidadePage() {
           <p>
             O envio de informações é facultativo; contudo, sem os dados marcados
             como obrigatórios não é possível realizar a triagem solicitada.
+          </p>
+          <p id="instagram">
+            <strong>Instagram (@douglassenturiao).</strong> Quando alguém
+            comenta o código de um post para receber um material, tratamos o
+            identificador da conta no Instagram, o nome de usuário, o texto do
+            comentário, se a conta segue o perfil e se o link do material foi
+            aberto. Esses dados são usados só para entregar o material pedido
+            por mensagem direta e para medir quantas pessoas o receberam. Não
+            são vendidos nem usados para outra finalidade, e podem ser excluídos
+            a qualquer momento pela{' '}
+            <Link href="/exclusao-de-dados">página de exclusão de dados</Link>.
           </p>
 
           <h2>3. Para que usamos os dados</h2>
