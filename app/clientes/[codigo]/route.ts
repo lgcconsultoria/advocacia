@@ -47,19 +47,19 @@ function telaDeSenha(p: PaginaCifrada): string {
   :root{color-scheme:dark}
   *{box-sizing:border-box}
   html,body{height:100%;margin:0}
-  body{background:#0E2A42;color:#F5F2EB;font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;display:grid;place-items:center;padding:24px 16px}
+  body{background:#15146F;color:#F2F2F5;font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;display:grid;place-items:center;padding:24px 16px}
   main{width:100%;max-width:420px;display:flex;flex-direction:column;gap:18px}
-  .selo{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#D8A74A;font-weight:700}
+  .selo{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#B9B7FF;font-weight:700}
   h1{font-size:26px;line-height:1.2;margin:0;font-weight:700}
-  p{margin:0;color:#A9BBCC;line-height:1.5;font-size:15px}
+  p{margin:0;color:#C6C6D6;line-height:1.5;font-size:15px}
   form{display:flex;flex-direction:column;gap:10px;margin-top:6px}
   label{font-size:14px;font-weight:600}
-  input{font:inherit;font-size:16px;padding:12px 14px;border-radius:8px;border:1px solid rgba(236,228,210,.28);background:#0A2236;color:#F5F2EB}
-  input:focus{outline:2px solid #D8A74A;outline-offset:2px}
-  button{font:inherit;font-weight:700;font-size:16px;padding:12px 14px;border:0;border-radius:8px;background:#D8A74A;color:#081B2B;cursor:pointer}
+  input{font:inherit;font-size:16px;padding:12px 14px;border-radius:8px;border:1px solid rgba(230,230,255,.28);background:#100F3A;color:#F2F2F5}
+  input:focus{outline:2px solid #B9B7FF;outline-offset:2px}
+  button{font:inherit;font-weight:700;font-size:16px;padding:12px 14px;border:0;border-radius:8px;background:#B9B7FF;color:#100F3A;cursor:pointer}
   button:disabled{opacity:.6;cursor:progress}
-  .erro{color:#F4A988;min-height:1.4em;font-size:14px}
-  footer{font-size:12px;color:#7F93A8;border-top:1px solid rgba(236,228,210,.14);padding-top:14px}
+  .erro{color:#FFB4A6;min-height:1.4em;font-size:14px}
+  footer{font-size:12px;color:#A5A5BD;border-top:1px solid rgba(230,230,255,.14);padding-top:14px}
 </style>
 </head>
 <body>
