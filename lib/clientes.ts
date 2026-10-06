@@ -6,6 +6,7 @@
  * o repositório é público, então nada aqui pode dizer de quem é a página.
  */
 import uhctbggktw from '@/content/clientes/uhctbggktw.json';
+import kzvdeeavrl from '@/content/clientes/kzvdeeavrl.json';
 
 export type PaginaCifrada = {
   v: 1;
@@ -17,4 +18,5 @@ export type PaginaCifrada = {
 
 export const PAGINAS_RESERVADAS: Record<string, PaginaCifrada> = {
   uhctbggktw: uhctbggktw as PaginaCifrada,
+  kzvdeeavrl: kzvdeeavrl as PaginaCifrada,
 };

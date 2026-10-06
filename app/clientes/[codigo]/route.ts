@@ -11,13 +11,14 @@ const CABECALHOS = {
   'Referrer-Policy': 'no-referrer',
   'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'DENY',
-  // A página decifrada é um HTML autocontido: scripts e estilos inline, Google Fonts.
+  // A página decifrada é um HTML autocontido: scripts e estilos inline, fontes e vídeo embutidos (data:) ou Google Fonts.
   'Content-Security-Policy': [
     "default-src 'none'",
     "script-src 'unsafe-inline'",
     "style-src 'unsafe-inline' https://fonts.googleapis.com",
-    'font-src https://fonts.gstatic.com',
+    'font-src data: https://fonts.gstatic.com',
     "img-src 'self' data: blob:",
+    'media-src data: blob:',
     "connect-src 'none'",
     "base-uri 'none'",
     "form-action 'none'",
