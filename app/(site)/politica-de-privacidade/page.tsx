@@ -29,7 +29,7 @@ export default function PoliticaDePrivacidadePage() {
 
       <section className="section">
         <div className="container container--narrow prose">
-          <p className="muted">Última atualização: 5 de outubro de 2026.</p>
+          <p className="muted">Última atualização: 6 de outubro de 2026.</p>
 
           <h2>1. Controlador dos dados</h2>
           <p>
@@ -76,6 +76,16 @@ export default function PoliticaDePrivacidadePage() {
             são vendidos nem usados para outra finalidade, e podem ser excluídos
             a qualquer momento pela{' '}
             <Link href="/exclusao-de-dados">página de exclusão de dados</Link>.
+          </p>
+          <p id="materiais">
+            <strong>Página dos materiais gratuitos.</strong> Na página de cada
+            material (aberta pelo Instagram ou pelo LinkedIn), o download é
+            livre. Quem quiser receber os próximos materiais pode, se quiser,
+            deixar nome, WhatsApp e/ou e-mail e marcar a autorização. Guardamos
+            esses dados, o material de origem, o canal e a data e o texto da
+            autorização, só para enviar materiais e avisos sobre licitações,
+            reforma tributária, IA e negócios. A autorização pode ser retirada a
+            qualquer momento, e os dados excluídos, pelos contatos da seção 11.
           </p>
 
           <h2>3. Para que usamos os dados</h2>
