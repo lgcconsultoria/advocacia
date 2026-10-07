@@ -28,7 +28,14 @@ export function ProvedorDiagnostico({ whatsapp, children }: { whatsapp: string; 
   }, []);
 
   const abrir = useCallback((i?: Interesse | null) => {
-    setInteresse(i ?? null);
+    // sem assunto explícito, a página diz: /tributario → tributário, /licitacoes → licitações
+    const caminho = typeof window !== 'undefined' ? window.location.pathname : '';
+    const daPagina: Interesse | null = caminho.startsWith('/tributario') || caminho.startsWith('/areas/tributario')
+      ? 'tributario'
+      : caminho.startsWith('/licitacoes') || caminho.startsWith('/areas/licitacoes') || caminho.startsWith('/areas/contratos-publicos')
+        ? 'licitacoes'
+        : null;
+    setInteresse(i ?? daPagina);
     setChave((k) => k + 1);
     setAberto(true);
   }, []);
