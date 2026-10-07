@@ -145,7 +145,7 @@ export default async function AreaPage({
           <Reveal>
             <Cabecalho rotulo="Perguntas frequentes" titulo={`${area.title}: dúvidas comuns`} />
           </Reveal>
-          <div className="mt-12 md:pl-[calc(9rem+2.5rem)]">
+          <div className="mt-12">
             <FaqAccordion items={area.faq} />
           </div>
         </Secao>

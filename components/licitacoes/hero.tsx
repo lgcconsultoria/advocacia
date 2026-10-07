@@ -60,7 +60,7 @@ export function HeroLicitacoes({ whatsapp }: { whatsapp: string }) {
       <GradePlanta className="opacity-[0.12]" />
       <div aria-hidden="true" className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-tinta to-transparent" />
 
-      <div className="container relative pb-10 pt-10 md:pb-14 md:pt-14">
+      <div className="container relative pb-10 pt-[calc(var(--header-h)+2.5rem)] md:pb-14 md:pt-[calc(var(--header-h)+3.5rem)]">
         <nav className="rotulo flex flex-wrap items-center gap-x-2 gap-y-1 text-[10.5px] text-cinza-escuro" aria-label="Trilha de navegação">
           <Link href="/" className="no-underline hover:text-white">Início</Link>
           <span aria-hidden="true" className="text-sinal">/</span>
@@ -68,10 +68,10 @@ export function HeroLicitacoes({ whatsapp }: { whatsapp: string }) {
         </nav>
 
         <div className="mt-12 max-w-[760px] md:mt-20">
-          <p className="rotulo m-0 text-sinal">Departamento de Licitações</p>
+          <p className="etiqueta etiqueta--escura m-0">Departamento de Licitações</p>
           <h1
             id="licitacoes-titulo"
-            className="expandida m-0 mt-5 text-[clamp(2.1rem,5.6vw,4.4rem)] font-[800] leading-[0.98] tracking-[-0.04em] text-white"
+            className="display m-0 mt-5 text-[clamp(2.2rem,5.6vw,4.5rem)] text-white"
           >
             Soluções jurídicas integradas para o departamento de licitações da sua empresa
           </h1>
@@ -86,7 +86,7 @@ export function HeroLicitacoes({ whatsapp }: { whatsapp: string }) {
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             <BotaoDiagnostico variant="claro" size="lg" interesse="licitacoes">
-              Solicitar diagnóstico
+              Fazer diagnóstico
             </BotaoDiagnostico>
             <a
               href={`https://wa.me/${whatsapp}?text=${texto}`}
@@ -134,7 +134,7 @@ function FaixaAoVivo() {
     },
   ];
   return (
-    <div className="mt-14 border-t border-sinal/20 pt-6 md:mt-20">
+    <div className="vidro-escuro mt-14 rounded-[28px] p-6 sm:p-8 md:mt-20">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="rotulo m-0 text-[10.5px] text-sinal">Termômetro das contratações públicas</p>
         <PilulaStatus />

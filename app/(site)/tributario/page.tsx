@@ -263,13 +263,13 @@ export default async function TributarioPage() {
             </Cabecalho>
             <dl className="m-0 mt-10 grid gap-3 sm:grid-cols-2">
               <div className="rounded-2xl border border-papel-2 bg-white p-5">
-                <dt className="rotulo text-[10px] text-cinza">Custo do cliente · híbrido</dt>
+                <dt className="rotulo text-[10px] text-cinza">Custo do cliente · híbrido × puro</dt>
                 <dd className="expandida num m-0 mt-2 text-[1.5rem] font-[800] tracking-[-0.03em] text-[#14593a]">
                   {reais(demo.fatura.diferencas.custoCliente)}
                 </dd>
               </div>
               <div className="rounded-2xl border border-papel-2 bg-white p-5">
-                <dt className="rotulo text-[10px] text-cinza">Imposto da empresa · preço mantido</dt>
+                <dt className="rotulo text-[10px] text-cinza">Imposto da empresa · híbrido × puro</dt>
                 <dd className="expandida num m-0 mt-2 text-[1.5rem] font-[800] tracking-[-0.03em] text-[#8c2f26]">
                   +{reais(demo.fatura.diferencas.impostoEmpresa)}
                 </dd>

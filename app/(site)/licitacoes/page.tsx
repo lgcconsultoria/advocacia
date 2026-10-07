@@ -225,7 +225,7 @@ export default async function LicitacoesPage() {
             comercial e às rotinas de cada certame.
           </p>
         </Cabecalho>
-        <p className="citacao m-0 mt-12 max-w-[34ch] text-[clamp(1.5rem,2.8vw,2.2rem)] leading-[1.15] text-grafite md:ml-[calc(9rem+2.5rem)]">
+        <p className="citacao m-0 mt-12 max-w-[34ch] text-[clamp(1.5rem,2.8vw,2.2rem)] leading-[1.15] text-grafite">
             Cada fase da licitação tem um prazo próprio. Perder um deles costuma encerrar a disputa.
           </p>
         <Frentes areas={nomesAreas} posts={nomesPosts} />
@@ -255,8 +255,8 @@ export default async function LicitacoesPage() {
               key={f.titulo}
               className={
                 i === 0
-                  ? 'planta relative isolate flex flex-col overflow-hidden rounded-[22px] p-7 sm:p-8'
-                  : 'flex flex-col rounded-[22px] border border-papel-2 bg-white p-7 sm:p-8'
+                  ? 'planta relative isolate flex flex-col overflow-hidden rounded-[28px] p-7 shadow-[0_40px_80px_-40px_rgb(29_27_154/0.7)] sm:p-9'
+                  : 'flex flex-col rounded-[28px] border border-papel-2 bg-white p-7 sm:p-9'
               }
             >
               <p className={`rotulo m-0 text-[10.5px] ${i === 0 ? 'text-sinal' : 'text-marca'}`}>
@@ -288,7 +288,7 @@ export default async function LicitacoesPage() {
             edital e dos documentos.
           </p>
         </Cabecalho>
-        <div className="mt-12 md:ml-[calc(9rem+2.5rem)]">
+        <div className="mt-12">
           <FaqAccordion items={FAQ} />
           <Link href="/areas/licitacoes" className="link-seta mt-10">
             Ver a área de Licitações Públicas <span aria-hidden="true">→</span>

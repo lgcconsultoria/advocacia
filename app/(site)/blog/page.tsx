@@ -60,7 +60,7 @@ export default async function BlogPage() {
 
       <Secao escura grade>
         <Cabecalho n="→" rotulo="Em pauta" titulo="Próximos temas que entram no blog" escura />
-        <ol className="m-0 mt-12 grid list-none gap-0 p-0 md:ml-[calc(9rem+2.5rem)]">
+        <ol className="m-0 mt-12 grid list-none gap-0 p-0">
           {UPCOMING.map((t, i) => (
             <li key={i} className="grid grid-cols-[2.6rem_minmax(0,1fr)] items-baseline gap-3 border-t border-sinal/15 py-4">
               <span className="rotulo num text-[10px] text-sinal">{String(i + 1).padStart(2, '0')}</span>
