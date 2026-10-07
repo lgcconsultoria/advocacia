@@ -106,8 +106,8 @@ export function SeletorAreas({ grupos }: { grupos: GrupoSeletor[] }) {
                     style={on ? { fill: 'var(--marca)' } : undefined}
                   />
                   <text
-                    x={50 + ((R_EXT + R_INT) / 2) * Math.cos(ang)}
-                    y={50 + ((R_EXT + R_INT) / 2) * Math.sin(ang)}
+                    x={(50 + ((R_EXT + R_INT) / 2) * Math.cos(ang)).toFixed(3)}
+                    y={(50 + ((R_EXT + R_INT) / 2) * Math.sin(ang)).toFixed(3)}
                     textAnchor="middle"
                     dominantBaseline="central"
                     fontSize={ar.curto.length > 10 ? 2.6 : 3.1}

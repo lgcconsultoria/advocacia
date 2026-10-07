@@ -134,7 +134,7 @@ export function Anel({ frentes }: { frentes: FrenteAnel[] }) {
   return (
     <div
       ref={cena}
-      className="relative mx-auto aspect-square w-full max-w-[560px] cursor-grab touch-pan-y select-none [--r:128px] min-[400px]:[--r:150px] sm:[--r:210px] lg:[--r:230px]"
+      className="relative mx-auto aspect-[10/9] w-full max-w-[560px] cursor-grab sm:aspect-square touch-pan-y select-none [--r:128px] min-[400px]:[--r:150px] sm:[--r:210px] lg:[--r:230px]"
       style={{ perspective: '1100px' }}
       role="group"
       aria-label={`${N} áreas de atuação em destaque. Arraste para girar; cada carta abre a página da área.`}
@@ -203,6 +203,9 @@ export function Anel({ frentes }: { frentes: FrenteAnel[] }) {
   );
 }
 
+// Arredonda para o SSR e o navegador gerarem o mesmo número (evita erro de hidratação).
+const r3 = (v: number) => Math.round(v * 1000) / 1000;
+
 function Mostrador() {
   const marcas = Array.from({ length: 120 }, (_, i) => i * 3);
   return (
@@ -216,10 +219,10 @@ function Mostrador() {
         return (
           <line
             key={g}
-            x1={Math.cos(a) * r1}
-            y1={Math.sin(a) * r1}
-            x2={Math.cos(a) * 97}
-            y2={Math.sin(a) * 97}
+            x1={r3(Math.cos(a) * r1)}
+            y1={r3(Math.sin(a) * r1)}
+            x2={r3(Math.cos(a) * 97)}
+            y2={r3(Math.sin(a) * 97)}
             stroke={longa ? 'rgb(142 139 255 / 0.9)' : 'rgb(142 139 255 / 0.4)'}
             strokeWidth={longa ? 0.7 : 0.35}
           />

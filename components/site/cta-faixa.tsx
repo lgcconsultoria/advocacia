@@ -24,7 +24,7 @@ export function CtaFaixa({
           </h2>
           {texto && <p className="mt-4 max-w-[52ch] text-[1.03rem] text-white/80">{texto}</p>}
         </div>
-        <div className="flex flex-wrap gap-3">{children}</div>
+        <div className="flex flex-wrap gap-3 [&_.btn-contorno-claro]:border-white/45 [&_.btn-contorno-claro:hover]:border-white">{children}</div>
       </div>
     </section>
   );
