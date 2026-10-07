@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import Link from 'next/link';
+import { PostCard } from '@/components/site/post-card';
 
 export type PostCard = {
   slug: string;
@@ -37,18 +37,9 @@ export function BlogList({ posts }: { posts: PostCard[] }) {
           </button>
         ))}
       </div>
-      <div className="post-list">
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {visible.map((post) => (
-          <Link key={post.slug} className="card post-card" href={`/blog/${post.slug}`}>
-            <span className="post-tag">{post.area}</span>
-            <h3>{post.title}</h3>
-            <p>{post.description}</p>
-            <span className="post-meta">
-              <span>Análise técnica</span>
-              <span>·</span>
-              <span>{post.readingTime}</span>
-            </span>
-          </Link>
+          <PostCard key={post.slug} post={post} />
         ))}
       </div>
     </>

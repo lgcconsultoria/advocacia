@@ -5,6 +5,9 @@ import { notFound } from 'next/navigation';
 import { getPost, getPosts, getSettings } from '@/lib/reader';
 import { renderMarkdoc, extractToc } from '@/lib/markdoc';
 import { JsonLd } from '@/components/json-ld';
+import { PageHero } from '@/components/site/page-hero';
+import { CtaFaixa } from '@/components/site/cta-faixa';
+import { buttonVariants } from '@/components/ui/button';
 
 export async function generateStaticParams() {
   const posts = await getPosts();
@@ -95,64 +98,58 @@ export default async function PostPage({
       <JsonLd data={articleLd} />
       <JsonLd data={breadcrumbLd} />
 
-      <section className="page-hero">
+      <PageHero
+        trilha={[{ href: '/blog', label: 'Blog' }, { label: post.area }]}
+        rotulo={post.area}
+        titulo={post.title}
+      >
+        <p className="rotulo m-0 mt-8 flex flex-wrap gap-x-3 gap-y-1 text-[10.5px] text-cinza-escuro">
+          <span>Análise técnica</span>
+          <span aria-hidden="true">·</span>
+          <span>{post.readingTime}</span>
+          {post.publishedDate && (
+            <>
+              <span aria-hidden="true">·</span>
+              <time dateTime={post.publishedDate}>{formatDate(post.publishedDate)}</time>
+            </>
+          )}
+          <span aria-hidden="true">·</span>
+          <span>{settings.lawyerName}</span>
+        </p>
+      </PageHero>
+
+      <section className="py-14 md:py-20">
         <div className="container">
-          <nav className="breadcrumb" aria-label="Trilha de navegação">
-            <Link href="/">Início</Link>
-            <span aria-hidden="true">›</span>
-            <Link href="/blog">Blog</Link>
-            <span aria-hidden="true">›</span>
-            {post.area}
-          </nav>
-          <div className="article-head">
-            <span className="post-tag">{post.area}</span>
-            <h1>{post.title}</h1>
-            <p className="article-meta">
-              <span>Análise técnica</span>
-              <span>·</span>
-              <span>{post.readingTime}</span>
-              {post.publishedDate && (
-                <>
-                  <span>·</span>
-                  <time dateTime={post.publishedDate}>
-                    {formatDate(post.publishedDate)}
-                  </time>
-                </>
+          <div className="mx-auto max-w-[760px]">
+            <article className="prose prose-lg max-w-none">
+              {toc.length > 2 && (
+                <nav className="toc not-prose" aria-label="Índice do artigo">
+                  <p className="rotulo m-0 text-marca">Neste artigo</p>
+                  <ol>
+                    {toc.map((item) => (
+                      <li key={item.id}>
+                        <a href={`#${item.id}`}>{item.text}</a>
+                      </li>
+                    ))}
+                  </ol>
+                </nav>
               )}
-            </p>
-          </div>
-        </div>
-      </section>
 
-      <section className="section">
-        <div className="container container--narrow">
-          <article className="prose">
-            {toc.length > 2 && (
-              <nav className="toc" aria-label="Índice do artigo">
-                <h2>Neste artigo</h2>
-                <ol>
-                  {toc.map((item) => (
-                    <li key={item.id}>
-                      <a href={`#${item.id}`}>{item.text}</a>
-                    </li>
-                  ))}
-                </ol>
-              </nav>
-            )}
+              {renderMarkdoc(content.node)}
+            </article>
 
-            {renderMarkdoc(content.node)}
-
-            <div className="author-card">
+            <div className="mt-14 grid items-center gap-6 rounded-3xl bg-white p-7 sm:grid-cols-[auto_minmax(0,1fr)] sm:p-9">
               <Image
                 src="/assets/img/douglas-autor.jpg"
                 alt={settings.lawyerName}
-                width={116}
-                height={116}
+                width={232}
+                height={232}
+                className="h-[104px] w-[104px] rounded-full object-cover object-[50%_18%]"
               />
-              <div>
-                <p className="author-name">{settings.lawyerName}</p>
-                <p className="author-oab">{settings.oab}</p>
-                <p>
+              <div className="min-w-0">
+                <p className="expandida m-0 text-[1.15rem] font-[750]">{settings.lawyerName}</p>
+                <p className="rotulo m-0 mt-1 text-[10.5px] text-marca">{settings.oab}</p>
+                <p className="m-0 mt-3 text-[0.95rem] leading-relaxed text-cinza">
                   Advogado dedicado ao Direito Administrativo, com atuação
                   concentrada em licitações e contratos públicos. Conteúdo de
                   caráter informativo, sem promessa de resultado.
@@ -165,26 +162,22 @@ export default async function PostPage({
               Disciplina da OAB. Não substitui a análise de um caso concreto nem
               constitui aconselhamento jurídico individualizado.
             </div>
-          </article>
-        </div>
-      </section>
 
-      <section className="section section--tight cta-band">
-        <div className="container">
-          <div>
-            <h2>Esse tema toca um caso seu?</h2>
-            <p>
-              Envie o caso para uma triagem técnica inicial. Retornamos em até 1
-              dia útil.
-            </p>
-          </div>
-          <div className="cta-actions">
-            <Link className="btn btn-primary btn-lg" href="/diagnostico">
-              Enviar caso para análise
+            <Link href="/blog" className="link-seta">
+              <span aria-hidden="true">←</span> Todos os artigos
             </Link>
           </div>
         </div>
       </section>
+
+      <CtaFaixa
+        titulo="Esse tema toca um caso seu?"
+        texto="Envie o caso para uma triagem técnica inicial. Retornamos em até 1 dia útil."
+      >
+        <Link className={buttonVariants({ variant: 'claro', size: 'lg' })} href="/diagnostico">
+          Enviar caso para análise
+        </Link>
+      </CtaFaixa>
     </>
   );
 }

@@ -6,6 +6,10 @@ import { ModeloForm } from '@/components/modelo-form';
 import { MetaPixel } from '@/components/meta-pixel';
 import { Reveal } from '@/components/reveal';
 import { JsonLd } from '@/components/json-ld';
+import { PageHero } from '@/components/site/page-hero';
+import { Secao } from '@/components/site/secao';
+import { CtaFaixa } from '@/components/site/cta-faixa';
+import { buttonVariants } from '@/components/ui/button';
 
 export const revalidate = 300;
 
@@ -50,67 +54,63 @@ export default async function ModeloPage({
         }}
       />
 
-      <section className="section">
-        <div className="container">
-          <nav className="breadcrumb" aria-label="Trilha">
-            <Link href="/">Início</Link> <span aria-hidden="true">/</span>{' '}
-            <Link href="/modelos">Materiais</Link> <span aria-hidden="true">/</span>{' '}
-            <span>{m.documento}</span>
-          </nav>
+      <PageHero
+        trilha={[{ href: '/modelos', label: 'Materiais' }, { label: m.documento }]}
+        rotulo="Material gratuito"
+        titulo={m.chamada}
+        lead={m.linha}
+      >
+        <div className="mt-9 flex flex-wrap gap-3">
+          <a className={buttonVariants({ variant: 'claro', size: 'lg' })} href="#baixar">
+            Baixar o modelo
+          </a>
+        </div>
+      </PageHero>
 
-          <div className="split" style={{ marginTop: '2rem' }}>
-            <div>
-              <Reveal>
-                <p className="eyebrow">Material gratuito</p>
-                <h1>{m.chamada}</h1>
-                <p className="lead">{m.linha}</p>
-              </Reveal>
+      <Secao>
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-16">
+          <div className="min-w-0">
+            <Reveal>
+              <p className="rotulo m-0 text-marca">{m.documento}</p>
+              <h2 className="expandida m-0 mt-4 text-[clamp(1.7rem,3.4vw,2.5rem)] font-[780] leading-[1.05] tracking-[-0.03em]">
+                O que você leva
+              </h2>
+              <ul className="checklist mt-8 text-[1.02rem]">
+                {m.entrega.map((e) => <li key={e}>{e}</li>)}
+              </ul>
+            </Reveal>
 
-              <Reveal>
-                <h2 style={{ marginTop: '2.5rem' }}>O que você leva</h2>
-                <ul className="checklist">
-                  {m.entrega.map((e) => <li key={e}>{e}</li>)}
-                </ul>
-              </Reveal>
-
-              <Reveal>
-                <div className="aside-card" style={{ marginTop: '2rem' }}>
-                  <h3>Uma ressalva honesta</h3>
-                  <p className="mb-0">
-                    Modelo não é estratégia. Ele organiza a estrutura e lembra o que não
-                    pode faltar, mas o que decide o resultado é o enquadramento do seu
-                    caso, o prazo aplicável e a prova que você tem em mãos. Use como
-                    ponto de partida, não como resposta pronta.
-                  </p>
-                </div>
-              </Reveal>
-            </div>
-
-            <aside className="aside-card is-sticky" id="baixar">
-              <h3>Baixar o modelo</h3>
-              <p style={{ fontSize: '.92rem' }}>
-                Preencha para receber o arquivo em .docx, já com o nome da sua empresa.
-              </p>
-              <ModeloForm slug={m.slug} documento={m.documento} />
-            </aside>
+            <Reveal>
+              <div className="mt-12 rounded-3xl border-l-2 border-marca bg-white p-7 sm:p-9">
+                <p className="citacao m-0 text-[1.6rem] leading-tight text-grafite">Uma ressalva honesta</p>
+                <p className="m-0 mt-4 leading-relaxed text-cinza">
+                  Modelo não é estratégia. Ele organiza a estrutura e lembra o que não
+                  pode faltar, mas o que decide o resultado é o enquadramento do seu
+                  caso, o prazo aplicável e a prova que você tem em mãos. Use como
+                  ponto de partida, não como resposta pronta.
+                </p>
+              </div>
+            </Reveal>
           </div>
-        </div>
-      </section>
 
-      <section className="section section--alt">
-        <div className="container container--narrow center">
-          <Reveal>
-            <h2>Prefere que alguém olhe o seu caso antes?</h2>
-            <p className="lead">
-              A triagem técnica inicial é gratuita e não constitui mandato. Envie os
-              documentos e retornamos em até 1 dia útil.
+          <aside className="aside-card is-sticky self-start sm:p-8" id="baixar">
+            <p className="rotulo m-0 text-marca">Baixar o modelo</p>
+            <p className="m-0 mb-6 mt-3 text-[.95rem] text-cinza">
+              Preencha para receber o arquivo em .docx, já com o nome da sua empresa.
             </p>
-            <Link href="/diagnostico" className="btn btn-primary btn-lg">
-              Enviar caso para triagem
-            </Link>
-          </Reveal>
+            <ModeloForm slug={m.slug} documento={m.documento} />
+          </aside>
         </div>
-      </section>
+      </Secao>
+
+      <CtaFaixa
+        titulo="Prefere que alguém olhe o seu caso antes?"
+        texto="A triagem técnica inicial é gratuita e não constitui mandato. Envie os documentos e retornamos em até 1 dia útil."
+      >
+        <Link href="/diagnostico" className={buttonVariants({ variant: 'claro', size: 'lg' })}>
+          Enviar caso para triagem
+        </Link>
+      </CtaFaixa>
     </>
   );
 }

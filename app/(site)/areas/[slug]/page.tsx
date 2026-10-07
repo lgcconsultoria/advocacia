@@ -6,6 +6,10 @@ import { renderMarkdoc } from '@/lib/markdoc';
 import { Reveal } from '@/components/reveal';
 import { FaqAccordion } from '@/components/faq-accordion';
 import { JsonLd } from '@/components/json-ld';
+import { PageHero } from '@/components/site/page-hero';
+import { Cabecalho, Secao } from '@/components/site/secao';
+import { CtaFaixa } from '@/components/site/cta-faixa';
+import { buttonVariants } from '@/components/ui/button';
 
 export async function generateStaticParams() {
   const areas = await getAreas();
@@ -77,38 +81,39 @@ export default async function AreaPage({
       <JsonLd data={breadcrumbLd} />
       {area.faq.length > 0 && <JsonLd data={faqLd} />}
 
-      <section className="page-hero">
-        <div className="container">
-          <nav className="breadcrumb" aria-label="Trilha de navegação">
-            <Link href="/">Início</Link>
-            <span aria-hidden="true">›</span>
-            <Link href="/areas">Áreas</Link>
-            <span aria-hidden="true">›</span>
-            {area.title}
-          </nav>
-          <h1>{area.heroTitle}</h1>
-          <p className="lead">{area.lead}</p>
+      <PageHero
+        trilha={[{ href: '/areas', label: 'Áreas' }, { label: area.title }]}
+        rotulo={area.group === 'civel' ? 'Contencioso Cível e Empresarial' : 'Direito Público'}
+        titulo={area.heroTitle}
+        lead={area.lead}
+      >
+        <div className="mt-9 flex flex-wrap gap-3">
+          <Link className={buttonVariants({ variant: 'claro', size: 'lg' })} href="/diagnostico">
+            {area.sidebarCta}
+          </Link>
         </div>
-      </section>
+      </PageHero>
 
-      <section className="section">
-        <div className="container split">
-          <div>
-            <p className="eyebrow">{area.whenEyebrow}</p>
-            <h2>{area.whenTitle}</h2>
-            <div className="prose">{renderMarkdoc(intro.node)}</div>
+      <Secao>
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] lg:gap-16">
+          <div className="min-w-0">
+            <p className="rotulo m-0 text-marca">{area.whenEyebrow}</p>
+            <h2 className="expandida m-0 mt-4 text-[clamp(1.7rem,3.6vw,2.7rem)] font-[780] leading-[1.05] tracking-[-0.03em]">
+              {area.whenTitle}
+            </h2>
+            <div className="prose mt-8">{renderMarkdoc(intro.node)}</div>
 
             {hasAchieves && (
-              <>
+              <div className="mt-10 rounded-3xl bg-white p-7 sm:p-9">
                 {area.achievesTitle && (
-                  <h3 style={{ marginTop: '2.2rem' }}>{area.achievesTitle}</h3>
+                  <h3 className="semi m-0 mb-4 text-[1.2rem] font-[720] leading-tight">{area.achievesTitle}</h3>
                 )}
                 <ul className="checklist">
                   {area.achieves.map((item, i) => (
                     <li key={i}>{item}</li>
                   ))}
                 </ul>
-              </>
+              </div>
             )}
 
             {hasNotice && (
@@ -119,54 +124,37 @@ export default async function AreaPage({
             )}
           </div>
 
-          <aside className="aside-card is-sticky">
-            <p className="eyebrow">{area.sidebarTitle}</p>
-            <ul className="checklist">
+          <aside className="aside-card is-sticky self-start sm:p-8">
+            <p className="rotulo m-0 text-marca">{area.sidebarTitle}</p>
+            <ul className="checklist mt-4">
               {area.sidebarItems.map((item, i) => (
                 <li key={i}>{item}</li>
               ))}
             </ul>
-            <Link
-              className="btn btn-primary btn-block"
-              href="/diagnostico"
-              style={{ marginTop: '1.2rem' }}
-            >
+            <Link className={buttonVariants({ variant: 'marca', block: true, className: 'mt-6' })} href="/diagnostico">
               {area.sidebarCta}
             </Link>
-            {area.sidebarNote && (
-              <p className="hint" style={{ marginTop: '.8rem' }}>
-                {area.sidebarNote}
-              </p>
-            )}
+            {area.sidebarNote && <p className="hint mb-0 mt-4">{area.sidebarNote}</p>}
           </aside>
         </div>
-      </section>
+      </Secao>
 
       {area.faq.length > 0 && (
-        <section className="section section--alt">
-          <div className="container">
-            <Reveal className="section-head">
-              <p className="eyebrow">Perguntas frequentes</p>
-              <h2>{area.title}: dúvidas comuns.</h2>
-            </Reveal>
+        <Secao className="bg-[linear-gradient(180deg,#e9e9f2,var(--papel))]">
+          <Reveal>
+            <Cabecalho rotulo="Perguntas frequentes" titulo={`${area.title}: dúvidas comuns`} />
+          </Reveal>
+          <div className="mt-12 md:pl-[calc(9rem+2.5rem)]">
             <FaqAccordion items={area.faq} />
           </div>
-        </section>
+        </Secao>
       )}
 
-      <section className="section section--tight cta-band">
-        <div className="container">
-          <div>
-            <h2>{area.ctaTitle}</h2>
-            <p>{area.ctaText}</p>
-          </div>
-          <div className="cta-actions">
-            <Link className="btn btn-primary btn-lg" href="/diagnostico">
-              {area.sidebarCta}
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CtaFaixa titulo={area.ctaTitle} texto={area.ctaText}>
+        <Link className={buttonVariants({ variant: 'claro', size: 'lg' })} href="/diagnostico">
+          {area.sidebarCta}
+        </Link>
+      </CtaFaixa>
     </>
   );
 }

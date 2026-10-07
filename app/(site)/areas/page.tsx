@@ -1,8 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getAreas } from '@/lib/reader';
-import { AreaIcon } from '@/components/area-icon';
-import { Reveal, RevealGroup, RevealItem } from '@/components/reveal';
+import { RevealGroup, RevealItem } from '@/components/reveal';
+import { PageHero } from '@/components/site/page-hero';
+import { Cabecalho, Secao } from '@/components/site/secao';
+import { CtaFaixa } from '@/components/site/cta-faixa';
+import { AreaCard } from '@/components/site/area-card';
+import { buttonVariants } from '@/components/ui/button';
 
 export const metadata: Metadata = {
   title: 'Áreas de atuação — Direito Administrativo e Contencioso',
@@ -24,87 +28,45 @@ export default async function AreasPage() {
 
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <nav className="breadcrumb" aria-label="Trilha de navegação">
-            <Link href="/">Início</Link>
-            <span aria-hidden="true">›</span>
-            Áreas de atuação
-          </nav>
-          <h1>Áreas de atuação.</h1>
-          <p className="lead">
-            O núcleo do escritório é o Direito Administrativo — e a mesma
-            disciplina técnica se estende a frentes selecionadas do contencioso
-            cível e empresarial. Cada área tem instrumento próprio, prazo
-            específico e exige diagnóstico antes da peça.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        trilha={[{ label: 'Áreas de atuação' }]}
+        rotulo={`${areas.length} áreas · 2 grupos`}
+        titulo="Áreas de atuação."
+        lead="O núcleo do escritório é o Direito Administrativo — e a mesma disciplina técnica se estende a frentes selecionadas do contencioso cível e empresarial. Cada área tem instrumento próprio, prazo específico e exige diagnóstico antes da peça."
+      />
 
-      <section className="section">
-        <div className="container">
-          <div className="section-head">
-            <p className="eyebrow">Direito Público</p>
-            <h2>O conflito é com a Administração.</h2>
-          </div>
-          <RevealGroup className="grid grid-3">
-            {areasPublico.map((area) => (
-              <RevealItem key={area.slug}>
-                <Link className="card area-card" href={`/areas/${area.slug}`}>
-                  <span className="card-icon" aria-hidden="true">
-                    <AreaIcon icon={area.icon} />
-                  </span>
-                  <h3>{area.title}</h3>
-                  <p>{area.summary}</p>
-                  <span className="card-link">Ver área →</span>
-                </Link>
+      <Secao>
+        <Cabecalho n={1} rotulo="Direito Público" titulo="O conflito é com a Administração" />
+        <RevealGroup className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {areasPublico.map((area, i) => (
+            <RevealItem key={area.slug} className="h-full">
+              <AreaCard area={area} n={i + 1} />
+            </RevealItem>
+          ))}
+        </RevealGroup>
+      </Secao>
+
+      {areasCivel.length > 0 && (
+        <Secao className="bg-[linear-gradient(180deg,#e9e9f2,var(--papel))]">
+          <Cabecalho n={2} rotulo="Contencioso Cível e Empresarial" titulo="O conflito é entre particulares" />
+          <RevealGroup className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {areasCivel.map((area, i) => (
+              <RevealItem key={area.slug} className="h-full">
+                <AreaCard area={area} n={i + 1} />
               </RevealItem>
             ))}
           </RevealGroup>
-        </div>
-      </section>
-
-      {areasCivel.length > 0 && (
-        <section className="section section--alt">
-          <div className="container">
-            <div className="section-head">
-              <p className="eyebrow">Contencioso Cível e Empresarial</p>
-              <h2>O conflito é entre particulares.</h2>
-            </div>
-            <RevealGroup className="grid grid-3">
-              {areasCivel.map((area) => (
-                <RevealItem key={area.slug}>
-                  <Link className="card area-card" href={`/areas/${area.slug}`}>
-                    <span className="card-icon" aria-hidden="true">
-                      <AreaIcon icon={area.icon} />
-                    </span>
-                    <h3>{area.title}</h3>
-                    <p>{area.summary}</p>
-                    <span className="card-link">Ver área →</span>
-                  </Link>
-                </RevealItem>
-              ))}
-            </RevealGroup>
-          </div>
-        </section>
+        </Secao>
       )}
 
-      <section className="section section--tight cta-band">
-        <div className="container">
-          <div>
-            <h2>Não sabe qual instrumento se aplica ao seu caso?</h2>
-            <p>
-              O diagnóstico inicial existe justamente para isso: identificar a
-              frente e o tempo de reação.
-            </p>
-          </div>
-          <div className="cta-actions">
-            <Link className="btn btn-primary btn-lg" href="/diagnostico">
-              Solicitar diagnóstico
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CtaFaixa
+        titulo="Não sabe qual instrumento se aplica ao seu caso?"
+        texto="O diagnóstico inicial existe justamente para isso: identificar a frente e o tempo de reação."
+      >
+        <Link className={buttonVariants({ variant: 'claro', size: 'lg' })} href="/diagnostico">
+          Solicitar diagnóstico
+        </Link>
+      </CtaFaixa>
     </>
   );
 }

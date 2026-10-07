@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { PageHero } from '@/components/site/page-hero';
 
 export const metadata: Metadata = {
   title: 'Exclusão de dados',
@@ -11,24 +12,17 @@ export const metadata: Metadata = {
 export default function ExclusaoDeDadosPage() {
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <nav className="breadcrumb" aria-label="Trilha de navegação">
-            <Link href="/">Início</Link>
-            <span aria-hidden="true">›</span>
-            Exclusão de dados
-          </nav>
-          <h1>Exclusão de dados.</h1>
-          <p className="lead">
-            Você pode pedir, a qualquer momento, que os seus dados sejam
-            apagados. Sem custo e sem precisar justificar.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        trilha={[{ label: 'Exclusão de dados' }]}
+        rotulo="Privacidade e ética"
+        titulo="Exclusão de dados."
+        lead="Você pode pedir, a qualquer momento, que os seus dados sejam apagados. Sem custo e sem precisar justificar."
+      />
 
-      <section className="section">
-        <div className="container container--narrow prose">
-          <p className="muted">Última atualização: 5 de outubro de 2026.</p>
+      <section className="py-14 md:py-20">
+        <div className="container">
+          <div className="prose prose-lg mx-auto max-w-[760px]">
+          <p className="rotulo !text-[10.5px] text-cinza">Última atualização: 5 de outubro de 2026.</p>
 
           <h2>Como pedir</h2>
           <ul>
@@ -66,6 +60,7 @@ export default function ExclusaoDeDadosPage() {
             prazo legal. Os detalhes estão na{' '}
             <Link href="/politica-de-privacidade">Política de Privacidade</Link>.
           </p>
+        </div>
         </div>
       </section>
     </>

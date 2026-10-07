@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { PageHero } from '@/components/site/page-hero';
 
 export const metadata: Metadata = {
   title: 'Política de Privacidade',
@@ -11,25 +12,17 @@ export const metadata: Metadata = {
 export default function PoliticaDePrivacidadePage() {
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <nav className="breadcrumb" aria-label="Trilha de navegação">
-            <Link href="/">Início</Link>
-            <span aria-hidden="true">›</span>
-            Política de Privacidade
-          </nav>
-          <h1>Política de Privacidade.</h1>
-          <p className="lead">
-            Como o escritório trata os dados pessoais coletados por meio deste
-            site, em conformidade com a Lei Geral de Proteção de Dados (Lei
-            13.709/2018).
-          </p>
-        </div>
-      </section>
+      <PageHero
+        trilha={[{ label: 'Política de Privacidade' }]}
+        rotulo="Privacidade e ética"
+        titulo="Política de Privacidade."
+        lead="Como o escritório trata os dados pessoais coletados por meio deste site, em conformidade com a Lei Geral de Proteção de Dados (Lei 13.709/2018)."
+      />
 
-      <section className="section">
-        <div className="container container--narrow prose">
-          <p className="muted">Última atualização: 6 de outubro de 2026.</p>
+      <section className="py-14 md:py-20">
+        <div className="container">
+          <div className="prose prose-lg mx-auto max-w-[760px]">
+          <p className="rotulo !text-[10.5px] text-cinza">Última atualização: 6 de outubro de 2026.</p>
 
           <h2>1. Controlador dos dados</h2>
           <p>
@@ -193,6 +186,7 @@ export default function PoliticaDePrivacidadePage() {
             profissional responsável e adaptado às ferramentas, fluxos e dados
             efetivamente tratados pelo escritório antes da publicação.
           </div>
+        </div>
         </div>
       </section>
     </>

@@ -1,5 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { getSettings } from '@/lib/reader';
+import { PageHero } from '@/components/site/page-hero';
+import { Secao } from '@/components/site/secao';
+import { buttonVariants } from '@/components/ui/button';
 
 export const metadata: Metadata = {
   title: 'Contato — Douglas Senturião Advocacia | Direito Administrativo em São Paulo',
@@ -14,134 +18,102 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ContatoPage() {
+export default async function ContatoPage() {
+  const settings = await getSettings();
+  const dados: [string, React.ReactNode][] = [
+    ['Endereço', <>{settings.address}.</>],
+    ['E-mail', <a key="e" className="break-all text-marca" href={`mailto:${settings.email}`}>{settings.email}</a>],
+    [
+      'Telefone / WhatsApp comercial',
+      <>
+        <a className="text-marca" href={`https://wa.me/${settings.whatsapp}`} target="_blank" rel="noopener">
+          {settings.phone}
+        </a>{' '}
+        — atendimento exclusivamente para agendamento.
+      </>,
+    ],
+    [
+      'Instagram',
+      <a key="i" className="text-marca" href={`https://instagram.com/${settings.instagram}`} target="_blank" rel="noopener">
+        @{settings.instagram}
+      </a>,
+    ],
+    ['Horário', 'Segunda a sexta, das 9h às 18h.'],
+  ];
+
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <nav className="breadcrumb" aria-label="Trilha de navegação">
-            <Link href="/">Início</Link>
-            <span aria-hidden="true">›</span>
-            Contato
-          </nav>
-          <h1>Fale com o escritório.</h1>
-          <p className="lead">
-            Atendimento por agendamento. Para que possamos entender o seu caso, o
-            caminho mais rápido é o formulário de diagnóstico — retornamos em até 1
-            dia útil com a triagem inicial e os próximos passos.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        trilha={[{ label: 'Contato' }]}
+        rotulo="Atendimento por agendamento"
+        titulo="Fale com o escritório."
+        lead="Atendimento por agendamento. Para que possamos entender o seu caso, o caminho mais rápido é o formulário de diagnóstico — retornamos em até 1 dia útil com a triagem inicial e os próximos passos."
+      />
 
-      <section className="section">
-        <div className="container split">
-          <div>
-            <p className="eyebrow">Dados do escritório</p>
-            <h2>Onde estamos e como falar conosco.</h2>
-            <div className="deflist" style={{ marginTop: '1.6rem' }}>
-              <div className="item">
-                <h3>Endereço</h3>
-                <p>Av. Brigadeiro Faria Lima, 1768 — São Paulo/SP — CEP 01451-001.</p>
-              </div>
-              <div className="item">
-                <h3>E-mail</h3>
-                <p>
-                  <a href="mailto:douglas@senturiaoadv.com.br">
-                    douglas@senturiaoadv.com.br
-                  </a>
-                </p>
-              </div>
-              <div className="item">
-                <h3>Telefone / WhatsApp comercial</h3>
-                <p>
-                  <a href="https://wa.me/5567991675629" target="_blank" rel="noopener">
-                    (67) 99167-5629
-                  </a>{' '}
-                  — atendimento exclusivamente para agendamento.
-                </p>
-              </div>
-              <div className="item">
-                <h3>Instagram</h3>
-                <p>
-                  <a
-                    href="https://instagram.com/douglassadvogado"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    @douglassadvogado
-                  </a>
-                </p>
-              </div>
-              <div className="item">
-                <h3>Horário</h3>
-                <p>Segunda a sexta, das 9h às 18h.</p>
-              </div>
-            </div>
+      <Secao>
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:gap-16">
+          <div className="min-w-0">
+            <p className="rotulo m-0 text-marca">01 — Dados do escritório</p>
+            <h2 className="expandida m-0 mt-4 text-[clamp(1.7rem,3.6vw,2.7rem)] font-[780] leading-[1.05] tracking-[-0.03em]">
+              Onde estamos e como falar conosco.
+            </h2>
+            <dl className="m-0 mt-10 grid gap-0">
+              {dados.map(([k, v]) => (
+                <div key={k} className="grid gap-1 border-t border-papel-2 py-5 sm:grid-cols-[13rem_minmax(0,1fr)] sm:gap-6">
+                  <dt className="rotulo pt-1 text-[10.5px] text-cinza">{k}</dt>
+                  <dd className="m-0 text-[1.02rem] leading-relaxed text-grafite">{v}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
-          <aside className="aside-card">
-            <p className="eyebrow">Tem um caso para enviar?</p>
-            <h3>Use o diagnóstico jurídico inicial</h3>
-            <p className="muted">
+          <aside className="planta self-start rounded-3xl p-7 sm:p-9">
+            <p className="rotulo m-0 text-sinal">Tem um caso para enviar?</p>
+            <h3 className="expandida m-0 mt-4 text-[1.4rem] font-[760] leading-tight text-white">
+              Use o diagnóstico jurídico inicial
+            </h3>
+            <p className="m-0 mt-4 leading-relaxed text-cinza-escuro">
               O formulário de diagnóstico organiza as informações essenciais —
               frente, prazo e documentos — e garante uma triagem técnica mais
               precisa do que uma mensagem livre.
             </p>
-            <Link
-              className="btn btn-primary btn-block"
-              href="/diagnostico"
-              style={{ marginTop: '.4rem' }}
-            >
+            <Link className={buttonVariants({ variant: 'claro', block: true, className: 'mt-7' })} href="/diagnostico">
               Solicitar diagnóstico inicial
             </Link>
-            <p className="hint" style={{ marginTop: '.9rem' }}>
+            <p className="m-0 mt-5 text-[0.85rem] text-cinza-escuro">
               Para questões institucionais que não envolvam um caso concreto,
-              escreva para o e-mail acima.
+              escreva para o e-mail ao lado.
             </p>
           </aside>
         </div>
-      </section>
+      </Secao>
 
-      <section className="section section--tight section--alt">
-        <div className="container">
-          <p className="eyebrow">Localização</p>
-          <h2 className="mb-0" style={{ marginBottom: '1.2rem' }}>
-            São Paulo/SP
-          </h2>
-          <div
-            style={{
-              border: '1px solid var(--line)',
-              borderRadius: 'var(--radius-lg)',
-              overflow: 'hidden',
-              background: 'var(--paper-pure)',
-            }}
-          >
-            <iframe
-              title="Mapa — Av. Brigadeiro Faria Lima, 1768, São Paulo/SP"
-              src="https://www.google.com/maps?q=Av.%20Brigadeiro%20Faria%20Lima%2C%201768%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001451-001&output=embed"
-              width="100%"
-              height="420"
-              style={{ border: 0, display: 'block' }}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            ></iframe>
-          </div>
+      <Secao className="bg-[linear-gradient(180deg,#e9e9f2,var(--papel))] pt-0 md:pt-0">
+        <p className="rotulo m-0 pt-16 text-marca md:pt-20">02 — Localização</p>
+        <h2 className="expandida m-0 mb-8 mt-4 text-[clamp(1.5rem,3vw,2.2rem)] font-[760] tracking-[-0.02em]">
+          São Paulo/SP
+        </h2>
+        <div className="overflow-hidden rounded-3xl border border-papel-2 bg-white">
+          <iframe
+            title="Mapa — Av. Brigadeiro Faria Lima, 1768, São Paulo/SP"
+            src="https://www.google.com/maps?q=Av.%20Brigadeiro%20Faria%20Lima%2C%201768%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001451-001&output=embed"
+            width="100%"
+            height="420"
+            style={{ border: 0, display: 'block' }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          ></iframe>
         </div>
-      </section>
-
-      <section className="section">
-        <div className="container container--narrow">
-          <div className="notice">
-            <strong>Aviso.</strong> O contato por estes canais não constitui
-            mandato profissional, não estabelece relação advogado-cliente e não
-            gera honorários. As informações enviadas serão tratadas com sigilo
-            profissional e em conformidade com a LGPD (Lei 13.709/2018).
-            Honorários, escopo e condições são tratados exclusivamente em ambiente
-            reservado e individual.
-          </div>
+        <div className="notice mt-10 max-w-[860px]">
+          <strong>Aviso.</strong> O contato por estes canais não constitui
+          mandato profissional, não estabelece relação advogado-cliente e não
+          gera honorários. As informações enviadas serão tratadas com sigilo
+          profissional e em conformidade com a LGPD (Lei 13.709/2018).
+          Honorários, escopo e condições são tratados exclusivamente em ambiente
+          reservado e individual.
         </div>
-      </section>
+      </Secao>
     </>
   );
 }

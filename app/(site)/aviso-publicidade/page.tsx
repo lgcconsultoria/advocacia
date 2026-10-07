@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { PageHero } from '@/components/site/page-hero';
 
 export const metadata: Metadata = {
   title: 'Aviso de Publicidade',
@@ -11,23 +11,16 @@ export const metadata: Metadata = {
 export default function AvisoPublicidadePage() {
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <nav className="breadcrumb" aria-label="Trilha de navegação">
-            <Link href="/">Início</Link>
-            <span aria-hidden="true">›</span>
-            Aviso de Publicidade
-          </nav>
-          <h1>Aviso de Publicidade.</h1>
-          <p className="lead">
-            O enquadramento ético da comunicação institucional deste escritório,
-            em observância às normas que regem a publicidade na advocacia.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        trilha={[{ label: 'Aviso de Publicidade' }]}
+        rotulo="Privacidade e ética"
+        titulo="Aviso de Publicidade."
+        lead="O enquadramento ético da comunicação institucional deste escritório, em observância às normas que regem a publicidade na advocacia."
+      />
 
-      <section className="section">
-        <div className="container container--narrow prose">
+      <section className="py-14 md:py-20">
+        <div className="container">
+          <div className="prose prose-lg mx-auto max-w-[760px]">
           <h2>Caráter informativo da comunicação</h2>
           <p>
             Este site e os perfis institucionais associados ao escritório{' '}
@@ -108,6 +101,7 @@ export default function AvisoPublicidadePage() {
             Advocacia e o Provimento CFOAB nº 205/2021, bem como eventuais atos
             normativos que venham a sucedê-los.
           </div>
+        </div>
         </div>
       </section>
     </>

@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getModelos } from '@/lib/modelos';
-import { Reveal } from '@/components/reveal';
+import { RevealGroup, RevealItem } from '@/components/reveal';
+import { PageHero } from '@/components/site/page-hero';
+import { Secao } from '@/components/site/secao';
 
 export const metadata: Metadata = {
   title: 'Modelos e materiais gratuitos',
@@ -15,39 +17,38 @@ export default async function ModelosIndex() {
   const modelos = await getModelos();
   return (
     <>
-      <section className="section">
-        <div className="container container--narrow">
-          <Reveal>
-            <p className="eyebrow">Materiais gratuitos</p>
-            <h1>Modelos editáveis para quem precisa agir antes do prazo acabar.</h1>
-            <p className="lead">
-              Peças e roteiros que usamos como ponto de partida no escritório, com as
-              notas de orientação que normalmente ficam de fora dos modelos que circulam
-              por aí. Em .docx, para você editar no Word.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      <PageHero
+        trilha={[{ label: 'Materiais' }]}
+        rotulo="Materiais gratuitos"
+        titulo="Modelos editáveis para quem precisa agir antes do prazo acabar."
+        lead="Peças e roteiros que usamos como ponto de partida no escritório, com as notas de orientação que normalmente ficam de fora dos modelos que circulam por aí. Em .docx, para você editar no Word."
+      />
 
-      <section className="section section--alt">
-        <div className="container">
-          <div className="grid grid-2">
-            {modelos.map((m) => (
-              <Reveal key={m.slug}>
-                <Link href={`/modelos/${m.slug}`} className="area-card">
-                  <p className="eyebrow">{m.documento}</p>
-                  <h3>{m.chamada}</h3>
-                  <p>{m.linha}</p>
-                  <span className="btn btn-ghost">Baixar gratuitamente</span>
+      <Secao className="bg-[linear-gradient(180deg,#e9e9f2,var(--papel))]">
+        {modelos.length > 0 ? (
+          <RevealGroup className="grid gap-5 md:grid-cols-2">
+            {modelos.map((m, i) => (
+              <RevealItem key={m.slug} className="h-full">
+                <Link href={`/modelos/${m.slug}`} className="card card-link group flex flex-col no-underline sm:p-9">
+                  <span className="flex items-baseline justify-between gap-4">
+                    <span className="rotulo text-[10.5px] text-marca">{m.documento}</span>
+                    <span className="rotulo num text-[10px] text-cinza">{String(i + 1).padStart(2, '0')}</span>
+                  </span>
+                  <h2 className="semi m-0 mt-4 text-[1.35rem] font-[720] leading-[1.18] tracking-[-0.015em] text-grafite group-hover:text-marca">
+                    {m.chamada}
+                  </h2>
+                  <p className="m-0 mt-3 leading-relaxed text-cinza">{m.linha}</p>
+                  <span className="link-seta mt-auto self-start pt-7">
+                    Baixar gratuitamente <span aria-hidden="true">→</span>
+                  </span>
                 </Link>
-              </Reveal>
+              </RevealItem>
             ))}
-          </div>
-          {modelos.length === 0 && (
-            <p className="lead">Os materiais estão sendo atualizados. Volte em instantes.</p>
-          )}
-        </div>
-      </section>
+          </RevealGroup>
+        ) : (
+          <p className="m-0 text-[1.1rem] text-cinza">Os materiais estão sendo atualizados. Volte em instantes.</p>
+        )}
+      </Secao>
     </>
   );
 }
