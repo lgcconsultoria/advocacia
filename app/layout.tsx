@@ -1,5 +1,27 @@
 import type { Metadata, Viewport } from 'next';
+import { Archivo, Instrument_Serif, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
+
+// Archivo com o eixo de largura (wdth): a classe .expandida usa font-stretch 125%,
+// o mais perto da Britanica expandida da identidade.
+const archivo = Archivo({
+  subsets: ['latin'],
+  axes: ['wdth'],
+  display: 'swap',
+  variable: '--fonte-archivo',
+});
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  weight: '400',
+  style: 'italic',
+  display: 'swap',
+  variable: '--fonte-serif',
+});
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--fonte-mono',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.senturiaoadv.com.br'),
@@ -31,7 +53,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#1d1b9a',
+  themeColor: '#0b0a2e',
 };
 
 export default function RootLayout({
@@ -40,19 +62,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html
+      lang="pt-BR"
+      className={`${archivo.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}
+    >
       <body>{children}</body>
     </html>
   );

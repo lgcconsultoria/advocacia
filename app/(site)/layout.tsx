@@ -10,7 +10,7 @@ export default async function SiteLayout({
   children: React.ReactNode;
 }) {
   const [areas, settings] = await Promise.all([getAreas(), getSettings()]);
-  const areaLinks = areas.map((a) => ({ slug: a.slug, title: a.title }));
+  const areaLinks = areas.map((a) => ({ slug: a.slug, title: a.title, group: a.group }));
 
   return (
     <>
