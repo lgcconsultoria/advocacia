@@ -1,0 +1,16 @@
+{
+ "_requisicao": {
+  "url": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao",
+  "params": {
+   "dataInicial": "20261006",
+   "dataFinal": "20261006",
+   "pagina": 1,
+   "tamanhoPagina": 10
+  },
+  "status": 400,
+  "latencia_s": 0.13,
+  "bytes": 0,
+  "coletado_em": "2026-10-07T05:16:48-0300"
+ },
+ "corpo": "{\"timestamp\":\"2026-10-07T08:16:48.761+00:00\",\"status\":400,\"error\":\"Bad Request\",\"message\":\"Required request parameter 'codigoModalidadeContratacao' for method parameter type Long is not present\",\"path\":\"/pncp-consulta/v1/contratacoes/publicacao\"}"
+}

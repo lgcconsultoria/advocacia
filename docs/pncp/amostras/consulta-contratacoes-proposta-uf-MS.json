@@ -1,0 +1,128 @@
+{
+ "_requisicao": {
+  "url": "https://pncp.gov.br/api/consulta/v1/contratacoes/proposta",
+  "params": {
+   "dataFinal": "20991231",
+   "uf": "MS",
+   "pagina": 1,
+   "tamanhoPagina": 10
+  },
+  "status": 200,
+  "latencia_s": 20.99,
+  "bytes": 20501,
+  "coletado_em": "2026-10-07T05:17:09-0300"
+ },
+ "totalRegistros": 461,
+ "totalPaginas": 47,
+ "numeroPagina": 1,
+ "paginasRestantes": 46,
+ "empty": false,
+ "data": [
+  {
+   "orgaoEntidade": {
+    "cnpj": "03442597000112",
+    "razaoSocial": "MUNICIPIO DE MARACAJU",
+    "poderId": "N",
+    "esferaId": "M"
+   },
+   "valorTotalHomologado": null,
+   "dataInclusao": "2024-05-16T08:38:08",
+   "dataAtualizacao": "2024-05-16T08:38:08",
+   "unidadeOrgao": {
+    "ufNome": "Mato Grosso do Sul",
+    "ufSigla": "MS",
+    "municipioNome": "Maracaju",
+    "codigoUnidade": "1",
+    "nomeUnidade": "PREFEITURA MUNICIPAL DE MARACAJU",
+    "codigoIbge": "5005400"
+   },
+   "orgaoSubRogado": null,
+   "unidadeSubRogada": null,
+   "amparoLegal": {
+    "nome": "Lei 14.133/2021, Art. 79, I",
+    "descricao": "Credenciamento: na hipótese de contratação paralela e não excludente: caso em que é viável e vantajosa para a Administração a realização de contratações simultâneas em condições padronizadas.",
+    "codigo": 140
+   },
+   "linkSistemaOrigem": "",
+   "linkProcessoEletronico": null,
+   "justificativaPresencial": "CREDENCIAMENTO DE INSTITUIÇÃO FINANCEIRA PARA PRESTAÇÃO DE SERVIÇOS BANCÁRIOS DE RECOLHIMENTO DE TRIBUTOS E DEMAIS RECEITAS MUNICIPAIS, ATRAVÉS DE DAM – DOCUMENTO DE ARRECADAÇÃO MUNICIPAL, POR INTERMÉDIO DE SUAS AGÊNCIAS, COM PRESTAÇÃO DE CONTAS POR MEIO MAGNÉTICO DE VALORES ARRECADADOS.",
+   "anoCompra": 2024,
+   "srp": false,
+   "sequencialCompra": 20,
+   "emendaParlamentar": null,
+   "numeroCompra": "CRE 1",
+   "processo": "686/2024",
+   "objetoCompra": "CREDENCIAMENTO DE INSTITUIÇÃO FINANCEIRA PARA PRESTAÇÃO DE SERVIÇOS BANCÁRIOS DE RECOLHIMENTO DE TRIBUTOS E DEMAIS RECEITAS MUNICIPAIS, ATRAVÉS DE DAM – DOCUMENTO DE ARRECADAÇÃO MUNICIPAL, POR INTERMÉDIO DE SUAS AGÊNCIAS, COM PRESTAÇÃO DE CONTAS POR MEIO MAGNÉTICO DE VALORES ARRECADADOS.",
+   "informacaoComplementar": "",
+   "dataAberturaProposta": "2024-03-05T08:00:00",
+   "dataEncerramentoProposta": "2034-03-05T17:00:00",
+   "dataPublicacaoPncp": "2024-05-16T08:38:08",
+   "dataAtualizacaoGlobal": "2024-05-16T08:38:08",
+   "numeroControlePNCP": "03442597000112-1-000020/2024",
+   "valorTotalEstimado": 543168.0,
+   "modalidadeId": 12,
+   "modalidadeNome": "Credenciamento",
+   "modoDisputaId": 5,
+   "modoDisputaNome": "Não se aplica",
+   "tipoInstrumentoConvocatorioCodigo": 4,
+   "tipoInstrumentoConvocatorioNome": "Edital de Chamamento Público",
+   "fontesOrcamentarias": [],
+   "situacaoCompraId": 1,
+   "situacaoCompraNome": "Divulgada no PNCP",
+   "usuarioNome": "Betha Sistemas"
+  },
+  {
+   "orgaoEntidade": {
+    "cnpj": "15410145000138",
+    "razaoSocial": "TRES LAGOAS CAMARA MUNICIPAL",
+    "poderId": "L",
+    "esferaId": "M"
+   },
+   "valorTotalHomologado": null,
+   "dataInclusao": "2024-09-13T13:02:25",
+   "dataAtualizacao": "2024-09-13T13:02:25",
+   "unidadeOrgao": {
+    "ufNome": "Mato Grosso do Sul",
+    "ufSigla": "MS",
+    "municipioNome": "Três Lagoas",
+    "codigoUnidade": "18",
+    "nomeUnidade": "CÂMARA MUNICIPAL DE TRÊS LAGOAS",
+    "codigoIbge": "5008305"
+   },
+   "orgaoSubRogado": null,
+   "unidadeSubRogada": null,
+   "amparoLegal": {
+    "nome": "Lei 14.133/2021, Art. 79, II",
+    "descricao": "Credenciamento: na hipótese de contratação com seleção a critério de terceiros: caso em que a seleção do contratado está a cargo do beneficiário direto da prestação.",
+    "codigo": 141
+   },
+   "linkSistemaOrigem": "https://bllcompras.com/Process/ProcessView?param1=[gkz]tL0dYA5AQcXHeQ1Giue0pQTfiTph0Q/jkkejOxhSR35j04lAQUx9Ob4CNzpAJ__Ccx0DRrZ2Myf_WZKTsFIEfqSJ1nFsmgWksyyIidLQNRQ=",
+   "linkProcessoEletronico": null,
+   "justificativaPresencial": null,
+   "anoCompra": 2024,
+   "srp": false,
+   "sequencialCompra": 41,
+   "emendaParlamentar": null,
+   "numeroCompra": "01",
+   "processo": "43/2024",
+   "objetoCompra": "Constitui objeto do presente credenciamento a Contratação de empresa(s) especializada(s) na prestação de serviços de administração, gerenciamento, emissão e fornecimento de vale alimentação, na forma de cartões de chip e magnéticos, para aquisição em estabelecimentos comerciais que comercializem gêneros alimentícios “in natura” aos servidores da Câmara Municipal de Três Lagoas, conforme especificações contidas no Termo de Referência – anexo II",
+   "informacaoComplementar": null,
+   "dataAberturaProposta": "2024-09-13T15:00:00",
+   "dataEncerramentoProposta": "2034-09-13T00:00:00",
+   "dataPublicacaoPncp": "2024-09-13T13:02:25",
+   "dataAtualizacaoGlobal": "2026-08-26T09:15:42",
+   "numeroControlePNCP": "15410145000138-1-000041/2024",
+   "valorTotalEstimado": 2895431.76,
+   "modalidadeId": 12,
+   "modalidadeNome": "Credenciamento",
+   "modoDisputaId": 5,
+   "modoDisputaNome": "Não se aplica",
+   "tipoInstrumentoConvocatorioCodigo": 4,
+   "tipoInstrumentoConvocatorioNome": "Edital de Chamamento Público",
+   "fontesOrcamentarias": [],
+   "situacaoCompraId": 1,
+   "situacaoCompraNome": "Divulgada no PNCP",
+   "usuarioNome": "BLL Compras"
+  }
+ ]
+}

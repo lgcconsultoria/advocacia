@@ -1,0 +1,129 @@
+{
+ "_requisicao": {
+  "url": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao",
+  "params": {
+   "dataInicial": "20261006",
+   "dataFinal": "20261006",
+   "codigoModalidadeContratacao": 6,
+   "pagina": 1,
+   "tamanhoPagina": 10
+  },
+  "status": 200,
+  "latencia_s": 0.16,
+  "bytes": 18894,
+  "coletado_em": "2026-10-07T05:16:47-0300"
+ },
+ "totalRegistros": 1563,
+ "totalPaginas": 157,
+ "numeroPagina": 1,
+ "paginasRestantes": 156,
+ "empty": false,
+ "data": [
+  {
+   "valorTotalHomologado": null,
+   "orgaoEntidade": {
+    "cnpj": "80881915000192",
+    "razaoSocial": "MUNICIPIO DE LINDOESTE",
+    "poderId": "N",
+    "esferaId": "M"
+   },
+   "dataInclusao": "2026-10-06T00:00:05",
+   "dataAtualizacao": "2026-10-06T00:00:05",
+   "numeroControlePNCP": "80881915000192-1-000094/2026",
+   "anoCompra": 2026,
+   "srp": false,
+   "sequencialCompra": 94,
+   "emendaParlamentar": null,
+   "numeroCompra": "PR64",
+   "processo": "PR64/2026",
+   "objetoCompra": "A presente licitação tem como objeto a escolha da proposta mais vantajosa, para a contratação de empresa especializada para o fornecimento, a fabricação e a instalação de grades metálicas de proteção em janelas e de portão de correr em estrutura metálica na Academia de Saúde Municipal, compreendidos todos os materiais, ferragens, fixadores, acabamento, transporte, mão de obra qualificada e serviços necessários à execução completa, em atendimento à Secretaria Municipal de Saúde, conforme condições, quantidades e exigências estabelecidas no Edital e seus anexos.",
+   "informacaoComplementar": null,
+   "dataAberturaProposta": "2026-10-05T08:00:01",
+   "dataEncerramentoProposta": "2026-10-22T08:00:01",
+   "dataPublicacaoPncp": "2026-10-06T00:00:05",
+   "dataAtualizacaoGlobal": "2026-10-06T00:00:06",
+   "unidadeOrgao": {
+    "ufNome": "Paraná",
+    "ufSigla": "PR",
+    "municipioNome": "Lindoeste",
+    "codigoIbge": "4113452",
+    "codigoUnidade": "2",
+    "nomeUnidade": "Prefeitura Municipal de Lindoeste"
+   },
+   "orgaoSubRogado": null,
+   "unidadeSubRogada": null,
+   "amparoLegal": {
+    "nome": "Lei 14.133/2021, Art. 28, I",
+    "descricao": "pregão: modalidade de licitação obrigatória para aquisição de bens e serviços comuns",
+    "codigo": 1
+   },
+   "linkSistemaOrigem": null,
+   "linkProcessoEletronico": null,
+   "justificativaPresencial": null,
+   "valorTotalEstimado": 8480.5,
+   "modalidadeId": 6,
+   "modalidadeNome": "Pregão - Eletrônico",
+   "modoDisputaId": 1,
+   "modoDisputaNome": "Aberto",
+   "tipoInstrumentoConvocatorioCodigo": 1,
+   "tipoInstrumentoConvocatorioNome": "Edital",
+   "fontesOrcamentarias": [],
+   "situacaoCompraId": 1,
+   "situacaoCompraNome": "Divulgada no PNCP",
+   "usuarioNome": "Pública Tecnologia Ltda."
+  },
+  {
+   "valorTotalHomologado": null,
+   "orgaoEntidade": {
+    "cnpj": "80881915000192",
+    "razaoSocial": "MUNICIPIO DE LINDOESTE",
+    "poderId": "N",
+    "esferaId": "M"
+   },
+   "dataInclusao": "2026-10-06T00:00:09",
+   "dataAtualizacao": "2026-10-06T00:00:09",
+   "numeroControlePNCP": "80881915000192-1-000095/2026",
+   "anoCompra": 2026,
+   "srp": true,
+   "sequencialCompra": 95,
+   "emendaParlamentar": null,
+   "numeroCompra": "PR63",
+   "processo": "PR63/2026",
+   "objetoCompra": "A presente licitação tem como objeto a escolha da proposta mais vantajosa, Registro de Preços para eventual e futura aquisição DE UTENSÍLIOS DE COPA E COZINHA, em atendimento às Secretarias Municipais de Saúde, de Educação e Cultura e de Assistência Social, conforme condições, quantidades e exigências estabelecidas no Edital e seus anexos",
+   "informacaoComplementar": null,
+   "dataAberturaProposta": "2026-10-05T08:00:01",
+   "dataEncerramentoProposta": "2026-10-20T08:00:01",
+   "dataPublicacaoPncp": "2026-10-06T00:00:09",
+   "dataAtualizacaoGlobal": "2026-10-06T00:00:17",
+   "unidadeOrgao": {
+    "ufNome": "Paraná",
+    "ufSigla": "PR",
+    "municipioNome": "Lindoeste",
+    "codigoIbge": "4113452",
+    "codigoUnidade": "2",
+    "nomeUnidade": "Prefeitura Municipal de Lindoeste"
+   },
+   "orgaoSubRogado": null,
+   "unidadeSubRogada": null,
+   "amparoLegal": {
+    "nome": "Lei 14.133/2021, Art. 28, I",
+    "descricao": "pregão: modalidade de licitação obrigatória para aquisição de bens e serviços comuns",
+    "codigo": 1
+   },
+   "linkSistemaOrigem": null,
+   "linkProcessoEletronico": null,
+   "justificativaPresencial": null,
+   "valorTotalEstimado": 90936.5,
+   "modalidadeId": 6,
+   "modalidadeNome": "Pregão - Eletrônico",
+   "modoDisputaId": 1,
+   "modoDisputaNome": "Aberto",
+   "tipoInstrumentoConvocatorioCodigo": 1,
+   "tipoInstrumentoConvocatorioNome": "Edital",
+   "fontesOrcamentarias": [],
+   "situacaoCompraId": 1,
+   "situacaoCompraNome": "Divulgada no PNCP",
+   "usuarioNome": "Pública Tecnologia Ltda."
+  }
+ ]
+}

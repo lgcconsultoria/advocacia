@@ -1,0 +1,127 @@
+{
+ "_requisicao": {
+  "url": "https://pncp.gov.br/api/consulta/v1/contratacoes/proposta",
+  "params": {
+   "dataFinal": "20991231",
+   "pagina": 1,
+   "tamanhoPagina": 10
+  },
+  "status": 200,
+  "latencia_s": 0.51,
+  "bytes": 19969,
+  "coletado_em": "2026-10-07T05:16:48-0300"
+ },
+ "totalRegistros": 38170,
+ "totalPaginas": 3817,
+ "numeroPagina": 1,
+ "paginasRestantes": 3816,
+ "empty": false,
+ "data": [
+  {
+   "valorTotalHomologado": null,
+   "orgaoEntidade": {
+    "cnpj": "00394460000141",
+    "razaoSocial": "MINISTERIO DA FAZENDA",
+    "poderId": "E",
+    "esferaId": "F"
+   },
+   "dataInclusao": "2022-05-04T16:37:44",
+   "dataAtualizacao": "2022-05-05T09:16:27",
+   "numeroControlePNCP": "00394460000141-1-000224/2022",
+   "anoCompra": 2022,
+   "sequencialCompra": 224,
+   "emendaParlamentar": null,
+   "numeroCompra": "00007",
+   "processo": "10905720056202268",
+   "srp": false,
+   "objetoCompra": "Contratação de manutenção de balança rodoviária utilizada nas inspeções na ACI cargas em Dionísio Cerqueira-SC",
+   "informacaoComplementar": "Observa o limite legal",
+   "dataAberturaProposta": "2022-05-05T09:16:26",
+   "dataEncerramentoProposta": "2030-05-10T07:59:59",
+   "dataPublicacaoPncp": "2022-05-04T16:37:44",
+   "dataAtualizacaoGlobal": "2022-05-05T09:16:27",
+   "unidadeOrgao": {
+    "ufNome": "Paraná",
+    "ufSigla": "PR",
+    "municipioNome": "Foz do Iguaçu",
+    "codigoIbge": "4108304",
+    "codigoUnidade": "170162",
+    "nomeUnidade": "ALFÂNDEGA DA RFB EM FOZ DO IGUAÇU"
+   },
+   "orgaoSubRogado": null,
+   "unidadeSubRogada": null,
+   "amparoLegal": {
+    "nome": "Lei 14.133/2021, Art. 75, I",
+    "descricao": "Dispensa de Licitação: para contratação que envolva valores inferiores a R$ 100.000,00 (cem mil reais), no caso de obras e serviços de engenharia ou de serviços de manutenção de veículos automotores",
+    "codigo": 18
+   },
+   "linkSistemaOrigem": "https://www.comprasnet.gov.br/acesso.asp?url=/proposta-170162-08-00007-2022",
+   "linkProcessoEletronico": null,
+   "justificativaPresencial": null,
+   "valorTotalEstimado": 37553.33,
+   "modalidadeId": 8,
+   "modalidadeNome": "Dispensa",
+   "modoDisputaId": 4,
+   "modoDisputaNome": "Dispensa Com Disputa",
+   "tipoInstrumentoConvocatorioCodigo": 2,
+   "tipoInstrumentoConvocatorioNome": "Aviso de Contratação Direta",
+   "fontesOrcamentarias": [],
+   "situacaoCompraId": 1,
+   "situacaoCompraNome": "Divulgada no PNCP",
+   "usuarioNome": "Compras.gov.br"
+  },
+  {
+   "valorTotalHomologado": 46977.24,
+   "orgaoEntidade": {
+    "cnpj": "88349238000178",
+    "razaoSocial": "MUNICIPIO DE ENCANTADO",
+    "poderId": "N",
+    "esferaId": "M"
+   },
+   "dataInclusao": "2023-03-24T14:36:09",
+   "dataAtualizacao": "2023-04-01T04:31:22",
+   "numeroControlePNCP": "88349238000178-1-000001/2023",
+   "anoCompra": 2023,
+   "sequencialCompra": 1,
+   "emendaParlamentar": null,
+   "numeroCompra": "4",
+   "processo": "49",
+   "srp": false,
+   "objetoCompra": "CREDENCIAMENTO DE PESSOAS JURÍDICAS ESPECIALIZADAS NA PRESTAÇÃO DE SERVIÇOS COMPLEMENTARES DE SAÚDE PARA PRONTO ATENDIMENTO (FICHAS VERDES E AZUIS) NO ÂMBITO DO SISTEMA ÚNICO DE SAÚDE - SUS E INTEGRADOS ÁS UNIDADES DE SAÚDE , SERVIÇOS NAS UNIDADES MUNICIPAIS DE SAUDE E SERVIÇOS DE AMBULÂNCIA PARA O MUNICIPIO DE ENCANTADO/RS",
+   "informacaoComplementar": "Na modalidade Credenciamento, apresentamos somente os valores unitários homologados, sem as quantidades. O valor total homologado representa o somatório do valor unitário dos itens.",
+   "dataAberturaProposta": "2023-03-23T09:00:00",
+   "dataEncerramentoProposta": "2028-03-23T17:00:00",
+   "dataPublicacaoPncp": "2023-03-24T14:36:09",
+   "dataAtualizacaoGlobal": "2023-04-01T04:31:22",
+   "unidadeOrgao": {
+    "ufNome": "Rio Grande do Sul",
+    "ufSigla": "RS",
+    "municipioNome": "Encantado",
+    "codigoIbge": "4306809",
+    "codigoUnidade": "1",
+    "nomeUnidade": "PREFEITURA MUNICIPAL DE ENCANTADO"
+   },
+   "orgaoSubRogado": null,
+   "unidadeSubRogada": null,
+   "amparoLegal": {
+    "nome": "Lei 14.133/2021, Art. 78, I",
+    "descricao": "Credenciamento: processo administrativo de chamamento público em que a Administração Pública convoca interessados em prestar serviços ou fornecer bens para que, preenchidos os requisitos necessários, se credenciem no órgão ou na entidade para executar o objeto quando convocados",
+    "codigo": 47
+   },
+   "linkSistemaOrigem": "https://portal.tce.rs.gov.br/aplicprod/f?p=50500:10:::NO:10:P10_ID_LICITACAO,P10_PAG_RETORNO,F50500_CD_ORGAO:1040689,5,46700&cs=1oCPGdtUbJXEDMKsnDbi8vqYSPio",
+   "linkProcessoEletronico": null,
+   "justificativaPresencial": null,
+   "valorTotalEstimado": 12032267.4,
+   "modalidadeId": 12,
+   "modalidadeNome": "Credenciamento",
+   "modoDisputaId": 2,
+   "modoDisputaNome": "Fechado",
+   "tipoInstrumentoConvocatorioCodigo": 1,
+   "tipoInstrumentoConvocatorioNome": "Edital",
+   "fontesOrcamentarias": [],
+   "situacaoCompraId": 1,
+   "situacaoCompraNome": "Divulgada no PNCP",
+   "usuarioNome": "LicitaCon - TCE-RS"
+  }
+ ]
+}

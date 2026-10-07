@@ -1,0 +1,15 @@
+{
+ "_requisicao": {
+  "url": "https://pncp.gov.br/api/consulta/v1/contratacoes/proposta",
+  "params": {
+   "dataFinal": "20991231",
+   "pagina": 1,
+   "tamanhoPagina": 51
+  },
+  "status": 400,
+  "latencia_s": 0.14,
+  "bytes": 0,
+  "coletado_em": "2026-10-07T05:17:10-0300"
+ },
+ "corpo": "{\"message\":\"Tamanho de página inválido\",\"path\":\"/pncp-consulta/v1/contratacoes/proposta\",\"timestamp\":\"2026-10-07T05:17:11.621-03:00\",\"status\":\"400\",\"error\":\"Bad Request\"}"
+}

@@ -1,0 +1,295 @@
+{
+ "abertas": {
+  "quantidade": 36878,
+  "procedencia": {
+   "fonte": "pncp-ao-vivo",
+   "metodo": "exato-api",
+   "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta",
+   "requisicoes": 1,
+   "consultadoEm": "2026-10-07T14:22:08.590Z",
+   "observacao": "recebendo ou a receber propostas"
+  },
+  "valor": {
+   "valor": 420134891785.99536,
+   "intervalo": [
+    399404430272.74994,
+    445116500962.75433
+   ],
+   "valorSemAtipicos": 201607412851.12537,
+   "intervaloSemAtipicos": [
+    180876951337.87994,
+    226589022027.88434
+   ],
+   "atipicos": {
+    "limite": 10000000000,
+    "quantidade": 6,
+    "valor": 218527478934.87
+   },
+   "semValorInformado": 5176,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "topo-exato+faixas",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta + ordenacao=-valor_total_estimado + faixas valor_total_estimado_min/_max",
+    "requisicoes": 35,
+    "consultadoEm": "2026-10-07T14:22:08.590Z",
+    "observacao": "soma de valor_total_estimado informado pelos órgãos"
+   }
+  },
+  "valorEstimado": 201607412851.12537,
+  "fonte": "pncp-ao-vivo",
+  "metodo": "topo-exato+faixas"
+ },
+ "publicadasHoje": {
+  "quantidade": 2375,
+  "procedencia": {
+   "fonte": "pncp-ao-vivo",
+   "metodo": "exato-api",
+   "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=todos&data_publicacao_inicio=2026-10-07&data_publicacao_fim=2026-10-07",
+   "requisicoes": 1,
+   "consultadoEm": "2026-10-07T14:22:08.631Z",
+   "observacao": "editais, avisos e atos de contratação direta publicados hoje (Brasília)"
+  },
+  "valor": {
+   "valor": 4668358019.163646,
+   "intervalo": [
+    4608836487.377739,
+    4739559560.686047
+   ],
+   "valorSemAtipicos": 4668358019.163646,
+   "intervaloSemAtipicos": [
+    4608836487.377739,
+    4739559560.686047
+   ],
+   "atipicos": {
+    "limite": 10000000000,
+    "quantidade": 0,
+    "valor": 0
+   },
+   "semValorInformado": 144,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "topo-exato+faixas",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=todos&data_publicacao_inicio=2026-10-07&data_publicacao_fim=2026-10-07 + ordenacao=-valor_total_estimado + faixas valor_total_estimado_min/_max",
+    "requisicoes": 27,
+    "consultadoEm": "2026-10-07T14:22:08.631Z",
+    "observacao": "soma de valor_total_estimado informado pelos órgãos"
+   }
+  },
+  "ritmoPorMinuto": 11.52
+ },
+ "publicadas24h": {
+  "quantidade": 6010,
+  "procedencia": {
+   "fonte": "pncp-ao-vivo",
+   "metodo": "exato-api",
+   "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=todos&data_publicacao_inicio=2026-10-06T11:22:08&data_publicacao_fim=2026-10-07T11:22:08",
+   "requisicoes": 1,
+   "consultadoEm": "2026-10-07T14:22:08.633Z",
+   "observacao": "últimas 24 horas corridas"
+  }
+ },
+ "publicadas30d": {
+  "quantidade": 125481,
+  "procedencia": {
+   "fonte": "pncp-ao-vivo",
+   "metodo": "exato-api",
+   "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=todos&data_publicacao_inicio=2026-09-08&data_publicacao_fim=2026-10-07",
+   "requisicoes": 1,
+   "consultadoEm": "2026-10-07T14:22:08.634Z",
+   "observacao": "últimos 30 dias, incluindo hoje"
+  },
+  "valor": {
+   "valor": 1282301332879.9807,
+   "intervalo": [
+    1253040444154.2258,
+    1317629698589.0112
+   ],
+   "valorSemAtipicos": 217280763619.27075,
+   "intervaloSemAtipicos": [
+    188019874893.51587,
+    252609129328.30127
+   ],
+   "atipicos": {
+    "limite": 10000000000,
+    "quantidade": 3,
+    "valor": 1065020569260.71
+   },
+   "semValorInformado": 9656,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "topo-exato+faixas",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=todos&data_publicacao_inicio=2026-09-08&data_publicacao_fim=2026-10-07 + ordenacao=-valor_total_estimado + faixas valor_total_estimado_min/_max",
+    "requisicoes": 35,
+    "consultadoEm": "2026-10-07T14:22:08.634Z",
+    "observacao": "soma de valor_total_estimado informado pelos órgãos"
+   }
+  }
+ },
+ "contratosMes": {
+  "quantidade": 15778,
+  "procedencia": {
+   "fonte": "pncp-ao-vivo",
+   "metodo": "exato-api",
+   "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=contrato&status=todos&data_assinatura_inicio=2026-10-01&data_assinatura_fim=2026-10-07",
+   "requisicoes": 1,
+   "consultadoEm": "2026-10-07T14:22:08.635Z",
+   "observacao": "contratos com data de assinatura no mês; a publicação no PNCP pode atrasar dias"
+  },
+  "valor": {
+   "valor": 2593427992.551051,
+   "intervalo": [
+    2428725771.199188,
+    2792867334.350193
+   ],
+   "valorSemAtipicos": 2593427992.551051,
+   "intervaloSemAtipicos": [
+    2428725771.199188,
+    2792867334.350193
+   ],
+   "atipicos": {
+    "limite": 10000000000,
+    "quantidade": 0,
+    "valor": 0
+   },
+   "semValorInformado": 188,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "topo-exato+faixas",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=contrato&status=todos&data_assinatura_inicio=2026-10-01&data_assinatura_fim=2026-10-07 + ordenacao=-valor_global + faixas valor_global_min/_max",
+    "requisicoes": 28,
+    "consultadoEm": "2026-10-07T14:22:08.635Z",
+    "observacao": "soma de valor_global informado pelos órgãos"
+   }
+  }
+ },
+ "contratosPublicadosHoje": {
+  "quantidade": 3072,
+  "procedencia": {
+   "fonte": "pncp-ao-vivo",
+   "metodo": "exato-api",
+   "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=contrato&status=todos&data_publicacao_inicio=2026-10-07&data_publicacao_fim=2026-10-07",
+   "requisicoes": 1,
+   "consultadoEm": "2026-10-07T14:22:08.636Z",
+   "observacao": "contratos publicados hoje no PNCP"
+  },
+  "valor": {
+   "valor": 721119898.4878905,
+   "intervalo": [
+    703196177.6374937,
+    742774717.889267
+   ],
+   "valorSemAtipicos": 721119898.4878905,
+   "intervaloSemAtipicos": [
+    703196177.6374937,
+    742774717.889267
+   ],
+   "atipicos": {
+    "limite": 10000000000,
+    "quantidade": 0,
+    "valor": 0
+   },
+   "semValorInformado": 17,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "topo-exato+faixas",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=contrato&status=todos&data_publicacao_inicio=2026-10-07&data_publicacao_fim=2026-10-07 + ordenacao=-valor_global + faixas valor_global_min/_max",
+    "requisicoes": 25,
+    "consultadoEm": "2026-10-07T14:22:08.636Z",
+    "observacao": "soma de valor_global informado pelos órgãos"
+   }
+  }
+ },
+ "porModalidade": [
+  {
+   "id": 6,
+   "nome": "Pregão - Eletrônico",
+   "abertas": 16623
+  },
+  {
+   "id": 12,
+   "nome": "Credenciamento",
+   "abertas": 11931
+  },
+  {
+   "id": 4,
+   "nome": "Concorrência - Eletrônica",
+   "abertas": 3922
+  },
+  {
+   "id": 8,
+   "nome": "Dispensa",
+   "abertas": 3328
+  },
+  {
+   "id": 5,
+   "nome": "Concorrência - Presencial",
+   "abertas": 286
+  },
+  {
+   "id": 7,
+   "nome": "Pregão - Presencial",
+   "abertas": 261
+  },
+  {
+   "id": 11,
+   "nome": "Pré-qualificação",
+   "abertas": 219
+  },
+  {
+   "id": 1,
+   "nome": "Leilão - Eletrônico",
+   "abertas": 158
+  },
+  {
+   "id": 13,
+   "nome": "Leilão - Presencial",
+   "abertas": 31
+  },
+  {
+   "id": 9,
+   "nome": "Inexigibilidade",
+   "abertas": 29
+  },
+  {
+   "id": 10,
+   "nome": "Manifestação de Interesse",
+   "abertas": 21
+  },
+  {
+   "id": 3,
+   "nome": "Concurso",
+   "abertas": 20
+  },
+  {
+   "id": 2,
+   "nome": "Diálogo Competitivo",
+   "abertas": 1
+  }
+ ],
+ "porEsfera": [
+  {
+   "id": "M",
+   "nome": "Municipal",
+   "abertas": 26197
+  },
+  {
+   "id": "E",
+   "nome": "Estadual",
+   "abertas": 5325
+  },
+  {
+   "id": "F",
+   "nome": "Federal",
+   "abertas": 3113
+  },
+  {
+   "id": "D",
+   "nome": "Distrital",
+   "abertas": 82
+  }
+ ],
+ "hoje": "2026-10-07",
+ "atualizadoEm": "2026-10-07T14:22:08.589Z",
+ "fonte": "pncp-ao-vivo",
+ "avisos": []
+}

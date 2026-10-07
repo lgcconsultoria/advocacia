@@ -1,0 +1,21 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Limite de Requisições Excedido</title>
+</head>
+<body>
+    <h2>Limite de requisições excedido</h2>
+
+    <p>
+        O limite de requisições foi excedido. Aguarde alguns instantes antes de realizar uma nova requisição.
+    </p>
+
+    <p>
+        Seu Support ID é: <strong><14140211398960788690></strong>
+    </p>
+
+    <p>
+        <a href="javascript:history.back();">Voltar</a>
+    </p>
+</body>
+</html>

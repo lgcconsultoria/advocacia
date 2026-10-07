@@ -1,0 +1,674 @@
+{
+ "_nota": "GET /api/search/filters — 1,3 MB gzip; IGNORA os parâmetros (status, ufs): devolve facetas globais de todo o índice. Cortado a 5 itens por faceta.",
+ "filters": {
+  "modalidades": [
+   {
+    "id": "8",
+    "nome": "Dispensa",
+    "total": 2134031
+   },
+   {
+    "id": "6",
+    "nome": "Pregão - Eletrônico",
+    "total": 1083056
+   },
+   {
+    "id": "9",
+    "nome": "Inexigibilidade",
+    "total": 692428
+   },
+   {
+    "id": "4",
+    "nome": "Concorrência - Eletrônica",
+    "total": 146714
+   },
+   {
+    "id": "12",
+    "nome": "Credenciamento",
+    "total": 53364
+   }
+  ],
+  "orgaos": [
+   {
+    "id": "44611",
+    "cnpj": "00394452000103",
+    "nome": "COMANDO DO EXERCITO",
+    "total": 98193
+   },
+   {
+    "id": "57870",
+    "cnpj": "07954480000179",
+    "nome": "ESTADO DO CEARA",
+    "total": 81144
+   },
+   {
+    "id": "46041",
+    "cnpj": "00394502000144",
+    "nome": "COMANDO DA MARINHA",
+    "total": 69326
+   },
+   {
+    "id": "34952",
+    "cnpj": "46374500000194",
+    "nome": "SECRETARIA DE ESTADO DA SAUDE",
+    "total": 32942
+   },
+   {
+    "id": "42434",
+    "cnpj": "96291141000180",
+    "nome": "SAO PAULO SECRETARIA DA ADMINISTRACAO PENITENCIARIA",
+    "total": 24107
+   }
+  ],
+  "unidades": [
+   {
+    "id": "48369",
+    "codigo": "1",
+    "nome": "Prefeitura Municipal de Lençóis Paulista",
+    "total": 22941,
+    "codigo_nome": "1-Prefeitura Municipal de Lençóis Paulista"
+   },
+   {
+    "id": "436270",
+    "codigo": "27",
+    "nome": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+    "total": 16222,
+    "codigo_nome": "27-FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE"
+   },
+   {
+    "id": "2411356",
+    "codigo": "3",
+    "nome": "PREF MUN DA ESTANCIA TURISTICA DE PIRAJU",
+    "total": 13655,
+    "codigo_nome": "3-PREF MUN DA ESTANCIA TURISTICA DE PIRAJU"
+   },
+   {
+    "id": "2260787",
+    "codigo": "01",
+    "nome": "Prefeitura Municipal de Vargem Grande do Sul",
+    "total": 12585,
+    "codigo_nome": "01-Prefeitura Municipal de Vargem Grande do Sul"
+   },
+   {
+    "id": "48361",
+    "codigo": "1",
+    "nome": "Prefeitura Municipal de Bebedouro",
+    "total": 11005,
+    "codigo_nome": "1-Prefeitura Municipal de Bebedouro"
+   }
+  ],
+  "anos": [
+   {
+    "ano": "9026",
+    "total": 1
+   },
+   {
+    "ano": "9020",
+    "total": 1
+   },
+   {
+    "ano": "9002",
+    "total": 1
+   },
+   {
+    "ano": "9001",
+    "total": 1
+   },
+   {
+    "ano": "7204",
+    "total": 1
+   }
+  ],
+  "ufs": [
+   {
+    "id": "SP",
+    "total": 835582
+   },
+   {
+    "id": "RS",
+    "total": 524311
+   },
+   {
+    "id": "MG",
+    "total": 386643
+   },
+   {
+    "id": "PR",
+    "total": 325350
+   },
+   {
+    "id": "GO",
+    "total": 313183
+   }
+  ],
+  "municipios": [
+   {
+    "id": "3550308",
+    "nome": "São Paulo",
+    "total": 119348
+   },
+   {
+    "id": "3304557",
+    "nome": "Rio de Janeiro",
+    "total": 115289
+   },
+   {
+    "id": "2927408",
+    "nome": "Salvador",
+    "total": 79337
+   },
+   {
+    "id": "5300108",
+    "nome": "Brasília",
+    "total": 76084
+   },
+   {
+    "id": "2611606",
+    "nome": "Recife",
+    "total": 69618
+   }
+  ],
+  "esferas": [
+   {
+    "id": "M",
+    "nome": "Municipal",
+    "total": 2845447
+   },
+   {
+    "id": "E",
+    "nome": "Estadual",
+    "total": 691317
+   },
+   {
+    "id": "F",
+    "nome": "Federal",
+    "total": 515199
+   },
+   {
+    "id": "N",
+    "nome": "Não se aplica",
+    "total": 95219
+   },
+   {
+    "id": "D",
+    "nome": "Distrital",
+    "total": 8178
+   }
+  ],
+  "poderes": [
+   {
+    "id": "N",
+    "nome": "Não se aplica",
+    "total": 2415346
+   },
+   {
+    "id": "E",
+    "nome": "Executivo",
+    "total": 1457103
+   },
+   {
+    "id": "L",
+    "nome": "Legislativo",
+    "total": 211474
+   },
+   {
+    "id": "J",
+    "nome": "Judiciário",
+    "total": 71437
+   }
+  ],
+  "tipos": [
+   {
+    "id": "3",
+    "nome": "Ato que autoriza a Contratação Direta",
+    "total": 1987565
+   },
+   {
+    "id": "1",
+    "nome": "Edital",
+    "total": 1282073
+   },
+   {
+    "id": "2",
+    "nome": "Aviso de Contratação Direta",
+    "total": 832258
+   },
+   {
+    "id": "4",
+    "nome": "Edital de Chamamento Público",
+    "total": 53464
+   }
+  ],
+  "tipos_contrato": [],
+  "fontes": [
+   {
+    "id": "3",
+    "nome": "Compras.gov.br",
+    "total": 1006344
+   },
+   {
+    "id": "5",
+    "nome": "ECustomize Consultoria em Software S.A",
+    "total": 188743
+   },
+   {
+    "id": "82",
+    "nome": "Governançabrasil Tecnologia e Gestão em Serviços",
+    "total": 188322
+   },
+   {
+    "id": "57",
+    "nome": "Megasoft Informática",
+    "total": 167863
+   },
+   {
+    "id": "55",
+    "nome": "IPM Sistemas",
+    "total": 159871
+   }
+  ],
+  "fontes_orcamentarias": [
+   {
+    "id": "2",
+    "nome": "Municipal",
+    "total": 118667
+   },
+   {
+    "id": "4",
+    "nome": "Federal",
+    "total": 59206
+   },
+   {
+    "id": "3",
+    "nome": "Estadual",
+    "total": 33638
+   },
+   {
+    "id": "1",
+    "nome": "Não se aplica",
+    "total": 3243
+   },
+   {
+    "id": "6",
+    "nome": "Distrital",
+    "total": 531
+   }
+  ],
+  "tipos_margens_preferencia": [
+   {
+    "id": "2",
+    "nome": "Resolução CICS",
+    "total": 1972
+   },
+   {
+    "id": "1",
+    "nome": "Resolução CIIA-PAC",
+    "total": 512
+   }
+  ],
+  "fornecedores": [
+   {
+    "id": "40491",
+    "ni": "44.734.671/0022-86",
+    "nome": "CRISTALIA PRODUTOS QUIMICOS FARMACEUTICOS LTDA",
+    "total": 6898
+   },
+   {
+    "id": "145",
+    "ni": "90.180.605/0001-02",
+    "nome": "GENTE SEGURADORA SA",
+    "total": 4680
+   },
+   {
+    "id": "6259",
+    "ni": "81.706.251/0001-98",
+    "nome": "PROMEFARMA MEDICAMENTOS E PRODUTOS HOSPITALARES LTDA",
+    "total": 4373
+   },
+   {
+    "id": "246860",
+    "ni": "51.659.136/0001-49",
+    "nome": "SOUL DISTRIBUIDORA DE PRODUTOS E EQUIPAMENTOS INDUSTRIAIS LTDA",
+    "total": 4078
+   },
+   {
+    "id": "1768",
+    "ni": "61.198.164/0001-60",
+    "nome": "PORTO SEGURO COMPANHIA DE SEGUROS GERAIS",
+    "total": 3798
+   }
+  ],
+  "fornecedores_subcontratados": [],
+  "unidades_subrogadas": [
+   {
+    "id": "24550",
+    "codigo": "5765",
+    "nome": "[P]-HOSPITAL DA RESTAURAÇÃO",
+    "total": 1845,
+    "codigo_nome": "5765-[P]-HOSPITAL DA RESTAURAÇÃO"
+   },
+   {
+    "id": "24483",
+    "codigo": "5769",
+    "nome": "[P]-HOSPITAL UNIVERSITÁRIO OSWALDO CRUZ",
+    "total": 1117,
+    "codigo_nome": "5769-[P]-HOSPITAL UNIVERSITÁRIO OSWALDO CRUZ"
+   },
+   {
+    "id": "23587",
+    "codigo": "5795",
+    "nome": "[P]-SECRETARIA DE SAÚDE",
+    "total": 738,
+    "codigo_nome": "5795-[P]-SECRETARIA DE SAÚDE"
+   },
+   {
+    "id": "24494",
+    "codigo": "5786",
+    "nome": "[P]-PRONTO SOCORRO CARDIOLÓGICO DE PERNAMBUCO",
+    "total": 478,
+    "codigo_nome": "5786-[P]-PRONTO SOCORRO CARDIOLÓGICO DE PERNAMBUCO"
+   },
+   {
+    "id": "24547",
+    "codigo": "5763",
+    "nome": "[P]-HOSPITAL AGAMENON MAGALHAES",
+    "total": 466,
+    "codigo_nome": "5763-[P]-HOSPITAL AGAMENON MAGALHAES"
+   }
+  ],
+  "orgaos_subrogados": [
+   {
+    "id": "5007",
+    "cnpj": "10572048000209",
+    "nome": "SECRETARIA DE SAUDE",
+    "total": 1845
+   },
+   {
+    "id": "5006",
+    "cnpj": "10572048000128",
+    "nome": "SECRETARIA DE SAUDE",
+    "total": 1711
+   },
+   {
+    "id": "7420",
+    "cnpj": "11022597001325",
+    "nome": "FUNDACAO UNIVERSIDADE DE PERNAMBUCO",
+    "total": 1499
+   },
+   {
+    "id": "5004",
+    "cnpj": "10572022000180",
+    "nome": "SECRETARIA DE ADMINISTRACAO",
+    "total": 1054
+   },
+   {
+    "id": "7422",
+    "cnpj": "11022597001597",
+    "nome": "FUNDACAO UNIVERSIDADE DE PERNAMBUCO",
+    "total": 917
+   }
+  ],
+  "normativos_base": [
+   {
+    "id": "1",
+    "nome": "Lei 14.133/2021",
+    "total": 4115176
+   },
+   {
+    "id": "5",
+    "nome": "Lei 13.303/2016",
+    "total": 26252
+   },
+   {
+    "id": "16",
+    "nome": "Lei 11.947/2009",
+    "total": 5953
+   },
+   {
+    "id": "17",
+    "nome": "Medida Provisória 1.221/2024",
+    "total": 2073
+   },
+   {
+    "id": "4",
+    "nome": "Lei 14.628/2023",
+    "total": 2065
+   }
+  ],
+  "situacoes": [
+   {
+    "id": "1",
+    "nome": "Divulgada no PNCP",
+    "total": 4089567
+   },
+   {
+    "id": "2",
+    "nome": "Revogada",
+    "total": 33151
+   },
+   {
+    "id": "3",
+    "nome": "Anulada",
+    "total": 17076
+   },
+   {
+    "id": "4",
+    "nome": "Suspensa",
+    "total": 12737
+   }
+  ],
+  "modos_disputa": [
+   {
+    "id": "5",
+    "nome": "Não se aplica",
+    "total": 2048010
+   },
+   {
+    "id": "1",
+    "nome": "Aberto",
+    "total": 935516
+   },
+   {
+    "id": "4",
+    "nome": "Dispensa Com Disputa",
+    "total": 823909
+   },
+   {
+    "id": "3",
+    "nome": "Aberto-Fechado",
+    "total": 318322
+   },
+   {
+    "id": "6",
+    "nome": "Fechado-Aberto",
+    "total": 15750
+   }
+  ],
+  "criterios_julgamento": [
+   {
+    "id": "1",
+    "nome": "Menor preço",
+    "total": 2599986
+   },
+   {
+    "id": "7",
+    "nome": "Não se aplica",
+    "total": 1487797
+   },
+   {
+    "id": "2",
+    "nome": "Maior desconto",
+    "total": 35281
+   },
+   {
+    "id": "5",
+    "nome": "Maior lance",
+    "total": 10518
+   },
+   {
+    "id": "4",
+    "nome": "Técnica e preço",
+    "total": 4802
+   }
+  ],
+  "item_situacoes": [
+   {
+    "id": "2",
+    "nome": "Homologado",
+    "total": 2759384
+   },
+   {
+    "id": "1",
+    "nome": "Em andamento",
+    "total": 1310958
+   },
+   {
+    "id": "5",
+    "nome": "Fracassado",
+    "total": 184386
+   },
+   {
+    "id": "4",
+    "nome": "Deserto",
+    "total": 152717
+   },
+   {
+    "id": "3",
+    "nome": "Anulado/Revogado/Cancelado",
+    "total": 81487
+   }
+  ],
+  "item_tipos": [
+   {
+    "id": "M",
+    "nome": "Material",
+    "total": 2291993
+   },
+   {
+    "id": "S",
+    "nome": "Serviço",
+    "total": 1978128
+   }
+  ],
+  "item_categorias_leilao": [
+   {
+    "id": "3",
+    "nome": "Não se aplica",
+    "total": 4132592
+   },
+   {
+    "id": "2",
+    "nome": "Bens Móveis",
+    "total": 3381
+   },
+   {
+    "id": "1",
+    "nome": "Bens Imóveis",
+    "total": 1576
+   }
+  ],
+  "item_beneficios": [
+   {
+    "id": "5",
+    "nome": "Não se aplica",
+    "total": 2073601
+   },
+   {
+    "id": "4",
+    "nome": "Sem benefício",
+    "total": 1411060
+   },
+   {
+    "id": "1",
+    "nome": "Participação exclusiva para ME/EPP",
+    "total": 778602
+   },
+   {
+    "id": "3",
+    "nome": "Cota reservada para ME/EPP",
+    "total": 53739
+   },
+   {
+    "id": "2",
+    "nome": "Subcontratação para ME/EPP",
+    "total": 8374
+   }
+  ],
+  "item_unidades_medida": [
+   {
+    "id": "UNIDADE",
+    "total": 890640,
+    "nome": "UNIDADE"
+   },
+   {
+    "id": "Unidade",
+    "total": 551910,
+    "nome": "Unidade"
+   },
+   {
+    "id": "UN",
+    "total": 535542,
+    "nome": "UN"
+   },
+   {
+    "id": "UND",
+    "total": 127986,
+    "nome": "UND"
+   },
+   {
+    "id": "SERVIÇO",
+    "total": 118501,
+    "nome": "SERVIÇO"
+   }
+  ],
+  "resultado_item_situacoes": [
+   {
+    "id": "1",
+    "nome": "Informado",
+    "total": 2950075
+   },
+   {
+    "id": "2",
+    "nome": "Cancelado",
+    "total": 35276
+   },
+   {
+    "id": "4",
+    "nome": "Informado remanescente",
+    "total": 34
+   },
+   {
+    "id": "3",
+    "nome": "Informado cadastro de reserva",
+    "total": 7
+   }
+  ],
+  "amparos_legais": [
+   {
+    "id": "19",
+    "nome": "Lei 14.133/2021, Art. 75, II",
+    "total": 1706526
+   },
+   {
+    "id": "1",
+    "nome": "Lei 14.133/2021, Art. 28, I",
+    "total": 1102941
+   },
+   {
+    "id": "18",
+    "nome": "Lei 14.133/2021, Art. 75, I",
+    "total": 189952
+   },
+   {
+    "id": "7",
+    "nome": "Lei 14.133/2021, Art. 74, II",
+    "total": 160868
+   },
+   {
+    "id": "2",
+    "nome": "Lei 14.133/2021, Art. 28, II ",
+    "total": 154752
+   }
+  ]
+ }
+}

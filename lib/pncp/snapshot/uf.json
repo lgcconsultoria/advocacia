@@ -1,0 +1,628 @@
+{
+ "ufs": [
+  {
+   "uf": "AC",
+   "nome": "Acre",
+   "capital": "Rio Branco",
+   "lat": -9.9747,
+   "lng": -67.8243,
+   "abertas": 134,
+   "valorEstimado": 1605877379.8402002,
+   "valorEstimadoBruto": 1605877379.8402002,
+   "valorIntervalo": [
+    1605877379.8402002,
+    1605877379.8402002
+   ],
+   "publicadas30d": 336,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "soma-exata",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=AC",
+    "requisicoes": 3,
+    "consultadoEm": "2026-10-07T14:22:27.167Z",
+    "observacao": "abertas e publicadas30d exatas; valor por soma-exata, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "AL",
+   "nome": "Alagoas",
+   "capital": "Maceió",
+   "lat": -9.6658,
+   "lng": -35.735,
+   "abertas": 270,
+   "valorEstimado": 1091726056.0669997,
+   "valorEstimadoBruto": 1091726056.0669997,
+   "valorIntervalo": [
+    1091726056.0669997,
+    1091726056.0669997
+   ],
+   "publicadas30d": 809,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "soma-exata",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=AL",
+    "requisicoes": 3,
+    "consultadoEm": "2026-10-07T14:22:27.169Z",
+    "observacao": "abertas e publicadas30d exatas; valor por soma-exata, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "AP",
+   "nome": "Amapá",
+   "capital": "Macapá",
+   "lat": 0.0349,
+   "lng": -51.0694,
+   "abertas": 56,
+   "valorEstimado": 1295017084.74,
+   "valorEstimadoBruto": 1295017084.74,
+   "valorIntervalo": [
+    1295017084.74,
+    1295017084.74
+   ],
+   "publicadas30d": 211,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "soma-exata",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=AP",
+    "requisicoes": 3,
+    "consultadoEm": "2026-10-07T14:22:27.169Z",
+    "observacao": "abertas e publicadas30d exatas; valor por soma-exata, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "AM",
+   "nome": "Amazonas",
+   "capital": "Manaus",
+   "lat": -3.119,
+   "lng": -60.0217,
+   "abertas": 230,
+   "valorEstimado": 901535007.9868002,
+   "valorEstimadoBruto": 901535007.9868002,
+   "valorIntervalo": [
+    901535007.9868002,
+    901535007.9868002
+   ],
+   "publicadas30d": 1379,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "soma-exata",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=AM",
+    "requisicoes": 3,
+    "consultadoEm": "2026-10-07T14:22:27.169Z",
+    "observacao": "abertas e publicadas30d exatas; valor por soma-exata, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "BA",
+   "nome": "Bahia",
+   "capital": "Salvador",
+   "lat": -12.9714,
+   "lng": -38.5014,
+   "abertas": 2939,
+   "valorEstimado": 11032538064.13673,
+   "valorEstimadoBruto": 11032538064.13673,
+   "valorIntervalo": [
+    9828402114.492367,
+    12745804103.063053
+   ],
+   "publicadas30d": 7313,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "topo-exato+faixas",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=BA",
+    "requisicoes": 18,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por topo-exato+faixas, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "CE",
+   "nome": "Ceará",
+   "capital": "Fortaleza",
+   "lat": -3.7319,
+   "lng": -38.5267,
+   "abertas": 1420,
+   "valorEstimado": 4578017621.629372,
+   "valorEstimadoBruto": 28831946882.33937,
+   "valorIntervalo": [
+    4423629590.265469,
+    4793308181.654495
+   ],
+   "publicadas30d": 4560,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "topo-exato+faixas",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=CE",
+    "requisicoes": 17,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por topo-exato+faixas, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "DF",
+   "nome": "Distrito Federal",
+   "capital": "Brasília",
+   "lat": -15.7939,
+   "lng": -47.8828,
+   "abertas": 580,
+   "valorEstimado": 9072350807.16831,
+   "valorEstimadoBruto": 9072350807.16831,
+   "valorIntervalo": [
+    9072350807.16831,
+    9072350807.16831
+   ],
+   "publicadas30d": 2325,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "soma-exata",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=DF",
+    "requisicoes": 4,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por soma-exata, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "ES",
+   "nome": "Espírito Santo",
+   "capital": "Vitória",
+   "lat": -20.3155,
+   "lng": -40.3128,
+   "abertas": 614,
+   "valorEstimado": 2496487002.5367002,
+   "valorEstimadoBruto": 2496487002.5367002,
+   "valorIntervalo": [
+    2496487002.5367002,
+    2496487002.5367002
+   ],
+   "publicadas30d": 2570,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "soma-exata",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=ES",
+    "requisicoes": 4,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por soma-exata, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "GO",
+   "nome": "Goiás",
+   "capital": "Goiânia",
+   "lat": -16.6869,
+   "lng": -49.2648,
+   "abertas": 1340,
+   "valorEstimado": 3879715558.917243,
+   "valorEstimadoBruto": 3879715558.917243,
+   "valorIntervalo": [
+    3754449772.6378736,
+    4056451622.0261927
+   ],
+   "publicadas30d": 8099,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "topo-exato+faixas",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=GO",
+    "requisicoes": 17,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por topo-exato+faixas, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "MA",
+   "nome": "Maranhão",
+   "capital": "São Luís",
+   "lat": -2.5307,
+   "lng": -44.3068,
+   "abertas": 340,
+   "valorEstimado": 944758519.9504005,
+   "valorEstimadoBruto": 944758519.9504005,
+   "valorIntervalo": [
+    944758519.9504005,
+    944758519.9504005
+   ],
+   "publicadas30d": 1379,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "soma-exata",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=MA",
+    "requisicoes": 3,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por soma-exata, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "MT",
+   "nome": "Mato Grosso",
+   "capital": "Cuiabá",
+   "lat": -15.601,
+   "lng": -56.0974,
+   "abertas": 528,
+   "valorEstimado": 3005663024.8443036,
+   "valorEstimadoBruto": 3005663024.8443036,
+   "valorIntervalo": [
+    3005663024.8443036,
+    3005663024.8443036
+   ],
+   "publicadas30d": 1610,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "soma-exata",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=MT",
+    "requisicoes": 4,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por soma-exata, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "MS",
+   "nome": "Mato Grosso do Sul",
+   "capital": "Campo Grande",
+   "lat": -20.4697,
+   "lng": -54.6201,
+   "abertas": 438,
+   "valorEstimado": 1142549763.2534,
+   "valorEstimadoBruto": 1142549763.2534,
+   "valorIntervalo": [
+    1142549763.2534,
+    1142549763.2534
+   ],
+   "publicadas30d": 1513,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "soma-exata",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=MS",
+    "requisicoes": 3,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por soma-exata, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "MG",
+   "nome": "Minas Gerais",
+   "capital": "Belo Horizonte",
+   "lat": -19.9167,
+   "lng": -43.9345,
+   "abertas": 5786,
+   "valorEstimado": 36868894290.14784,
+   "valorEstimadoBruto": 158789527031.72784,
+   "valorIntervalo": [
+    34580837900.05623,
+    40151592425.833176
+   ],
+   "publicadas30d": 12208,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "topo-exato+faixas",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=MG",
+    "requisicoes": 19,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por topo-exato+faixas, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "PA",
+   "nome": "Pará",
+   "capital": "Belém",
+   "lat": -1.4558,
+   "lng": -48.4902,
+   "abertas": 575,
+   "valorEstimado": 8460224926.237496,
+   "valorEstimadoBruto": 8460224926.237496,
+   "valorIntervalo": [
+    8460224926.237496,
+    8460224926.237496
+   ],
+   "publicadas30d": 2157,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "soma-exata",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=PA",
+    "requisicoes": 4,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por soma-exata, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "PB",
+   "nome": "Paraíba",
+   "capital": "João Pessoa",
+   "lat": -7.1195,
+   "lng": -34.845,
+   "abertas": 549,
+   "valorEstimado": 1272687124.8888009,
+   "valorEstimadoBruto": 1272687124.8888009,
+   "valorIntervalo": [
+    1272687124.8888009,
+    1272687124.8888009
+   ],
+   "publicadas30d": 2082,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "soma-exata",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=PB",
+    "requisicoes": 4,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por soma-exata, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "PR",
+   "nome": "Paraná",
+   "capital": "Curitiba",
+   "lat": -25.4284,
+   "lng": -49.2733,
+   "abertas": 3799,
+   "valorEstimado": 16023401519.625488,
+   "valorEstimadoBruto": 35760465395.62549,
+   "valorIntervalo": [
+    15030633035.237022,
+    17426097490.854515
+   ],
+   "publicadas30d": 10297,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "topo-exato+faixas",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=PR",
+    "requisicoes": 18,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por topo-exato+faixas, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "PE",
+   "nome": "Pernambuco",
+   "capital": "Recife",
+   "lat": -8.0476,
+   "lng": -34.877,
+   "abertas": 992,
+   "valorEstimado": 5291073719.528906,
+   "valorEstimadoBruto": 5291073719.528906,
+   "valorIntervalo": [
+    5291073719.528906,
+    5291073719.528906
+   ],
+   "publicadas30d": 3262,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "soma-exata",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=PE",
+    "requisicoes": 4,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por soma-exata, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "PI",
+   "nome": "Piauí",
+   "capital": "Teresina",
+   "lat": -5.0892,
+   "lng": -42.8019,
+   "abertas": 450,
+   "valorEstimado": 1130379934.3599985,
+   "valorEstimadoBruto": 1130379934.3599985,
+   "valorIntervalo": [
+    1130379934.3599985,
+    1130379934.3599985
+   ],
+   "publicadas30d": 1069,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "soma-exata",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=PI",
+    "requisicoes": 3,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por soma-exata, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "RJ",
+   "nome": "Rio de Janeiro",
+   "capital": "Rio de Janeiro",
+   "lat": -22.9068,
+   "lng": -43.1729,
+   "abertas": 1441,
+   "valorEstimado": 16229836164.314919,
+   "valorEstimadoBruto": 16229836164.314919,
+   "valorIntervalo": [
+    16016180699.060787,
+    16535049766.651329
+   ],
+   "publicadas30d": 5570,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "topo-exato+faixas",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=RJ",
+    "requisicoes": 18,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por topo-exato+faixas, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "RN",
+   "nome": "Rio Grande do Norte",
+   "capital": "Natal",
+   "lat": -5.7945,
+   "lng": -35.211,
+   "abertas": 550,
+   "valorEstimado": 1422623068.469599,
+   "valorEstimadoBruto": 1422623068.469599,
+   "valorIntervalo": [
+    1422623068.469599,
+    1422623068.469599
+   ],
+   "publicadas30d": 2056,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "soma-exata",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=RN",
+    "requisicoes": 4,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por soma-exata, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "RS",
+   "nome": "Rio Grande do Sul",
+   "capital": "Porto Alegre",
+   "lat": -30.0346,
+   "lng": -51.2177,
+   "abertas": 3802,
+   "valorEstimado": 19958759604.2453,
+   "valorEstimadoBruto": 35227052003.4253,
+   "valorIntervalo": [
+    19066700114.7393,
+    21220401573.72422
+   ],
+   "publicadas30d": 16027,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "topo-exato+faixas",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=RS",
+    "requisicoes": 18,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por topo-exato+faixas, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "RO",
+   "nome": "Rondônia",
+   "capital": "Porto Velho",
+   "lat": -8.7612,
+   "lng": -63.9004,
+   "abertas": 400,
+   "valorEstimado": 10114753554.000893,
+   "valorEstimadoBruto": 10114753554.000893,
+   "valorIntervalo": [
+    10114753554.000893,
+    10114753554.000893
+   ],
+   "publicadas30d": 1305,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "soma-exata",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=RO",
+    "requisicoes": 3,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por soma-exata, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "RR",
+   "nome": "Roraima",
+   "capital": "Boa Vista",
+   "lat": 2.8235,
+   "lng": -60.6758,
+   "abertas": 84,
+   "valorEstimado": 661198645.205,
+   "valorEstimadoBruto": 661198645.205,
+   "valorIntervalo": [
+    661198645.205,
+    661198645.205
+   ],
+   "publicadas30d": 230,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "soma-exata",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=RR",
+    "requisicoes": 3,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por soma-exata, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "SC",
+   "nome": "Santa Catarina",
+   "capital": "Florianópolis",
+   "lat": -27.5954,
+   "lng": -48.548,
+   "abertas": 2718,
+   "valorEstimado": 7373633438.853409,
+   "valorEstimadoBruto": 7373633438.853409,
+   "valorIntervalo": [
+    6841453064.734194,
+    8148938124.762987
+   ],
+   "publicadas30d": 7842,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "topo-exato+faixas",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=SC",
+    "requisicoes": 18,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por topo-exato+faixas, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "SP",
+   "nome": "São Paulo",
+   "capital": "São Paulo",
+   "lat": -23.5505,
+   "lng": -46.6333,
+   "abertas": 6203,
+   "valorEstimado": 30123721714.56656,
+   "valorEstimadoBruto": 40542004402.56656,
+   "valorIntervalo": [
+    28035210575.85907,
+    33121409416.045067
+   ],
+   "publicadas30d": 27336,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "topo-exato+faixas",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=SP",
+    "requisicoes": 19,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por topo-exato+faixas, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "SE",
+   "nome": "Sergipe",
+   "capital": "Aracaju",
+   "lat": -10.9472,
+   "lng": -37.0731,
+   "abertas": 224,
+   "valorEstimado": 1024651398.2599999,
+   "valorEstimadoBruto": 1024651398.2599999,
+   "valorIntervalo": [
+    1024651398.2599999,
+    1024651398.2599999
+   ],
+   "publicadas30d": 992,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "soma-exata",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=SE",
+    "requisicoes": 3,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por soma-exata, sem registros ≥ R$ 10 bi"
+   }
+  },
+  {
+   "uf": "TO",
+   "nome": "Tocantins",
+   "capital": "Palmas",
+   "lat": -10.2491,
+   "lng": -48.3243,
+   "abertas": 419,
+   "valorEstimado": 4055557620.4748726,
+   "valorEstimadoBruto": 30984835589.874874,
+   "valorIntervalo": [
+    4055557620.4748726,
+    4055557620.4748726
+   ],
+   "publicadas30d": 949,
+   "procedencia": {
+    "fonte": "pncp-ao-vivo",
+    "metodo": "soma-exata",
+    "endpoint": "GET pncp.gov.br/api/search/?tipos_documento=edital&status=recebendo_proposta&ufs=TO",
+    "requisicoes": 3,
+    "consultadoEm": "2026-10-07T14:22:27.170Z",
+    "observacao": "abertas e publicadas30d exatas; valor por soma-exata, sem registros ≥ R$ 10 bi"
+   }
+  }
+ ],
+ "atualizadoEm": "2026-10-07T14:22:27.167Z",
+ "fonte": "pncp-ao-vivo",
+ "avisos": []
+}

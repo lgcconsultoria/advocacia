@@ -1,0 +1,14 @@
+{
+ "_requisicao": {
+  "url": "https://pncp.gov.br/api/consulta/v1/contratacoes/proposta",
+  "params": {
+   "dataFinal": "2026-10-07",
+   "pagina": 1
+  },
+  "status": 422,
+  "latencia_s": 0.15,
+  "bytes": 0,
+  "coletado_em": "2026-10-07T05:17:11-0300"
+ },
+ "corpo": "{\"path\":\"/pncp-consulta/v1/contratacoes/proposta\",\"message\":\"Data Final inválida, deve estar no formato yyyyMMdd.\",\"error\":\"422 UNPROCESSABLE_ENTITY\",\"timestamp\":\"2026-10-07T05:17:11.769-03:00\",\"status\":\"422\"}"
+}

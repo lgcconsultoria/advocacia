@@ -1,0 +1,16 @@
+{
+ "_requisicao": {
+  "url": "https://pncp.gov.br/api/consulta/v1/pca/atualizacao",
+  "params": {
+   "dataInicio": "20261006",
+   "dataFim": "20261006",
+   "pagina": 1,
+   "tamanhoPagina": 10
+  },
+  "status": 429,
+  "latencia_s": 0.12,
+  "bytes": 0,
+  "coletado_em": "2026-10-07T05:17:10-0300"
+ },
+ "corpo": "<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Limite de Requisições Excedido</title>\n</head>\n<body>\n    <h2>Limite de requisições excedido</h2>\n\n    <p>\n        O limite de requisições foi excedido. Aguarde alguns instantes antes de realizar uma nova requisição.\n    </p>\n\n    <p>\n     "
+}

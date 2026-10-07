@@ -1,0 +1,144 @@
+{
+ "_requisicao": {
+  "url": "https://pncp.gov.br/api/consulta/v1/contratos",
+  "params": {
+   "dataInicial": "20261006",
+   "dataFinal": "20261006",
+   "pagina": 1,
+   "tamanhoPagina": 10
+  },
+  "status": 200,
+  "latencia_s": 0.64,
+  "bytes": 18262,
+  "coletado_em": "2026-10-07T05:17:10-0300"
+ },
+ "totalRegistros": 8496,
+ "totalPaginas": 850,
+ "numeroPagina": 1,
+ "paginasRestantes": 849,
+ "empty": false,
+ "data": [
+  {
+   "numeroControlePncpCompra": "02362976000130-1-000266/2026",
+   "numeroControlePncpAta": null,
+   "codigoPaisFornecedor": null,
+   "orgaoEntidade": {
+    "cnpj": "02362976000130",
+    "razaoSocial": "FUNDACAO CULTURAL DE ITAJAI",
+    "poderId": "E",
+    "esferaId": "M"
+   },
+   "anoContrato": 2026,
+   "sequencialContrato": 270,
+   "dataAtualizacao": "2026-10-06T00:03:48",
+   "identificadorCipi": null,
+   "urlCipi": null,
+   "numeroControlePNCP": "02362976000130-2-000270/2026",
+   "tipoPessoa": "PJ",
+   "niFornecedor": "41072808000161",
+   "nomeRazaoSocialFornecedor": "ROBSON FERNANDO NEVES DIAS 00645159905",
+   "receita": false,
+   "numeroParcelas": 1,
+   "numeroRetificacao": 0,
+   "temRemanejamento": false,
+   "frutoAdesao": false,
+   "tipoContrato": {
+    "id": 1,
+    "nome": "Contrato (termo inicial)"
+   },
+   "numeroContratoEmpenho": "296/2026-FCI",
+   "categoriaProcesso": {
+    "id": 8,
+    "nome": "Serviços"
+   },
+   "tipoPessoaSubContratada": null,
+   "niFornecedorSubContratado": null,
+   "nomeFornecedorSubContratado": null,
+   "objetoContrato": "O presente processo tem por objeto a contratação de fornecedor(a) para a prestação de serviços destinados ao atendimento das demandas institucionais da Fundação Cultural de Itajaí, no âmbito da execução de eventos artístico-culturais promovidos no município, em estrita observância às disposições, critérios de habilitação, seleção e demais condições estabelecidas no Edital de Credenciamento nº 013/2026 e seus anexos.",
+   "valorInicial": 9000.0,
+   "valorParcela": 9000.0,
+   "valorGlobal": 9000.0,
+   "valorAcumulado": null,
+   "dataAssinatura": "2026-10-02",
+   "dataVigenciaInicio": "2026-10-02",
+   "dataVigenciaFim": "2027-10-02",
+   "emendaParlamentar": null,
+   "processo": "INEX-279/2026",
+   "informacaoComplementar": null,
+   "dataPublicacaoPncp": "2026-10-06T00:03:47",
+   "dataAtualizacaoGlobal": "2026-10-06T00:03:48",
+   "unidadeOrgao": {
+    "ufNome": "Santa Catarina",
+    "ufSigla": "SC",
+    "municipioNome": "Itajaí",
+    "codigoIbge": "4208203",
+    "codigoUnidade": "33",
+    "nomeUnidade": "Fundação Cultural de Itajaí - FCI"
+   },
+   "orgaoSubRogado": null,
+   "unidadeSubRogada": null,
+   "usuarioNome": "Pública Tecnologia Ltda."
+  },
+  {
+   "numeroControlePncpCompra": "02362976000130-1-000268/2026",
+   "numeroControlePncpAta": null,
+   "codigoPaisFornecedor": null,
+   "orgaoEntidade": {
+    "cnpj": "02362976000130",
+    "razaoSocial": "FUNDACAO CULTURAL DE ITAJAI",
+    "poderId": "E",
+    "esferaId": "M"
+   },
+   "anoContrato": 2026,
+   "sequencialContrato": 271,
+   "dataAtualizacao": "2026-10-06T00:03:53",
+   "identificadorCipi": null,
+   "urlCipi": null,
+   "numeroControlePNCP": "02362976000130-2-000271/2026",
+   "tipoPessoa": "PJ",
+   "niFornecedor": "45663046000129",
+   "nomeRazaoSocialFornecedor": "45.663.046 FABIO NASCIMENTO DA SILVA",
+   "receita": false,
+   "numeroParcelas": 1,
+   "numeroRetificacao": 0,
+   "temRemanejamento": false,
+   "frutoAdesao": false,
+   "tipoContrato": {
+    "id": 1,
+    "nome": "Contrato (termo inicial)"
+   },
+   "numeroContratoEmpenho": "302/2026-FCI",
+   "categoriaProcesso": {
+    "id": 8,
+    "nome": "Serviços"
+   },
+   "tipoPessoaSubContratada": null,
+   "niFornecedorSubContratado": null,
+   "nomeFornecedorSubContratado": null,
+   "objetoContrato": "O presente processo tem por objeto a contratação de fornecedor(a) para a prestação de serviços destinados ao atendimento das demandas institucionais da Fundação Cultural de Itajaí, no âmbito da execução de eventos artístico-culturais promovidos no município, em estrita observância às disposições, critérios de habilitação, seleção e demais condições estabelecidas no Edital de Credenciamento nº 013/2026 e seus anexos.",
+   "valorInicial": 30000.0,
+   "valorParcela": 30000.0,
+   "valorGlobal": 30000.0,
+   "valorAcumulado": null,
+   "dataAssinatura": "2026-10-02",
+   "dataVigenciaInicio": "2026-10-02",
+   "dataVigenciaFim": "2027-10-02",
+   "emendaParlamentar": null,
+   "processo": "INEX-285/2026",
+   "informacaoComplementar": null,
+   "dataPublicacaoPncp": "2026-10-06T00:03:52",
+   "dataAtualizacaoGlobal": "2026-10-06T00:03:53",
+   "unidadeOrgao": {
+    "ufNome": "Santa Catarina",
+    "ufSigla": "SC",
+    "municipioNome": "Itajaí",
+    "codigoIbge": "4208203",
+    "codigoUnidade": "33",
+    "nomeUnidade": "Fundação Cultural de Itajaí - FCI"
+   },
+   "orgaoSubRogado": null,
+   "unidadeSubRogada": null,
+   "usuarioNome": "Pública Tecnologia Ltda."
+  }
+ ]
+}
