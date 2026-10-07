@@ -27,7 +27,7 @@ export function SiteFooter({ areas, settings }: FooterProps) {
       <GradePlanta className="opacity-[0.12]" />
       <div className="container grid gap-12 pb-12 pt-16 md:pt-20 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-10">
         <div className="min-w-0">
-          <Link href="/" className="inline-block text-white no-underline" aria-label={`${settings.firmName} — página inicial`}>
+          <Link href="/" className="inline-block text-white no-underline" title="Página inicial">
             <Assinatura tamanho="lg" />
           </Link>
           <p className="mt-6 max-w-[34ch] text-cinza-escuro">

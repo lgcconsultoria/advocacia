@@ -52,7 +52,7 @@ export function SiteHeader() {
         <Link
           href="/"
           className="text-white no-underline"
-          aria-label="Douglas Senturião Advocacia — página inicial"
+          title="Página inicial"
         >
           <Assinatura />
         </Link>
