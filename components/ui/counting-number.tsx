@@ -29,6 +29,8 @@ export type CountingNumberProps = {
   onStart?: () => void;
   onComplete?: () => void;
   autoStart?: boolean;
+  /** Formata o número (já arredondado). Padrão: toLocaleString() do ambiente. */
+  format?: (n: number) => string;
 };
 
 export const CountingNumber = forwardRef<
@@ -44,13 +46,14 @@ export const CountingNumber = forwardRef<
       onStart,
       onComplete,
       autoStart = true,
+      format,
       ...props
     },
     ref,
   ) => {
     const count = useMotionValue(from);
     const rounded = useTransform(count, (latest) =>
-      Math.round(latest).toLocaleString(),
+      format ? format(Math.round(latest)) : Math.round(latest).toLocaleString(),
     );
     const controlsRef = useRef<AnimationPlaybackControls | null>(null);
 
