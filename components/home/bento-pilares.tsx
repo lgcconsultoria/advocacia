@@ -21,6 +21,7 @@ function Tile({
   video,
   className,
   grande = false,
+  medio = false,
   posicao,
 }: {
   href: string;
@@ -30,6 +31,7 @@ function Tile({
   video: string;
   className?: string;
   grande?: boolean;
+  medio?: boolean;
   posicao?: string;
 }) {
   return (
@@ -52,13 +54,14 @@ function Tile({
       </span>
       <h3
         className={cn(
-          'expandida m-0 max-w-[18ch] font-[790] leading-[1.02] tracking-[-0.035em]',
-          grande ? 'text-[clamp(1.8rem,3.4vw,2.9rem)]' : 'text-[1.45rem]',
+          'expandida m-0 max-w-[20ch] font-[790] tracking-[-0.035em]',
+          grande ? 'text-[clamp(1.9rem,3.4vw,2.9rem)]' : medio ? 'text-[clamp(1.5rem,2.3vw,2.05rem)]' : 'text-[1.4rem]',
+          'leading-[1.02]',
         )}
       >
         {titulo}
       </h3>
-      <p className={cn('m-0 mt-3 max-w-[48ch] leading-relaxed text-[#d4d3f3]', grande ? 'text-[1.02rem]' : 'text-[0.93rem]')}>{texto}</p>
+      <p className={cn('m-0 mt-3 max-w-[48ch] text-[#d4d3f3]', grande ? 'text-[1.02rem]' : 'text-[0.93rem]', 'leading-relaxed')}>{texto}</p>
     </Link>
   );
 }
@@ -81,7 +84,7 @@ export function BentoPilares() {
         posicao="40% 50%"
       />
       <Tile
-        grande
+        medio
         href="/licitacoes"
         rotulo="Licitações e contratos públicos"
         titulo="Do edital ao contrato, sob a Lei 14.133."
@@ -107,7 +110,7 @@ export function BentoPilares() {
         posicao="50% 60%"
       />
       <Tile
-        grande
+        medio
         href="/tributario#split-payment"
         rotulo="Split payment"
         titulo="O imposto separado no pagamento."

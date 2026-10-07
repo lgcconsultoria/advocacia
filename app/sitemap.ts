@@ -11,6 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '',
     '/sobre',
     '/areas',
+    '/tributario',
     '/licitacoes',
     '/blog',
     '/diagnostico',
@@ -22,7 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ].map((path) => ({
     url: `${BASE}${path}`,
     changeFrequency: 'monthly' as const,
-    priority: path === '' ? 1 : 0.7,
+    priority: path === '' ? 1 : path === '/tributario' || path === '/licitacoes' ? 0.9 : 0.7,
   }));
 
   const areaRoutes = areas.map((a) => ({

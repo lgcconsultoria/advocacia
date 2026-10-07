@@ -14,6 +14,7 @@ import { UmAno } from '@/components/licitacoes/um-ano';
 import { Frentes } from '@/components/licitacoes/frentes';
 import { FilmeLicitacoes } from '@/components/licitacoes/filme';
 import { dadosIniciais } from './dados';
+import { BotaoDiagnostico } from '@/components/diagnostico/botao';
 
 // Números do PNCP montados no servidor e renovados a cada 2 min (ISR); no
 // navegador, o termômetro segue ao vivo pelas rotas /api/pncp/*.
@@ -300,9 +301,9 @@ export default async function LicitacoesPage() {
         titulo="Tem um edital aberto ou um prazo correndo?"
         texto="Envie o edital ou a ata para um diagnóstico inicial. Retornamos em até 1 dia útil com os próximos passos."
       >
-        <Link className={buttonVariants({ variant: 'claro', size: 'lg' })} href="/diagnostico">
+        <BotaoDiagnostico variant="claro" size="lg" interesse="licitacoes">
           Solicitar diagnóstico
-        </Link>
+        </BotaoDiagnostico>
         <a
           className={buttonVariants({ variant: 'contorno-claro', size: 'lg' })}
           href={`https://wa.me/${settings.whatsapp}?text=${encodeURIComponent('Olá, gostaria de falar sobre o departamento jurídico de licitações.')}`}

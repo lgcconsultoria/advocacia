@@ -178,9 +178,9 @@ export function SiteFooter({ areas, settings }: FooterProps) {
       </div>
 
       {/* assinatura gigante, vazada */}
-      <div aria-hidden="true" className="pointer-events-none relative -mb-[3.2vw] select-none overflow-hidden">
+      <div aria-hidden="true" className="pointer-events-none relative -mb-[2.2vw] select-none overflow-hidden">
         <p
-          className="expandida m-0 whitespace-nowrap text-center text-[16.5vw] font-[900] leading-[0.8] tracking-[-0.06em] text-transparent [-webkit-text-stroke:1px_rgb(142_139_255/0.35)] [background:linear-gradient(180deg,rgb(142_139_255/0.22),transparent_75%)] [-webkit-background-clip:text] [background-clip:text]"
+          className="expandida m-0 whitespace-nowrap text-center text-[11.2vw] font-[900] leading-[0.8] tracking-[-0.05em] text-transparent [-webkit-text-stroke:1px_rgb(142_139_255/0.35)] [background:linear-gradient(180deg,rgb(142_139_255/0.22),transparent_75%)] [-webkit-background-clip:text] [background-clip:text]"
         >
           SENTURIÃO
         </p>

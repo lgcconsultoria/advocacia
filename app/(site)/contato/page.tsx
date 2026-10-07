@@ -4,6 +4,7 @@ import { getSettings } from '@/lib/reader';
 import { PageHero } from '@/components/site/page-hero';
 import { Secao } from '@/components/site/secao';
 import { buttonVariants } from '@/components/ui/button';
+import { BotaoDiagnostico } from '@/components/diagnostico/botao';
 
 export const metadata: Metadata = {
   title: 'Contato — Douglas Senturião Advocacia | Direito Administrativo em São Paulo',
@@ -77,9 +78,9 @@ export default async function ContatoPage() {
               frente, prazo e documentos — e garante uma triagem técnica mais
               precisa do que uma mensagem livre.
             </p>
-            <Link className={buttonVariants({ variant: 'claro', block: true, className: 'mt-7' })} href="/diagnostico">
+            <BotaoDiagnostico variant="claro" block className="mt-7">
               Solicitar diagnóstico inicial
-            </Link>
+            </BotaoDiagnostico>
             <p className="m-0 mt-5 text-[0.85rem] text-cinza-escuro">
               Para questões institucionais que não envolvam um caso concreto,
               escreva para o e-mail ao lado.

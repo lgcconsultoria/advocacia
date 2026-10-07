@@ -7,6 +7,7 @@ import { Cabecalho, Secao } from '@/components/site/secao';
 import { CtaFaixa } from '@/components/site/cta-faixa';
 import { AreaCard } from '@/components/site/area-card';
 import { buttonVariants } from '@/components/ui/button';
+import { BotaoDiagnostico } from '@/components/diagnostico/botao';
 
 export const metadata: Metadata = {
   title: 'Áreas de atuação — Direito Administrativo e Contencioso',
@@ -63,9 +64,9 @@ export default async function AreasPage() {
         titulo="Não sabe qual instrumento se aplica ao seu caso?"
         texto="O diagnóstico inicial existe justamente para isso: identificar a frente e o tempo de reação."
       >
-        <Link className={buttonVariants({ variant: 'claro', size: 'lg' })} href="/diagnostico">
+        <BotaoDiagnostico variant="claro" size="lg">
           Solicitar diagnóstico
-        </Link>
+        </BotaoDiagnostico>
       </CtaFaixa>
     </>
   );

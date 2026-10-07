@@ -21,6 +21,8 @@ export interface TextMorphingProps {
   cooldownDuration?: number;
   /** Pause the loop. */
   paused?: boolean;
+  /** Filtro SVG de limiar (dissolução "gosmenta"). Desligue para fontes finas. */
+  limiar?: boolean;
 }
 
 const DEFAULT_MORPH = 1.5;
@@ -39,6 +41,7 @@ export function TextMorphing({
   morphDuration = DEFAULT_MORPH,
   cooldownDuration = DEFAULT_COOLDOWN,
   paused = false,
+  limiar = true,
 }: TextMorphingProps) {
   const reactId = React.useId().replace(/:/g, "");
   const filterId = `wensity-text-morph-${reactId}`;
@@ -207,7 +210,7 @@ export function TextMorphing({
         "relative w-full",
         className,
       )}
-      style={{ filter: `url(#${filterId}) blur(0.6px)` }}
+      style={limiar ? { filter: `url(#${filterId}) blur(0.6px)` } : undefined}
     >
       <span
         ref={text1Ref}

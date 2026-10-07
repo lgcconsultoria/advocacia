@@ -8,6 +8,7 @@ import { JsonLd } from '@/components/json-ld';
 import { PageHero } from '@/components/site/page-hero';
 import { CtaFaixa } from '@/components/site/cta-faixa';
 import { buttonVariants } from '@/components/ui/button';
+import { BotaoDiagnostico } from '@/components/diagnostico/botao';
 
 export async function generateStaticParams() {
   const posts = await getPosts();
@@ -174,9 +175,9 @@ export default async function PostPage({
         titulo="Esse tema toca um caso seu?"
         texto="Envie o caso para uma triagem técnica inicial. Retornamos em até 1 dia útil."
       >
-        <Link className={buttonVariants({ variant: 'claro', size: 'lg' })} href="/diagnostico">
+        <BotaoDiagnostico variant="claro" size="lg">
           Enviar caso para análise
-        </Link>
+        </BotaoDiagnostico>
       </CtaFaixa>
     </>
   );

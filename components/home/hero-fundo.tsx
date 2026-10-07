@@ -52,9 +52,9 @@ export function HeroFundo({ alvo }: { alvo?: RefObject<HTMLElement | null> }) {
         <Prisma3D
           palavra="SENTURIÃO"
           alvoScroll={alvo}
-          deslocamento={0.23}
-          altura={0.2}
-          larguraPalavra={0.66}
+          deslocamento={0.25}
+          altura={0.25}
+          larguraPalavra={0.44}
           onPronto={() => requestAnimationFrame(() => setPronto(true))}
           className={cn('absolute inset-0 transition-opacity duration-[1400ms] ease-out', pronto ? 'opacity-100' : 'opacity-0')}
         />

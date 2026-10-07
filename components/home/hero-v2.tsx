@@ -49,6 +49,7 @@ export function HeroV2({ oab }: { oab: string }) {
                 texts={FRASES}
                 morphDuration={1.1}
                 cooldownDuration={2.2}
+                limiar={false}
                 className="citacao mt-1 h-[1.12em] text-[0.8em] font-[400] leading-[1.1] tracking-[-0.015em] text-sinal"
               />
             </motion.div>

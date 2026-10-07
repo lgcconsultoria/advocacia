@@ -8,6 +8,7 @@ import { usePncp } from './contexto';
 import { NumeroVivo } from './numero-vivo';
 import { PilulaStatus } from './status';
 import { MarcaEstimado } from './termometro';
+import { BotaoDiagnostico } from '@/components/diagnostico/botao';
 
 /**
  * Abertura do Departamento de Licitações: vídeo do mapa (mudo, em loop; parado
@@ -84,9 +85,9 @@ export function HeroLicitacoes({ whatsapp }: { whatsapp: string }) {
             processos de sanção, com o mesmo time do primeiro ao último ato.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <Link href="/diagnostico" className={buttonVariants({ variant: 'claro', size: 'lg' })}>
+            <BotaoDiagnostico variant="claro" size="lg" interesse="licitacoes">
               Solicitar diagnóstico
-            </Link>
+            </BotaoDiagnostico>
             <a
               href={`https://wa.me/${whatsapp}?text=${texto}`}
               target="_blank"

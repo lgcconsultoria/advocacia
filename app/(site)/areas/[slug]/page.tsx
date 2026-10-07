@@ -10,6 +10,7 @@ import { PageHero } from '@/components/site/page-hero';
 import { Cabecalho, Secao } from '@/components/site/secao';
 import { CtaFaixa } from '@/components/site/cta-faixa';
 import { buttonVariants } from '@/components/ui/button';
+import { BotaoDiagnostico } from '@/components/diagnostico/botao';
 
 export async function generateStaticParams() {
   const areas = await getAreas();
@@ -88,9 +89,9 @@ export default async function AreaPage({
         lead={area.lead}
       >
         <div className="mt-9 flex flex-wrap gap-3">
-          <Link className={buttonVariants({ variant: 'claro', size: 'lg' })} href="/diagnostico">
+          <BotaoDiagnostico variant="claro" size="lg">
             {area.sidebarCta}
-          </Link>
+          </BotaoDiagnostico>
         </div>
       </PageHero>
 
@@ -131,9 +132,9 @@ export default async function AreaPage({
                 <li key={i}>{item}</li>
               ))}
             </ul>
-            <Link className={buttonVariants({ variant: 'marca', block: true, className: 'mt-6' })} href="/diagnostico">
+            <BotaoDiagnostico variant="marca" block className="mt-6">
               {area.sidebarCta}
-            </Link>
+            </BotaoDiagnostico>
             {area.sidebarNote && <p className="hint mb-0 mt-4">{area.sidebarNote}</p>}
           </aside>
         </div>
@@ -151,9 +152,9 @@ export default async function AreaPage({
       )}
 
       <CtaFaixa titulo={area.ctaTitle} texto={area.ctaText}>
-        <Link className={buttonVariants({ variant: 'claro', size: 'lg' })} href="/diagnostico">
+        <BotaoDiagnostico variant="claro" size="lg">
           {area.sidebarCta}
-        </Link>
+        </BotaoDiagnostico>
       </CtaFaixa>
     </>
   );

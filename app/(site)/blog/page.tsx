@@ -7,6 +7,7 @@ import { PageHero } from '@/components/site/page-hero';
 import { Cabecalho, Secao } from '@/components/site/secao';
 import { CtaFaixa } from '@/components/site/cta-faixa';
 import { buttonVariants } from '@/components/ui/button';
+import { BotaoDiagnostico } from '@/components/diagnostico/botao';
 
 export const metadata: Metadata = {
   title: 'Blog — Análise técnica de Direito Administrativo',
@@ -99,9 +100,9 @@ export default async function BlogPage() {
         titulo="Tem um caso concreto, e não apenas uma dúvida?"
         texto="Solicite uma triagem técnica inicial. Retornamos em até 1 dia útil com os próximos passos."
       >
-        <Link className={buttonVariants({ variant: 'claro', size: 'lg' })} href="/diagnostico">
+        <BotaoDiagnostico variant="claro" size="lg">
           Solicitar diagnóstico
-        </Link>
+        </BotaoDiagnostico>
       </CtaFaixa>
     </>
   );

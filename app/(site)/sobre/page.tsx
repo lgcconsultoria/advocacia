@@ -6,6 +6,7 @@ import { Cabecalho, Secao } from '@/components/site/secao';
 import { CtaFaixa } from '@/components/site/cta-faixa';
 import { Reveal, RevealGroup, RevealItem } from '@/components/reveal';
 import { buttonVariants } from '@/components/ui/button';
+import { BotaoDiagnostico } from '@/components/diagnostico/botao';
 
 export const metadata: Metadata = {
   title: 'Sobre o escritório',
@@ -169,9 +170,9 @@ export default function SobrePage() {
         <Link className={buttonVariants({ variant: 'contorno-claro', size: 'lg' })} href="/areas">
           Áreas de atuação
         </Link>
-        <Link className={buttonVariants({ variant: 'claro', size: 'lg' })} href="/diagnostico">
+        <BotaoDiagnostico variant="claro" size="lg">
           Solicitar diagnóstico
-        </Link>
+        </BotaoDiagnostico>
       </CtaFaixa>
     </>
   );

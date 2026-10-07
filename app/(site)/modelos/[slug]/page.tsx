@@ -10,6 +10,7 @@ import { PageHero } from '@/components/site/page-hero';
 import { Secao } from '@/components/site/secao';
 import { CtaFaixa } from '@/components/site/cta-faixa';
 import { buttonVariants } from '@/components/ui/button';
+import { BotaoDiagnostico } from '@/components/diagnostico/botao';
 
 export const revalidate = 300;
 
@@ -107,9 +108,9 @@ export default async function ModeloPage({
         titulo="Prefere que alguém olhe o seu caso antes?"
         texto="A triagem técnica inicial é gratuita e não constitui mandato. Envie os documentos e retornamos em até 1 dia útil."
       >
-        <Link href="/diagnostico" className={buttonVariants({ variant: 'claro', size: 'lg' })}>
+        <BotaoDiagnostico variant="claro" size="lg">
           Enviar caso para triagem
-        </Link>
+        </BotaoDiagnostico>
       </CtaFaixa>
     </>
   );
