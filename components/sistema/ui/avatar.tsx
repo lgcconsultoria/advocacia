@@ -27,7 +27,7 @@ export function Avatar({ nome, iniciais, tamanho = 'md', className }: { nome: st
     <span
       title={nome}
       className={cn(
-        'inline-grid shrink-0 place-items-center rounded-full font-semibold ring-1 ring-inset ring-white/10',
+        'relative inline-grid shrink-0 place-items-center rounded-full font-semibold ring-1 ring-inset ring-white/10',
         TONS[i],
         TONS_CLARO[i],
         tamanho === 'xs' && 'size-5 text-[9px]',

@@ -8,7 +8,8 @@ import { animate, motion, useMotionValue, useReducedMotion, useTransform } from 
 import { cn } from '@/lib/utils';
 
 const MOLA = { type: 'spring', stiffness: 520, damping: 34, mass: 0.45 } as const;
-const SEG = 'f-mono px-3 py-2 text-center text-[12px] font-medium uppercase tracking-[0.06em] whitespace-nowrap';
+const SEG_PADRAO = 'f-mono px-3 py-2 text-center text-[12px] font-medium uppercase tracking-[0.06em] whitespace-nowrap';
+const SEG_COMPACTO = 'f-mono px-1 py-2 text-center text-[11px] font-medium uppercase tracking-[0.02em] whitespace-nowrap sm:px-2 sm:text-[11.5px] sm:tracking-[0.05em]';
 
 export type OpcaoSegmento = { value: string; label: string };
 
@@ -18,13 +19,17 @@ export function SeletorPapel({
   valor,
   aoMudar,
   className,
+  compacto,
 }: {
   opcoes: OpcaoSegmento[];
   rotulo: string;
   valor: string;
   aoMudar: (v: string) => void;
   className?: string;
+  /** Texto menor, para quatro ou mais opções em telas estreitas. */
+  compacto?: boolean;
 }) {
+  const SEG = compacto ? SEG_COMPACTO : SEG_PADRAO;
   const n = Math.max(1, opcoes.length);
   const colunas = `repeat(${n}, minmax(0, 1fr))`;
   const idx = Math.max(0, opcoes.findIndex((o) => o.value === valor));

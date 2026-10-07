@@ -221,7 +221,7 @@ export function TelaProcessos() {
         ) : (
           <>
             {/* desktop: tabela */}
-            <div className="rolagem hidden overflow-x-auto lg:block">
+            <div className="rolagem relative hidden overflow-x-auto lg:block">
               <table className="w-full min-w-[1000px] border-collapse text-[13px]">
                 <caption className="sr-only">Processos, com último andamento e próximo prazo. Use o botão de cada linha para ver as movimentações.</caption>
                 <thead className="bg-(--s-card-2) text-[11.5px] text-(--s-muted)">
