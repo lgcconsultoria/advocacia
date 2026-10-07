@@ -74,7 +74,7 @@ export function TelaPrazos() {
           </Cartao>
         </div>
 
-        <Cartao className="overflow-hidden">
+        <Cartao>
           <div className="flex flex-wrap items-center gap-3 border-b border-(--s-border) p-3">
             <SeletorPapel
               className="w-full sm:w-auto sm:min-w-[400px]"

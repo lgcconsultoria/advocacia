@@ -222,14 +222,13 @@ export function TelaProcessos() {
           <>
             {/* desktop: tabela */}
             <div className="rolagem relative hidden overflow-x-auto lg:block">
-              <table className="w-full min-w-[1000px] border-collapse text-[13px]">
+              <table className="w-full min-w-[940px] border-collapse text-[13px]">
                 <caption className="sr-only">Processos, com último andamento e próximo prazo. Use o botão de cada linha para ver as movimentações.</caption>
                 <thead className="bg-(--s-card-2) text-[11.5px] text-(--s-muted)">
                   <tr className="border-b border-(--s-border)">
                     <th scope="col" className="w-10 px-2"><span className="sr-only">Expandir</span></th>
                     <CabecalhoOrdenavel rotulo="Nº CNJ" coluna="cnj" ordem={ordem} aoOrdenar={ordenar} />
                     <CabecalhoOrdenavel rotulo="Cliente" coluna="cliente" ordem={ordem} aoOrdenar={ordenar} />
-                    <th scope="col" className="px-3 py-2.5 text-left font-medium">Área</th>
                     <th scope="col" className="px-3 py-2.5 text-left font-medium">Tribunal</th>
                     <th scope="col" className="px-3 py-2.5 text-left font-medium">Fase</th>
                     <CabecalhoOrdenavel rotulo="Último andamento" coluna="andamento" ordem={ordem} aoOrdenar={ordenar} />
@@ -265,9 +264,9 @@ export function TelaProcessos() {
                             <Link href={`/sistema/demo/clientes?c=${p.clienteId}`} className="line-clamp-2 hover:text-(--s-primary) hover:underline">
                               {clientePorId(d, p.clienteId)?.nome}
                             </Link>
+                            <Selo tom="contorno" className="mt-1">{p.area}</Selo>
                           </td>
-                          <td className="px-3 py-3 align-top"><Selo tom="contorno">{p.area}</Selo></td>
-                          <td className="px-3 py-3 align-top"><SeloSistema tribunal={p.tribunal} sistema={p.sistema} /></td>
+                                                    <td className="px-3 py-3 align-top"><SeloSistema tribunal={p.tribunal} sistema={p.sistema} /></td>
                           <td className="px-3 py-3 align-top"><TrilhoFase fase={p.fase} className="hidden xl:inline-flex" /><span className="xl:hidden"><TrilhoFase fase={p.fase} compacto /><span className="mt-1 block text-[11.5px] text-(--s-fg-2)">{rotuloFase(p.fase)}</span></span></td>
                           <td className="max-w-[210px] px-3 py-3 align-top">
                             <p className="truncate text-(--s-fg-2)" title={ua?.titulo}>{ua?.titulo}</p>
@@ -288,7 +287,7 @@ export function TelaProcessos() {
                         <AnimatePresence initial={false}>
                           {aberto && (
                             <tr id={`det-${p.id}`} className="border-b border-(--s-border) bg-(--s-card-2)">
-                              <td colSpan={9} className="p-0">
+                              <td colSpan={8} className="p-0">
                                 <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ type: 'spring', stiffness: 380, damping: 38 }} className="overflow-hidden">
                                   <Detalhe d={d} p={p} />
                                 </motion.div>
