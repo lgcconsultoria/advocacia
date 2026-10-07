@@ -1,18 +1,22 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { getAreas, getPosts, getSettings } from '@/lib/reader';
-import { DESTAQUE_ANEL, nomeCurto } from '@/lib/areas';
+import { snapshotTermometro } from '@/lib/pncp/snapshot';
+import { REFERENCIA_ESTIMADA, simularDemo } from '@/lib/tributario/simulador';
 import { Reveal } from '@/components/reveal';
 import { JsonLd } from '@/components/json-ld';
-import { buttonVariants } from '@/components/ui/button';
-import { Cabecalho, GradePlanta, Secao } from '@/components/site/secao';
-import { CtaFaixa } from '@/components/site/cta-faixa';
+import { Cabecalho, Secao } from '@/components/site/secao';
 import { PostCard } from '@/components/site/post-card';
-import { HeroHome } from '@/components/home/hero-home';
-import { FaixaVideo } from '@/components/home/faixa-video';
+import { HeroV2 } from '@/components/home/hero-v2';
+import { FaixaNumeros } from '@/components/home/faixa-numeros';
+import { BentoPilares } from '@/components/home/bento-pilares';
+import { PainelCliente } from '@/components/home/painel-cliente';
+import { MarqueeNormas } from '@/components/home/marquee-normas';
 import { Filme } from '@/components/home/filme';
-import { SeletorAreas, type GrupoSeletor } from '@/components/home/seletor-areas';
+import { FormularioDiagnostico } from '@/components/diagnostico/formulario';
+import { GridBeam } from '@/components/ui/grid-beam';
 
 export const metadata: Metadata = {
   // Título voltado ao termo de maior busca ("advogado direito administrativo")
@@ -32,29 +36,14 @@ export default async function HomePage() {
     getPosts(),
     getSettings(),
   ]);
-  const featured = posts.slice(0, 2);
-  const areasPublico = areas.filter((a) => a.group !== 'civel');
-  const areasCivel = areas.filter((a) => a.group === 'civel');
-
-  // Anel do topo: as frentes em destaque, na ordem de DESTAQUE_ANEL (só as que existem no CMS).
-  const anel = DESTAQUE_ANEL.map((slug) => areas.find((a) => a.slug === slug))
-    .filter((a): a is NonNullable<typeof a> => Boolean(a))
-    .map((a) => ({ slug: a.slug, curto: nomeCurto(a.slug, a.title), nome: a.title }));
-
-  const paraSeletor = (lista: typeof areas) =>
-    lista.map((a) => ({
-      slug: a.slug,
-      title: a.title,
-      curto: nomeCurto(a.slug, a.title),
-      summary: a.summary,
-      lead: a.lead,
-    }));
-  const grupos: GrupoSeletor[] = [
-    { id: 'publico', nome: 'Direito Público', titulo: 'Direito Público', areas: paraSeletor(areasPublico) },
-    ...(areasCivel.length
-      ? [{ id: 'civel', nome: 'Cível e Empresarial', titulo: 'Cível e Empresarial', areas: paraSeletor(areasCivel) }]
-      : []),
-  ];
+  const featured = posts.slice(0, 3);
+  const demo = simularDemo(2027);
+  const pncp = {
+    abertas: snapshotTermometro.abertas.quantidade,
+    publicadas30d: snapshotTermometro.publicadas30d.quantidade,
+    consultadoEm: snapshotTermometro.atualizadoEm,
+    aoVivo: false,
+  };
 
   const legalServiceLd = {
     '@context': 'https://schema.org',
@@ -110,252 +99,158 @@ export default async function HomePage() {
       <JsonLd data={legalServiceLd} />
       <JsonLd data={attorneyLd} />
 
-      <HeroHome frentes={anel} />
+      <HeroV2 oab={settings.oab} />
 
-      <FaixaVideo src="/assets/video/colunas.mp4" poster="/assets/video/colunas.jpg">
-        <Reveal className="max-w-[660px]">
-          <p className="rotulo m-0 text-sinal">O tempo da Administração</p>
-          <blockquote className="citacao m-0 mt-6 text-[clamp(1.9rem,3.8vw,3rem)] leading-[1.1] text-white">
-            Diante do Poder Público, o tempo de reação pesa tanto quanto a tese.
-          </blockquote>
-          <p className="m-0 mt-8 max-w-[52ch] text-[1.05rem] leading-relaxed text-cinza-escuro">
-            Recurso, impugnação, mandado de segurança: cada instrumento tem o seu
-            prazo, e ele corre sozinho. Por isso o trabalho começa por um
-            diagnóstico escrito, que aponta o vício do ato, o caminho cabível e
-            quanto tempo ainda resta.
-          </p>
-        </Reveal>
-      </FaixaVideo>
+      <FaixaNumeros
+        pncp={pncp}
+        economiaCliente={demo.fatura.diferencas.custoCliente}
+        custoEmpresa={demo.fatura.diferencas.impostoEmpresa}
+        referencia={REFERENCIA_ESTIMADA.cbs + REFERENCIA_ESTIMADA.ibs}
+      />
 
-      <Secao id="areas" className="bg-[linear-gradient(180deg,var(--papel),#e9e9f2)]">
-        <Cabecalho
-          n={1}
-          rotulo="Áreas de atuação"
-          titulo={
-            <>
-              Duas frentes, <span className="text-marca">a mesma disciplina técnica</span>
-            </>
-          }
-        >
-          <p className="m-0">
-            Do contencioso contra o Poder Público às disputas cíveis e
-            empresariais. Cada área tem regime jurídico próprio e prazos
-            específicos, e é conduzida com o mesmo método. Toque numa área para
-            ver o que entra nela.
-          </p>
-        </Cabecalho>
-        <SeletorAreas grupos={grupos} />
-        <div className="mt-12 flex justify-end">
+      <Secao id="areas" className="overflow-hidden">
+        <div aria-hidden="true" className="grade-papel pointer-events-none absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_50%_0%,black,transparent_70%)]" />
+        <div className="flex flex-wrap items-end justify-between gap-8">
+          <Cabecalho
+            n={1}
+            rotulo="Onde atuamos"
+            titulo={
+              <>
+                Quatro frentes para quem <em className="text-marca">fatura, licita e contrata</em>.
+              </>
+            }
+          >
+            <p className="m-0">
+              O escritório concentra o trabalho onde o Direito toca o caixa da empresa: o tributo sobre a nota, o
+              contrato com o Poder Público e o ato administrativo que trava a operação.
+            </p>
+          </Cabecalho>
           <Link href="/areas" className="link-seta">
-            Ver todas as áreas de atuação <span aria-hidden="true">→</span>
+            Todas as áreas de atuação <span aria-hidden="true">→</span>
           </Link>
         </div>
+        <BentoPilares />
       </Secao>
 
-      <Secao id="como-trabalhamos" escura>
-        <Cabecalho n={2} rotulo="Como trabalhamos" titulo="Da mensagem no WhatsApp ao prazo no calendário" escura>
+      <MarqueeNormas />
+
+      <section className="planta relative isolate overflow-hidden pb-10 pt-24 md:pb-16 md:pt-32" aria-labelledby="painel-titulo">
+        <GridBeam rows={4} cols={6} className="absolute inset-0 -z-10 opacity-70 [mask-image:radial-gradient(ellipse_at_50%_40%,black_30%,transparent_75%)]" />
+        <div className="container" id="painel-titulo">
+          <PainelCliente />
+        </div>
+      </section>
+
+      <Secao id="como-trabalhamos" escura grade>
+        <Cabecalho n={2} rotulo="Como trabalhamos" titulo={<>Da mensagem no WhatsApp <em className="text-sinal">ao prazo no calendário</em>.</>} escura>
           <p className="m-0">
-            Seis passos que se repetem em cada caso, do pedido mais simples à
-            disputa mais delicada. O exemplo é ilustrativo: um pregão, uma
-            inabilitação e um prazo de recurso.
+            Seis passos que se repetem em cada caso. O exemplo é ilustrativo: um pregão, uma inabilitação e um prazo
+            de recurso — nenhum cliente real aparece nas cenas.
           </p>
         </Cabecalho>
         <Filme />
       </Secao>
 
-      <Secao id="licitacoes">
-        <Cabecalho n={3} rotulo="Departamento de Licitações" titulo="Para quem disputa contratos com o Poder Público">
-          <p className="m-0">
-            Uma frente dedicada às empresas licitantes e contratadas, do edital ao
-            contrato, sob a Lei 14.133/2021.
-          </p>
-        </Cabecalho>
-        <div className="planta relative isolate mt-12 overflow-hidden rounded-[26px] p-6 sm:p-10 lg:p-14">
-          <GradePlanta className="opacity-[0.16]" />
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-16">
-            <div className="min-w-0">
-              <p className="rotulo m-0 text-sinal">Licitações e contratos públicos</p>
-              <p className="citacao m-0 mt-5 text-[clamp(1.6rem,3vw,2.3rem)] leading-[1.12] text-white">
-                Cada fase da licitação tem um prazo próprio. Perder um deles costuma
-                encerrar a disputa.
-              </p>
-              <p className="m-0 mt-6 max-w-[54ch] text-[1rem] leading-relaxed text-cinza-escuro">
-                Leitura do edital, pedidos de esclarecimento e impugnação,
-                recursos e contrarrazões, mandado de segurança licitatório,
-                reequilíbrio econômico-financeiro e defesa em processos de sanção.
-                Na página do departamento, o movimento das contratações aparece
-                com dados públicos do Portal Nacional de Contratações Públicas
-                (PNCP).
-              </p>
-              <div className="mt-9 flex flex-wrap gap-3">
-                <Link href="/licitacoes" className={buttonVariants({ variant: 'claro', size: 'lg' })}>
-                  Conhecer o departamento
-                </Link>
-                <Link href="/diagnostico" className={buttonVariants({ variant: 'contorno-claro', size: 'lg' })}>
-                  Enviar edital para análise
-                </Link>
+      <Secao id="advogado" className="overflow-hidden">
+        <div aria-hidden="true" className="pointer-events-none absolute -right-40 top-10 -z-10 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgb(142_139_255/0.28),transparent_65%)] blur-2xl" />
+        <div className="grid items-center gap-12 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:gap-16">
+          <Reveal className="relative mx-auto w-full max-w-[440px]">
+            <div aria-hidden="true" className="absolute -inset-3 rounded-[34px] bg-[linear-gradient(135deg,rgb(142_139_255/0.5),rgb(29_27_154/0.15)_50%,rgb(211_154_91/0.35))] blur-[2px]" />
+            <div className="relative overflow-hidden rounded-[30px] bg-tinta">
+              <Image
+                src="/assets/img/douglas-estudio.jpg"
+                alt="Douglas Senturião, advogado responsável pelo escritório"
+                width={1100}
+                height={1650}
+                sizes="(min-width: 768px) 440px, 90vw"
+                className="h-auto w-full"
+              />
+              <div className="vidro-escuro absolute bottom-4 left-4 right-4 rounded-2xl px-4 py-3 text-white">
+                <span className="rotulo block text-[10px] text-sinal">Advogado responsável</span>
+                <span className="semi mt-0.5 block text-[1.02rem] font-[700]">{settings.lawyerName}</span>
               </div>
             </div>
-            <ol className="m-0 grid list-none content-center gap-0 p-0" aria-label="Fases em que o escritório atua">
-              {[
-                ['Edital', 'leitura, esclarecimento e impugnação'],
-                ['Sessão', 'propostas, lances e julgamento'],
-                ['Habilitação', 'documentos, diligências e saneamento'],
-                ['Recurso', 'razões e contrarrazões'],
-                ['Contrato', 'execução, aditivos e reequilíbrio'],
-                ['Sanções', 'defesa no processo administrativo'],
-              ].map(([fase, texto], i) => (
-                <li key={fase} className="grid grid-cols-[2.6rem_minmax(0,1fr)] items-baseline gap-3 border-t border-sinal/15 py-3.5 first:border-t-0">
-                  <span className="rotulo num text-[10px] text-sinal">{String(i + 1).padStart(2, '0')}</span>
-                  <span>
-                    <span className="expandida block text-[15px] font-[700] text-white">{fase}</span>
-                    <span className="block text-[0.9rem] text-cinza-escuro">{texto}</span>
-                  </span>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </Secao>
-
-      <Secao id="metodo" className="bg-[linear-gradient(180deg,#ebe9f1,var(--papel))]">
-        <Cabecalho n={4} rotulo="O método" titulo="Tese antes da peça, prazo antes de tudo">
-          <p className="m-0">
-            Cada caso é conduzido com pesquisa própria e contato direto com o
-            advogado responsável, sem peças padronizadas.
-          </p>
-        </Cabecalho>
-        <ol className="m-0 mt-14 grid list-none gap-6 p-0 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            ['Diagnóstico técnico', 'Mapeamos o caso, identificamos o instrumento adequado e o tempo de reação disponível.'],
-            ['Estratégia', 'Construímos a tese, o plano processual e o cenário de risco, por escrito.'],
-            ['Execução', 'Peticionamos, monitoramos prazos e sustentamos a posição nas instâncias cabíveis.'],
-            ['Acompanhamento', 'Relatórios objetivos e comunicação direta, para o cliente decidir bem informado a cada etapa.'],
-          ].map(([t, d], i) => (
-            <li key={t} className="min-w-0 border-t-2 border-grafite pt-4">
-              <span className="rotulo num text-[10.5px] text-marca">Etapa {i + 1}</span>
-              <h3 className="expandida m-0 mt-2 text-[1.1rem] font-[700] leading-tight">{t}</h3>
-              <p className="m-0 mt-2 text-[0.94rem] leading-snug text-cinza">{d}</p>
-            </li>
-          ))}
-        </ol>
-
-        <div className="mt-16 grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">
-          <div className="rounded-3xl bg-white p-7 shadow-[0_30px_80px_-50px_rgb(29_27_154/0.35)] sm:p-10">
-            <p className="rotulo m-0 text-marca">O que sustenta o trabalho</p>
-            <dl className="m-0 mt-6 grid gap-6">
-              {[
-                ['Leitura precisa do caso', 'O diagnóstico vem antes da peça: é ele que aponta o vício e o instrumento certo.'],
-                ['Tese bem fundamentada', 'Pesquisa de norma e jurisprudência específica para cada caso.'],
-                ['Velocidade na reação', 'Quando há prazo, mover-se na semana errada pode custar o caso.'],
-              ].map(([t, d]) => (
-                <div key={t} className="border-l-2 border-marca pl-4">
-                  <dt className="citacao text-[1.45rem] leading-tight text-grafite">{t}</dt>
-                  <dd className="m-0 mt-1.5 text-[0.95rem] leading-relaxed text-cinza">{d}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-          <div className="min-w-0 rounded-3xl border border-papel-2 p-7 sm:p-10">
-            <p className="rotulo m-0 text-marca">Para quem trabalhamos</p>
-            <h3 className="semi m-0 mt-4 text-[1.4rem] font-[720] leading-tight tracking-[-0.015em]">
-              Quem nos procura tem um ponto em comum: um conflito que precisa de estratégia.
-            </h3>
-            <ul className="checklist mt-6 sm:grid-cols-2 sm:gap-x-8 sm:[&_li:nth-child(2)]:border-t-0">
-              <li>Empresas que contratam com o Poder Público.</li>
-              <li>Servidores efetivos, comissionados e empregados públicos.</li>
-              <li>Agentes públicos sob investigação administrativa ou judicial.</li>
-              <li>Candidatos eliminados ou prejudicados em concursos.</li>
-              <li>Cidadãos e empresas atingidos por ato administrativo ilegal.</li>
-              <li>Credores da Fazenda Pública.</li>
-              <li>Famílias e pessoas em conflitos cíveis que pedem discrição.</li>
-              <li>Empresas em disputas contratuais, societárias e de cobrança.</li>
-            </ul>
-            <p className="m-0 mt-6 text-[0.95rem] text-cinza">
-              Atendimento por agendamento, com triagem técnica inicial. Se há prazo
-              em curso, ele orienta a prioridade do atendimento.
-            </p>
-          </div>
-        </div>
-      </Secao>
-
-      <Secao id="advogado" escura grade>
-        <div className="grid items-center gap-12 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-16">
-          <Reveal className="relative mx-auto w-full max-w-[420px]">
-            <div aria-hidden="true" className="absolute -left-4 -top-4 h-[70%] w-[70%] rounded-[24px] bg-marca" />
-            <Image
-              src="/assets/img/douglas-estudio.jpg"
-              alt="Douglas Senturião, advogado responsável pelo escritório"
-              width={1100}
-              height={1650}
-              sizes="(min-width: 768px) 420px, 90vw"
-              className="relative h-auto w-full rounded-[24px] shadow-[0_40px_90px_-40px_rgb(0_0_0/0.8)]"
-            />
           </Reveal>
           <div className="min-w-0">
-            <p className="rotulo m-0 text-sinal">05 — O advogado</p>
-            <h2 className="expandida m-0 mt-5 text-[clamp(2rem,4.4vw,3.4rem)] font-[780] leading-[1.02] tracking-[-0.03em] text-white">
+            <p className="etiqueta m-0">
+              <span className="num opacity-70">03</span>O advogado
+            </p>
+            <h2 className="display m-0 mt-5 text-[clamp(2.4rem,5.4vw,4.4rem)] text-grafite">
               {settings.lawyerName}
             </h2>
-            <span className="rotulo mt-5 inline-block rounded-full border border-sinal/40 px-3 py-1.5 text-[10.5px] text-sinal">
+            <span className="rotulo mt-5 inline-block rounded-full border border-marca/25 bg-white px-3 py-1.5 text-[10.5px] text-marca">
               {settings.oab}
             </span>
-            <p className="m-0 mt-6 max-w-[56ch] text-[1.05rem] leading-relaxed text-cinza-escuro">
-              Há mais de dez anos dedicado ao direito público, com atuação
-              concentrada em licitações e contratos administrativos — e a mesma
-              disciplina aplicada a causas cíveis e empresariais selecionadas.
-              Acompanha cada caso de perto, do primeiro diagnóstico à
-              sustentação, e atende em todo o Brasil, de forma presencial ou
-              remota.
+            <p className="m-0 mt-6 max-w-[56ch] text-[1.06rem] leading-relaxed text-cinza">
+              Há mais de dez anos dedicado ao direito público, com atuação concentrada em licitações e contratos
+              administrativos — e a mesma disciplina aplicada às questões tributárias da empresa e a causas cíveis e
+              empresariais selecionadas. Acompanha cada caso de perto, do primeiro diagnóstico à sustentação, e
+              atende em todo o Brasil, de forma presencial ou remota.
             </p>
-            <Link href="/sobre" className="link-seta mt-8">
+            <blockquote className="citacao m-0 mt-8 max-w-[34ch] border-l-2 border-marca pl-5 text-[clamp(1.4rem,2.4vw,1.85rem)] leading-[1.2] text-grafite">
+              Tese antes da peça, prazo antes de tudo.
+            </blockquote>
+            <Link href="/sobre" className="link-seta mt-9">
               Conhecer o escritório <span aria-hidden="true">→</span>
             </Link>
           </div>
         </div>
       </Secao>
 
-      <Secao id="conteudo">
-        <Cabecalho n={6} rotulo="Conteúdo técnico" titulo="O que muda no direito público, explicado com clareza">
-          <p className="m-0">
-            Artigos sobre prazos, leis e entendimentos dos tribunais — úteis para
-            quem decide e para quem estuda.
-          </p>
-        </Cabecalho>
+      <Secao id="conteudo" className="bg-[linear-gradient(180deg,var(--papel),#e7e6f1)] pt-0 md:pt-0">
+        <div className="flex flex-wrap items-end justify-between gap-8">
+          <Cabecalho n={4} rotulo="Conteúdo técnico" titulo="O que muda na lei, explicado com clareza.">
+            <p className="m-0">
+              Artigos sobre prazos, leis e entendimentos dos tribunais, para quem decide na empresa.
+            </p>
+          </Cabecalho>
+          <Link href="/blog" className="link-seta">
+            Ver todos os artigos <span aria-hidden="true">→</span>
+          </Link>
+        </div>
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {featured.map((post) => (
             <PostCard key={post.slug} post={post} />
           ))}
-          <Link
-            href="/blog"
-            className="card card-link planta group flex flex-col border-transparent bg-tinta no-underline sm:p-8"
-          >
-            <span className="rotulo text-[10.5px] text-sinal">Blog</span>
-            <span className="semi mt-4 block text-[1.28rem] font-[720] leading-[1.18] text-white">
-              Todos os artigos e temas em pauta
-            </span>
-            <span className="mt-3 block text-[0.96rem] leading-relaxed text-cinza-escuro">
-              Mandado de segurança, licitações, contratos, servidores, concursos,
-              improbidade e execuções.
-            </span>
-            <span className="link-seta mt-auto self-start pt-6">
-              Ver índice completo <span aria-hidden="true">→</span>
-            </span>
-          </Link>
         </div>
       </Secao>
 
-      <CtaFaixa
-        titulo="Tem um prazo em curso ou uma decisão pendente?"
-        texto="Solicite uma triagem técnica inicial. Retornamos em até 1 dia útil com os próximos passos."
-      >
-        <Link className={buttonVariants({ variant: 'claro', size: 'lg' })} href="/diagnostico">
-          Solicitar diagnóstico
-        </Link>
-        <Link className={buttonVariants({ variant: 'contorno-claro', size: 'lg' })} href="/contato">
-          Falar com o escritório
-        </Link>
-      </CtaFaixa>
+      <section className="planta ruido relative isolate overflow-hidden py-20 md:py-28" aria-labelledby="cta-final-titulo">
+        <GridBeam rows={3} cols={5} className="absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_30%_50%,black_30%,transparent_80%)]" />
+        <div aria-hidden="true" className="pointer-events-none absolute -left-40 top-1/2 -z-10 h-[600px] w-[700px] -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(29_27_154/0.75),transparent)] blur-2xl" />
+        <div className="container grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:gap-16">
+          <div className="min-w-0">
+            <p className="etiqueta etiqueta--escura etiqueta--ambar m-0">Próximo passo</p>
+            <h2 id="cta-final-titulo" className="display m-0 mt-6 text-[clamp(2.4rem,5.6vw,4.6rem)] text-white">
+              Tem uma nota, um edital ou um prazo <em className="text-sinal">na mesa</em>?
+            </h2>
+            <p className="m-0 mt-6 max-w-[50ch] text-[1.06rem] leading-relaxed text-cinza-escuro">
+              Conte em quatro campos. O escritório lê o caso, aponta o caminho e o prazo, e retorna em até 1 dia útil.
+            </p>
+            <ul className="m-0 mt-8 grid list-none gap-3 p-0 text-[0.95rem] text-[#d4d3f3]">
+              {['Diagnóstico por escrito, antes de qualquer proposta', 'Atendimento direto com o advogado responsável', 'Em todo o Brasil, presencial ou remoto'].map((t) => (
+                <li key={t} className="flex items-center gap-3">
+                  <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-sinal/15 text-sinal">
+                    <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+            <a
+              href={`https://wa.me/${settings.whatsapp}?text=${encodeURIComponent('Olá, gostaria de agendar um atendimento.')}`}
+              target="_blank"
+              rel="noopener"
+              className="link-seta mt-9"
+            >
+              Prefere o WhatsApp? <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </div>
+          <div className="vidro-escuro relative rounded-[30px] p-6 sm:p-9">
+            <FormularioDiagnostico whatsapp={settings.whatsapp} escuro titulo="Diagnóstico inicial" />
+          </div>
+        </div>
+      </section>
     </>
   );
 }

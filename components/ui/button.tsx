@@ -8,8 +8,9 @@ import { cn } from '@/lib/utils';
  *  - contorno: secundário sobre o papel
  *  - claro: branco sobre a tinta (CTA principal nas plantas escuras)
  *  - contorno-claro: secundário sobre a tinta
+ *  - ambar: destaque raro (âmbar só como acento)
  */
-export type ButtonVariant = 'marca' | 'contorno' | 'claro' | 'contorno-claro';
+export type ButtonVariant = 'marca' | 'contorno' | 'claro' | 'contorno-claro' | 'ambar';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export function buttonVariants({

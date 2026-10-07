@@ -105,8 +105,8 @@ export function Filme() {
               onClick={() => vai(i)}
               aria-current={i === cena ? 'step' : undefined}
               className={cn(
-                'relative w-full cursor-pointer overflow-hidden rounded-xl border-0 bg-transparent px-4 py-3.5 text-left transition',
-                i === cena ? 'bg-white/[0.06]' : 'hover:bg-white/[0.03]'
+                'relative w-full cursor-pointer overflow-hidden rounded-2xl border-0 bg-transparent px-4 py-3.5 text-left transition',
+                i === cena ? 'bg-[linear-gradient(90deg,rgb(142_139_255/0.14),rgb(142_139_255/0.03))] ring-1 ring-inset ring-sinal/20' : 'hover:bg-white/[0.03]'
               )}
             >
               <span className="flex items-baseline gap-3">
@@ -139,7 +139,7 @@ export function Filme() {
 
       <div className="order-1 min-w-0 lg:order-2">
         <div
-          className="relative aspect-[4/5] w-full max-w-full overflow-hidden rounded-[22px] border border-sinal/20 bg-[radial-gradient(120%_90%_at_70%_10%,#24228a_0%,#100f3d_55%,#0b0a2e_100%)] min-[480px]:aspect-[16/12] sm:aspect-[16/11] lg:aspect-[16/10]"
+          className="relative aspect-[4/5] w-full max-w-full overflow-hidden rounded-[28px] border border-sinal/25 bg-[radial-gradient(120%_90%_at_70%_10%,#24228a_0%,#100f3d_55%,#0b0a2e_100%)] shadow-[0_0_0_1px_rgb(255_255_255/0.03)_inset,0_50px_120px_-50px_rgb(91_87_255/0.65)] min-[480px]:aspect-[16/12] sm:aspect-[16/11] lg:aspect-[16/10]"
           role="img"
           aria-label={`Cena ${cena + 1} de ${CENAS.length}: ${CENAS[cena].titulo}. ${CENAS[cena].texto}`}
         >

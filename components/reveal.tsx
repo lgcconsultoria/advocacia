@@ -1,7 +1,10 @@
 'use client';
 
 import { motion, useReducedMotion, type HTMLMotionProps } from 'motion/react';
-import type { ElementType, ReactNode } from 'react';
+import type { ComponentType, ElementType, ReactNode } from 'react';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Qualquer = ComponentType<any>;
 
 type RevealProps = {
   children: ReactNode;
@@ -24,10 +27,10 @@ export function Reveal({
   y = 18,
 }: RevealProps) {
   const reduce = useReducedMotion();
-  const MotionTag = motion[as as keyof typeof motion] as ElementType;
+  const MotionTag = motion[as as keyof typeof motion] as unknown as Qualquer;
 
   if (reduce) {
-    const Tag = as;
+    const Tag = as as Qualquer;
     return <Tag className={className}>{children}</Tag>;
   }
 
@@ -56,10 +59,10 @@ export function RevealGroup({
   as?: ElementType;
 }) {
   const reduce = useReducedMotion();
-  const MotionTag = motion[as as keyof typeof motion] as ElementType;
+  const MotionTag = motion[as as keyof typeof motion] as unknown as Qualquer;
 
   if (reduce) {
-    const Tag = as;
+    const Tag = as as Qualquer;
     return <Tag className={className}>{children}</Tag>;
   }
 
@@ -86,10 +89,10 @@ export function RevealItem({
   as?: ElementType;
 }) {
   const reduce = useReducedMotion();
-  const MotionTag = motion[as as keyof typeof motion] as ElementType;
+  const MotionTag = motion[as as keyof typeof motion] as unknown as Qualquer;
 
   if (reduce) {
-    const Tag = as;
+    const Tag = as as Qualquer;
     return <Tag className={className}>{children}</Tag>;
   }
 

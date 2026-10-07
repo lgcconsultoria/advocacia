@@ -2,8 +2,8 @@ import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
 /**
- * Seção da página. `escura` vira "planta" (tinta + tokens claros); `grade`
- * acrescenta a grade de planta ao fundo.
+ * Seção da página (v2). `escura` vira "planta" (tinta + tokens escuros, com um
+ * brilho azul ao fundo); `grade` acrescenta a grade de planta.
  */
 export function Secao({
   id,
@@ -26,8 +26,14 @@ export function Secao({
     <section
       id={id}
       aria-labelledby={labelledBy}
-      className={cn('relative isolate py-20 md:py-28', escura && 'planta overflow-hidden', className)}
+      className={cn('relative isolate py-20 md:py-32', escura && 'planta overflow-hidden', className)}
     >
+      {escura && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[520px] w-[min(1100px,140vw)] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(29_27_154/0.55),transparent)] blur-2xl"
+        />
+      )}
       {grade && <GradePlanta />}
       <div className={cn('container relative', containerClassName)}>{children}</div>
     </section>
@@ -47,8 +53,8 @@ export function GradePlanta({ className }: { className?: string }) {
 }
 
 /**
- * Cabeçalho numerado (as "cláusulas" da proposta): número + rótulo à esquerda,
- * título expandido e texto de apoio à direita.
+ * Cabeçalho de seção (v2): etiqueta em pílula (número + rótulo), título
+ * expandido grande e texto de apoio. `centro` centraliza tudo.
  */
 export function Cabecalho({
   n,
@@ -59,6 +65,7 @@ export function Cabecalho({
   id,
   as: Titulo = 'h2',
   className,
+  centro = false,
 }: {
   n?: number | string;
   rotulo: string;
@@ -68,33 +75,36 @@ export function Cabecalho({
   id?: string;
   as?: 'h1' | 'h2';
   className?: string;
+  centro?: boolean;
 }) {
   return (
-    <header className={cn('grid gap-5 md:grid-cols-[9rem_minmax(0,1fr)] md:gap-10', className)}>
-      <div className={cn('rotulo pt-2', escura ? 'text-sinal' : 'text-marca')}>
-        {n !== undefined && <>{typeof n === 'number' ? String(n).padStart(2, '0') : n} — </>}
-        <span className={cn(n !== undefined && 'mt-1 block', escura ? 'text-cinza-escuro' : 'text-cinza')}>
-          {rotulo}
-        </span>
-      </div>
-      <div className="min-w-0">
-        <Titulo
-          id={id}
-          className="expandida m-0 text-[clamp(1.85rem,4.4vw,3.4rem)] font-[780] leading-[1.02] tracking-[-0.03em]"
-        >
-          {titulo}
-        </Titulo>
-        {children && (
-          <div
-            className={cn(
-              'mt-5 max-w-[62ch] text-[1.05rem] leading-relaxed',
-              escura ? 'text-cinza-escuro' : 'text-cinza'
-            )}
-          >
-            {children}
-          </div>
+    <header className={cn('max-w-[920px]', centro && 'mx-auto text-center', className)}>
+      <p className={cn('etiqueta m-0', escura && 'etiqueta--escura')}>
+        {n !== undefined && (
+          <span className="num opacity-70">{typeof n === 'number' ? String(n).padStart(2, '0') : n}</span>
         )}
-      </div>
+        {rotulo}
+      </p>
+      <Titulo
+        id={id}
+        className={cn(
+          'titulo m-0 mt-5 text-[clamp(2rem,5vw,3.9rem)]',
+          escura ? 'text-white' : 'text-grafite'
+        )}
+      >
+        {titulo}
+      </Titulo>
+      {children && (
+        <div
+          className={cn(
+            'mt-6 max-w-[62ch] text-[1.06rem] leading-relaxed',
+            centro && 'mx-auto',
+            escura ? 'text-cinza-escuro' : 'text-cinza'
+          )}
+        >
+          {children}
+        </div>
+      )}
     </header>
   );
 }
