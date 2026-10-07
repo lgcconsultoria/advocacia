@@ -85,10 +85,13 @@
   background: color-mix(in srgb, var(--s-primary) 35%, transparent);
 }
 
-/* Foco visível consistente */
-.s360 :focus-visible {
-  outline: 2px solid var(--s-ring);
-  outline-offset: 2px;
+/* Foco visível consistente — em @layer base para os utilitários do
+   Tailwind (outline-none, focus-visible:…) poderem sobrescrever. */
+@layer base {
+  .s360 :focus-visible {
+    outline: 2px solid var(--s-ring);
+    outline-offset: 2px;
+  }
 }
 
 /* Barras de rolagem discretas */
