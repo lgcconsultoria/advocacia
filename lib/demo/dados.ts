@@ -486,7 +486,8 @@ export function gerarDadosDemo(hojeEntrada: Date): DadosDemo {
     { tipo: 'peticao' as const, titulo: 'Manifestação protocolada' },
     { tipo: 'audiencia' as const, titulo: 'Audiência de conciliação designada' },
   ];
-  const clientesPJ = clientes.map((c) => c.id);
+  // A carteira gerada não entra no cliente do portal (Empresa Exemplo), que só tem processos escritos à mão.
+  const clientesPJ = clientes.filter((c) => c.id !== 'c-exemplo').map((c) => c.id);
   for (let i = 0; i < 18; i++) {
     const t = titulosGerados[i % titulosGerados.length];
     const foroIdx = Math.floor(rnd() * FOROS.length);
