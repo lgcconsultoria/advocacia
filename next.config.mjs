@@ -8,7 +8,10 @@ const nextConfig = {
   async rewrites() {
     const proposta = [{ type: 'host', value: 'proposta.senturiaoadv.com.br' }];
     return {
-      beforeFiles: [{ source: '/renato-barros', has: proposta, destination: '/clientes/kzvdeeavrl' }],
+      beforeFiles: [
+        { source: '/renato-barros', has: proposta, destination: '/clientes/kzvdeeavrl' },
+        { source: '/parceria-cnp', has: proposta, destination: '/clientes/oqofnhztdb' },
+      ],
     };
   },
   async redirects() {
