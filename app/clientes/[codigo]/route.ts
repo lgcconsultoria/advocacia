@@ -19,7 +19,8 @@ const CABECALHOS = {
     'font-src data: https://fonts.gstatic.com',
     "img-src 'self' data: blob:",
     'media-src data: blob:',
-    "connect-src 'none'",
+    // fechamento de proposta: a porta do Dexter recebe o "Fechado" e os documentos; ViaCEP completa o endereço.
+    "connect-src https://propostas.senturiaoadv.com.br https://viacep.com.br",
     "base-uri 'none'",
     "form-action 'none'",
     "frame-ancestors 'none'",
