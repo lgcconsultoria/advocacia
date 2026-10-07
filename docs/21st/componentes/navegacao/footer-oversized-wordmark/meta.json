@@ -1,0 +1,30 @@
+{
+  "id": 19358,
+  "name": "Footer Section 5",
+  "description": "A marketing website footer with an oversized outlined brand wordmark and a blue fluted-glass shader panel containing the logo, tagline, social icons, and grouped navigation link columns.",
+  "author": "solaceui",
+  "url": "https://21st.dev/@solaceui/components/footer-section-5",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/solaceui/footer-section-5?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/solaceui/footer-section-5/default/preview.1783728731935.png",
+  "videoUrl": "https://cdn.21st.dev/solaceui/footer-section-5/default/video.1783728731935.mp4",
+  "grupo": "A",
+  "categoria": "navegacao",
+  "registryDeps": [
+    "@/components/ui/footer-section-5"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "@paper-design/shaders-react",
+    "next"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "@paper-design/shaders-react"
+  ],
+  "peso": "médio",
+  "oQueDa": "Rodapé com marca gigante vazada e fundo de shader 'flutes' (paper shaders).",
+  "ondeVai": "Rodapé global: 'SENTURIÃO' em Archivo expandida.",
+  "adaptacaoMarca": "Shader azul combina; trocar next/link mantendo; OAB/inscrição e endereço obrigatórios no rodapé.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

@@ -1,0 +1,41 @@
+{
+  "id": 20282,
+  "name": "Compare Slider",
+  "description": "A before/after image comparison slider with a draggable handle, orientation and label support for revealing two overlaid states.",
+  "author": "diceui",
+  "url": "https://21st.dev/@diceui/components/compare-slider",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/diceui/compare-slider?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/diceui/compare-slider/controlled/preview.1784669198081-854fff33-d77f-4f8e-b590-18562ef7f0c0.png",
+  "videoUrl": null,
+  "grupo": "B",
+  "categoria": "tributario",
+  "registryDeps": [
+    "@/components/ui/compare-slider",
+    "@/components/ui/compare-slider-utils/compose-refs",
+    "@/components/ui/compare-slider-utils/use-as-ref",
+    "@/components/ui/compare-slider-utils/use-isomorphic-layout-effect",
+    "@/components/ui/compare-slider-utils/use-lazy-ref",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [
+    "@/components/ui/compare-slider-utils/compose-refs",
+    "@/components/ui/compare-slider-utils/use-as-ref",
+    "@/components/ui/compare-slider-utils/use-isomorphic-layout-effect",
+    "@/components/ui/compare-slider-utils/use-lazy-ref"
+  ],
+  "npmDeps": [
+    "lucide-react",
+    "radix-ui"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "lucide-react",
+    "radix-ui"
+  ],
+  "peso": "leve",
+  "oQueDa": "Slider antes/depois com alça arrastável, orientação e rótulos; aceita qualquer conteúdo (DiceUI).",
+  "ondeVai": "'Antes da reforma × depois' / 'regime atual × regime proposto'.",
+  "adaptacaoMarca": "Usar com dois cartões (não imagens). Precisa do pacote radix-ui e dos utils compose-refs etc. (vêm pelo installCommand).",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

@@ -1,0 +1,34 @@
+{
+  "id": 27325,
+  "name": "Advanced Data Table Filter Builder",
+  "description": "Build responsive data-table filters with AND/OR logic, multi-select values, searchable popovers, live results, and polished light/dark themes.",
+  "author": "laziekiki",
+  "url": "https://21st.dev/@laziekiki/components/advanced-data-table-filter-builder",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/laziekiki/advanced-data-table-filter-builder?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/laziekiki/advanced-data-table-filter-builder/default/preview.1789633476157-51bee2e1-f142-4002-a9e1-7d458fddcfd9.png",
+  "videoUrl": "https://cdn.21st.dev/user_3J39TADh2eUXcUqIKX6ozU6RE62/advanced-data-table-filter-builder/default/video.1789633758636.mp4",
+  "grupo": "D",
+  "categoria": "sistema-dados",
+  "registryDeps": [
+    "@/components/ui/advanced-data-table-filter-builder"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "@radix-ui/react-icons",
+    "cn",
+    "motion",
+    "radix-ui"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "@radix-ui/react-icons",
+    "cn",
+    "radix-ui"
+  ],
+  "peso": "médio",
+  "oQueDa": "Construtor de filtros com E/OU, multiseleção e busca.",
+  "ondeVai": "Filtros avançados de processos (tribunal, fase, responsável, prazo < 5 dias).",
+  "adaptacaoMarca": "Depende de radix-ui + motion; importa 'cn' como pacote (ajustar para @/lib/utils).",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

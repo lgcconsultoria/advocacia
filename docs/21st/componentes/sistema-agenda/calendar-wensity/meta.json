@@ -1,0 +1,33 @@
+{
+  "id": 31350,
+  "name": "Calendar",
+  "description": "An inline month calendar with single, range and multiple date selection, event dots and animated month changes. Use it for booking, scheduling and availability views.",
+  "author": "wensity",
+  "url": "https://21st.dev/@wensity/components/calendar",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/wensity/calendar?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/wensity/calendar/default/preview.1790294853746-96477db9-0acb-4fb9-8e65-ec55dec60dd3.png",
+  "videoUrl": null,
+  "grupo": "D",
+  "categoria": "sistema-agenda",
+  "registryDeps": [
+    "@/components/ui/calendar"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "@tabler/icons-react",
+    "clsx",
+    "framer-motion",
+    "tailwind-merge"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "@tabler/icons-react",
+    "framer-motion"
+  ],
+  "peso": "médio",
+  "oQueDa": "Calendário mensal com seleção, pontos de evento e navegação animada (MIT).",
+  "ondeVai": "Agenda de prazos e audiências.",
+  "adaptacaoMarca": "Pontos: âmbar = prazo, sinal = audiência, perigo = vence hoje.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

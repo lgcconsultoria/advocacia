@@ -1,0 +1,31 @@
+{
+  "id": 952,
+  "name": "Sticky Scroll Reveal",
+  "description": "A sticky container that sticks while scrolling, text reveals on scroll",
+  "author": "manuarora700",
+  "url": "https://21st.dev/@manuarora700/components/sticky-scroll-reveal",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/manuarora700/sticky-scroll-reveal?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_aceternity/sticky-scroll-reveal/952/preview.png",
+  "videoUrl": "https://cdn.21st.dev/user_aceternity/sticky-scroll-reveal/952/video.mp4",
+  "grupo": "A",
+  "categoria": "scroll",
+  "registryDeps": [
+    "@/components/ui/sticky-scroll-reveal",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "framer-motion",
+    "next"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "framer-motion"
+  ],
+  "peso": "leve",
+  "oQueDa": "Coluna de texto rola enquanto o painel lateral fica fixo e troca o conteúdo.",
+  "ondeVai": "Página Licitações: etapas (edital → impugnação → habilitação → recurso).",
+  "adaptacaoMarca": "Trocar os gradientes de fundo do original por tinta/tinta-2; framer-motion → motion/react.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

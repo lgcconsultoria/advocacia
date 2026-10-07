@@ -1,0 +1,30 @@
+{
+  "id": 26545,
+  "name": "Partition Bar",
+  "description": "A horizontal bar chart that splits into proportional colored segments to visualize parts of a whole, with labeled titles and values under each segment.",
+  "author": "8starlabs",
+  "url": "https://21st.dev/@8starlabs/components/partition-bar",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/8starlabs/partition-bar?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/8starlabs/partition-bar/default/preview.1788813428561-46d40967-3f71-4602-98af-e141719a9f6c.png",
+  "videoUrl": null,
+  "grupo": "B",
+  "categoria": "tributario",
+  "registryDeps": [
+    "@/components/ui/partition-bar",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "class-variance-authority"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "class-variance-authority"
+  ],
+  "peso": "leve",
+  "oQueDa": "Barra horizontal dividida em segmentos proporcionais com legenda.",
+  "ondeVai": "Composição da carga: tributos sobre faturamento (split bar).",
+  "adaptacaoMarca": "Segmentos em escala marca→sinal; âmbar para a parte 'recuperável'.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

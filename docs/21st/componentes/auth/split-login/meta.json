@@ -1,0 +1,41 @@
+{
+  "id": 28369,
+  "name": "Split Login",
+  "description": "Split-screen sign-in: a decorative animated-paths aside with a brand mark and a short quote, paired with a clean GitHub-only sign-in pane. A back-to-home link, mobile-collapsing layout, and token-based radial glows behind the form.",
+  "author": "mohammadshehadeh",
+  "url": "https://21st.dev/@mohammadshehadeh/components/login-03",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/mohammadshehadeh/login-03?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/hirael/login-03/default/preview.1789971927575-df6761bb-15a8-44f2-ad4c-95af2c32911e.png",
+  "videoUrl": "https://cdn.21st.dev/hirael/login-03/default/video.1789971927575-df6761bb-15a8-44f2-ad4c-95af2c32911e.mp4",
+  "grupo": "C",
+  "categoria": "auth",
+  "registryDeps": [
+    "@/components/ui/button",
+    "@/components/ui/login-03",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [
+    "/components/ui/button.tsx"
+  ],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "@radix-ui/react-slot",
+    "class-variance-authority",
+    "lucide-react",
+    "motion"
+  ],
+  "npmDepsDeclared": {
+    "@radix-ui/react-slot": "latest",
+    "class-variance-authority": "latest"
+  },
+  "npmDepsMissingFromSite": [
+    "@radix-ui/react-slot",
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "peso": "leve",
+  "oQueDa": "Login em tela dividida: lado decorativo com caminhos animados + marca, lado com formulário.",
+  "ondeVai": "/entrar (área do cliente e da equipe).",
+  "adaptacaoMarca": "Lado esquerdo em tinta com caminhos em sinal; trocar logo; form com e-mail + link mágico.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

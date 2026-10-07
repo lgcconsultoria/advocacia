@@ -1,0 +1,34 @@
+{
+  "id": 33510,
+  "name": "Command Menu",
+  "description": "⌘K command palette on cmdk: fuzzy search over labels and keywords, grouped results, shortcuts and hints per item, and a hook that registers ⌘K / Ctrl K for you. Keyboard-complete, light and dark. Part of the Layro System: layro.vercel.app.",
+  "author": "uvain",
+  "url": "https://21st.dev/@uvain/components/command-menu-palette",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/uvain/command-menu-palette?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/uvain/command-menu-palette/default/preview.1790705766975-56ec5867-b029-4f08-893c-5f5c888f7c68.jpg",
+  "videoUrl": "https://cdn.21st.dev/uvain/command-menu-palette/default/video.1790705766975-56ec5867-b029-4f08-893c-5f5c888f7c68.mp4",
+  "grupo": "D",
+  "categoria": "sistema-utilitarios",
+  "registryDeps": [
+    "@/components/ui/command-menu-palette",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "@radix-ui/react-dialog",
+    "cmdk",
+    "lucide-react"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "@radix-ui/react-dialog",
+    "cmdk",
+    "lucide-react"
+  ],
+  "peso": "leve",
+  "oQueDa": "Paleta ⌘K com cmdk: busca fuzzy, grupos, atalhos.",
+  "ondeVai": "Busca global (processo, cliente, CNJ) e ações rápidas.",
+  "adaptacaoMarca": "Requer cmdk + @radix-ui/react-dialog.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

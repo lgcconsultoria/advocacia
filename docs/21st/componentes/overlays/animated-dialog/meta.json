@@ -1,0 +1,31 @@
+{
+  "id": 26905,
+  "name": "Animated Dialog",
+  "description": "An accessible Radix dialog with motion-driven enter/exit choreography (scale, slide-up, or fade) that turns into a bottom sheet on mobile and keeps its header/footer pinned while the body scrolls.",
+  "author": "rmahammad",
+  "url": "https://21st.dev/@rmahammad/components/animated-dialog",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/rmahammad/animated-dialog?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_3HDe6B3JjqD5UjbFVbQ5p8piDUu/animated-dialog/default/preview.1789036744950.webp",
+  "videoUrl": "https://cdn.21st.dev/user_3HDe6B3JjqD5UjbFVbQ5p8piDUu/animated-dialog/default/video.1789036731820.mp4",
+  "grupo": "A",
+  "categoria": "overlays",
+  "registryDeps": [
+    "@/components/ui/animated-dialog",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "@radix-ui/react-dialog",
+    "motion"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "@radix-ui/react-dialog"
+  ],
+  "peso": "leve",
+  "oQueDa": "Dialog Radix com coreografia motion (escala/slide) e acessibilidade completa.",
+  "ondeVai": "Modal de contato/diagnóstico.",
+  "adaptacaoMarca": "Requer @radix-ui/react-dialog (não instalado). Overlay tinta/70 com blur.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

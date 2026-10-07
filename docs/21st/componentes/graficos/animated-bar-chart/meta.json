@@ -1,0 +1,28 @@
+{
+  "id": 29358,
+  "name": "Animated Chart",
+  "description": "An animated bar chart that springs each column up from zero once it scrolls into view, with per-column labels, value formatting, and staggered delays.",
+  "author": "abui",
+  "url": "https://21st.dev/@abui/components/animated-chart",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/abui/animated-chart?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/abui/animated-chart/default/preview.1790068715904-53f2041b-bb6e-4388-a3b7-849b71cdcd21.png",
+  "videoUrl": "https://cdn.21st.dev/abui/animated-chart/default/video.1790068715904-53f2041b-bb6e-4388-a3b7-849b71cdcd21.mp4",
+  "grupo": "A",
+  "categoria": "graficos",
+  "registryDeps": [
+    "@/components/ui/animated-chart",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "motion"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [],
+  "peso": "leve",
+  "oQueDa": "Barras que sobem com mola ao entrar na viewport, rótulos por coluna; só motion (sem recharts).",
+  "ondeVai": "Site: 'carga tributária antes/depois', prazos médios etc.",
+  "adaptacaoMarca": "Leve e sem biblioteca de gráfico — preferir no site; barras em marca, destaque em âmbar.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

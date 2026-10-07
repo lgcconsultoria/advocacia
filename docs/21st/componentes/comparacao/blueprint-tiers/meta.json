@@ -1,0 +1,38 @@
+{
+  "id": 28887,
+  "name": "Blueprint Tiers",
+  "description": "A three-tier pricing table with a Swiss-blueprint look (crop marks, mono labels, royal-blue accent) and a monthly/yearly billing toggle per plan.",
+  "author": "arihantcodes_1f7b8c4d",
+  "url": "https://21st.dev/@arihantcodes_1f7b8c4d/components/blueprint-tiers",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/arihantcodes_1f7b8c4d/blueprint-tiers?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/arihantcodes_1f7b8c4d/blueprint-tiers/default/preview.1790017493483-72844a80-fb7a-4d83-9a54-1e535b6d6530.png",
+  "videoUrl": "https://cdn.21st.dev/arihantcodes_1f7b8c4d/blueprint-tiers/default/video.1790017493483-72844a80-fb7a-4d83-9a54-1e535b6d6530.mp4",
+  "grupo": "A",
+  "categoria": "comparacao",
+  "registryDeps": [
+    "./blueprint-tiers-utils/price-figure",
+    "./blueprint-tiers-utils/reveal",
+    "./blueprint-tiers-utils/types",
+    "@/components/ui/blueprint-tiers",
+    "@/components/ui/blueprint-tiers-utils/types",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [
+    "./blueprint-tiers-utils/price-figure",
+    "./blueprint-tiers-utils/reveal",
+    "./blueprint-tiers-utils/types"
+  ],
+  "npmDeps": [
+    "lucide-react"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "lucide-react"
+  ],
+  "peso": "leve",
+  "oQueDa": "Tabela de planos estilo 'blueprint suíço' (marcas de corte, rótulos mono, azul royal).",
+  "ondeVai": "Comparar formatos de atendimento (avulso × consultoria mensal × Jurídico 360).",
+  "adaptacaoMarca": "É a peça mais alinhada à identidade: trocar #1f33d6/#2941ff por #1d1b9a/#8e8bff. ATENÇÃO: importa ./blueprint-tiers-utils/* (price-figure, reveal, types) que a API não entregou — instalar pelo installCommand para obter os utils.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

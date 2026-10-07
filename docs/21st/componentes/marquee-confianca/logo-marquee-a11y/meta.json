@@ -1,0 +1,27 @@
+{
+  "id": 23537,
+  "name": "Logo Marquee",
+  "description": "An accessible, physics-based infinite logo marquee that pauses on hover and focus, respects reduced motion, and scrolls a strip of brand logos or client names.",
+  "author": "ddoemonn",
+  "url": "https://21st.dev/@ddoemonn/components/logo-marquee",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/ddoemonn/logo-marquee?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_2y2pjLtk7oS33zts6BqhEIOHrAj/logo-marquee/default/preview.1786652068396.png",
+  "videoUrl": "https://cdn.21st.dev/user_2y2pjLtk7oS33zts6BqhEIOHrAj/logo-marquee/default/video.1786652083505.mp4",
+  "grupo": "A",
+  "categoria": "marquee-confianca",
+  "registryDeps": [
+    "@/components/ui/logo-marquee"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "motion"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [],
+  "peso": "leve",
+  "oQueDa": "Marquee infinito acessível (pausa no hover/foco, reduced-motion).",
+  "ondeVai": "Faixa de 'normas e instituições' (Lei 14.133, LC 214, TCU, TCE-MS…) — sem depoimentos.",
+  "adaptacaoMarca": "Usar nomes/brasões neutros em texto mono, nunca logos de clientes sem autorização.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

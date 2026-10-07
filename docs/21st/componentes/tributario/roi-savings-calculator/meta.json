@@ -1,0 +1,80 @@
+{
+  "id": 27098,
+  "name": "ROI Pricing Calculator",
+  "description": "An interactive pricing section that lets visitors drag a slider and enter a per-unit cost to calculate their estimated monthly ROI from using a product.",
+  "author": "diarmuradi",
+  "url": "https://21st.dev/@diarmuradi/components/pricing-12",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/diarmuradi/pricing-12?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/diarmuradi/pricing-12/default/preview.1789242789233-a2499dd6-48ad-4c61-b94f-7970d281cdb7.png",
+  "videoUrl": "https://cdn.21st.dev/diarmuradi/pricing-12/default/video.1789242789233-a2499dd6-48ad-4c61-b94f-7970d281cdb7.mp4",
+  "grupo": "B",
+  "categoria": "tributario",
+  "registryDeps": [
+    "@/components/fancy-button",
+    "@/components/ui/badge",
+    "@/components/ui/button",
+    "@/components/ui/input",
+    "@/components/ui/input-group",
+    "@/components/ui/pricing-12",
+    "@/components/ui/separator",
+    "@/components/ui/slider",
+    "@/components/ui/textarea",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [
+    "/components/ui/button.tsx",
+    "/components/ui/badge.tsx",
+    "/components/ui/dropdown-menu.tsx",
+    "/components/ui/input.tsx",
+    "/components/ui/label.tsx",
+    "/components/ui/slider.tsx",
+    "/components/ui/textarea.tsx",
+    "/components/ui/tooltip.tsx",
+    "/components/ui/popover.tsx",
+    "/components/ui/separator.tsx",
+    "/components/ui/button-group.tsx",
+    "/components/ui/input-group.tsx"
+  ],
+  "registryImportsNotShipped": [
+    "@/components/fancy-button"
+  ],
+  "npmDeps": [
+    "@radix-ui/react-dropdown-menu",
+    "@radix-ui/react-label",
+    "@radix-ui/react-popover",
+    "@radix-ui/react-separator",
+    "@radix-ui/react-slider",
+    "@radix-ui/react-slot",
+    "@radix-ui/react-tooltip",
+    "class-variance-authority",
+    "lucide-react",
+    "motion"
+  ],
+  "npmDepsDeclared": {
+    "@radix-ui/react-slot": "latest",
+    "class-variance-authority": "latest",
+    "lucide-react": "latest",
+    "@radix-ui/react-dropdown-menu": "latest",
+    "@radix-ui/react-label": "latest",
+    "@radix-ui/react-slider": "latest",
+    "@radix-ui/react-tooltip": "latest",
+    "@radix-ui/react-popover": "latest",
+    "@radix-ui/react-separator": "latest"
+  },
+  "npmDepsMissingFromSite": [
+    "@radix-ui/react-dropdown-menu",
+    "@radix-ui/react-label",
+    "@radix-ui/react-popover",
+    "@radix-ui/react-separator",
+    "@radix-ui/react-slider",
+    "@radix-ui/react-slot",
+    "@radix-ui/react-tooltip",
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "peso": "médio",
+  "oQueDa": "Calculadora interativa com slider e valor por unidade que recalcula ao vivo.",
+  "ondeVai": "Calculadora de economia tributária (faturamento × alíquota efetiva).",
+  "adaptacaoMarca": "Base de UX; trocar a lógica por fórmula nossa e aviso 'estimativa, não é parecer'. Depende de fancy-button/input-group/slider shadcn.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

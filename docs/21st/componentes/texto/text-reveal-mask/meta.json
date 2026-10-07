@@ -1,0 +1,28 @@
+{
+  "id": 19257,
+  "name": "Text Reveal (Mask)",
+  "description": "A scroll-triggered text reveal that masks and slides words up line-by-line, word-by-word, or character-by-character, with support for inline emphasis.",
+  "author": "soralabs",
+  "url": "https://21st.dev/@soralabs/components/text-reveal-mask",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/soralabs/text-reveal-mask?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/soralabs/text-reveal-mask/default/preview.1784814967766-34cf5d99-f92d-4124-83ca-f6fbcbea4ea6.png",
+  "videoUrl": "https://cdn.21st.dev/soralabs/text-reveal-mask/default/video.1784814967766-34cf5d99-f92d-4124-83ca-f6fbcbea4ea6.mp4",
+  "grupo": "A",
+  "categoria": "texto",
+  "registryDeps": [
+    "@/components/ui/text-reveal-mask",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "motion"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [],
+  "peso": "leve",
+  "oQueDa": "Revelação de texto com máscara linha a linha/palavra/letra ao entrar na viewport (motion).",
+  "ondeVai": "Títulos de seção e manifesto do escritório.",
+  "adaptacaoMarca": "Já usa motion e trata reduced-motion; aplicar a variante 'line' em Instrument Serif itálico para citações.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

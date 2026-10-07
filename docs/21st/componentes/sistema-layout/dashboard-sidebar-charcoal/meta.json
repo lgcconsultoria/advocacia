@@ -1,0 +1,27 @@
+{
+  "id": 14941,
+  "name": "Dashboard Sidebar",
+  "description": "A premium, dual-theme dashboard & sidebar shell featuring the Charcoal Ink (dark) and Alabaster (light) architectural palettes. Includes collapsible multi-tiered navigation, workspace content frames, and micro-contrast layout spacing. Fully responsive scaffolding for SaaS or AI p",
+  "author": "arunjdass",
+  "url": "https://21st.dev/@arunjdass/components/dashboard-sidebar",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/arunjdass/dashboard-sidebar?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/arunjdass/dashboard-sidebar/default/preview.1781812420625.png",
+  "videoUrl": "https://cdn.21st.dev/arunjdass/dashboard-sidebar/default/video.1781812420625.mp4",
+  "grupo": "D",
+  "categoria": "sistema-layout",
+  "registryDeps": [],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "lucide-react"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "lucide-react"
+  ],
+  "peso": "médio",
+  "oQueDa": "Shell de dashboard + sidebar com dois temas (Charcoal Ink escuro e claro); só lucide.",
+  "ondeVai": "Layout base do Sistema 360.",
+  "adaptacaoMarca": "Trocar Charcoal por tinta #0b0a2e e superfície #14134a; itens: Painel, Processos, Prazos, Comercial, Clientes, Alertas.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

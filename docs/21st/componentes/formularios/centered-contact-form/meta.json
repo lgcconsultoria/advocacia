@@ -1,0 +1,42 @@
+{
+  "id": 26911,
+  "name": "Centered Contact Form",
+  "description": "A minimal, centered contact form with name, email, and message fields that swaps to a confirmation message after submission.",
+  "author": "ln-dev7",
+  "url": "https://21st.dev/@ln-dev7/components/contact-16",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/ln-dev7/contact-16?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_2rmPdOT0hL8MtSnYm8IpqqrYTVg/contact-16/default/preview.1789036558657.webp",
+  "videoUrl": "https://cdn.21st.dev/ln-dev7/contact-16/default/video.1789036561971.mp4",
+  "grupo": "A",
+  "categoria": "formularios",
+  "registryDeps": [
+    "@/components/ui/button",
+    "@/components/ui/contact-16",
+    "@/components/ui/contact-16-utils/input",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [
+    "/components/ui/button.tsx",
+    "/components/ui/input.tsx"
+  ],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "@radix-ui/react-slot",
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "npmDepsDeclared": {
+    "@radix-ui/react-slot": "latest",
+    "class-variance-authority": "latest"
+  },
+  "npmDepsMissingFromSite": [
+    "@radix-ui/react-slot",
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "peso": "leve",
+  "oQueDa": "Form enxuto (nome, e-mail, mensagem) que troca para estado de sucesso.",
+  "ondeVai": "Dentro do modal de contato/diagnóstico.",
+  "adaptacaoMarca": "Adicionar campo WhatsApp e assunto (select); ligar ao /api existente (diagnostico-form.tsx).",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

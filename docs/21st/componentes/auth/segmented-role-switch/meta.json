@@ -1,0 +1,27 @@
+{
+  "id": 23552,
+  "name": "Segmented Control",
+  "description": "An accessible segmented control (radio group) with an animated sliding thumb, keyboard arrow navigation, and controlled or uncontrolled selection for switching between a small set of options.",
+  "author": "ddoemonn",
+  "url": "https://21st.dev/@ddoemonn/components/segmented-control",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/ddoemonn/segmented-control?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_2y2pjLtk7oS33zts6BqhEIOHrAj/segmented-control/default/preview.1787348037234.png",
+  "videoUrl": "https://cdn.21st.dev/user_2y2pjLtk7oS33zts6BqhEIOHrAj/segmented-control/default/video.1787348050040.mp4",
+  "grupo": "C",
+  "categoria": "auth",
+  "registryDeps": [
+    "@/components/ui/segmented-control"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "motion"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [],
+  "peso": "leve",
+  "oQueDa": "Controle segmentado acessível (radio group) com thumb deslizante.",
+  "ondeVai": "Alternar 'Sou cliente' / 'Sou da equipe' no login.",
+  "adaptacaoMarca": "Thumb em marca, texto mono; só motion.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

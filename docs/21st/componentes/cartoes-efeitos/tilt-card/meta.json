@@ -1,0 +1,26 @@
+{
+  "id": 12245,
+  "name": "Tilt Card",
+  "description": "Interactive 3D tilt card with perspective hover effect and spotlight.",
+  "author": "tom_ui",
+  "url": "https://21st.dev/@tom_ui/components/tilt-card",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/tom_ui/tilt-card?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/tom_ui/tilt-card/gravitate/preview.1776945185175.png",
+  "videoUrl": "https://cdn.21st.dev/tom_ui/tilt-card/gravitate/video.1776945185175.mp4",
+  "grupo": "A",
+  "categoria": "cartoes-efeitos",
+  "registryDeps": [
+    "@/components/ui/tilt-card",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [],
+  "peso": "leve",
+  "oQueDa": "Cartão com tilt 3D e spotlight; sem dependências.",
+  "ondeVai": "Cartões de artigos/blog e de áreas.",
+  "adaptacaoMarca": "Tilt máximo 6–8°; desligar em touch e reduced-motion.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

@@ -1,0 +1,26 @@
+{
+  "id": 26309,
+  "name": "Receipt Pricing",
+  "description": "Pricing section whose plans print like thermal receipts: monospace ledger with dot leaders, subtotal, months-free discount line, barcode, serrated edges. Switching monthly/yearly tears the slips off and reprints them. No animation library, theme tokens, keyboard-accessible.",
+  "author": "n1m4mz",
+  "url": "https://21st.dev/@n1m4mz/components/receipt-pricing",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/n1m4mz/receipt-pricing?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/n1m4mz/receipt-pricing/default/preview.1788899605933-54107b0b-73fb-4191-932b-1abc209c6879.png",
+  "videoUrl": "https://cdn.21st.dev/n1m4mz/receipt-pricing/default/video.1788899605933-54107b0b-73fb-4191-932b-1abc209c6879.mp4",
+  "grupo": "B",
+  "categoria": "tributario",
+  "registryDeps": [
+    "@/components/ui/receipt-pricing",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [],
+  "peso": "médio",
+  "oQueDa": "Planos 'impressos' como cupom térmico: razão em mono com pontilhado, reimpressão animada ao trocar período.",
+  "ondeVai": "Mockup de 'nota/recibo' mostrando tributo antes × depois da revisão.",
+  "adaptacaoMarca": "Reaproveitar o visual de cupom com linhas 'ICMS / PIS / COFINS / IBS / CBS'; já trata reduced-motion; JetBrains Mono.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

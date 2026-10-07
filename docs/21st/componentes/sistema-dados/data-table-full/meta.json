@@ -1,0 +1,33 @@
+{
+  "id": 31861,
+  "name": "Data Table",
+  "description": "A data table with search, column sorting, filtering, row selection, pagination, and expandable detail rows for admin dashboards, CRMs, and order lists.",
+  "author": "wensity",
+  "url": "https://21st.dev/@wensity/components/data-table",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/wensity/data-table?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_3JFJF7Mbb5ImA8DO9hE1FECx2fT/data-table/default/preview.1790598692899.webp",
+  "videoUrl": "https://cdn.21st.dev/user_3JFJF7Mbb5ImA8DO9hE1FECx2fT/data-table/default/video.1790598688866.mp4",
+  "grupo": "D",
+  "categoria": "sistema-dados",
+  "registryDeps": [
+    "@/components/ui/data-table"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "@tabler/icons-react",
+    "clsx",
+    "framer-motion",
+    "tailwind-merge"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "@tabler/icons-react",
+    "framer-motion"
+  ],
+  "peso": "médio",
+  "oQueDa": "Tabela com busca, ordenação, filtros, seleção, paginação e expansão (MIT).",
+  "ondeVai": "Lista de processos (nº CNJ, cliente, última movimentação, prazo).",
+  "adaptacaoMarca": "Sem TanStack: mais simples de manter; coluna 'Última movimentação' com data relativa.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

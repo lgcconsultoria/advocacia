@@ -1,0 +1,29 @@
+{
+  "id": 25275,
+  "name": "Stacking Cards",
+  "description": "A scroll-driven stack of cards that pin and scale down on top of each other as the user scrolls, built with Motion.",
+  "author": "danielpetho",
+  "url": "https://21st.dev/@danielpetho/components/stacking-cards",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/danielpetho/stacking-cards?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_danielpetho/stacking-cards/default/preview.1787265176337.webp",
+  "videoUrl": "https://cdn.21st.dev/user_danielpetho/stacking-cards/default/video.1787265166208.mp4",
+  "grupo": "A",
+  "categoria": "scroll",
+  "registryDeps": [
+    "@/components/ui/stacking-cards",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "motion",
+    "next"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [],
+  "peso": "leve",
+  "oQueDa": "Cartões que fixam e encolhem uns sobre os outros ao rolar (motion).",
+  "ondeVai": "Home: 3–4 pilares (Consultivo, Contencioso, Tributário, Licitações).",
+  "adaptacaoMarca": "Cartões alternando papel/tinta; números de seção em mono.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

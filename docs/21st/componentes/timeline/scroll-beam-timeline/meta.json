@@ -1,0 +1,30 @@
+{
+  "id": 857,
+  "name": "Timeline",
+  "description": "A timeline component with sticky header and scroll beam follow.",
+  "author": "manuarora700",
+  "url": "https://21st.dev/@manuarora700/components/timeline",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/manuarora700/timeline?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_aceternity/timeline/default/preview.1788458538501.webp",
+  "videoUrl": "https://cdn.21st.dev/user_aceternity/timeline/default/video.1788458543807.mp4",
+  "grupo": "A",
+  "categoria": "timeline",
+  "registryDeps": [
+    "@/components/ui/timeline"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "framer-motion",
+    "next"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "framer-motion"
+  ],
+  "peso": "leve",
+  "oQueDa": "Linha do tempo com cabeçalho fixo e feixe que acompanha o scroll (Aceternity).",
+  "ondeVai": "Página Sobre/Escritório e 'Reforma tributária: cronograma 2026–2033'.",
+  "adaptacaoMarca": "Feixe em gradiente sinal→âmbar; datas em mono.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

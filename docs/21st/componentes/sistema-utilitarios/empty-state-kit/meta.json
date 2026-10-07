@@ -1,0 +1,29 @@
+{
+  "id": 27024,
+  "name": "Empty State Kit",
+  "description": "Six polished empty states for inboxes, search, carts, missing pages, restricted access, and blank product surfaces, with customizable copy and actions.",
+  "author": "laziekiki",
+  "url": "https://21st.dev/@laziekiki/components/empty-state-kit",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/laziekiki/empty-state-kit?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/laziekiki/empty-state-kit/default/preview.1789224779108-0845da13-7c56-4bfb-9528-ef9a767831e9.png",
+  "videoUrl": "https://cdn.21st.dev/laziekiki/empty-state-kit/default/video.1789224779108-0845da13-7c56-4bfb-9528-ef9a767831e9.mp4",
+  "grupo": "D",
+  "categoria": "sistema-utilitarios",
+  "registryDeps": [
+    "@/components/ui/empty-state-kit"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "lucide-react"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "lucide-react"
+  ],
+  "peso": "leve",
+  "oQueDa": "Seis estados vazios (inbox, busca, acesso restrito, 404…).",
+  "ondeVai": "Telas sem dados (sem prazos hoje, sem publicações).",
+  "adaptacaoMarca": "Ilustrações em linha sinal; textos em PT-BR.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

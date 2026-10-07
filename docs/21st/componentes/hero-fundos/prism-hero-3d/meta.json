@@ -1,0 +1,34 @@
+{
+  "id": 25977,
+  "name": "Prism Hero",
+  "description": "A scroll-driven hero built around a faceted crystal that genuinely refracts the headline behind it — real transmission with chromatic dispersion, not a blur filter. The headline is rendered to a canvas texture inside the 3D scene, so the glass bends the actual type. Fully procedural: no GLTF models, no HDRI, no textures, no external assets of any kind, which means it survives being pasted into an agent and renders in any sandbox. Adaptive quality tiers scale samples and buffer resolution by device, rendering pauses when the hero scrolls off-screen, and a staticProgress prop pins the build for marketplace covers. Respects prefers-reduced-motion.",
+  "author": "bevelui",
+  "url": "https://21st.dev/@bevelui/components/prism-hero",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/bevelui/prism-hero?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_3IjCpVbxRcIwkjuop9OQilz37Z4/prism-hero/default/preview.1788292472856.webp",
+  "videoUrl": "https://cdn.21st.dev/user_3IjCpVbxRcIwkjuop9OQilz37Z4/prism-hero/default/video.1788292453674.mp4",
+  "grupo": "A",
+  "categoria": "hero-fundos",
+  "registryDeps": [
+    "@/components/ui/prism-hero"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "@react-three/drei",
+    "@react-three/fiber",
+    "motion",
+    "three"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "@react-three/drei",
+    "@react-three/fiber",
+    "three"
+  ],
+  "peso": "pesado",
+  "oQueDa": "Hero 3D com cristal facetado que refrata de verdade o título (R3F + drei), scroll-driven, respeita reduced-motion.",
+  "ondeVai": "Hero da home ('muito mais moderno' com 3D real).",
+  "adaptacaoMarca": "Props já aceitam background/foreground/accent/displayFont/italicHeadline: background #0b0a2e, accent #8e8bff, displayFont Archivo expandida ou Instrument Serif itálico; dispersion 0.25; carregar com next/dynamic ssr:false e fallback estático (imagem) para mobile fraco. Pesado: three + @react-three/fiber + drei (~250 KB gz).",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

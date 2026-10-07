@@ -1,0 +1,25 @@
+{
+  "id": 34777,
+  "name": "Slider",
+  "description": "A labeled numeric slider with a live value readout, available as a native range input or as a draggable spring-animated track with a thumb that grows while held.",
+  "author": "halaska-studio",
+  "url": "https://21st.dev/@halaska-studio/components/slider",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/halaska-studio/slider?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_registry_halaska-studio_1790790197996/slider/range/preview.1790886549240.webp",
+  "videoUrl": "https://cdn.21st.dev/user_registry_halaska-studio_1790790197996/slider/range/video.1790886545294.mp4",
+  "grupo": "A",
+  "categoria": "calculadoras",
+  "registryDeps": [
+    "@/components/ui/slider"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [],
+  "peso": "leve",
+  "oQueDa": "Slider numérico com leitura ao vivo; input range nativo ou thumb com mola; MIT, sem dependências.",
+  "ondeVai": "Calculadoras (faturamento, alíquota, valor do contrato).",
+  "adaptacaoMarca": "Acessível por ser input nativo; thumb em marca, trilha papel-2; valor em JetBrains Mono.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

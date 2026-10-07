@@ -1,0 +1,44 @@
+{
+  "id": 27553,
+  "name": "CTA Section with Noise Shader",
+  "description": "A call-to-action section with a headline, supporting copy, and two buttons over an animated neuro-noise shader background, for driving signups or highlighting a product's value.",
+  "author": "shadcnui-blocks",
+  "url": "https://21st.dev/@shadcnui-blocks/components/cta-06",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/shadcnui-blocks/cta-06?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/shadcnui-blocks/cta-06/default/preview.1789778137741-69ef9205-a5a2-4b90-bcc2-573a00dec8ee.png",
+  "videoUrl": "https://cdn.21st.dev/shadcnui-blocks/cta-06/default/video.1789778137741-69ef9205-a5a2-4b90-bcc2-573a00dec8ee.mp4",
+  "grupo": "A",
+  "categoria": "cta",
+  "registryDeps": [
+    "@/components/ui/button",
+    "@/components/ui/cta-06",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [
+    "/components/ui/button.tsx"
+  ],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "@paper-design/shaders-react",
+    "@radix-ui/react-slot",
+    "class-variance-authority",
+    "lucide-react",
+    "next-themes"
+  ],
+  "npmDepsDeclared": {
+    "@radix-ui/react-slot": "latest",
+    "class-variance-authority": "latest"
+  },
+  "npmDepsMissingFromSite": [
+    "@paper-design/shaders-react",
+    "@radix-ui/react-slot",
+    "class-variance-authority",
+    "lucide-react",
+    "next-themes"
+  ],
+  "peso": "médio",
+  "oQueDa": "CTA com shader de ruído/grão animado ao fundo (paper shaders).",
+  "ondeVai": "CTA final de todas as páginas ('Agende um diagnóstico').",
+  "adaptacaoMarca": "Remover next-themes; cores tinta/marca; botão âmbar.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

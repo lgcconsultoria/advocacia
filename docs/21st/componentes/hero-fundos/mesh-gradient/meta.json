@@ -1,0 +1,30 @@
+{
+  "id": 33527,
+  "name": "Mesh Gradient",
+  "description": "A WebGL-powered animated mesh gradient background with configurable colors, swirl distortion, and shape, useful as a hero or section backdrop.",
+  "author": "adrielzimbril",
+  "url": "https://21st.dev/@adrielzimbril/components/mesh-gradient",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/adrielzimbril/mesh-gradient?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_registry_adrielzimbril_1790350555257/mesh-gradient/default/preview.1790697663384.webp",
+  "videoUrl": "https://cdn.21st.dev/user_registry_adrielzimbril_1790350555257/mesh-gradient/default/video.1790697656221.mp4",
+  "grupo": "A",
+  "categoria": "hero-fundos",
+  "registryDeps": [
+    "@/components/ui/mesh-gradient",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "@paper-design/shaders-react"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "@paper-design/shaders-react"
+  ],
+  "peso": "leve",
+  "oQueDa": "Gradiente de malha WebGL animado (carrega @paper-design/shaders-react sob demanda, import dinâmico), 4 cores configuráveis e forma (edge/wave/circle).",
+  "ondeVai": "Fundo do hero da home e das 'plantas escuras'.",
+  "adaptacaoMarca": "Trocar as cores padrão (#0a1a4a/#1f4fd8/#4c9bff) por tinta #0b0a2e, marca #1d1b9a, sinal #8e8bff e um toque de #14134a; speed baixo (0.15–0.25) para ficar sóbrio; pausar com prefers-reduced-motion (o componente não trata); carregar com next/dynamic ssr:false.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

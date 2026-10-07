@@ -1,0 +1,26 @@
+{
+  "id": 27533,
+  "name": "Text Morphing",
+  "description": "An animated headline that blur-crossfades between a list of phrases, looping continuously with reduced-motion support.",
+  "author": "wensity",
+  "url": "https://21st.dev/@wensity/components/text-morphing",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/wensity/text-morphing?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/wensity/text-morphing/default/preview.1789776159873-00392177-53b7-4517-947e-7d2e4a78dbc3.png",
+  "videoUrl": "https://cdn.21st.dev/wensity/text-morphing/default/video.1789776159873-00392177-53b7-4517-947e-7d2e4a78dbc3.mp4",
+  "grupo": "A",
+  "categoria": "texto",
+  "registryDeps": [
+    "@/components/ui/text-morphing",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [],
+  "peso": "leve",
+  "oQueDa": "Título que faz crossfade com blur entre frases (sem dependências, respeita reduced-motion).",
+  "ondeVai": "Headline da home: 'Licitações · Tributário · Direito Público'.",
+  "adaptacaoMarca": "Usar Archivo expandida no className; 3 frases no máximo; morphDuration ~1.2s para não ficar 'vendedor'.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

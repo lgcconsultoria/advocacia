@@ -1,0 +1,47 @@
+{
+  "id": 21493,
+  "name": "Login with Magic Link and SSO",
+  "description": "A centered card login form offering magic-link email sign-in, password fallback, and single sign-on (SSO).",
+  "author": "ephraimduncan",
+  "url": "https://21st.dev/@ephraimduncan/components/login-06",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/ephraimduncan/login-06?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/ephraimduncan/login-06/default/preview.1784787329983-1bea4256-d56c-46a5-b168-df32a4461b45.png",
+  "videoUrl": "https://cdn.21st.dev/ephraimduncan/login-06/default/video.1784787329983-1bea4256-d56c-46a5-b168-df32a4461b45.mp4",
+  "grupo": "C",
+  "categoria": "auth",
+  "registryDeps": [
+    "@/components/ui/button",
+    "@/components/ui/card",
+    "@/components/ui/input",
+    "@/components/ui/login-06",
+    "@/components/ui/separator",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [
+    "/components/ui/button.tsx",
+    "/components/ui/input.tsx",
+    "/components/ui/separator.tsx",
+    "/components/ui/card.tsx"
+  ],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "@radix-ui/react-separator",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "npmDepsDeclared": {
+    "@radix-ui/react-slot": "latest",
+    "class-variance-authority": "latest",
+    "@radix-ui/react-separator": "latest"
+  },
+  "npmDepsMissingFromSite": [
+    "@radix-ui/react-separator",
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
+  "peso": "leve",
+  "oQueDa": "Card de login com link mágico, senha de reserva e SSO.",
+  "ondeVai": "Fluxo principal de /entrar (cliente recebe link por e-mail).",
+  "adaptacaoMarca": "Remover SSO genérico; manter só e-mail + Google (se houver).",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

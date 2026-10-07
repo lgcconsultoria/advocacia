@@ -1,0 +1,31 @@
+{
+  "id": 27135,
+  "name": "Notification Panel",
+  "description": "Opens from the bell, closes on Escape, grouped by day and filtered by kind — and it draws the difference between what you have seen and what you have actually dealt with, which most notification UIs collapse and cannot uncollapse. More at layro.vercel.app",
+  "author": "uvain",
+  "url": "https://21st.dev/@uvain/components/notification-panel",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/uvain/notification-panel?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_3AAcYdXInfTxs5akkUBbQIUQdhX/notification-panel/default/preview.1789373086886.png",
+  "videoUrl": "https://cdn.21st.dev/user_3AAcYdXInfTxs5akkUBbQIUQdhX/notification-panel/default/video.1789373138999.mp4",
+  "grupo": "D",
+  "categoria": "sistema-feed",
+  "registryDeps": [
+    "@/components/ui/notification-panel"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "framer-motion",
+    "lucide-react"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "framer-motion",
+    "lucide-react"
+  ],
+  "peso": "médio",
+  "oQueDa": "Painel de notificações (sino), agrupado por dia, filtro por tipo, Esc fecha.",
+  "ondeVai": "Central de alertas (publicações DJEN, prazos, WhatsApp enviado).",
+  "adaptacaoMarca": "Tipos: Publicação, Prazo, WhatsApp, Sistema; framer-motion → motion/react.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

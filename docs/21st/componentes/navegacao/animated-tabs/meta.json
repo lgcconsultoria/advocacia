@@ -1,0 +1,28 @@
+{
+  "id": 24930,
+  "name": "Animated Tabs",
+  "description": "Animated tabs component with a smooth sliding indicator, offering underline, pill, and segment variants with icon support and full keyboard navigation.",
+  "author": "educalvolpz",
+  "url": "https://21st.dev/@educalvolpz/components/animated-tabs",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/educalvolpz/animated-tabs?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_2s2o9RwN7OoP4Na42lJREy96Xua/animated-tabs/default/preview.1787742708286.png",
+  "videoUrl": "https://cdn.21st.dev/user_2s2o9RwN7OoP4Na42lJREy96Xua/animated-tabs/default/video.1787742718577.mp4",
+  "grupo": "A",
+  "categoria": "navegacao",
+  "registryDeps": [
+    "@/components/ui/animated-tabs",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "motion"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [],
+  "peso": "leve",
+  "oQueDa": "Abas com indicador deslizante (underline, pill e outras variantes).",
+  "ondeVai": "Tributário: alternar 'Lucro Real / Presumido / Simples'; áreas.",
+  "adaptacaoMarca": "Variante underline em marca; motion já é dependência do site.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

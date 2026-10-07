@@ -1,0 +1,30 @@
+{
+  "id": 1081,
+  "name": "Container Scroll Animation",
+  "description": "A scroll animation that rotates in 3d on scroll. Perfect for hero or marketing sections.",
+  "author": "manuarora700",
+  "url": "https://21st.dev/@manuarora700/components/container-scroll-animation",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/manuarora700/container-scroll-animation?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_aceternity/container-scroll-animation/default/preview.png",
+  "videoUrl": "https://cdn.21st.dev/user_aceternity/container-scroll-animation/default/video.mp4",
+  "grupo": "A",
+  "categoria": "scroll",
+  "registryDeps": [
+    "@/components/ui/container-scroll-animation"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "framer-motion",
+    "next"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "framer-motion"
+  ],
+  "peso": "leve",
+  "oQueDa": "Contêiner que gira em 3D conforme o scroll (Aceternity) revelando uma tela.",
+  "ondeVai": "Home: revelar a tela do 'Jurídico 360' / painel do cliente ao rolar.",
+  "adaptacaoMarca": "Trocar framer-motion por motion/react; moldura em tinta-2 com borda papel-2; imagem real do sistema (sem dados de cliente).",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

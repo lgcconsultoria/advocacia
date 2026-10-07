@@ -1,0 +1,31 @@
+{
+  "id": 27137,
+  "name": "File Upload",
+  "description": "Most upload widgets fall over on the three things that really happen: wrong file type, file too big, transfer fails halfway. This one handles all three — per-file progress, retry, and guards that explain themselves. Part of Documents & Signing: layro.vercel.app",
+  "author": "uvain",
+  "url": "https://21st.dev/@uvain/components/file-upload",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/uvain/file-upload?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_3AAcYdXInfTxs5akkUBbQIUQdhX/file-upload/default/preview.1789406886621.png",
+  "videoUrl": null,
+  "grupo": "D",
+  "categoria": "sistema-utilitarios",
+  "registryDeps": [
+    "@/components/ui/file-upload"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "framer-motion",
+    "lucide-react"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "framer-motion",
+    "lucide-react"
+  ],
+  "peso": "médio",
+  "oQueDa": "Upload que lida com tipo errado, arquivo grande e falha de rede.",
+  "ondeVai": "Anexar peças e documentos ao processo/cliente.",
+  "adaptacaoMarca": "framer-motion → motion/react.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

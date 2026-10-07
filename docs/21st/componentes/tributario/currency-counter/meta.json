@@ -1,0 +1,29 @@
+{
+  "id": 21513,
+  "name": "Number Ticker Currency Counter",
+  "description": "An animated currency counter that smoothly rolls between values for displaying prices, balances, or real-time financial figures.",
+  "author": "shadcnspace",
+  "url": "https://21st.dev/@shadcnspace/components/number-ticker-02",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/shadcnspace/number-ticker-02?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/shadcnspace/number-ticker-02/default/preview.1784794408484-f4da32ff-d54a-47ea-aa22-733d21a90050.png",
+  "videoUrl": "https://cdn.21st.dev/shadcnspace/number-ticker-02/default/video.1784794408484-f4da32ff-d54a-47ea-aa22-733d21a90050.mp4",
+  "grupo": "B",
+  "categoria": "tributario",
+  "registryDeps": [
+    "@/components/ui/number-ticker-02"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "@number-flow/react"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "@number-flow/react"
+  ],
+  "peso": "leve",
+  "oQueDa": "Contador de moeda que rola entre valores (@number-flow/react).",
+  "ondeVai": "Valor economizado / tributo devido animado.",
+  "adaptacaoMarca": "currency 'BRL', locale pt-BR; número em Archivo expandida.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

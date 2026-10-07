@@ -1,0 +1,34 @@
+{
+  "id": 34833,
+  "name": "OTP Input",
+  "description": "One-time code input on input-otp: paste into any box, SMS autofill, Backspace walks back, boxes grouped 3 + 3, and it submits itself when full. Turns invalid with the Field's error. Part of the Layro System: layro.vercel.app.",
+  "author": "uvain",
+  "url": "https://21st.dev/@uvain/components/otp-input-verification",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/uvain/otp-input-verification?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_3AAcYdXInfTxs5akkUBbQIUQdhX/otp-input-verification/default/preview.1791198479762.png",
+  "videoUrl": "https://cdn.21st.dev/user_3AAcYdXInfTxs5akkUBbQIUQdhX/otp-input-verification/default/video.1791198495274.mp4",
+  "grupo": "C",
+  "categoria": "auth",
+  "registryDeps": [
+    "@/components/ui/otp-input-verification",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "@radix-ui/react-label",
+    "input-otp",
+    "lucide-react"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "@radix-ui/react-label",
+    "input-otp",
+    "lucide-react"
+  ],
+  "peso": "leve",
+  "oQueDa": "OTP sobre input-otp: colar em qualquer caixa, autofill de SMS, Backspace volta.",
+  "ondeVai": "Confirmação por código (e-mail/WhatsApp).",
+  "adaptacaoMarca": "Requer input-otp e @radix-ui/react-label. Caixas em papel com foco em marca.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

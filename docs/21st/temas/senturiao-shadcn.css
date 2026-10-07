@@ -1,0 +1,71 @@
+/* Mapeamento sugerido: tokens shadcn (usados pelos componentes do 21st)
+   → identidade Senturião (globals.css). Base: estrutura do "Indigo Harbor"
+   (claro = papel, escuro = tinta) com os acentos do "Cosmic Indigo".
+   Não está ligado ao app; o integrador copia para app/globals.css. */
+:root {
+  --background: #f1f1f6;          /* papel */
+  --foreground: #1a1a2b;          /* grafite */
+  --card: #ffffff;
+  --card-foreground: #1a1a2b;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a2b;
+  --primary: #1d1b9a;             /* marca */
+  --primary-foreground: #f1f1f6;
+  --secondary: #e2e2ec;           /* papel-2 */
+  --secondary-foreground: #1a1a2b;
+  --muted: #e2e2ec;
+  --muted-foreground: #5d5d78;    /* cinza */
+  --accent: #e6e5fb;
+  --accent-foreground: #15146f;
+  --destructive: #b23b30;
+  --border: #e2e2ec;
+  --input: #e2e2ec;
+  --ring: #1d1b9a;
+  --chart-1: #1d1b9a;
+  --chart-2: #8e8bff;
+  --chart-3: #15146f;
+  --chart-4: #d39a5b;             /* âmbar: só destaque */
+  --chart-5: #a3a2c9;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1a1a2b;
+  --sidebar-primary: #1d1b9a;
+  --sidebar-primary-foreground: #f1f1f6;
+  --sidebar-accent: #e6e5fb;
+  --sidebar-accent-foreground: #15146f;
+  --sidebar-border: #e2e2ec;
+  --sidebar-ring: #1d1b9a;
+  --radius: 0.5rem;
+}
+.dark, [data-tema="tinta"] {
+  --background: #0b0a2e;          /* tinta */
+  --foreground: #f1f1f6;
+  --card: #14134a;                /* tinta-2 */
+  --card-foreground: #f1f1f6;
+  --popover: #14134a;
+  --popover-foreground: #f1f1f6;
+  --primary: #8e8bff;             /* sinal */
+  --primary-foreground: #0b0a2e;
+  --secondary: #1c1b5c;
+  --secondary-foreground: #f1f1f6;
+  --muted: #1c1b5c;
+  --muted-foreground: #a3a2c9;    /* cinza-escuro */
+  --accent: #23226b;
+  --accent-foreground: #f1f1f6;
+  --destructive: #e0675c;
+  --border: rgba(142, 139, 255, 0.18);
+  --input: rgba(142, 139, 255, 0.22);
+  --ring: #8e8bff;
+  --chart-1: #8e8bff;
+  --chart-2: #5b58e6;
+  --chart-3: #c9c7ff;
+  --chart-4: #d39a5b;
+  --chart-5: #3a38b8;
+  --sidebar: #0f0e3a;
+  --sidebar-foreground: #f1f1f6;
+  --sidebar-primary: #8e8bff;
+  --sidebar-primary-foreground: #0b0a2e;
+  --sidebar-accent: #1c1b5c;
+  --sidebar-accent-foreground: #f1f1f6;
+  --sidebar-border: rgba(142, 139, 255, 0.14);
+  --sidebar-ring: #8e8bff;
+}

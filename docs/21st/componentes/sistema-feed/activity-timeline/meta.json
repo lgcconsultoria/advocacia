@@ -1,0 +1,35 @@
+{
+  "id": 35051,
+  "name": "Timeline",
+  "description": "A vertical activity feed grouped by day, with expandable rows, an animated drawing connector line, and smooth insert animations for new updates — used for project history, audit logs, and deploy streams.",
+  "author": "kuratlielia",
+  "url": "https://21st.dev/@kuratlielia/components/timeline",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/kuratlielia/timeline?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_registry_kuratlielia_1790903117010/timeline/default/preview.1790977806085.webp",
+  "videoUrl": "https://cdn.21st.dev/user_registry_kuratlielia_1790903117010/timeline/default/video.1790977802337.mp4",
+  "grupo": "D",
+  "categoria": "sistema-feed",
+  "registryDeps": [
+    "./timeline-utils/motion-tokens",
+    "./timeline-utils/timeline.module.css",
+    "@/components/ui/timeline"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [
+    "./timeline-utils/motion-tokens",
+    "./timeline-utils/timeline.module.css"
+  ],
+  "npmDeps": [
+    "lucide-react",
+    "motion"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "lucide-react"
+  ],
+  "peso": "médio",
+  "oQueDa": "Feed vertical agrupado por dia, linhas expansíveis e linha que se desenha.",
+  "ondeVai": "Movimentações do processo e histórico do cliente.",
+  "adaptacaoMarca": "Importa ./timeline-utils (motion-tokens, CSS module) — instalar via installCommand.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

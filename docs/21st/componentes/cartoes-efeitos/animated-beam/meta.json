@@ -1,0 +1,30 @@
+{
+  "id": 919,
+  "name": "Animated Beam",
+  "description": "An animated beam of light which travels along a path. Useful for showcasing the \"integration\" features of a website.",
+  "author": "dillionverma",
+  "url": "https://21st.dev/@dillionverma/components/animated-beam",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/dillionverma/animated-beam?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_2vgPxqtXOGc4iU0CBJH2MQn2eTG/animated-beam/default/preview.1786654709590.png",
+  "videoUrl": "https://cdn.21st.dev/user_2vgPxqtXOGc4iU0CBJH2MQn2eTG/animated-beam/default/video.1786654726844.mp4",
+  "grupo": "A",
+  "categoria": "cartoes-efeitos",
+  "registryDeps": [
+    "@/components/ui/animated-beam",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "framer-motion"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "framer-motion"
+  ],
+  "peso": "leve",
+  "oQueDa": "Feixes animados ligando nós (diagrama de integração).",
+  "ondeVai": "Seção 'como o monitoramento funciona': Diário Oficial → Sistema → WhatsApp do cliente.",
+  "adaptacaoMarca": "Ícones próprios; framer-motion → motion/react.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

@@ -1,0 +1,27 @@
+{
+  "id": 23574,
+  "name": "Value Flash",
+  "description": "An animated number readout that flashes green or red and rolls its digits up or down whenever the value changes, ideal for live metrics, prices, and counters.",
+  "author": "ddoemonn",
+  "url": "https://21st.dev/@ddoemonn/components/value-flash",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/ddoemonn/value-flash?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/ddoemonn/value-flash/default/preview.1785481071117-a3034cd7-3822-4e6e-8242-49768af6ee9e.png",
+  "videoUrl": "https://cdn.21st.dev/ddoemonn/value-flash/default/video.1785481071117-a3034cd7-3822-4e6e-8242-49768af6ee9e.mp4",
+  "grupo": "B",
+  "categoria": "tributario",
+  "registryDeps": [
+    "@/components/ui/value-flash"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "motion"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [],
+  "peso": "leve",
+  "oQueDa": "Leitura numérica que pisca verde/vermelho e rola dígitos ao mudar; anuncia a leitores de tela.",
+  "ondeVai": "Resultado da calculadora quando o usuário mexe no slider.",
+  "adaptacaoMarca": "Trocar verde/vermelho por sinal/âmbar (evitar cara de corretora).",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

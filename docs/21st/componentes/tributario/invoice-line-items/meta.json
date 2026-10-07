@@ -1,0 +1,29 @@
+{
+  "id": 25157,
+  "name": "Invoice Line Items Table",
+  "description": "An invoice table listing line items with quantity, unit, and unit price columns plus a footer summing subtotal, tax, and total due.",
+  "author": "olewandowski1",
+  "url": "https://21st.dev/@olewandowski1/components/table-3",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/olewandowski1/table-3?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_registry_7ovr_1782691739820/table-3/default/preview.1787682715229.webp",
+  "videoUrl": "https://cdn.21st.dev/user_registry_7ovr_1782691739820/table-3/default/video.1787682719008.mp4",
+  "grupo": "B",
+  "categoria": "tributario",
+  "registryDeps": [
+    "@/components/ui/table",
+    "@/components/ui/table-3",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [
+    "/components/ui/table.tsx"
+  ],
+  "registryImportsNotShipped": [],
+  "npmDeps": [],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [],
+  "peso": "leve",
+  "oQueDa": "Tabela de itens de fatura (qtd, unidade, preço) com totais.",
+  "ondeVai": "Mockup de NF-e/fatura nas páginas de tributário.",
+  "adaptacaoMarca": "Requer @/components/ui/table (shadcn). Totais animados com o currency counter.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

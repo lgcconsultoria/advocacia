@@ -1,0 +1,35 @@
+{
+  "id": 31454,
+  "name": "Sidebar",
+  "description": "A collapsible app sidebar that shrinks to an icon rail, with sections, badges, a user footer and an animated active item. The base for dashboards and SaaS app shells.",
+  "author": "wensity",
+  "url": "https://21st.dev/@wensity/components/sidebar",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/wensity/sidebar?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/wensity/sidebar/default/preview.1790303578745-d63aca4c-6635-4c7d-b8e4-4fa0a2538765.jpg",
+  "videoUrl": null,
+  "grupo": "D",
+  "categoria": "sistema-layout",
+  "registryDeps": [
+    "@/components/ui/sidebar"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "@base-ui/react",
+    "@tabler/icons-react",
+    "clsx",
+    "framer-motion",
+    "tailwind-merge"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "@base-ui/react",
+    "@tabler/icons-react",
+    "framer-motion"
+  ],
+  "peso": "médio",
+  "oQueDa": "Sidebar que recolhe para trilho de ícones, com seções, badges e usuário (MIT, Base UI).",
+  "ondeVai": "Alternativa de sidebar (mais completa, badges de prazos).",
+  "adaptacaoMarca": "Usa @base-ui/react e @tabler/icons-react (padronizar ícones numa só lib).",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

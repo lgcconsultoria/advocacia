@@ -1,0 +1,30 @@
+{
+  "id": 34511,
+  "name": "Sparkline",
+  "description": "A compact inline chart (line, area, or column) that shows a data trend at a glance inside a KPI card, table row, or dashboard header, with an optional hover tooltip and live-updating value/label.",
+  "author": "appica-dev",
+  "url": "https://21st.dev/@appica-dev/components/sparkline",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/appica-dev/sparkline?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/appica-dev/sparkline/stat/preview.1790806738139-8b81dc7f-a8ef-4d5e-b61f-1af42983086e.png",
+  "videoUrl": "https://cdn.21st.dev/appica-dev/sparkline/stat/video.1790806738139-8b81dc7f-a8ef-4d5e-b61f-1af42983086e.mp4",
+  "grupo": "D",
+  "categoria": "sistema-kpi",
+  "registryDeps": [
+    "@/components/ui/sparkline",
+    "@/components/ui/sparkline-utils/cn",
+    "@/components/ui/sparkline-utils/use-direction"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [
+    "@/components/ui/sparkline-utils/cn",
+    "@/components/ui/sparkline-utils/use-direction"
+  ],
+  "npmDeps": [],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [],
+  "peso": "leve",
+  "oQueDa": "Gráfico inline (linha/área/coluna) sem dependência.",
+  "ondeVai": "Dentro de tabelas (movimentações/mês por cliente).",
+  "adaptacaoMarca": "Utils cn/use-direction vêm pelo installCommand.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

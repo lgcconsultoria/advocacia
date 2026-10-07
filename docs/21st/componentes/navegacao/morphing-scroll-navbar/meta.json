@@ -1,0 +1,25 @@
+{
+  "id": 27428,
+  "name": "Morphing Scroll Navbar",
+  "description": "A responsive navbar that morphs from a full-width header into a blurred floating capsule, compacts while scrolling down, restores on upward scroll, and tracks reading progress.",
+  "author": "laziekiki",
+  "url": "https://21st.dev/@laziekiki/components/morphing-scroll-navbar",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/laziekiki/morphing-scroll-navbar?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/laziekiki/morphing-scroll-navbar/default/preview.1789731905862-30bbc437-d46b-42da-9385-81bee57e0414.png",
+  "videoUrl": "https://cdn.21st.dev/laziekiki/morphing-scroll-navbar/default/video.1789731905862-30bbc437-d46b-42da-9385-81bee57e0414.mp4",
+  "grupo": "A",
+  "categoria": "navegacao",
+  "registryDeps": [
+    "@/components/ui/morphing-scroll-navbar"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [],
+  "peso": "leve",
+  "oQueDa": "Header que vira cápsula flutuante com blur ao rolar; sem dependências.",
+  "ondeVai": "Header global do site v2 (substituir site-header.tsx).",
+  "adaptacaoMarca": "Cápsula em tinta/80 com backdrop-blur; CTA 'Diagnóstico' em âmbar só no estado flutuante.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

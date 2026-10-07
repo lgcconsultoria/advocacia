@@ -1,0 +1,30 @@
+{
+  "id": 18024,
+  "name": "Grid Beam",
+  "description": "Animated canvas background that sends soft glowing light beams along grid dividers, with color palette presets and composable headless pieces.",
+  "author": "cult-ui",
+  "url": "https://21st.dev/@cult-ui/components/grid-beam",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/cult-ui/grid-beam?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/cult-ui/grid-beam/default/preview.1784425109772-f9934c57-1ee2-4dd9-8bb2-916f15a74567.png",
+  "videoUrl": "https://cdn.21st.dev/cult-ui/grid-beam/default/video.1784425109772-f9934c57-1ee2-4dd9-8bb2-916f15a74567.mp4",
+  "grupo": "A",
+  "categoria": "hero-fundos",
+  "registryDeps": [
+    "@/components/ui/grid-beam",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "next-themes"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "next-themes"
+  ],
+  "peso": "leve",
+  "oQueDa": "Fundo canvas com feixes de luz correndo pelas linhas da grade; paletas configuráveis; sem dependências (next-themes só no demo).",
+  "ondeVai": "Fundo das 'plantas escuras com grade' (seções numeradas) e da área de licitações.",
+  "adaptacaoMarca": "Combina 1:1 com a linguagem 'planta' do globals.css: paleta própria (RGB de #8e8bff e #1d1b9a, op baixa); remover next-themes do demo; parar o loop fora da viewport.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

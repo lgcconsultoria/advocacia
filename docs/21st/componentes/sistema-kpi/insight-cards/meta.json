@@ -1,0 +1,30 @@
+{
+  "id": 29167,
+  "name": "Insight Cards",
+  "description": "A grid or row of metric cards showing a label, value, spark bar chart, trend delta, and an optional AI-generated note.",
+  "author": "arihantcodes_1f7b8c4d",
+  "url": "https://21st.dev/@arihantcodes_1f7b8c4d/components/insight-cards",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/arihantcodes_1f7b8c4d/insight-cards?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/arihantcodes_1f7b8c4d/insight-cards/default/preview.1790046707395-70c038d0-bb31-4824-8019-c77c712133c4.png",
+  "videoUrl": "https://cdn.21st.dev/arihantcodes_1f7b8c4d/insight-cards/default/video.1790046707395-70c038d0-bb31-4824-8019-c77c712133c4.mp4",
+  "grupo": "D",
+  "categoria": "sistema-kpi",
+  "registryDeps": [
+    "@/components/ui/insight-cards",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "lucide-react"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "lucide-react"
+  ],
+  "peso": "leve",
+  "oQueDa": "Cartões de métrica com mini barras, delta e tendência.",
+  "ondeVai": "Cards compactos em Processos/Comercial.",
+  "adaptacaoMarca": "Leve; só lucide.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

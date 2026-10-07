@@ -1,0 +1,26 @@
+{
+  "id": 1268,
+  "name": "Border Beam",
+  "description": "An animated beam of light which travels along the border of its container.",
+  "author": "dillionverma",
+  "url": "https://21st.dev/@dillionverma/components/border-beam",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/dillionverma/border-beam?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/dillionverma/border-beam/default/preview.1785300433872-975e2ae2-249a-4dae-bbd1-39fa6e09a6da.png",
+  "videoUrl": "https://cdn.21st.dev/dillionverma/border-beam/default/video.1785300433872-975e2ae2-249a-4dae-bbd1-39fa6e09a6da.mp4",
+  "grupo": "A",
+  "categoria": "cartoes-efeitos",
+  "registryDeps": [
+    "@/components/ui/border-beam",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [],
+  "peso": "leve",
+  "oQueDa": "Feixe de luz percorrendo a borda do contêiner (Magic UI); só CSS.",
+  "ondeVai": "Cartão do plano recomendado / CTA do diagnóstico.",
+  "adaptacaoMarca": "colorFrom #8e8bff → colorTo #d39a5b; duration lenta (8–10s).",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

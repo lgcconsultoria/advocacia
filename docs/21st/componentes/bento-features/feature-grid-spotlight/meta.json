@@ -1,0 +1,37 @@
+{
+  "id": 26797,
+  "name": "Feature Grid Spotlight Cards",
+  "description": "Six-card feature grid on hairline rails: each card carries an inline icon beside its title, a title and a description, corner crosshair marks, and a radial spotlight that follows the pointer on hover. Warm-tinted top glow per card.",
+  "author": "mohammadshehadeh",
+  "url": "https://21st.dev/@mohammadshehadeh/components/feature-08",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/mohammadshehadeh/feature-08?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/hirael/feature-08/default/preview.1788859455777-e5b259a1-7cc8-47bd-8da5-9953b61ac85d.png",
+  "videoUrl": "https://cdn.21st.dev/hirael/feature-08/default/video.1788859455777-e5b259a1-7cc8-47bd-8da5-9953b61ac85d.mp4",
+  "grupo": "A",
+  "categoria": "bento-features",
+  "registryDeps": [
+    "@/components/ui/badge",
+    "@/components/ui/feature-08",
+    "@/lib/utils"
+  ],
+  "registryFilesIncluded": [
+    "/components/ui/badge.tsx"
+  ],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "npmDepsDeclared": {
+    "class-variance-authority": "latest"
+  },
+  "npmDepsMissingFromSite": [
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "peso": "leve",
+  "oQueDa": "Grade de 6 cartões em 'trilhos' finos com spotlight no hover (MIT, Hirael).",
+  "ondeVai": "Áreas de atuação (home) e serviços de licitações.",
+  "adaptacaoMarca": "Estética de linhas finas casa com a planta; trocar ícones lucide por area-icon.tsx; badge em JetBrains Mono.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}

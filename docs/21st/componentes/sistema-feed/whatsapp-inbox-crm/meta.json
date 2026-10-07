@@ -1,0 +1,29 @@
+{
+  "id": 14827,
+  "name": "What Saa SChat Inbox",
+  "description": "Reusable WhatsApp-style inbox component with chat list, conversation pane and CRM side panel.",
+  "author": "jasonmohab-ali",
+  "url": "https://21st.dev/@jasonmohab-ali/components/whatsaas-chat-inbox",
+  "installCommand": "npx shadcn@latest add \"https://21st.dev/r/jasonmohab-ali/whatsaas-chat-inbox?api_key=$API_KEY_21ST\"",
+  "previewUrl": "https://cdn.21st.dev/user_3EMmdxWSLt84AgzqNwSKwX4jMuq/whatsaas-chat-inbox/default/preview.1789069048432.png",
+  "videoUrl": null,
+  "grupo": "D",
+  "categoria": "sistema-feed",
+  "registryDeps": [
+    "@/components/ui/whatsaas-chat-inbox"
+  ],
+  "registryFilesIncluded": [],
+  "registryImportsNotShipped": [],
+  "npmDeps": [
+    "lucide-react"
+  ],
+  "npmDepsDeclared": {},
+  "npmDepsMissingFromSite": [
+    "lucide-react"
+  ],
+  "peso": "leve",
+  "oQueDa": "Inbox estilo WhatsApp com lista de conversas, conversa e lateral de CRM.",
+  "ondeVai": "Tela 'Alertas/Atendimento' (mensagens disparadas ao cliente).",
+  "adaptacaoMarca": "Só lucide; ligar ao canal Meta (W1/W2) no futuro.",
+  "compat": "React 19/Next 16/Tailwind v4: revisar 'use client', trocar framer-motion por motion/react quando aparecer; cores hardcoded → tokens do globals.css."
+}
