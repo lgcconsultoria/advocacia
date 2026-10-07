@@ -11,10 +11,10 @@ componentes acessíveis e **Keystatic** como CMS headless git-based.
 | --- | --- |
 | Framework | Next.js 16 (App Router, RSC) + React 19 |
 | Estilo | Tailwind CSS v4 + design system em `app/globals.css` (tokens da marca) |
-| Tipografia | Archivo (display) + Inter (corpo), via Google Fonts |
+| Tipografia | Archivo com eixo `wdth` (expandida) + Instrument Serif itálico + JetBrains Mono, via `next/font` |
 | Animação | Motion (`motion/react`) para revelações ao rolar |
 | Scroll suave | Lenis (headless, desligado sob `prefers-reduced-motion`) |
-| Componentes acessíveis | Radix UI (Accordion no FAQ) |
+| Componentes acessíveis | Radix UI (Accordion no FAQ) + estrutura shadcn (`components.json`, `lib/utils.ts`, `components/ui/`) |
 | CMS | Keystatic (git-based, admin em `/keystatic`) |
 | Conteúdo | Markdoc + YAML em `content/` |
 
@@ -67,10 +67,23 @@ app/
 ├── layout.tsx         Root (fontes, metadata, viewport)
 ├── sitemap.ts robots.ts
 components/            Header, Footer, Reveal, SmoothScroll, FaqAccordion, ...
+├── ui/                Primitivos (botão, skyline, counting-number, globo cobe)
+├── site/              Peças do layout (PageHero, Secao/Cabecalho, CtaFaixa, cartões)
+└── home/              Vitrine da home (anel 360, filme, mostrador das áreas, faixa de vídeo)
 lib/                   reader (Keystatic) + renderizador Markdoc
 content/               Conteúdo (áreas, posts, settings)
 public/assets/img/     Logos, fotos, favicon, og-image
 ```
+
+## Design
+
+Linguagem visual da proposta "Jurídico 360": papel frio (`--papel`) e seções
+escuras em tinta ultramar (`.planta`, com grade de planta), cabeçalhos
+numerados, títulos em Archivo expandida (`.expandida`), citações em Instrument
+Serif itálico (`.citacao`) e rótulos em mono (`.rotulo`). Tokens em
+`app/globals.css` (também expostos ao Tailwind: `bg-tinta`, `text-sinal`,
+`text-marca`...). Capturas de conferência: `node scripts/capturas.mjs
+http://localhost:3000 ./capturas / /sobre ...` (usa o Chrome instalado).
 
 ## SEO
 

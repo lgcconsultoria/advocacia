@@ -88,9 +88,16 @@ e o lockup horizontal "Douglas Senturião · Advocacia". Versão azul no cabeça
 | Branco | `#ffffff` | Fundo principal |
 
 **Tipografia.** A identidade usa a fonte Britanica (expandida). Como ela é
-comercial, o site adota substitutas equivalentes via Google Fonts: **Archivo**
-(títulos — geométrica e institucional) e **Inter** (corpo de texto). Rótulos e
-"olhos" usam caixa-alta com espaçamento, ecoando o estilo expandido da marca.
+comercial, o site adota substitutas via Google Fonts (servidas pelo próprio
+site com `next/font`): **Archivo** com o eixo de largura em 125% para títulos
+(o mais perto da Britanica expandida) e para o corpo em largura normal,
+**Instrument Serif** itálico para citações e **JetBrains Mono** para rótulos.
+
+**Linguagem (2026-10).** Mesma linguagem da proposta "Jurídico 360": papel
+frio, seções escuras "planta" (tinta `#0b0a2e` com grade), seções numeradas,
+o anel 360° das áreas no topo da home, o filme de seis cenas de "Como
+trabalhamos" e a faixa de vídeo. Movimento sempre desligado sob
+`prefers-reduced-motion`.
 
 **Fotografia.** As três fotos do advogado são apresentadas em molduras com
 cantos arredondados, sombra suave e um bloco de acento azul deslocado atrás —

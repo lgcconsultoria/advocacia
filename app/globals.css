@@ -297,13 +297,16 @@ a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px; 
 .form legend {
   font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase;
   color: var(--marca); padding: 0; margin-bottom: 1.2rem;
+  float: left; width: 100%; /* tira a legenda de dentro da borda do fieldset */
 }
+.form legend + * { clear: both; }
 .field { display: grid; gap: .45rem; margin-bottom: 1.15rem; min-width: 0; }
 .field:last-child { margin-bottom: 0; }
 .field-row { display: grid; gap: 0 1.1rem; }
 @media (min-width: 620px) { .field-row { grid-template-columns: 1fr 1fr; } }
 .field label, .field .label { font-weight: 600; font-size: .92rem; color: var(--grafite); }
 .field .req { color: var(--perigo); }
+.field label.choice { font-weight: 400; font-size: .96rem; }
 .field input[type="text"],
 .field input[type="email"],
 .field input[type="tel"],
