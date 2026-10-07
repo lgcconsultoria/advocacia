@@ -640,3 +640,52 @@
 @media (prefers-reduced-motion: reduce) {
   .entra { animation: none !important; }
 }
+
+/* ---------- Selo de luz (hero da home; components/ui/selo-luz.tsx) ---------- */
+.selo { perspective: 1400px; --selo-rx: 0deg; --selo-ry: 0deg; --selo-p: 0; }
+.selo-cena {
+  position: relative; width: 100%; height: 100%; transform-style: preserve-3d;
+  transform: rotateX(var(--selo-rx)) rotateY(var(--selo-ry)) rotateZ(calc(var(--selo-p) * -24deg))
+    scale(calc(1 - var(--selo-p) * 0.08));
+  opacity: calc(1 - var(--selo-p) * 0.7);
+}
+.selo-camada { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.selo-halo {
+  position: absolute; inset: 14%; border-radius: 50%; transform: translateZ(-80px);
+  background: radial-gradient(closest-side, rgb(142 139 255 / 0.32), rgb(29 27 154 / 0.18) 55%, transparent 100%);
+  animation: selo-respira 7s ease-in-out infinite;
+}
+.selo-anel { transform: translateZ(-40px); animation: selo-entra-anel 1.6s .2s cubic-bezier(.22,.61,.36,1) both; }
+.selo-anel > :not(defs) { transform-origin: 573px 573px; animation: selo-gira 160s linear infinite; }
+.selo-orbitas { transform: translateZ(-10px); animation: selo-entra-anel 1.6s .4s cubic-bezier(.22,.61,.36,1) both; }
+.selo-simbolo { transform: translateZ(50px); filter: drop-shadow(0 30px 60px rgb(5 4 30 / 0.65)); }
+.selo-linha { fill: none; stroke: rgb(201 199 255 / 0.28); stroke-width: 1.6; }
+.selo-fraca { stroke: rgb(201 199 255 / 0.12); }
+.selo-tracejada { stroke-dasharray: 2 14; stroke: rgb(201 199 255 / 0.35); transform-origin: 573px 573px; animation: selo-gira 90s linear infinite reverse; }
+.selo-marcas line { stroke: rgb(201 199 255 / 0.32); }
+.selo-texto {
+  fill: rgb(201 199 255 / 0.62); font-family: var(--f-mono); font-size: 38px; letter-spacing: 4px; text-transform: uppercase;
+}
+.selo-planeta { transform-origin: 573px 573px; animation: selo-gira 26s linear infinite; }
+.selo-ponto { fill: var(--madeira); }
+.selo-ponto-halo { fill: rgb(211 154 91 / 0.22); animation: selo-respira 3.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.selo-varredura {
+  fill: none; stroke: #fff; stroke-width: 700; stroke-dasharray: 1.02 1.02; stroke-dashoffset: 1.02;
+  animation: selo-varre 2s .35s cubic-bezier(.65,0,.35,1) forwards;
+}
+.selo-glow { fill: var(--sinal); opacity: .55; animation: selo-respira 6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.selo-corpo { stroke: rgb(255 255 255 / 0.6); stroke-width: 1.5; }
+.selo-reflexo { opacity: .55; transform: translateX(-400px) skewX(-18deg); animation: selo-reflexo 7.5s 2.4s cubic-bezier(.45,0,.25,1) infinite; }
+@keyframes selo-gira { to { transform: rotate(360deg); } }
+@keyframes selo-varre { to { stroke-dashoffset: 0; } }
+@keyframes selo-respira { 0%, 100% { opacity: .45; transform: scale(1); } 50% { opacity: .75; transform: scale(1.04); } }
+@keyframes selo-entra-anel { from { opacity: 0; transform: translateZ(-120px) scale(.92); } }
+@keyframes selo-reflexo {
+  0% { transform: translateX(-400px) skewX(-18deg); }
+  35%, 100% { transform: translateX(1500px) skewX(-18deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .selo-varredura { animation: none; stroke-dashoffset: 0; }
+  .selo-anel > :not(defs), .selo-tracejada, .selo-planeta, .selo-reflexo, .selo-glow, .selo-halo, .selo-ponto-halo { animation: none !important; }
+  .selo-reflexo { opacity: 0; }
+}
