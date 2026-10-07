@@ -6,7 +6,7 @@ import { PageHero } from '@/components/site/page-hero';
 import { Cabecalho, Secao } from '@/components/site/secao';
 import { CtaFaixa } from '@/components/site/cta-faixa';
 import { AreaCard } from '@/components/site/area-card';
-import { buttonVariants } from '@/components/ui/button';
+import { DestaquesFrentes } from '@/components/site/destaques';
 import { BotaoDiagnostico } from '@/components/diagnostico/botao';
 
 export const metadata: Metadata = {
@@ -35,6 +35,10 @@ export default async function AreasPage() {
         titulo="Áreas de atuação."
         lead="O núcleo do escritório é o Direito Administrativo — e a mesma disciplina técnica se estende a frentes selecionadas do contencioso cível e empresarial. Cada área tem instrumento próprio, prazo específico e exige diagnóstico antes da peça."
       />
+
+      <Secao className="pb-0 md:pb-0">
+        <DestaquesFrentes />
+      </Secao>
 
       <Secao>
         <Cabecalho n={1} rotulo="Direito Público" titulo="O conflito é com a Administração" />

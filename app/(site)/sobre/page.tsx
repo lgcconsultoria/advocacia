@@ -99,8 +99,7 @@ export default function SobrePage() {
       {/* QUEM CONFIA */}
       <Secao escura grade>
         <Cabecalho n={3} rotulo="Para quem trabalhamos" titulo="Do embate com a Administração ao conflito entre particulares" escura />
-        <div className="mt-12 grid gap-10 md:grid-cols-[9rem_minmax(0,1fr)] md:gap-10">
-          <div aria-hidden="true" />
+        <div className="mt-12 grid gap-10">
           <div className="grid max-w-[64ch] gap-6 text-[1.05rem] leading-relaxed text-cinza-escuro">
             <p className="m-0">
               Empresas com contratos administrativos em curso. Licitantes em
