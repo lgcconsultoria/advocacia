@@ -105,8 +105,9 @@ async function medir(
   ctxValor?: ContextoValor,
 ): Promise<Medida> {
   const contador: Contador = { requisicoes: 0 };
-  const consultadoEm = new Date().toISOString();
   const quantidade = await contar(filtro, { ...opcoes, revalidar: REVALIDAR.contagem }, contador);
+  // Hora real da consulta ao PNCP (cabeçalho Date da resposta, preservado no cache), não a hora de montar a resposta.
+  const consultadoEm = new Date(contador.respostaEm ?? Date.now()).toISOString();
   const medida: Medida = {
     quantidade,
     procedencia: procedencia(descreverFiltro(filtro), 'exato-api', contador, consultadoEm, observacao),

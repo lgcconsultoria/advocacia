@@ -82,6 +82,11 @@ type Parametros = Record<string, string | number | boolean | undefined | null>;
 /** Contador de requisições feitas, para a procedência dos números. */
 export interface Contador {
   requisicoes: number;
+  /**
+   * Instante (ms) da resposta mais antiga usada, pelo cabeçalho `Date` do PNCP. Com o Data Cache do Next,
+   * a resposta guardada mantém o `Date` original: é ele que diz quando o PNCP foi de fato consultado.
+   */
+  respostaEm?: number;
 }
 
 function montarUrl(base: string, params: Parametros): string {
@@ -122,6 +127,10 @@ export async function requisitar<T>(
           };
           if (revalidar !== undefined) init.next = { revalidate: revalidar };
           const res = await fetch(url, init);
+          const data = Date.parse(res.headers.get('date') ?? '');
+          if (contador && Number.isFinite(data)) {
+            contador.respostaEm = Math.min(contador.respostaEm ?? data, data);
+          }
           if (res.status === 204) return null;
           if (!res.ok) {
             const corpo = (await res.text()).slice(0, 200);
