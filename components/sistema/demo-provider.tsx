@@ -3,7 +3,8 @@
 import * as React from 'react';
 import { gerarDadosDemo, type DadosDemo } from '@/lib/demo/dados';
 
-type Ctx = (DadosDemo & { agora: Date }) | null;
+export type Demo = DadosDemo & { agora: Date };
+type Ctx = Demo | null;
 const DemoContext = React.createContext<Ctx>(null);
 
 /**
