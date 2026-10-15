@@ -11,6 +11,7 @@ const nextConfig = {
       beforeFiles: [
         { source: '/renato-barros', has: proposta, destination: '/clientes/kzvdeeavrl' },
         { source: '/parceria-cnp', has: proposta, destination: '/clientes/oqofnhztdb' },
+        { source: '/ecx-governo', has: proposta, destination: '/clientes/lfohksfmcx' },
       ],
     };
   },
