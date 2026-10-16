@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { ArrowUpRight, LockKeyhole, Mail, MapPin, MessageCircle } from 'lucide-react';
 import { Assinatura } from '@/components/site/marca';
 import { BotaoDiagnostico } from '@/components/diagnostico/botao';
+import { PreferenciasCookies } from '@/components/medicao';
+import { HA_MEDICAO } from '@/lib/medicao';
 
 /**
  * Rodapé v2 — no espírito do 21st.dev `@solaceui/footer-section-5` (id 19358):
@@ -128,6 +130,11 @@ export function SiteFooter({ areas, settings }: FooterProps) {
             <li><Link className={linkCls} href="/politica-de-privacidade">Política de Privacidade</Link></li>
             <li><Link className={linkCls} href="/exclusao-de-dados">Exclusão de dados</Link></li>
             <li><Link className={linkCls} href="/aviso-publicidade">Aviso de Publicidade</Link></li>
+            {HA_MEDICAO && (
+              <li>
+                <PreferenciasCookies className={`${linkCls} cursor-pointer border-0 bg-transparent p-0 text-left font-[inherit]`} />
+              </li>
+            )}
           </ul>
         </div>
 

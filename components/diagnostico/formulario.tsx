@@ -5,7 +5,7 @@ import { useEffect, useId, useRef, useState, type FormEvent } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ArrowRight, Check, Copy, LoaderCircle } from 'lucide-react';
 import { enviarLead, type Interesse } from '@/lib/contato/enviar-lead';
-import { pixelEvento } from '@/components/meta-pixel';
+import { registrarLead } from '@/lib/medicao';
 import { cn } from '@/lib/utils';
 
 /**
@@ -123,7 +123,7 @@ export function FormularioDiagnostico({
     );
     if (r.ok) {
       setEstado({ fase: 'feito', protocolo: r.protocolo });
-      pixelEvento('Lead', { content_category: interesse });
+      registrarLead({ categoria: interesse });
     } else {
       setEstado({ fase: 'livre' });
       setErroEnvio(r.erro);
