@@ -7,7 +7,7 @@ import { formatarInteiro } from '@/lib/pncp/animacao';
 import type { SerieDiaria } from '@/lib/pncp/tipos';
 
 // O skyline (canvas) só baixa e monta quando a seção chega perto da tela.
-const ALTURA_RESERVADA = 'min-h-[420px] sm:min-h-[460px]';
+const ALTURA_RESERVADA = 'min-h-[640px] lg:min-h-[760px]';
 const ContributionSkyline = dynamic(() => import('@/components/ui/contribution-skyline'), {
   ssr: false,
   loading: () => <div className={ALTURA_RESERVADA} />,
