@@ -33,7 +33,7 @@ export function PageHero({
       {video && (
         <>
           <div aria-hidden="true" className="absolute inset-0 -z-20">
-            <VideoFundo src={video.src} poster={video.poster} posicao={video.posicao} className="opacity-70" />
+            <VideoFundo src={video.src} poster={video.poster} posicao={video.posicao} className="opacity-70" imediato />
           </div>
           <div
             aria-hidden="true"

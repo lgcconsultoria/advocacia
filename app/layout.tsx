@@ -18,10 +18,13 @@ const instrumentSerif = Instrument_Serif({
   display: 'swap',
   variable: '--fonte-serif',
 });
+// Mono só nos rótulos pequenos: sem preload, para não disputar banda com o
+// que pinta o LCP (troca de fonte nesses rótulos é imperceptível).
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   display: 'swap',
   variable: '--fonte-mono',
+  preload: false,
 });
 
 export const metadata: Metadata = {
