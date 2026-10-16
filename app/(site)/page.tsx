@@ -2,12 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import { getAreas, getPosts, getSettings } from '@/lib/reader';
+import { getPosts, getSettings } from '@/lib/reader';
 import { snapshotTermometro } from '@/lib/pncp/snapshot';
 import { REFERENCIA_ESTIMADA, simularDemo } from '@/lib/tributario/simulador';
 import { Reveal } from '@/components/reveal';
 import { JsonLd } from '@/components/json-ld';
 import { metaSocial } from '@/lib/seo';
+import { ID_ESCRITORIO, PERFIS, TEMAS, pessoaLd } from '@/lib/schema';
 import { Cabecalho, Secao } from '@/components/site/secao';
 import { PostCard } from '@/components/site/post-card';
 import { HeroV2 } from '@/components/home/hero-v2';
@@ -34,11 +35,7 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const [areas, posts, settings] = await Promise.all([
-    getAreas(),
-    getPosts(),
-    getSettings(),
-  ]);
+  const [posts, settings] = await Promise.all([getPosts(), getSettings()]);
   const featured = posts.slice(0, 3);
   const demo = simularDemo(2027);
   const pncp = {
@@ -51,11 +48,11 @@ export default async function HomePage() {
   const legalServiceLd = {
     '@context': 'https://schema.org',
     '@type': ['LegalService', 'Attorney'],
-    '@id': 'https://www.senturiaoadv.com.br/#escritorio',
+    '@id': ID_ESCRITORIO,
     name: settings.firmName,
-    alternateName: 'Advogado de Direito Administrativo — Douglas Senturião',
+    alternateName: 'Douglas Senturião — Direito Tributário e Público para empresas',
     description:
-      'Escritório-boutique de Direito Administrativo em São Paulo, com atuação em mandado de segurança, licitações, contratos públicos, servidores, concursos, defesa de agentes públicos, habeas data e execuções — e frentes selecionadas de contencioso cível e empresarial.',
+      'Escritório de advocacia para empresas em Direito Tributário (Reforma Tributária: IBS e CBS, LC 214/2025), licitações e contratos públicos e direito público. Sede em São Paulo e atuação em todo o Brasil.',
     url: 'https://www.senturiaoadv.com.br/',
     image: 'https://www.senturiaoadv.com.br/assets/img/og-image.png',
     logo: 'https://www.senturiaoadv.com.br/assets/img/logo-horizontal.png',
@@ -81,26 +78,17 @@ export default async function HomePage() {
       email: settings.email,
       availableLanguage: 'Portuguese',
     },
-    knowsAbout: areas.map((a) => a.title),
-    sameAs: [`https://instagram.com/${settings.instagram}`],
+    knowsAbout: TEMAS,
+    sameAs: PERFIS,
   };
 
-  const attorneyLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Attorney',
-    name: settings.lawyerName,
-    url: 'https://www.senturiaoadv.com.br/sobre/',
-    image: 'https://www.senturiaoadv.com.br/assets/img/douglas-estudio.jpg',
-    worksFor: { '@type': 'LegalService', name: settings.firmName },
-    areaServed: 'Brasil',
-    knowsAbout: areas.map((a) => a.title),
-  };
+  const pessoa = pessoaLd(settings);
 
 
   return (
     <>
       <JsonLd data={legalServiceLd} />
-      <JsonLd data={attorneyLd} />
+      <JsonLd data={pessoa} />
 
       <HeroV2 oab={settings.oab} />
 

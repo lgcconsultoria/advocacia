@@ -8,6 +8,9 @@ import { CtaFaixa } from '@/components/site/cta-faixa';
 import { Reveal, RevealGroup, RevealItem } from '@/components/reveal';
 import { buttonVariants } from '@/components/ui/button';
 import { BotaoDiagnostico } from '@/components/diagnostico/botao';
+import { JsonLd } from '@/components/json-ld';
+import { getSettings } from '@/lib/reader';
+import { pessoaLd } from '@/lib/schema';
 
 export const metadata: Metadata = {
   title: 'Sobre o escritório',
@@ -29,9 +32,11 @@ const PRINCIPIOS = [
   ['Cliente decide informado', 'Apresentamos cenários, riscos e alternativas — não opiniões fechadas. A decisão final é sempre do cliente.'],
 ];
 
-export default function SobrePage() {
+export default async function SobrePage() {
+  const settings = await getSettings();
   return (
     <>
+      <JsonLd data={pessoaLd(settings)} />
       <PageHero
         trilha={[{ label: 'Sobre' }]}
         rotulo="O escritório"

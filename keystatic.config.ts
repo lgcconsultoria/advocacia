@@ -125,6 +125,10 @@ export default config({
         }),
         description: fields.text({ label: 'Resumo / meta description', multiline: true }),
         publishedDate: fields.date({ label: 'Data de publicação' }),
+        updatedDate: fields.date({
+          label: 'Data da última revisão (opcional)',
+          description: 'Preencha quando revisar o conteúdo: vai para o sitemap e para o dateModified.',
+        }),
         readingTime: fields.text({ label: 'Tempo de leitura', defaultValue: '10 min' }),
         content: fields.markdoc({ label: 'Conteúdo do artigo' }),
       },

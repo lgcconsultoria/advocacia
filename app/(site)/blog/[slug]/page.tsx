@@ -5,6 +5,8 @@ import { notFound } from 'next/navigation';
 import { getPost, getPosts, getSettings } from '@/lib/reader';
 import { renderMarkdoc, extractToc } from '@/lib/markdoc';
 import { JsonLd } from '@/components/json-ld';
+import { metaSocial, OG_IMAGEM, SITE } from '@/lib/seo';
+import { ID_PESSOA, PERFIS, publicadorLd } from '@/lib/schema';
 import { PageHero } from '@/components/site/page-hero';
 import { CtaFaixa } from '@/components/site/cta-faixa';
 import { buttonVariants } from '@/components/ui/button';
@@ -28,13 +30,14 @@ export async function generateMetadata({
     title: post.title,
     description: post.description,
     alternates: { canonical: url },
-    openGraph: {
-      type: 'article',
-      title: post.title,
-      description: post.description,
-      url,
-      publishedTime: post.publishedDate ?? undefined,
-    },
+    ...metaSocial({
+      titulo: post.title,
+      descricao: post.description,
+      caminho: url,
+      tipo: 'article',
+      publicadoEm: post.publishedDate,
+      modificadoEm: post.updatedDate,
+    }),
   };
 }
 
@@ -68,13 +71,18 @@ export default async function PostPage({
     headline: post.title,
     description: post.description,
     datePublished: post.publishedDate,
+    dateModified: post.updatedDate ?? post.publishedDate,
+    image: [`${SITE}${OG_IMAGEM.url}`],
     author: {
       '@type': 'Person',
+      '@id': ID_PESSOA,
       name: settings.lawyerName,
       jobTitle: 'Advogado',
+      url: `${SITE}/sobre`,
+      sameAs: PERFIS,
     },
-    publisher: { '@type': 'Organization', name: settings.firmName },
-    mainEntityOfPage: `https://www.senturiaoadv.com.br/blog/${slug}`,
+    publisher: publicadorLd(settings),
+    mainEntityOfPage: `${SITE}/blog/${slug}`,
     inLanguage: 'pt-BR',
   };
 
