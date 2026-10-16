@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { PAGINA_PRINCIPAL } from '@/lib/areas';
 
 export type LinkFrente = { href: string; label: string };
 
@@ -93,7 +94,9 @@ export function Frentes({
     <ol className="m-0 mt-14 grid list-none gap-x-8 gap-y-0 p-0 md:grid-cols-2 lg:grid-cols-3">
       {FRENTES.map((f, i) => {
         const links: LinkFrente[] = [
-          ...(f.areas ?? []).filter((s) => areas[s]).map((s) => ({ href: `/areas/${s}`, label: `Área: ${areas[s]}` })),
+          ...(f.areas ?? [])
+            .filter((s) => areas[s] && !PAGINA_PRINCIPAL[s])
+            .map((s) => ({ href: `/areas/${s}`, label: `Área: ${areas[s]}` })),
           ...(f.posts ?? []).filter((s) => posts[s]).map((s) => ({ href: `/blog/${s}`, label: posts[s] })),
         ];
         return (

@@ -18,6 +18,9 @@ const nextConfig = {
   async redirects() {
     return [
       { source: '/', has: [{ type: 'host', value: 'proposta.senturiaoadv.com.br' }], destination: 'https://senturiaoadv.com.br', permanent: false },
+      // Canibalização (16/10/2026): as áreas que têm página principal própria apontam para ela.
+      { source: '/areas/tributario', destination: '/tributario', permanent: true },
+      { source: '/areas/licitacoes', destination: '/licitacoes', permanent: true },
     ];
   },
 };

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { AreaIcon } from '@/components/area-icon';
 import { cn } from '@/lib/utils';
+import { hrefArea } from '@/lib/areas';
 
 /** Cartão de área de atuação (v2): ícone em vidro, número em mono, brilho no hover. */
 export function AreaCard({
@@ -14,7 +15,7 @@ export function AreaCard({
   className?: string;
 }) {
   return (
-    <Link href={`/areas/${area.slug}`} className={cn('card card-link group flex flex-col overflow-hidden no-underline', className)}>
+    <Link href={hrefArea(area.slug)} className={cn('card card-link group flex flex-col overflow-hidden no-underline', className)}>
       <span
         aria-hidden="true"
         className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-[radial-gradient(circle,rgb(142_139_255/0.3),transparent_65%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"

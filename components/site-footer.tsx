@@ -4,6 +4,7 @@ import { Assinatura } from '@/components/site/marca';
 import { BotaoDiagnostico } from '@/components/diagnostico/botao';
 import { PreferenciasCookies } from '@/components/medicao';
 import { HA_MEDICAO } from '@/lib/medicao';
+import { hrefArea } from '@/lib/areas';
 
 /**
  * Rodapé v2 — no espírito do 21st.dev `@solaceui/footer-section-5` (id 19358):
@@ -90,9 +91,9 @@ export function SiteFooter({ areas, settings }: FooterProps) {
             <li>
               <Link className={linkCls} href="/tributario">Assessoria tributária e Reforma</Link>
             </li>
-            {publico.map((a) => (
+            {publico.filter((a) => a.slug !== 'tributario').map((a) => (
               <li key={a.slug}>
-                <Link className={linkCls} href={`/areas/${a.slug}`}>{a.title}</Link>
+                <Link className={linkCls} href={hrefArea(a.slug)}>{a.title}</Link>
               </li>
             ))}
           </ul>
@@ -102,7 +103,7 @@ export function SiteFooter({ areas, settings }: FooterProps) {
               <ul className="m-0 mt-4 grid list-none gap-2 p-0">
                 {civel.map((a) => (
                   <li key={a.slug}>
-                    <Link className={linkCls} href={`/areas/${a.slug}`}>{a.title}</Link>
+                    <Link className={linkCls} href={hrefArea(a.slug)}>{a.title}</Link>
                   </li>
                 ))}
               </ul>

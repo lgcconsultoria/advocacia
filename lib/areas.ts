@@ -35,3 +35,17 @@ export const DESTAQUE_ANEL = [
   'empresarial',
   'tributario',
 ];
+
+/**
+ * Áreas que têm página principal própria. As URLs /areas/<slug> delas fazem
+ * 301 para a principal (next.config.mjs) e saem do sitemap; os links internos
+ * apontam direto para a principal.
+ */
+export const PAGINA_PRINCIPAL: Record<string, string> = {
+  tributario: '/tributario',
+  licitacoes: '/licitacoes',
+};
+
+export function hrefArea(slug: string): string {
+  return PAGINA_PRINCIPAL[slug] ?? `/areas/${slug}`;
+}

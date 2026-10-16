@@ -291,8 +291,8 @@ export default async function LicitacoesPage() {
         </Cabecalho>
         <div className="mt-12">
           <FaqAccordion items={FAQ} />
-          <Link href="/areas/licitacoes" className="link-seta mt-10">
-            Ver a área de Licitações Públicas <span aria-hidden="true">→</span>
+          <Link href="/areas/contratos-publicos" className="link-seta mt-10">
+            Ver a área de Contratos Públicos <span aria-hidden="true">→</span>
           </Link>
         </div>
       </Secao>
