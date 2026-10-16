@@ -2,16 +2,24 @@ import { medicaoAutorizada } from '@/lib/consentimento';
 
 /**
  * Medição (Meta Pixel, GA4 e Google Ads), sempre condicionada ao consentimento.
- * Os IDs vêm de variáveis de ambiente; sem a variável, o provedor não existe.
+ * Os IDs do Google vêm de variáveis de ambiente; sem a variável, o provedor não existe.
  *
- *   NEXT_PUBLIC_META_PIXEL_ID         Pixel da Meta
+ *   PIXEL_DA_EMPRESA                  Pixel da Meta (fixo, ver abaixo)
  *   NEXT_PUBLIC_GA4_ID                GA4 (G-XXXXXXX)
  *   NEXT_PUBLIC_GOOGLE_ADS_ID         Google Ads (AW-XXXXXXXXX)
  *   NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL rótulo da conversão de lead no Ads (opcional)
  */
 
+/**
+ * Pixel "Senturião Advocacia — Web", do portfólio de empresa da conta de anúncios
+ * act_1786894042442518. O NEXT_PUBLIC_META_PIXEL_ID da Vercel apontava para um pixel de outra
+ * conta de anúncios (1969211640374572), e as campanhas da empresa não viam as conversões
+ * (16/10/2026). O ID do pixel é público (sai no HTML), por isso fica no código.
+ */
+export const PIXEL_DA_EMPRESA = '1629106798566329';
+
 export const IDS_MEDICAO = {
-  pixel: process.env.NEXT_PUBLIC_META_PIXEL_ID ?? '',
+  pixel: PIXEL_DA_EMPRESA,
   ga4: process.env.NEXT_PUBLIC_GA4_ID ?? '',
   ads: process.env.NEXT_PUBLIC_GOOGLE_ADS_ID ?? '',
   adsRotuloLead: process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL ?? '',
