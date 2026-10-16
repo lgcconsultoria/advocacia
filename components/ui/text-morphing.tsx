@@ -5,6 +5,12 @@
  * Crossfade com desfoque entre frases (filtro SVG de limiar). Respeita
  * prefers-reduced-motion (mostra a primeira frase parada) e pausa fora da tela.
  * Na marca: sem cores próprias — herda a cor e o tamanho do className.
+ *
+ * Desempenho (LCP, 16/10/2026): a 1ª frase vem do servidor parada, sem blur nem
+ * opacidade 0, e fica `cooldownDuration` segundos antes do 1º morph. O desfoque
+ * tem teto (BLUR_MAX) e a caixa corta o que vaza (overflow: clip com margem):
+ * antes, o blur de até 100 px inflava a área pintada e a 2ª/3ª frase virava o
+ * LCP segundos depois do carregamento. Renderiza como <span> (cabe dentro do H1).
  */
 
 import * as React from "react";
@@ -27,6 +33,8 @@ export interface TextMorphingProps {
 
 const DEFAULT_MORPH = 1.5;
 const DEFAULT_COOLDOWN = 0.5;
+/** Teto do desfoque, em px (o original ia a 100 px). */
+const BLUR_MAX = 14;
 
 /**
  * TextMorphing
@@ -48,12 +56,14 @@ export function TextMorphing({
 
   const text1Ref = React.useRef<HTMLSpanElement | null>(null);
   const text2Ref = React.useRef<HTMLSpanElement | null>(null);
-  const rootRef = React.useRef<HTMLDivElement | null>(null);
+  const rootRef = React.useRef<HTMLSpanElement | null>(null);
 
   const textIndexRef = React.useRef(0);
   const morphRef = React.useRef(0);
   const cooldownRef = React.useRef(0);
   const timeRef = React.useRef(0);
+  /** Segundos que a 1ª frase fica parada antes do primeiro morph. */
+  const esperaRef = React.useRef(0);
   const inViewRef = React.useRef(true);
   const pausedPropRef = React.useRef(paused);
   pausedPropRef.current = paused;
@@ -115,10 +125,10 @@ export function TextMorphing({
       const f = Math.max(fraction, 0.0001);
       const inv = Math.max(1 - fraction, 0.0001);
 
-      el2.style.filter = `blur(${Math.min(8 / f - 8, 100)}px)`;
+      el2.style.filter = `blur(${Math.min(8 / f - 8, BLUR_MAX)}px)`;
       el2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
 
-      el1.style.filter = `blur(${Math.min(8 / inv - 8, 100)}px)`;
+      el1.style.filter = `blur(${Math.min(8 / inv - 8, BLUR_MAX)}px)`;
       el1.style.opacity = `${Math.pow(1 - fraction, 0.4) * 100}%`;
 
       el1.textContent = phrases[textIndexRef.current % phrases.length] ?? "";
@@ -162,7 +172,8 @@ export function TextMorphing({
 
     let raf = 0;
     timeRef.current = performance.now();
-    setStyles(0);
+    // Sem setStyles(0) aqui: a 1ª frase continua como veio do servidor.
+    esperaRef.current = cooldownTime;
 
     const animate = (now: number) => {
       raf = requestAnimationFrame(animate);
@@ -180,6 +191,11 @@ export function TextMorphing({
       const dt = (now - timeRef.current) / 1000;
       timeRef.current = now;
 
+      if (esperaRef.current > 0) {
+        esperaRef.current -= dt;
+        return;
+      }
+
       cooldownRef.current -= dt;
 
       if (cooldownRef.current <= 0) doMorph();
@@ -192,25 +208,29 @@ export function TextMorphing({
 
   if (reduceMotion) {
     return (
-      <div
+      <span
         className={cn(
-          "relative w-full",
+          "relative block w-full",
           className,
         )}
       >
         {phrases[0]}
-      </div>
+      </span>
     );
   }
 
   return (
-    <div
+    <span
       ref={rootRef}
       className={cn(
-        "relative w-full",
+        "relative block w-full",
         className,
       )}
-      style={limiar ? { filter: `url(#${filterId}) blur(0.6px)` } : undefined}
+      style={{
+        overflow: "clip",
+        overflowClipMargin: "0.5em",
+        ...(limiar ? { filter: `url(#${filterId}) blur(0.6px)` } : {}),
+      }}
     >
       <span
         ref={text1Ref}
@@ -243,7 +263,7 @@ export function TextMorphing({
           </filter>
         </defs>
       </svg>
-    </div>
+    </span>
   );
 }
 
