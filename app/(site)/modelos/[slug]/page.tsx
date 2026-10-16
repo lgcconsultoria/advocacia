@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { metaSocial } from '@/lib/seo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getModelo, getModelos } from '@/lib/modelos';
@@ -28,7 +29,7 @@ export async function generateMetadata({
     description: m.metaDescription,
     keywords: m.buscas,
     alternates: { canonical: `/modelos/${slug}` },
-    openGraph: { title: m.metaTitle, description: m.metaDescription, url: `/modelos/${slug}` },
+    ...metaSocial({ titulo: m.metaTitle, descricao: m.metaDescription, caminho: `/modelos/${slug}` }),
   };
 }
 

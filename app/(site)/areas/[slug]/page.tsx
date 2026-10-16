@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { metaSocial } from '@/lib/seo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getArea, getAreas } from '@/lib/reader';
@@ -30,11 +31,11 @@ export async function generateMetadata({
     title: area.metaTitle || area.heroTitle,
     description: area.metaDescription,
     alternates: { canonical: url },
-    openGraph: {
-      title: area.ogTitle || area.metaTitle,
-      description: area.ogDescription || area.metaDescription,
-      url,
-    },
+    ...metaSocial({
+      titulo: area.ogTitle || area.metaTitle || area.heroTitle,
+      descricao: area.ogDescription || area.metaDescription,
+      caminho: url,
+    }),
   };
 }
 

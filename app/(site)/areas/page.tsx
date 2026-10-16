@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { metaSocial } from '@/lib/seo';
 import Link from 'next/link';
 import { getAreas } from '@/lib/reader';
 import { RevealGroup, RevealItem } from '@/components/reveal';
@@ -14,12 +15,12 @@ export const metadata: Metadata = {
   description:
     'Áreas de atuação: mandado de segurança, licitações, contratos públicos, concursos, servidores, defesa de agentes, habeas data, execuções — e contencioso cível e empresarial: família, violência doméstica, dívidas e obrigações, empresarial e crimes licitatórios.',
   alternates: { canonical: '/areas' },
-  openGraph: {
-    title: 'Áreas de atuação — Direito Administrativo e Contencioso',
-    description:
+  ...metaSocial({
+    titulo: 'Áreas de atuação — Direito Administrativo e Contencioso',
+    descricao:
       'Frentes de direito público e de contencioso cível e empresarial, cada uma com regime jurídico próprio e prazos específicos.',
-    url: '/areas',
-  },
+    caminho: '/areas',
+  }),
 };
 
 export default async function AreasPage() {

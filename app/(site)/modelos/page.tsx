@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { metaSocial } from '@/lib/seo';
 import Link from 'next/link';
 import { getModelos } from '@/lib/modelos';
 import { RevealGroup, RevealItem } from '@/components/reveal';
@@ -11,6 +12,12 @@ export const metadata: Metadata = {
     'Modelos editáveis de recurso administrativo, mandado de segurança, pedido de ' +
     'reequilíbrio e roteiros de diagnóstico. Gratuitos, em .docx.',
   alternates: { canonical: '/modelos' },
+  ...metaSocial({
+    titulo: 'Modelos e materiais gratuitos — Douglas Senturião Advocacia',
+    descricao:
+      'Modelos editáveis de recurso administrativo, mandado de segurança, pedido de reequilíbrio e roteiros de diagnóstico. Gratuitos, em .docx.',
+    caminho: '/modelos',
+  }),
 };
 
 export default async function ModelosIndex() {

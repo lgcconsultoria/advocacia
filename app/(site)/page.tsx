@@ -7,6 +7,7 @@ import { snapshotTermometro } from '@/lib/pncp/snapshot';
 import { REFERENCIA_ESTIMADA, simularDemo } from '@/lib/tributario/simulador';
 import { Reveal } from '@/components/reveal';
 import { JsonLd } from '@/components/json-ld';
+import { metaSocial } from '@/lib/seo';
 import { Cabecalho, Secao } from '@/components/site/secao';
 import { PostCard } from '@/components/site/post-card';
 import { HeroV2 } from '@/components/home/hero-v2';
@@ -18,16 +19,18 @@ import { Filme } from '@/components/home/filme';
 import { FormularioDiagnostico } from '@/components/diagnostico/formulario';
 import { GridBeam } from '@/components/ui/grid-beam';
 
+// Posicionamento da home (16/10/2026): tributário (Reforma IBS/CBS, LC 214/2025),
+// licitações e contratos públicos e direito público para empresas — o mesmo do H1.
+// As demais áreas seguem com páginas próprias. Título ≤ 60 e descrição ≤ 155 caracteres.
+const TITULO_HOME = 'Tributário e Licitações para Empresas | Douglas Senturião';
+const DESCRICAO_HOME =
+  'Direito Tributário e Público para empresas: Reforma Tributária (IBS/CBS, LC 214/2025), licitações e contratos públicos. Atuação em todo o Brasil.';
+
 export const metadata: Metadata = {
-  // Título voltado ao termo de maior busca ("advogado direito administrativo")
-  // + cidade, mantendo o H1 do hero acolhedor para todas as áreas.
-  title: {
-    absolute:
-      'Advogado de Direito Administrativo em São Paulo | Douglas Senturião Advocacia',
-  },
-  description:
-    'Advogado de Direito Administrativo em São Paulo: mandado de segurança, licitações, contratos públicos, servidores e concursos — e contencioso cível e empresarial. Diagnóstico técnico com retorno em até 1 dia útil.',
+  title: { absolute: TITULO_HOME },
+  description: DESCRICAO_HOME,
   alternates: { canonical: '/' },
+  ...metaSocial({ titulo: TITULO_HOME, descricao: DESCRICAO_HOME, caminho: '/' }),
 };
 
 export default async function HomePage() {

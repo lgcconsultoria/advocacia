@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Archivo, Instrument_Serif, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
+import { OG_IMAGEM } from '@/lib/seo';
 
 // Archivo com o eixo de largura (wdth): a classe .expandida usa font-stretch 125%,
 // o mais perto da Britanica expandida da identidade.
@@ -26,20 +27,19 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.senturiaoadv.com.br'),
   title: {
-    default:
-      'Douglas Senturião Advocacia — Direito Administrativo, Cível e Empresarial',
+    default: 'Douglas Senturião Advocacia — Tributário e Licitações',
     template: '%s — Douglas Senturião Advocacia',
   },
   description:
-    'Escritório de Direito Administrativo com atuação em todo o Brasil. Mandado de segurança, licitações, contratos públicos, servidores, concursos, defesa de agentes públicos, habeas data e execuções — e contencioso cível e empresarial: família, dívidas e obrigações, direito empresarial e crimes licitatórios.',
+    'Direito Tributário e Público para empresas: Reforma Tributária (IBS/CBS, LC 214/2025), licitações e contratos públicos. Atuação em todo o Brasil.',
   robots: { index: true, follow: true },
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
     siteName: 'Douglas Senturião Advocacia',
-    images: ['/assets/img/og-image.png'],
+    images: [OG_IMAGEM],
   },
-  twitter: { card: 'summary_large_image' },
+  twitter: { card: 'summary_large_image', images: [OG_IMAGEM.url] },
   icons: {
     icon: '/assets/img/favicon.png',
     apple: '/assets/img/apple-touch-icon.png',

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { metaSocial } from '@/lib/seo';
 import { getSettings } from '@/lib/reader';
 import { PageHero } from '@/components/site/page-hero';
 import { Secao } from '@/components/site/secao';
@@ -6,16 +7,16 @@ import { FormularioDiagnostico } from '@/components/diagnostico/formulario';
 import { BorderBeam } from '@/components/ui/border-beam';
 
 export const metadata: Metadata = {
-  title: 'Contato — Douglas Senturião Advocacia | Direito Tributário e Público em São Paulo',
+  title: 'Contato',
   description:
     'Fale com o escritório Douglas Senturião Advocacia. Atendimento por agendamento em São Paulo/SP. Endereço, e-mail, telefone e horário de funcionamento.',
   alternates: { canonical: '/contato' },
-  openGraph: {
-    title: 'Contato — Douglas Senturião Advocacia',
-    description:
+  ...metaSocial({
+    titulo: 'Contato — Douglas Senturião Advocacia',
+    descricao:
       'Atendimento por agendamento em São Paulo/SP. Para enviar um caso, use o diagnóstico jurídico inicial.',
-    url: '/contato',
-  },
+    caminho: '/contato',
+  }),
 };
 
 export default async function ContatoPage() {

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { metaSocial } from '@/lib/seo';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { Clock, FileSearch, MessageCircle, ShieldCheck } from 'lucide-react';
@@ -13,11 +14,12 @@ export const metadata: Metadata = {
   description:
     'Peça um diagnóstico inicial: nome, empresa, e-mail e WhatsApp. O escritório retorna em até 1 dia útil. O envio não constitui mandato nem gera honorários.',
   alternates: { canonical: '/diagnostico' },
-  openGraph: {
-    title: 'Diagnóstico inicial — Douglas Senturião Advocacia',
-    description: 'Quatro campos e o escritório retorna em até 1 dia útil com os próximos passos.',
-    url: '/diagnostico',
-  },
+  ...metaSocial({
+    titulo: 'Diagnóstico inicial — Douglas Senturião Advocacia',
+    descricao:
+      'Quatro campos e o escritório retorna em até 1 dia útil com os próximos passos.',
+    caminho: '/diagnostico',
+  }),
 };
 
 export default async function DiagnosticoPage() {

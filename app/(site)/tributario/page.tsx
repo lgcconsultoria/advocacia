@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { metaSocial } from '@/lib/seo';
 import Link from 'next/link';
 import { ArrowRight, Calculator, CalendarCheck, FileSignature, Gavel, Layers3, ReceiptText, Scale, ShieldCheck, Users } from 'lucide-react';
 import { getSettings } from '@/lib/reader';
@@ -24,12 +25,12 @@ export const metadata: Metadata = {
   description:
     'A Reforma Tributária chegou à sua nota fiscal. Diagnóstico com os números da empresa, simulação ano a ano de 2027 a 2033, opção do Simples (puro ou híbrido), cláusulas de preço e reequilíbrio nos contratos e defesa em autuações. Simulador ilustrativo na página.',
   alternates: { canonical: '/tributario' },
-  openGraph: {
-    title: 'Assessoria tributária para empresas — Douglas Senturião Advocacia',
-    description:
+  ...metaSocial({
+    titulo: 'Assessoria tributária para empresas — Douglas Senturião Advocacia',
+    descricao:
       'IBS e CBS, Simples puro × híbrido, split payment e contratos: o que muda na nota fiscal da sua empresa, de 2027 a 2033.',
-    url: '/tributario',
-  },
+    caminho: '/tributario',
+  }),
 };
 
 const demo = simularDemo(2027);

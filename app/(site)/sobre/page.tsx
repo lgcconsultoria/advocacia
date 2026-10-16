@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { metaSocial } from '@/lib/seo';
 import Link from 'next/link';
 import Image from 'next/image';
 import { PageHero } from '@/components/site/page-hero';
@@ -13,12 +14,12 @@ export const metadata: Metadata = {
   description:
     'Escritório-boutique com raiz no Direito Administrativo, em São Paulo, e atuação também no contencioso cível e empresarial. Trabalhamos por caso, não por volume: leitura precisa do caso, tese sólida e velocidade na reação.',
   alternates: { canonical: '/sobre' },
-  openGraph: {
-    title: 'Sobre o escritório — Douglas Senturião Advocacia',
-    description:
+  ...metaSocial({
+    titulo: 'Sobre o escritório — Douglas Senturião Advocacia',
+    descricao:
       'Um escritório técnico, com raiz no Direito Administrativo e atuação no contencioso cível e empresarial. Cada matéria tem advogado responsável e plano processual escrito.',
-    url: '/sobre',
-  },
+    caminho: '/sobre',
+  }),
 };
 
 const PRINCIPIOS = [

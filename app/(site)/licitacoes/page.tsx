@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { metaSocial } from '@/lib/seo';
 import Link from 'next/link';
 import { getAreas, getPosts, getSettings } from '@/lib/reader';
 import { JsonLd } from '@/components/json-ld';
@@ -27,12 +28,12 @@ export const metadata: Metadata = {
   description:
     'Departamento jurídico de licitações para empresas: análise de edital e matriz de riscos, habilitação, impugnações, suporte na sessão, recursos, mandado de segurança, contratos, reequilíbrio (inclusive IBS/CBS) e defesa em sanções. Com o termômetro ao vivo das contratações públicas do PNCP.',
   alternates: { canonical: '/licitacoes' },
-  openGraph: {
-    title: 'Departamento de Licitações — Douglas Senturião Advocacia',
-    description:
+  ...metaSocial({
+    titulo: 'Departamento de Licitações — Douglas Senturião Advocacia',
+    descricao:
       'Soluções jurídicas integradas para o departamento de licitações da sua empresa, do edital ao contrato, sob a Lei 14.133/2021.',
-    url: '/licitacoes',
-  },
+    caminho: '/licitacoes',
+  }),
 };
 
 const FAQ: FaqItem[] = [

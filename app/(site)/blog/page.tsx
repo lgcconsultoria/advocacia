@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { metaSocial } from '@/lib/seo';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getPosts, getSettings } from '@/lib/reader';
@@ -10,16 +11,16 @@ import { buttonVariants } from '@/components/ui/button';
 import { BotaoDiagnostico } from '@/components/diagnostico/botao';
 
 export const metadata: Metadata = {
-  title: 'Blog — Análise técnica de Direito Administrativo',
+  title: { absolute: 'Artigos de Direito Público para Empresas | Douglas Senturião' },
   description:
-    'Artigos técnicos de Direito Administrativo: mandado de segurança, licitações, contratos públicos, servidores, concursos, improbidade e execuções. Conteúdo informativo.',
+    'Artigos técnicos para empresas: licitações, contratos públicos, mandado de segurança e direito empresarial, com prazos, leis e decisões dos tribunais.',
   alternates: { canonical: '/blog' },
-  openGraph: {
-    title: 'Blog — Análise técnica de Direito Administrativo',
-    description:
-      'Artigos sobre direito público: prazos, leis e decisões dos tribunais, em linguagem objetiva.',
-    url: '/blog',
-  },
+  ...metaSocial({
+    titulo: 'Artigos de Direito Público para Empresas — Douglas Senturião Advocacia',
+    descricao:
+      'Artigos sobre direito público e empresarial: prazos, leis e decisões dos tribunais, em linguagem objetiva.',
+    caminho: '/blog',
+  }),
 };
 
 const UPCOMING = [
