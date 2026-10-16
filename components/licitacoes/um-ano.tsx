@@ -1,8 +1,17 @@
 'use client';
 
-import ContributionSkyline, { type SkylineLabels } from '@/components/ui/contribution-skyline';
+import dynamic from 'next/dynamic';
+import type { SkylineLabels } from '@/components/ui/contribution-skyline';
+import { SobDemanda } from '@/components/sob-demanda';
 import { formatarInteiro } from '@/lib/pncp/animacao';
 import type { SerieDiaria } from '@/lib/pncp/tipos';
+
+// O skyline (canvas) só baixa e monta quando a seção chega perto da tela.
+const ALTURA_RESERVADA = 'min-h-[420px] sm:min-h-[460px]';
+const ContributionSkyline = dynamic(() => import('@/components/ui/contribution-skyline'), {
+  ssr: false,
+  loading: () => <div className={ALTURA_RESERVADA} />,
+});
 
 const ROTULOS: Partial<SkylineLabels> = {
   total: 'Publicadas em 12 meses',
@@ -44,24 +53,26 @@ export function UmAno({ serie }: { serie: SerieDiaria }) {
   return (
     // no celular, a unidade quebra para baixo do número nos totais
     <div className="mt-12 max-sm:[&_.items-baseline]:flex-wrap">
-      <ContributionSkyline
-        data={pontos}
-        endDate={serie.fim}
-        locale="pt-BR"
-        unit="publicação"
-        unitPlural="publicações"
-        palette={PALETA}
-        labels={ROTULOS}
-        weekStart={0}
-        heightScale={0.9}
-        duration={1600}
-        className="!border-sinal/20"
-        title={
-          <span className="text-cinza-escuro">
-            Um ano de contratações publicadas no PNCP, <span className="text-white">dia a dia</span>
-          </span>
-        }
-      />
+      <SobDemanda className={ALTURA_RESERVADA}>
+        <ContributionSkyline
+          data={pontos}
+          endDate={serie.fim}
+          locale="pt-BR"
+          unit="publicação"
+          unitPlural="publicações"
+          palette={PALETA}
+          labels={ROTULOS}
+          weekStart={0}
+          heightScale={0.9}
+          duration={1600}
+          className="!border-sinal/20"
+          title={
+            <span className="text-cinza-escuro">
+              Um ano de contratações publicadas no PNCP, <span className="text-white">dia a dia</span>
+            </span>
+          }
+        />
+      </SobDemanda>
       <p className="m-0 mt-5 max-w-[80ch] text-[0.86rem] leading-relaxed text-cinza-escuro">
         {formatarInteiro(total)} editais, avisos e atos de contratação direta em {formatarInteiro(pontos.length)} dias
         {mediaUtil ? <> — em média {formatarInteiro(mediaUtil)} por dia de segunda a sexta</> : null}. Os fins de semana aparecem

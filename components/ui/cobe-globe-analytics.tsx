@@ -49,10 +49,9 @@ export interface GlobeAnalyticsProps {
   labelStyle?: CSSProperties
 }
 
-/** Ângulos do cobe que trazem [lat, lng] para o centro do globo. */
-export function locationToAngles(lat: number, lng: number): [number, number] {
-  return [Math.PI - ((lng * Math.PI) / 180 - Math.PI / 2), (lat * Math.PI) / 180]
-}
+// Fica em lib/globo.ts para quem só precisa da conta não puxar o cobe junto.
+import { locationToAngles } from "@/lib/globo"
+export { locationToAngles }
 
 const defaultMarkers: AnalyticsMarker[] = [
   { id: "vis-1", location: [40.71, -74.01], visitors: 847, trend: 12 },

@@ -2,11 +2,20 @@
 
 import { useMemo, useState } from 'react';
 import { useReducedMotion } from 'motion/react';
-import { GlobeAnalytics, locationToAngles, type AnalyticsMarker } from '@/components/ui/cobe-globe-analytics';
+import dynamic from 'next/dynamic';
+import type { AnalyticsMarker } from '@/components/ui/cobe-globe-analytics';
+import { locationToAngles } from '@/lib/globo';
+import { SobDemanda } from '@/components/sob-demanda';
 import { formatarInteiro, formatarReais, rotuloAtualizado } from '@/lib/pncp/animacao';
 import { cn } from '@/lib/utils';
 import { usePncp } from './contexto';
 import { rotuloFixo } from './status';
+
+// O globo (cobe + WebGL) só baixa e monta quando a seção chega perto da tela.
+const GlobeAnalytics = dynamic(
+  () => import('@/components/ui/cobe-globe-analytics').then((m) => m.GlobeAnalytics),
+  { ssr: false, loading: () => <div className="aspect-square w-full" /> },
+);
 
 const CENTRO_BRASIL: [number, number] = [-14.5, -51];
 const MARCA: [number, number, number] = [0.114, 0.106, 0.604]; // #1d1b9a
@@ -56,29 +65,31 @@ export function MapaUfs() {
             aria-hidden="true"
             className="absolute inset-[8%] -z-10 rounded-full bg-[radial-gradient(circle,rgb(29_27_154/0.16),transparent_68%)] blur-2xl"
           />
-          <GlobeAnalytics
-            markers={markers}
-            drift={false}
-            speed={0}
-            focusEase={reduzir ? 1 : 0.06}
-            focus={atual ? [atual.lat, atual.lng] : CENTRO_BRASIL}
-            initialPhi={reduzir ? PHI_BR : PHI_BR + 0.9}
-            initialTheta={reduzir ? THETA_BR : 0.15}
-            baseColor={[1, 1, 1]}
-            markerColor={MARCA}
-            glowColor={[0.9, 0.9, 0.96]}
-            dark={0}
-            diffuse={1.3}
-            mapBrightness={6}
-            labelStyle={{
-              background: 'rgb(11 10 46 / 0.92)',
-              color: '#fff',
-              borderRadius: 999,
-              padding: '0.32rem 0.6rem',
-              border: '1px solid rgb(142 139 255 / 0.45)',
-            }}
-            className="w-full"
-          />
+          <SobDemanda className="aspect-square w-full">
+            <GlobeAnalytics
+              markers={markers}
+              drift={false}
+              speed={0}
+              focusEase={reduzir ? 1 : 0.06}
+              focus={atual ? [atual.lat, atual.lng] : CENTRO_BRASIL}
+              initialPhi={reduzir ? PHI_BR : PHI_BR + 0.9}
+              initialTheta={reduzir ? THETA_BR : 0.15}
+              baseColor={[1, 1, 1]}
+              markerColor={MARCA}
+              glowColor={[0.9, 0.9, 0.96]}
+              dark={0}
+              diffuse={1.3}
+              mapBrightness={6}
+              labelStyle={{
+                background: 'rgb(11 10 46 / 0.92)',
+                color: '#fff',
+                borderRadius: 999,
+                padding: '0.32rem 0.6rem',
+                border: '1px solid rgb(142 139 255 / 0.45)',
+              }}
+              className="w-full"
+            />
+          </SobDemanda>
           <p className="sr-only">
             Globo com marcadores nas capitais dos 27 estados; o tamanho de cada marcador é proporcional ao
             número de contratações abertas. Os números estão na tabela ao lado.
