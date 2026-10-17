@@ -12,6 +12,7 @@ import { Cabecalho, Secao } from '@/components/site/secao';
 import { CtaFaixa } from '@/components/site/cta-faixa';
 import { buttonVariants } from '@/components/ui/button';
 import { BotaoDiagnostico } from '@/components/diagnostico/botao';
+import { VerConteudo } from '@/components/ver-conteudo';
 
 export async function generateStaticParams() {
   const areas = await getAreas();
@@ -81,6 +82,7 @@ export default async function AreaPage({
   return (
     <>
       <JsonLd data={breadcrumbLd} />
+      <VerConteudo categoria={`area:${slug}`} nome={area.title} />
       {area.faq.length > 0 && <JsonLd data={faqLd} />}
 
       <PageHero

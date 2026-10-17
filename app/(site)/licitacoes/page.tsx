@@ -16,6 +16,7 @@ import { Frentes } from '@/components/licitacoes/frentes';
 import { FilmeLicitacoes } from '@/components/licitacoes/filme';
 import { dadosIniciais } from './dados';
 import { BotaoDiagnostico } from '@/components/diagnostico/botao';
+import { VerConteudo } from '@/components/ver-conteudo';
 
 // Números do PNCP montados no servidor e renovados a cada 2 min (ISR); no
 // navegador, o termômetro segue ao vivo pelas rotas /api/pncp/*.
@@ -153,6 +154,7 @@ export default async function LicitacoesPage() {
       <JsonLd data={serviceLd} />
       <JsonLd data={faqLd} />
       <JsonLd data={trilhaLd} />
+      <VerConteudo categoria="licitacoes" nome="Licitações e contratos públicos" />
 
       <HeroLicitacoes whatsapp={settings.whatsapp} />
 

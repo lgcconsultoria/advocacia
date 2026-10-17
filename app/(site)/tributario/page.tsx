@@ -17,6 +17,7 @@ import { SimuladorPagina } from '@/components/tributario-pagina/simulador-pagina
 import { SplitPayment } from '@/components/tributario-pagina/split-payment';
 import { LinhaReforma } from '@/components/tributario-pagina/linha-reforma';
 import { GridBeam } from '@/components/ui/grid-beam';
+import { VerConteudo } from '@/components/ver-conteudo';
 
 const URL_PAGINA = 'https://www.senturiaoadv.com.br/tributario';
 
@@ -171,6 +172,7 @@ export default async function TributarioPage() {
       <JsonLd data={serviceLd} />
       <JsonLd data={faqLd} />
       <JsonLd data={trilhaLd} />
+      <VerConteudo categoria="tributario" nome="Assessoria tributária" />
 
       <PageHero
         trilha={[{ label: 'Tributário' }]}
