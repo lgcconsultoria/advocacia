@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useEffect, useId, useRef, useState, type FormEvent } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ArrowRight, Check, Copy, LoaderCircle } from 'lucide-react';
-import { enviarLead, type Interesse } from '@/lib/contato/enviar-lead';
+import { enviarLead, novoEventId, type Interesse } from '@/lib/contato/enviar-lead';
 import { registrarLead } from '@/lib/medicao';
 import { cn } from '@/lib/utils';
 
@@ -110,6 +110,7 @@ export function FormularioDiagnostico({
     const f = new FormData(ev.currentTarget);
     setEstado({ fase: 'enviando' });
     setErroEnvio('');
+    const eventId = novoEventId();
     const r = await enviarLead(
       {
         nome: valores.nome.trim(),
@@ -119,11 +120,11 @@ export function FormularioDiagnostico({
         interesse,
         website: String(f.get('website') ?? ''),
       },
-      { inicio: inicio.current || undefined },
+      { inicio: inicio.current || undefined, eventId },
     );
     if (r.ok) {
       setEstado({ fase: 'feito', protocolo: r.protocolo });
-      registrarLead({ categoria: interesse });
+      registrarLead({ categoria: interesse, eventId: r.eventId });
     } else {
       setEstado({ fase: 'livre' });
       setErroEnvio(r.erro);

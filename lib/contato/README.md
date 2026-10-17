@@ -24,11 +24,12 @@ type DadosLead = {
 type OpcoesEnvioLead = {
   inicio?: number;             // Date.now() de quando o formulário apareceu
   pagina?: string;             // padrão: window.location.href
+  eventId?: string;            // uuid do envio (novoEventId()); sem ele, gera um
   endpoint?: string;           // padrão: ENDPOINT_LEAD
   signal?: AbortSignal;
   timeoutMs?: number;          // padrão: 15000
 };
-type RespostaLead = { ok: true; protocolo: string } | { ok: false; erro: string };
+type RespostaLead = { ok: true; protocolo: string; eventId: string } | { ok: false; erro: string };
 ```
 
 A função **nunca lança**: sempre resolve com `ok`. Em `ok: false`, `erro` já
@@ -36,6 +37,21 @@ vem em português, pronto para aparecer embaixo do botão (ex.: "Informe um
 e-mail válido.", "Envio rápido demais. Confira os dados e clique em enviar de
 novo.", "Muitos envios em pouco tempo…"). Os `utm_*` da visita e a página de
 origem vão sozinhos.
+
+## Atribuição de anúncio (desde 17/10/2026)
+
+Além dos `utm_*`, o corpo leva (ver `atribuicao.ts`, testes em `atribuicao.test.mts`, `npm test`):
+
+| Campo | De onde | Quando |
+|---|---|---|
+| `fbclid`, `ad_id`, `campaign_id` (ou `utm_id`) | URL da página de entrada, guardados na sessão | sempre que vierem e estiverem no formato |
+| `fbc`, `fbp` | cookies `_fbc`/`_fbp` da Meta; sem `_fbc` e com `fbclid`, `fb.1.<ms>.<fbclid>` | só com o consentimento de medição dado |
+| `consentimento_marketing`, `consentimento_marketing_em` | `lib/consentimento.ts` (true/false e ISO da escolha, ou `null`) | sempre |
+| `event_id` | uuid por envio | sempre; o mesmo vai no `fbq('track','Lead',…,{eventID})` |
+
+O formulário gera `const eventId = novoEventId()`, passa em `opcoes.eventId` e,
+no sucesso, chama `registrarLead({ categoria, eventId })` — é o que deixa a Meta
+desduplicar o evento do pixel com o da Conversions API do 360.
 
 ## Como o formulário deve chamar
 

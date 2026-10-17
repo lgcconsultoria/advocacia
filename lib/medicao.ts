@@ -37,16 +37,23 @@ type Janela = Window & {
  * Registra um lead enviado com sucesso: `Lead` no Pixel e `generate_lead` no
  * GA4 (e a conversão do Ads, se houver rótulo). Nunca lança: sem consentimento
  * ou sem o script carregado, simplesmente não faz nada.
+ *
+ * `eventId` é o mesmo `event_id` mandado com o lead (lib/contato/atribuicao.ts):
+ * a Meta usa para desduplicar o evento do pixel com o da Conversions API do 360.
  */
-export function registrarLead(dados: { categoria?: string; nome?: string } = {}): void {
+export function registrarLead(
+  dados: { categoria?: string; nome?: string; eventId?: string } = {},
+): void {
   if (typeof window === 'undefined' || !medicaoAutorizada()) return;
   const w = window as Janela;
   try {
     if (typeof w.fbq === 'function') {
-      w.fbq('track', 'Lead', {
+      const parametros = {
         ...(dados.categoria ? { content_category: dados.categoria } : {}),
         ...(dados.nome ? { content_name: dados.nome } : {}),
-      });
+      };
+      if (dados.eventId) w.fbq('track', 'Lead', parametros, { eventID: dados.eventId });
+      else w.fbq('track', 'Lead', parametros);
     }
   } catch {
     /* medição nunca derruba o formulário */
@@ -63,5 +70,24 @@ export function registrarLead(dados: { categoria?: string; nome?: string } = {})
     }
   } catch {
     /* idem */
+  }
+}
+
+/**
+ * `ViewContent` no Pixel para página de serviço (tributário, licitações, áreas).
+ * Só com consentimento e com o Pixel carregado; nunca lança.
+ */
+export function registrarVisualizacao(dados: { categoria: string; nome?: string }): boolean {
+  if (typeof window === 'undefined' || !medicaoAutorizada()) return false;
+  const w = window as Janela;
+  if (typeof w.fbq !== 'function') return false;
+  try {
+    w.fbq('track', 'ViewContent', {
+      content_category: dados.categoria,
+      ...(dados.nome ? { content_name: dados.nome } : {}),
+    });
+    return true;
+  } catch {
+    return false;
   }
 }

@@ -12,10 +12,19 @@
  * - `tempo_ms`: quanto tempo se passou entre o formulário aparecer e o envio.
  *   A porta recusa envio com menos de 2 segundos.
  *
+ * Vão juntos a atribuição de anúncio (fbclid, ad_id, campaign_id; _fbc/_fbp só
+ * com consentimento), o consentimento de marketing e um `event_id` por envio
+ * (ver ./atribuicao.ts) — o mesmo `event_id` deve ir no `registrarLead`.
+ *
  * Só funciona a partir de https://www.senturiaoadv.com.br e
  * https://senturiaoadv.com.br (a porta confere a origem). Em `next dev`
  * (http://localhost:3000) a porta só aceita se estiver com LEADS_CORS_DEV.
  */
+
+import { lerConsentimento } from '@/lib/consentimento';
+import { atribuicaoDaVisita, novoEventId, type AtribuicaoLead } from './atribuicao';
+
+export { novoEventId } from './atribuicao';
 
 export const ENDPOINT_LEAD = 'https://propostas.senturiaoadv.com.br/p/contato/lead';
 
@@ -41,6 +50,12 @@ export type OpcoesEnvioLead = {
   inicio?: number;
   /** Página de origem. Padrão: `window.location.href`. */
   pagina?: string;
+  /**
+   * Id do evento deste envio (uuid). Gere com `novoEventId()` e passe o mesmo
+   * para `registrarLead`, para a Meta desduplicar pixel × Conversions API.
+   * Sem ele, a função gera um e devolve na resposta.
+   */
+  eventId?: string;
   /** Para testes. Padrão: `ENDPOINT_LEAD`. */
   endpoint?: string;
   signal?: AbortSignal;
@@ -48,7 +63,9 @@ export type OpcoesEnvioLead = {
   timeoutMs?: number;
 };
 
-export type RespostaLead = { ok: true; protocolo: string } | { ok: false; erro: string };
+export type RespostaLead =
+  | { ok: true; protocolo: string; eventId: string }
+  | { ok: false; erro: string };
 
 const UTMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'] as const;
 const CHAVE_UTMS = 'senturiao:utms';
@@ -83,9 +100,42 @@ function utmsDaVisita(): Partial<Record<(typeof UTMS)[number], string>> {
   }
 }
 
-/** Chame cedo (ex.: no layout) para guardar os utm_* da página de entrada. */
+/**
+ * fbclid/ad_id/campaign_id da visita, cookies da Meta (só com consentimento)
+ * e o consentimento de marketing. Nunca lança.
+ */
+export function atribuicaoDoNavegador(): AtribuicaoLead {
+  if (typeof window === 'undefined') {
+    return { consentimento_marketing: false, consentimento_marketing_em: null };
+  }
+  let armazenamento: Storage | null = null;
+  try {
+    armazenamento = window.sessionStorage;
+  } catch {
+    armazenamento = null;
+  }
+  let cookies = '';
+  try {
+    cookies = document.cookie;
+  } catch {
+    cookies = '';
+  }
+  return atribuicaoDaVisita({
+    search: window.location.search,
+    armazenamento,
+    cookies,
+    consentimento: lerConsentimento(),
+    agora: Date.now(),
+  });
+}
+
+/**
+ * Chame cedo (ex.: no layout) para guardar os utm_* e os parâmetros de anúncio
+ * (fbclid, ad_id, campaign_id) da página de entrada.
+ */
 export function lembrarUtms(): void {
   utmsDaVisita();
+  atribuicaoDoNavegador();
 }
 
 function tempoDesde(inicio?: number): number {
@@ -96,11 +146,11 @@ function tempoDesde(inicio?: number): number {
   return 0;
 }
 
-function respostaValida(corpo: unknown): RespostaLead | null {
+function respostaValida(corpo: unknown, eventId: string): RespostaLead | null {
   if (!corpo || typeof corpo !== 'object') return null;
   const r = corpo as Record<string, unknown>;
   if (r.ok === true && typeof r.protocolo === 'string') {
-    return { ok: true, protocolo: r.protocolo };
+    return { ok: true, protocolo: r.protocolo, eventId };
   }
   if (r.ok === false && typeof r.erro === 'string' && r.erro) {
     return { ok: false, erro: r.erro };
@@ -110,7 +160,7 @@ function respostaValida(corpo: unknown): RespostaLead | null {
 
 /**
  * Manda o lead para a porta. Resolve sempre (nunca rejeita):
- * `{ ok: true, protocolo }` ou `{ ok: false, erro }` em português.
+ * `{ ok: true, protocolo, eventId }` ou `{ ok: false, erro }` em português.
  */
 export async function enviarLead(
   dados: DadosLead,
@@ -118,6 +168,7 @@ export async function enviarLead(
 ): Promise<RespostaLead> {
   const pagina =
     opcoes.pagina ?? (typeof window !== 'undefined' ? window.location.href : undefined);
+  const eventId = opcoes.eventId ?? novoEventId();
   const corpo = {
     nome: dados.nome,
     email: dados.email,
@@ -126,6 +177,8 @@ export async function enviarLead(
     interesse: dados.interesse ?? null,
     pagina: pagina ?? null,
     ...utmsDaVisita(),
+    ...atribuicaoDoNavegador(),
+    event_id: eventId,
     website: dados.website ?? '',
     tempo_ms: tempoDesde(opcoes.inicio),
   };
@@ -150,7 +203,7 @@ export async function enviarLead(
     } catch {
       json = null;
     }
-    return respostaValida(json) ?? { ok: false, erro: ERRO_INESPERADO };
+    return respostaValida(json, eventId) ?? { ok: false, erro: ERRO_INESPERADO };
   } catch {
     // Rede fora, CORS recusado, tempo esgotado ou cancelado.
     return { ok: false, erro: ERRO_REDE };

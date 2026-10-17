@@ -2,6 +2,7 @@
 
 import { useRef, useState, type FormEvent } from 'react';
 import { registrarLead } from '@/lib/medicao';
+import { atribuicaoDoNavegador, novoEventId } from '@/lib/contato/enviar-lead';
 
 const OS = process.env.NEXT_PUBLIC_OS_URL ?? 'https://senturiao-os.vercel.app';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -38,6 +39,9 @@ export function ModeloForm({ slug, documento }: { slug: string; documento: strin
 
     setEstado('enviando');
     const p = new URLSearchParams(window.location.search);
+    // mesmos campos de atribuição do formulário de diagnóstico (lib/contato/atribuicao.ts)
+    const eventId = novoEventId();
+    const atribuicao = atribuicaoDoNavegador();
     try {
       const r = await fetch(`${OS}/api/modelo/solicitar`, {
         method: 'POST',
@@ -49,12 +53,14 @@ export function ModeloForm({ slug, documento }: { slug: string; documento: strin
           utm_source: p.get('utm_source') ?? '',
           utm_medium: p.get('utm_medium') ?? '',
           utm_campaign: p.get('utm_campaign') ?? '',
+          ...atribuicao,
+          event_id: eventId,
         }),
       });
       const j = (await r.json()) as { url?: string; erro?: string };
       if (!r.ok || !j.url) throw new Error(j.erro || 'Falha ao gerar o material.');
 
-      registrarLead({ categoria: `modelo:${slug}`, nome: documento });
+      registrarLead({ categoria: `modelo:${slug}`, nome: documento, eventId });
       setLink(j.url);
       setEstado('pronto');
       window.location.href = j.url;
