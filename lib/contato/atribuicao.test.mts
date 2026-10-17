@@ -118,6 +118,18 @@ test('cookie fora do formato é ignorado', () => {
   assert.equal(a.fbc, undefined);
 });
 
+test('cookies com o sufixo do Parameter Builder da Meta são aceitos', () => {
+  const a = atribuicaoDaVisita({
+    search: '',
+    armazenamento: memoria(),
+    cookies: '_fbp=fb.1.1760700000000.1234567890.AQ; _fbc=fb.1.1760700000000.IwAR1.Bg',
+    consentimento: ACEITO,
+    agora: AGORA,
+  });
+  assert.equal(a.fbp, 'fb.1.1760700000000.1234567890.AQ');
+  assert.equal(a.fbc, 'fb.1.1760700000000.IwAR1.Bg');
+});
+
 test('armazenamento que lança não derruba a leitura', () => {
   const quebrado = {
     getItem() {

@@ -39,8 +39,9 @@ type Guardado = ParametrosAnuncio & { fbclid_ts?: number };
 
 const RE_FBCLID = /^[A-Za-z0-9_-]{1,500}$/;
 const RE_ID_META = /^\d{1,30}$/;
-const RE_FBC = /^fb\.\d\.\d{1,16}\.[A-Za-z0-9_-]{1,500}$/;
-const RE_FBP = /^fb\.\d\.\d{1,16}\.\d{1,30}$/;
+// Mesmo formato que a porta aceita; o sufixo opcional é o do Parameter Builder da Meta (".Bg").
+const RE_FBC = /^fb\.\d\.\d{1,16}\.[A-Za-z0-9_.-]{1,600}$/;
+const RE_FBP = /^fb\.\d\.\d{1,16}\.\d{1,30}(?:\.[A-Za-z0-9_-]{1,20})?$/;
 
 /** Os parâmetros de anúncio presentes na query string (já validados). */
 export function parametrosDaUrl(search: string): ParametrosAnuncio {
