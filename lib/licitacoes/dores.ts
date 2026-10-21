@@ -103,7 +103,7 @@ export const DORES: Dor[] = [
       },
       {
         "question": "E se o recurso for negado?",
-        "answer": "O recurso é dirigido à autoridade que praticou o ato; se ela não reconsiderar em 3 dias úteis, encaminha à autoridade superior, que decide em até 10 dias úteis contados do recebimento dos autos (art. 165, § 2º). Também é possível representar ao tribunal de contas ou ao controle interno (art. 170, § 4º), mas a representação não é recurso: o órgão de controle fiscaliza e não está obrigado a rever a decisão no seu caso. Se a ilegalidade persistir, o escritório avalia o mandado de segurança, dentro dos 120 dias da ciência da decisão (Lei 12.016/2009, art. 23)."
+        "answer": "O recurso é dirigido à autoridade que praticou o ato; se ela não reconsiderar em 3 dias úteis, encaminha à autoridade superior, que decide em até 10 dias úteis contados do recebimento dos autos (art. 165, § 2º). Também é possível representar ao tribunal de contas ou ao controle interno (art. 170, § 4º), mas a representação não é recurso: o órgão de controle fiscaliza e não está obrigado a rever a decisão no seu caso. Se a ilegalidade persistir, o escritório avalia o mandado de segurança, que tem prazo de 120 dias contados da ciência do ato impugnado (Lei 12.016/2009, art. 23). Por segurança, conte esse prazo da primeira ciência da decisão de inabilitação."
       },
       {
         "question": "Outra empresa recorreu contra a minha habilitação. E agora?",

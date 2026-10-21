@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 
 /** Páginas por dor do departamento (links internos; prazos da Lei 14.133/2021 e da Lei 12.016/2009). */
 const SITUACOES = [
-  { href: '/licitacoes/fui-inabilitado', titulo: 'Fui inabilitado na licitação. E agora?', prazo: 'Recurso: 3 dias úteis' },
+  { href: '/licitacoes/fui-inabilitado', titulo: 'Fui inabilitado na licitação. E agora?', prazo: 'Intenção na hora; razões em 3 dias úteis' },
   { href: '/licitacoes/desclassificada-no-pregao', titulo: 'Proposta desclassificada no pregão', prazo: 'Intenção de recorrer: na hora' },
   { href: '/licitacoes/recurso-administrativo', titulo: 'Recurso administrativo em licitação', prazo: 'Efeito suspensivo (art. 168)' },
   { href: '/licitacoes/impugnacao-de-edital', titulo: 'Impugnação de edital', prazo: 'Até 3 dias úteis antes da abertura' },

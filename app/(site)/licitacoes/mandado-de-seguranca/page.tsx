@@ -159,7 +159,7 @@ export default async function MandadoSegurancaLicitacaoPage() {
         <p className="m-0 mt-10 text-[0.9rem] text-cinza">
           Veja também: <Link href="/areas/mandado-de-seguranca" className="text-marca underline underline-offset-2">mandado de segurança contra atos da Administração</Link>
           {' · '}
-          <Link href="/modelos/mandado-seguranca-desclassificacao" className="text-marca underline underline-offset-2">roteiro gratuito para desclassificação</Link>
+          <Link href="/modelos/mandado-seguranca-desclassificacao" className="text-marca underline underline-offset-2">roteiro para desclassificação</Link>
           {' · '}
           <Link href="/licitacoes/fui-inabilitado" className="text-marca underline underline-offset-2">fui inabilitado</Link>
           {' · '}
