@@ -28,6 +28,26 @@ export type AssuntoWhatsapp = {
  */
 export const ASSUNTOS_WHATSAPP: readonly AssuntoWhatsapp[] = [
   {
+    caminho: '/licitacoes/fui-inabilitado',
+    texto: 'Fui inabilitado(a) numa licitação e quero analisar o recurso.',
+    ref: 'fui-inabilitado',
+  },
+  {
+    caminho: '/licitacoes/desclassificada-no-pregao',
+    texto: 'Minha proposta foi desclassificada no pregão e quero analisar o recurso.',
+    ref: 'desclassificada-pregao',
+  },
+  {
+    caminho: '/licitacoes/recurso-administrativo',
+    texto: 'Preciso de um recurso administrativo em licitação.',
+    ref: 'recurso-administrativo',
+  },
+  {
+    caminho: '/licitacoes/impugnacao-de-edital',
+    texto: 'Quero avaliar a impugnação de um edital.',
+    ref: 'impugnacao-edital',
+  },
+  {
     caminho: '/licitacoes/mandado-de-seguranca',
     texto: 'Quero avaliar se cabe mandado de segurança no meu caso de licitação.',
     ref: 'ms-licitacao',

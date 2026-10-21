@@ -37,6 +37,7 @@ export const FRENTES: Frente[] = [
     base: 'Lei 14.133/2021, art. 164',
     areas: ['licitacoes'],
     posts: ['impugnacao-ao-edital-prazos-e-estrategia'],
+    paginas: [{ href: '/licitacoes/impugnacao-de-edital', label: 'Impugnação de edital: prazo e como fazer' }],
   },
   {
     titulo: 'Suporte jurídico na sessão',
@@ -44,6 +45,7 @@ export const FRENTES: Frente[] = [
       'Acompanhamento da disputa e do julgamento: respostas a diligências, demonstração da exequibilidade da proposta, defesa contra desclassificações e registro da intenção de recorrer no momento certo.',
     base: 'Lei 14.133/2021, arts. 59 e 64',
     areas: ['licitacoes'],
+    paginas: [{ href: '/licitacoes/desclassificada-no-pregao', label: 'Proposta desclassificada no pregão' }],
   },
   {
     titulo: 'Recursos e contrarrazões',
@@ -51,6 +53,10 @@ export const FRENTES: Frente[] = [
       'Razões de recurso contra o julgamento, a habilitação ou a inabilitação, e contrarrazões quando o recurso é de um concorrente, no prazo de 3 dias úteis e com tese construída para o caso.',
     base: 'Lei 14.133/2021, arts. 165 a 168',
     areas: ['licitacoes'],
+    paginas: [
+      { href: '/licitacoes/fui-inabilitado', label: 'Fui inabilitado na licitação. E agora?' },
+      { href: '/licitacoes/recurso-administrativo', label: 'Recurso administrativo: prazos e como funciona' },
+    ],
   },
   {
     titulo: 'Mandado de segurança e medidas judiciais',

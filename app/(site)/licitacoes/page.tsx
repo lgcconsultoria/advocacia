@@ -26,17 +26,26 @@ export const revalidate = 120;
 const URL_PAGINA = 'https://www.senturiaoadv.com.br/licitacoes';
 
 export const metadata: Metadata = {
-  title: 'Departamento de Licitações: assessoria jurídica em licitações e contratos públicos',
+  title: 'Departamento de Licitações e Contratos Públicos: assessoria jurídica para empresas',
   description:
     'Departamento jurídico de licitações para empresas: análise de edital e matriz de riscos, habilitação, impugnações, suporte na sessão, recursos, mandado de segurança, contratos, reequilíbrio (inclusive IBS/CBS) e defesa em sanções. Com o termômetro ao vivo das contratações públicas do PNCP.',
   alternates: { canonical: '/licitacoes' },
   ...metaSocial({
-    titulo: 'Departamento de Licitações — Douglas Senturião Advocacia',
+    titulo: 'Departamento de Licitações e Contratos Públicos — Douglas Senturião Advocacia',
     descricao:
       'Soluções jurídicas integradas para o departamento de licitações da sua empresa, do edital ao contrato, sob a Lei 14.133/2021.',
     caminho: '/licitacoes',
   }),
 };
+
+/** Páginas por dor do departamento (links internos; prazos da Lei 14.133/2021 e da Lei 12.016/2009). */
+const SITUACOES = [
+  { href: '/licitacoes/fui-inabilitado', titulo: 'Fui inabilitado na licitação. E agora?', prazo: 'Recurso: 3 dias úteis' },
+  { href: '/licitacoes/desclassificada-no-pregao', titulo: 'Proposta desclassificada no pregão', prazo: 'Intenção de recorrer: na hora' },
+  { href: '/licitacoes/recurso-administrativo', titulo: 'Recurso administrativo em licitação', prazo: 'Efeito suspensivo (art. 168)' },
+  { href: '/licitacoes/impugnacao-de-edital', titulo: 'Impugnação de edital', prazo: 'Até 3 dias úteis antes da abertura' },
+  { href: '/licitacoes/mandado-de-seguranca', titulo: 'Mandado de segurança em licitação', prazo: '120 dias da ciência' },
+];
 
 const FAQ: FaqItem[] = [
   {
@@ -146,7 +155,7 @@ export default async function LicitacoesPage() {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Início', item: 'https://www.senturiaoadv.com.br/' },
-      { '@type': 'ListItem', position: 2, name: 'Departamento de Licitações', item: URL_PAGINA },
+      { '@type': 'ListItem', position: 2, name: 'Departamento de Licitações e Contratos Públicos', item: URL_PAGINA },
     ],
   };
 
@@ -158,6 +167,30 @@ export default async function LicitacoesPage() {
       <VerConteudo categoria="licitacoes" nome="Licitações e contratos públicos" />
 
       <HeroLicitacoes whatsapp={settings.whatsapp} />
+
+      <Secao id="situacoes" aria-labelledby="situacoes-titulo">
+        <Cabecalho
+          rotulo="Decisão contra a sua empresa?"
+          id="situacoes-titulo"
+          titulo="O prazo é curto. Comece pela sua situação."
+        >
+          <p className="m-0 mt-5 max-w-[62ch] text-[1.05rem] leading-relaxed text-cinza">
+            Os advogados do Departamento de Licitações e Contratos Públicos analisam a decisão e cuidam do recurso,
+            da impugnação ou do mandado de segurança. Cada página traz o prazo da lei e o que fazer agora.
+          </p>
+        </Cabecalho>
+        <ul className="m-0 mt-10 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3">
+          {SITUACOES.map((s) => (
+            <li key={s.href}>
+              <Link href={s.href} className="group block h-full rounded-3xl bg-white p-6 no-underline transition-shadow hover:shadow-[0_18px_40px_-24px_rgb(11_10_46/0.45)]">
+                <p className="rotulo m-0 text-marca">{s.prazo}</p>
+                <p className="semi m-0 mt-2 text-[1.1rem] font-[720] leading-tight text-grafite">{s.titulo}</p>
+                <span className="mt-3 inline-flex items-center gap-1 text-[0.9rem] font-[600] text-marca">Ver o que fazer <span aria-hidden="true">→</span></span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Secao>
 
       <Secao id="termometro" escura grade className="border-t border-sinal/15" aria-labelledby="termometro-titulo">
         <Cabecalho

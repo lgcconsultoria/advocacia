@@ -22,6 +22,10 @@ test('limparCaminho tira query, âncora e barra final', () => {
 test('assunto: o mais específico vence e prefixo casa subpáginas', () => {
   assert.equal(assuntoDaPagina('/licitacoes/mandado-de-seguranca').ref, 'ms-licitacao');
   assert.equal(assuntoDaPagina('/licitacoes').ref, 'licitacoes');
+  assert.equal(assuntoDaPagina('/licitacoes/fui-inabilitado').ref, 'fui-inabilitado');
+  assert.equal(assuntoDaPagina('/licitacoes/desclassificada-no-pregao').ref, 'desclassificada-pregao');
+  assert.equal(assuntoDaPagina('/licitacoes/recurso-administrativo').ref, 'recurso-administrativo');
+  assert.equal(assuntoDaPagina('/licitacoes/impugnacao-de-edital').ref, 'impugnacao-edital');
   assert.equal(assuntoDaPagina('/modelos/recurso-administrativo-licitacao').ref, 'recurso-inabilitacao');
   assert.equal(assuntoDaPagina('/modelos').ref, 'modelos');
   assert.equal(assuntoDaPagina('/areas/familia').ref, 'areas');

@@ -66,7 +66,7 @@ export default async function MandadoSegurancaLicitacaoPage() {
       <VerConteudo categoria="licitacoes:mandado-de-seguranca" nome="Mandado de segurança em licitação" />
 
       <PageHero
-        trilha={[{ href: '/licitacoes', label: 'Licitações' }, { label: 'Mandado de segurança' }]}
+        trilha={[{ href: '/licitacoes', label: 'Departamento de Licitações' }, { label: 'Mandado de segurança' }]}
         rotulo={HERO.rotulo}
         titulo={HERO.titulo}
         lead={HERO.lead}
@@ -161,7 +161,15 @@ export default async function MandadoSegurancaLicitacaoPage() {
           {' · '}
           <Link href="/modelos/mandado-seguranca-desclassificacao" className="text-marca underline underline-offset-2">roteiro gratuito para desclassificação</Link>
           {' · '}
-          <Link href="/licitacoes" className="text-marca underline underline-offset-2">departamento de licitações</Link>.
+          <Link href="/licitacoes/fui-inabilitado" className="text-marca underline underline-offset-2">fui inabilitado</Link>
+          {' · '}
+          <Link href="/licitacoes/desclassificada-no-pregao" className="text-marca underline underline-offset-2">desclassificada no pregão</Link>
+          {' · '}
+          <Link href="/licitacoes/recurso-administrativo" className="text-marca underline underline-offset-2">recurso administrativo</Link>
+          {' · '}
+          <Link href="/licitacoes/impugnacao-de-edital" className="text-marca underline underline-offset-2">impugnação de edital</Link>
+          {' · '}
+          <Link href="/licitacoes" className="text-marca underline underline-offset-2">Departamento de Licitações e Contratos Públicos</Link>.
         </p>
       </Secao>
 

@@ -68,7 +68,7 @@ export function HeroLicitacoes({ whatsapp }: { whatsapp: string }) {
         </nav>
 
         <div className="mt-12 max-w-[760px] md:mt-20">
-          <p className="etiqueta etiqueta--escura m-0">Departamento de Licitações</p>
+          <p className="etiqueta etiqueta--escura m-0">Departamento de Licitações e Contratos Públicos</p>
           <h1
             id="licitacoes-titulo"
             className="display m-0 mt-5 text-[clamp(2.2rem,5.6vw,4.5rem)] text-white"
