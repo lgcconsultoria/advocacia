@@ -17,6 +17,7 @@ import { FilmeLicitacoes } from '@/components/licitacoes/filme';
 import { dadosIniciais } from './dados';
 import { BotaoDiagnostico } from '@/components/diagnostico/botao';
 import { VerConteudo } from '@/components/ver-conteudo';
+import { LinkWhatsapp } from '@/components/link-whatsapp';
 
 // Números do PNCP montados no servidor e renovados a cada 2 min (ISR); no
 // navegador, o termômetro segue ao vivo pelas rotas /api/pncp/*.
@@ -307,14 +308,9 @@ export default async function LicitacoesPage() {
         <BotaoDiagnostico variant="claro" size="lg" interesse="licitacoes">
           Solicitar diagnóstico
         </BotaoDiagnostico>
-        <a
-          className={buttonVariants({ variant: 'contorno-claro', size: 'lg' })}
-          href={`https://wa.me/${settings.whatsapp}?text=${encodeURIComponent('Olá, gostaria de falar sobre o departamento jurídico de licitações.')}`}
-          target="_blank"
-          rel="noopener"
-        >
+        <LinkWhatsapp whatsapp={settings.whatsapp} className={buttonVariants({ variant: 'contorno-claro', size: 'lg' })}>
           Falar pelo WhatsApp
-        </a>
+        </LinkWhatsapp>
       </CtaFaixa>
     </ProvedorPncp>
   );

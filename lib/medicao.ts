@@ -8,6 +8,7 @@ import { medicaoAutorizada } from '@/lib/consentimento';
  *   NEXT_PUBLIC_GA4_ID                GA4 (G-XXXXXXX)
  *   NEXT_PUBLIC_GOOGLE_ADS_ID         Google Ads (AW-XXXXXXXXX)
  *   NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL rótulo da conversão de lead no Ads (opcional)
+ *   NEXT_PUBLIC_GOOGLE_ADS_WHATSAPP_LABEL rótulo da conversão "clique no WhatsApp" no Ads (opcional)
  */
 
 /**
@@ -23,6 +24,7 @@ export const IDS_MEDICAO = {
   ga4: process.env.NEXT_PUBLIC_GA4_ID ?? '',
   ads: process.env.NEXT_PUBLIC_GOOGLE_ADS_ID ?? '',
   adsRotuloLead: process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL ?? '',
+  adsRotuloWhatsapp: process.env.NEXT_PUBLIC_GOOGLE_ADS_WHATSAPP_LABEL ?? '',
 };
 
 /** Há algum provedor configurado? Sem nenhum, o aviso de cookies nem aparece. */
@@ -89,5 +91,34 @@ export function registrarVisualizacao(dados: { categoria: string; nome?: string 
     return true;
   } catch {
     return false;
+  }
+}
+
+/**
+ * Clique num link de WhatsApp: `Contact` no Pixel (evento padrão da Meta para
+ * contato por chat) e `whatsapp_click` no GA4, com a página e o `ref` da dor
+ * (lib/contato/whatsapp.ts); e a conversão do Ads, se houver rótulo próprio.
+ * Não é `Lead`: lead é quem deixou os dados no formulário. Só com
+ * consentimento; nunca lança e nunca atrasa a abertura do WhatsApp.
+ */
+export function registrarContatoWhatsapp(dados: { pagina: string; ref: string }): void {
+  if (typeof window === 'undefined' || !medicaoAutorizada()) return;
+  const w = window as Janela;
+  try {
+    if (typeof w.fbq === 'function') {
+      w.fbq('track', 'Contact', { content_category: 'whatsapp', content_name: dados.ref });
+    }
+  } catch {
+    /* medição nunca derruba o clique */
+  }
+  try {
+    if (typeof w.gtag === 'function') {
+      w.gtag('event', 'whatsapp_click', { page_path: dados.pagina, lead_source: dados.ref });
+      if (IDS_MEDICAO.ads && IDS_MEDICAO.adsRotuloWhatsapp) {
+        w.gtag('event', 'conversion', { send_to: `${IDS_MEDICAO.ads}/${IDS_MEDICAO.adsRotuloWhatsapp}` });
+      }
+    }
+  } catch {
+    /* idem */
   }
 }

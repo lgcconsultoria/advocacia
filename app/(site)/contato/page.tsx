@@ -5,6 +5,7 @@ import { PageHero } from '@/components/site/page-hero';
 import { Secao } from '@/components/site/secao';
 import { FormularioDiagnostico } from '@/components/diagnostico/formulario';
 import { BorderBeam } from '@/components/ui/border-beam';
+import { LinkWhatsapp } from '@/components/link-whatsapp';
 
 export const metadata: Metadata = {
   title: 'Contato',
@@ -27,9 +28,9 @@ export default async function ContatoPage() {
     [
       'Telefone / WhatsApp comercial',
       <>
-        <a className="text-marca" href={`https://wa.me/${settings.whatsapp}`} target="_blank" rel="noopener">
+        <LinkWhatsapp whatsapp={settings.whatsapp} className="text-marca">
           {settings.phone}
-        </a>{' '}
+        </LinkWhatsapp>{' '}
         — atendimento exclusivamente para agendamento.
       </>,
     ],

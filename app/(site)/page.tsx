@@ -19,6 +19,7 @@ import { MarqueeNormas } from '@/components/home/marquee-normas';
 import { Filme } from '@/components/home/filme';
 import { FormularioDiagnostico } from '@/components/diagnostico/formulario';
 import { GridBeam } from '@/components/ui/grid-beam';
+import { LinkWhatsapp } from '@/components/link-whatsapp';
 
 // Posicionamento da home (16/10/2026): tributário (Reforma IBS/CBS, LC 214/2025),
 // licitações e contratos públicos e direito público para empresas — o mesmo do H1.
@@ -228,14 +229,9 @@ export default async function HomePage() {
                 </li>
               ))}
             </ul>
-            <a
-              href={`https://wa.me/${settings.whatsapp}?text=${encodeURIComponent('Olá, gostaria de agendar um atendimento.')}`}
-              target="_blank"
-              rel="noopener"
-              className="link-seta mt-9"
-            >
+            <LinkWhatsapp whatsapp={settings.whatsapp} className="link-seta mt-9">
               Prefere o WhatsApp? <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </a>
+            </LinkWhatsapp>
           </div>
           <div className="vidro-escuro relative rounded-[30px] p-6 sm:p-9">
             <FormularioDiagnostico whatsapp={settings.whatsapp} escuro titulo="Diagnóstico inicial" />

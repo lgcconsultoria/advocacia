@@ -8,6 +8,7 @@ import { GradePlanta } from '@/components/site/secao';
 import { BorderBeam } from '@/components/ui/border-beam';
 import { FormularioDiagnostico } from '@/components/diagnostico/formulario';
 import { FormularioPagina } from '@/components/diagnostico/formulario-pagina';
+import { LinkWhatsapp } from '@/components/link-whatsapp';
 
 export const metadata: Metadata = {
   title: 'Diagnóstico inicial para empresas',
@@ -78,14 +79,9 @@ export default async function DiagnosticoPage() {
           </div>
           <p className="m-0 mt-4 text-center text-[0.86rem] text-cinza-escuro">
             Prefere conversar agora?{' '}
-            <a
-              href={`https://wa.me/${settings.whatsapp}?text=${encodeURIComponent('Olá, gostaria de um diagnóstico inicial.')}`}
-              target="_blank"
-              rel="noopener"
-              className="font-[650] text-white underline underline-offset-2"
-            >
+            <LinkWhatsapp whatsapp={settings.whatsapp} className="font-[650] text-white underline underline-offset-2">
               Chame no WhatsApp
-            </a>
+            </LinkWhatsapp>
           </p>
         </div>
       </div>

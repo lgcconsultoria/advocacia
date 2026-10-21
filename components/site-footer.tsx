@@ -5,6 +5,7 @@ import { BotaoDiagnostico } from '@/components/diagnostico/botao';
 import { PreferenciasCookies } from '@/components/medicao';
 import { HA_MEDICAO } from '@/lib/medicao';
 import { hrefArea } from '@/lib/areas';
+import { LinkWhatsapp } from '@/components/link-whatsapp';
 
 /**
  * Rodapé v2 — no espírito do 21st.dev `@solaceui/footer-section-5` (id 19358):
@@ -58,14 +59,9 @@ export function SiteFooter({ areas, settings }: FooterProps) {
             <BotaoDiagnostico variant="claro">
               Fazer diagnóstico <ArrowUpRight className="seta h-4 w-4" aria-hidden="true" />
             </BotaoDiagnostico>
-            <a
-              className="btn btn-lg btn-contorno-claro"
-              href={`https://wa.me/${settings.whatsapp}?text=${encodeURIComponent('Olá, gostaria de agendar um atendimento.')}`}
-              target="_blank"
-              rel="noopener"
-            >
+            <LinkWhatsapp whatsapp={settings.whatsapp} className="btn btn-lg btn-contorno-claro">
               <MessageCircle className="h-4 w-4" aria-hidden="true" /> WhatsApp
-            </a>
+            </LinkWhatsapp>
           </div>
         </div>
       </div>
@@ -149,9 +145,9 @@ export function SiteFooter({ areas, settings }: FooterProps) {
             <li className="flex gap-2.5">
               <MessageCircle className="mt-1 h-4 w-4 shrink-0 text-sinal" aria-hidden="true" />
               <span>
-                <a className={linkCls} href={`https://wa.me/${settings.whatsapp}`} target="_blank" rel="noopener">
+                <LinkWhatsapp whatsapp={settings.whatsapp} className={linkCls}>
                   {settings.phone}
-                </a>
+                </LinkWhatsapp>
                 <span className="block text-[0.82rem]">atendimento por agendamento</span>
               </span>
             </li>

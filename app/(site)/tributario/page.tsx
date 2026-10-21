@@ -18,6 +18,7 @@ import { SplitPayment } from '@/components/tributario-pagina/split-payment';
 import { LinhaReforma } from '@/components/tributario-pagina/linha-reforma';
 import { GridBeam } from '@/components/ui/grid-beam';
 import { VerConteudo } from '@/components/ver-conteudo';
+import { LinkWhatsapp } from '@/components/link-whatsapp';
 
 const URL_PAGINA = 'https://www.senturiaoadv.com.br/tributario';
 
@@ -460,14 +461,9 @@ export default async function TributarioPage() {
         <BotaoDiagnostico interesse="tributario" variant="claro">
           Fazer diagnóstico <ArrowRight className="seta h-4 w-4" aria-hidden="true" />
         </BotaoDiagnostico>
-        <a
-          className="btn btn-lg btn-contorno-claro"
-          href={`https://wa.me/${settings.whatsapp}?text=${encodeURIComponent('Olá, gostaria de falar sobre a Reforma Tributária na minha empresa.')}`}
-          target="_blank"
-          rel="noopener"
-        >
+        <LinkWhatsapp whatsapp={settings.whatsapp} className="btn btn-lg btn-contorno-claro">
           <Gavel className="h-4 w-4" aria-hidden="true" /> Falar pelo WhatsApp
-        </a>
+        </LinkWhatsapp>
       </CtaFaixa>
     </>
   );
