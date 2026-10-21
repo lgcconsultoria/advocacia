@@ -143,7 +143,7 @@ export default async function MandadoSegurancaLicitacaoPage() {
               subtitulo="Quatro campos. O escritório retorna em até 1 dia útil e pede o edital, a ata e a decisão."
             />
             <p className="hint mb-0 mt-4">
-              A triagem técnica inicial não constitui mandato profissional nem gera honorários.
+              A triagem técnica inicial não constitui mandato profissional.
             </p>
           </aside>
         </div>
