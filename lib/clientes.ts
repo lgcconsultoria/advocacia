@@ -10,6 +10,7 @@ import kzvdeeavrl from '@/content/clientes/kzvdeeavrl.json';
 
 import oqofnhztdb from '@/content/clientes/oqofnhztdb.json';
 import lfohksfmcx from '@/content/clientes/lfohksfmcx.json';
+import bszbwbnlod from '@/content/clientes/bszbwbnlod.json';
 export type PaginaCifrada = {
   v: 1;
   iteracoes: number;
@@ -23,4 +24,5 @@ export const PAGINAS_RESERVADAS: Record<string, PaginaCifrada> = {
   kzvdeeavrl: kzvdeeavrl as PaginaCifrada,
   oqofnhztdb: oqofnhztdb as PaginaCifrada,
   lfohksfmcx: lfohksfmcx as PaginaCifrada,
+  bszbwbnlod: bszbwbnlod as PaginaCifrada,
 };
