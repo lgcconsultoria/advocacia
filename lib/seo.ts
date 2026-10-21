@@ -72,6 +72,7 @@ export const ATUALIZADO_EM: Record<string, string> = {
   '/areas': '2026-10-07',
   '/tributario': '2026-10-07',
   '/licitacoes': '2026-10-16',
+  '/licitacoes/mandado-de-seguranca': '2026-10-21',
   '/blog': '2026-10-07',
   '/diagnostico': '2026-10-07',
   '/modelos': '2026-10-07',

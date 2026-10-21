@@ -53,6 +53,7 @@ export function FormularioDiagnostico({
   subtitulo = 'Quatro campos. O escritório retorna em até 1 dia útil, pelo WhatsApp ou por e-mail.',
   className,
   autoFocus = false,
+  origemLead,
 }: {
   whatsapp: string;
   interesse?: Interesse | null;
@@ -61,6 +62,8 @@ export function FormularioDiagnostico({
   subtitulo?: string | null;
   className?: string;
   autoFocus?: boolean;
+  /** Código da página/dor (ex.: `ms-licitacao`), vai como `content_name` no `Lead` do Pixel. */
+  origemLead?: string;
 }) {
   const uid = useId();
   const inicio = useRef(0);
@@ -124,7 +127,7 @@ export function FormularioDiagnostico({
     );
     if (r.ok) {
       setEstado({ fase: 'feito', protocolo: r.protocolo });
-      registrarLead({ categoria: interesse, eventId: r.eventId });
+      registrarLead({ categoria: interesse, nome: origemLead, eventId: r.eventId });
     } else {
       setEstado({ fase: 'livre' });
       setErroEnvio(r.erro);

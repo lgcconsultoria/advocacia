@@ -10,6 +10,8 @@ export type Frente = {
   /** slugs de áreas (/areas/<slug>) e posts (/blog/<slug>) relacionados */
   areas?: string[];
   posts?: string[];
+  /** páginas próprias do site (landing pages de dor) */
+  paginas?: LinkFrente[];
 };
 
 /** O que o departamento faz, com base legal e links para áreas e artigos que existem no CMS. */
@@ -57,6 +59,7 @@ export const FRENTES: Frente[] = [
     base: 'Lei 12.016/2009',
     areas: ['mandado-de-seguranca'],
     posts: ['mandado-de-seguranca-analise-de-cabimento'],
+    paginas: [{ href: '/licitacoes/mandado-de-seguranca', label: 'Mandado de segurança em licitação: quando cabe' }],
   },
   {
     titulo: 'Contratos administrativos',
@@ -94,6 +97,7 @@ export function Frentes({
     <ol className="m-0 mt-14 grid list-none gap-x-8 gap-y-0 p-0 md:grid-cols-2 lg:grid-cols-3">
       {FRENTES.map((f, i) => {
         const links: LinkFrente[] = [
+          ...(f.paginas ?? []),
           ...(f.areas ?? [])
             .filter((s) => areas[s] && !PAGINA_PRINCIPAL[s])
             .map((s) => ({ href: `/areas/${s}`, label: `Área: ${areas[s]}` })),

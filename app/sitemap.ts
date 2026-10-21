@@ -19,6 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/areas',
     '/tributario',
     '/licitacoes',
+    '/licitacoes/mandado-de-seguranca',
     '/blog',
     '/diagnostico',
     '/modelos',
@@ -30,7 +31,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${BASE}${path}`,
     lastModified: ATUALIZADO_EM[path] ?? ATUALIZACAO_PADRAO,
     changeFrequency: 'monthly' as const,
-    priority: path === '' ? 1 : path === '/tributario' || path === '/licitacoes' ? 0.9 : 0.7,
+    priority:
+      path === ''
+        ? 1
+        : path === '/tributario' || path.startsWith('/licitacoes')
+          ? 0.9
+          : 0.7,
   }));
 
   // /areas/tributario e /areas/licitacoes fazem 301 para as páginas principais.
