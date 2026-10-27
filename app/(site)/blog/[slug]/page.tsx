@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { getPost, getPosts, getSettings } from '@/lib/reader';
+import { getAreas, getPost, getPosts, getSettings } from '@/lib/reader';
 import { renderMarkdoc, extractToc } from '@/lib/markdoc';
 import { JsonLd } from '@/components/json-ld';
 import { metaSocial, OG_IMAGEM, SITE } from '@/lib/seo';
-import { ID_PESSOA, PERFIS, publicadorLd } from '@/lib/schema';
+import { ID_PESSOA, ID_SITE, PERFIS, publicadorLd, trilhaLd } from '@/lib/schema';
+import { LeiaTambem } from '@/components/blog/leia-tambem';
 import { PageHero } from '@/components/site/page-hero';
 import { CtaFaixa } from '@/components/site/cta-faixa';
 import { buttonVariants } from '@/components/ui/button';
@@ -61,15 +62,18 @@ export default async function PostPage({
   const post = await getPost(slug);
   if (!post) notFound();
 
-  const settings = await getSettings();
+  const [settings, todosPosts, areas] = await Promise.all([getSettings(), getPosts(), getAreas()]);
   const content = await post.content();
+  const areaDoPost = areas.find((a) => a.slug === post.areaKey);
   const toc = extractToc(content.node);
 
   const articleLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
+    '@id': `${SITE}/blog/${slug}#artigo`,
     headline: post.title,
     description: post.description,
+    articleSection: post.area,
     datePublished: post.publishedDate,
     dateModified: post.updatedDate ?? post.publishedDate,
     image: [`${SITE}${OG_IMAGEM.url}`],
@@ -82,25 +86,16 @@ export default async function PostPage({
       sameAs: PERFIS,
     },
     publisher: publicadorLd(settings),
-    mainEntityOfPage: `${SITE}/blog/${slug}`,
+    isPartOf: { '@id': ID_SITE },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE}/blog/${slug}` },
     inLanguage: 'pt-BR',
   };
 
-  const base = 'https://www.senturiaoadv.com.br';
-  const breadcrumbLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Início', item: `${base}/` },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${base}/blog` },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: post.title,
-        item: `${base}/blog/${slug}`,
-      },
-    ],
-  };
+  const breadcrumbLd = trilhaLd([
+    { nome: 'Início', caminho: '/' },
+    { nome: 'Blog', caminho: '/blog' },
+    { nome: post.title, caminho: `/blog/${slug}` },
+  ]);
 
   return (
     <>
@@ -171,6 +166,13 @@ export default async function PostPage({
               Disciplina da OAB. Não substitui a análise de um caso concreto nem
               constitui aconselhamento jurídico individualizado.
             </div>
+
+            <LeiaTambem
+              atual={{ slug: post.slug, areaKey: post.areaKey }}
+              nomeArea={areaDoPost?.title ?? post.area}
+              posts={todosPosts}
+              areaExiste={Boolean(areaDoPost)}
+            />
 
             <Link href="/blog" className="link-seta">
               <span aria-hidden="true">←</span> Todos os artigos

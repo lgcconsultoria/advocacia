@@ -10,7 +10,7 @@ import { buttonVariants } from '@/components/ui/button';
 import { BotaoDiagnostico } from '@/components/diagnostico/botao';
 import { JsonLd } from '@/components/json-ld';
 import { getSettings } from '@/lib/reader';
-import { pessoaLd } from '@/lib/schema';
+import { pessoaLd, trilhaLd } from '@/lib/schema';
 
 export const metadata: Metadata = {
   title: 'Sobre o escritório',
@@ -37,6 +37,7 @@ export default async function SobrePage() {
   return (
     <>
       <JsonLd data={pessoaLd(settings)} />
+      <JsonLd data={trilhaLd([{ nome: 'Início', caminho: '/' }, { nome: 'Sobre o escritório', caminho: '/sobre' }])} />
       <PageHero
         trilha={[{ label: 'Sobre' }]}
         rotulo="O escritório"

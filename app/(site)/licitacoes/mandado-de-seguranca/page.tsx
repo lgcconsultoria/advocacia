@@ -4,6 +4,8 @@ import { ArrowRight, MessageCircle } from 'lucide-react';
 import { metaSocial, SITE } from '@/lib/seo';
 import { getSettings } from '@/lib/reader';
 import { JsonLd } from '@/components/json-ld';
+import { Autoria } from '@/components/site/autoria';
+import { paginaLd } from '@/lib/schema';
 import { PageHero } from '@/components/site/page-hero';
 import { Cabecalho, Secao } from '@/components/site/secao';
 import { CtaFaixa } from '@/components/site/cta-faixa';
@@ -63,6 +65,7 @@ export default async function MandadoSegurancaLicitacaoPage() {
     <>
       <JsonLd data={breadcrumbLd} />
       <JsonLd data={faqLd} />
+      <JsonLd data={paginaLd({ caminho: CAMINHO, nome: META.titulo, descricao: META.descricao })} />
       <VerConteudo categoria="licitacoes:mandado-de-seguranca" nome="Mandado de segurança em licitação" />
 
       <PageHero
@@ -79,6 +82,7 @@ export default async function MandadoSegurancaLicitacaoPage() {
             <MessageCircle className="h-4 w-4" aria-hidden="true" /> Falar pelo WhatsApp
           </LinkWhatsapp>
         </div>
+        <Autoria nome={settings.lawyerName} oab={settings.oab} />
       </PageHero>
 
       <Secao>

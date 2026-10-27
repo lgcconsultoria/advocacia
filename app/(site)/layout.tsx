@@ -4,6 +4,8 @@ import { WhatsappFloat } from '@/components/whatsapp-float';
 import SmoothScroll from '@/components/smooth-scroll';
 import { Medicao } from '@/components/medicao';
 import { ProvedorDiagnostico } from '@/components/diagnostico/contexto';
+import { JsonLd } from '@/components/json-ld';
+import { grafoGlobalLd } from '@/lib/schema';
 import { getAreas, getSettings } from '@/lib/reader';
 
 export default async function SiteLayout({
@@ -16,6 +18,7 @@ export default async function SiteLayout({
 
   return (
     <ProvedorDiagnostico whatsapp={settings.whatsapp}>
+      <JsonLd data={grafoGlobalLd(settings)} />
       <SmoothScroll />
       <a className="skip-link" href="#conteudo">
         Ir para o conteúdo
