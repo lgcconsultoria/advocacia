@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import { metaSocial } from '@/lib/seo';
 import Link from 'next/link';
 import { getAreas } from '@/lib/reader';
+import { JsonLd } from '@/components/json-ld';
+import { colecaoLd, trilhaLd } from '@/lib/schema';
+import { hrefArea } from '@/lib/areas';
 import { RevealGroup, RevealItem } from '@/components/reveal';
 import { PageHero } from '@/components/site/page-hero';
 import { Cabecalho, Secao } from '@/components/site/secao';
@@ -30,6 +33,16 @@ export default async function AreasPage() {
 
   return (
     <>
+      <JsonLd
+        data={colecaoLd({
+          caminho: '/areas',
+          nome: 'Áreas de atuação',
+          descricao:
+            'Frentes de direito público e de contencioso cível e empresarial, cada uma com regime jurídico próprio e prazos específicos.',
+          itens: areas.map((a) => ({ nome: a.title, caminho: hrefArea(a.slug) })),
+        })}
+      />
+      <JsonLd data={trilhaLd([{ nome: 'Início', caminho: '/' }, { nome: 'Áreas de atuação', caminho: '/areas' }])} />
       <PageHero
         trilha={[{ label: 'Áreas de atuação' }]}
         rotulo={`${areas.length} áreas · 2 grupos`}

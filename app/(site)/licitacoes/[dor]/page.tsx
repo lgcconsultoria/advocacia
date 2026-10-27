@@ -4,8 +4,10 @@ import { notFound } from 'next/navigation';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { metaSocial, SITE } from '@/lib/seo';
 import { getSettings } from '@/lib/reader';
-import { DORES, ESCOPO_LEI, getDor } from '@/lib/licitacoes/dores';
+import { DORES, ESCOPO_LEI, REVISADO_EM, getDor } from '@/lib/licitacoes/dores';
 import { JsonLd } from '@/components/json-ld';
+import { Autoria } from '@/components/site/autoria';
+import { paginaLd } from '@/lib/schema';
 import { PageHero } from '@/components/site/page-hero';
 import { Cabecalho, Secao } from '@/components/site/secao';
 import { CtaFaixa } from '@/components/site/cta-faixa';
@@ -77,6 +79,7 @@ export default async function DorLicitacaoPage({ params }: { params: Promise<{ d
     <>
       <JsonLd data={breadcrumbLd} />
       <JsonLd data={faqLd} />
+      <JsonLd data={paginaLd({ caminho, nome: d.titulo, descricao: d.descricao, revisadoEm: REVISADO_EM })} />
       <VerConteudo categoria={`licitacoes:${d.slug}`} nome={d.h1} />
 
       <PageHero
@@ -93,6 +96,7 @@ export default async function DorLicitacaoPage({ params }: { params: Promise<{ d
             <MessageCircle className="h-4 w-4" aria-hidden="true" /> Falar pelo WhatsApp
           </LinkWhatsapp>
         </div>
+        <Autoria nome={settings.lawyerName} oab={settings.oab} revisadoEm={REVISADO_EM} />
       </PageHero>
 
       <Secao>

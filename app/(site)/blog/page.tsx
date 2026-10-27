@@ -4,6 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getPosts, getSettings } from '@/lib/reader';
 import { BlogList } from '@/components/blog-list';
+import { JsonLd } from '@/components/json-ld';
+import { colecaoLd, trilhaLd } from '@/lib/schema';
 import { PageHero } from '@/components/site/page-hero';
 import { Cabecalho, Secao } from '@/components/site/secao';
 import { CtaFaixa } from '@/components/site/cta-faixa';
@@ -44,6 +46,16 @@ export default async function BlogPage() {
 
   return (
     <>
+      <JsonLd
+        data={colecaoLd({
+          caminho: '/blog',
+          nome: 'Blog: artigos de direito público para empresas',
+          descricao:
+            'Artigos sobre direito público e empresarial: prazos, leis e decisões dos tribunais, em linguagem objetiva.',
+          itens: posts.map((p) => ({ nome: p.title, caminho: `/blog/${p.slug}` })),
+        })}
+      />
+      <JsonLd data={trilhaLd([{ nome: 'Início', caminho: '/' }, { nome: 'Blog', caminho: '/blog' }])} />
       <PageHero
         trilha={[{ label: 'Blog' }]}
         rotulo={`${posts.length} artigos · análise técnica`}

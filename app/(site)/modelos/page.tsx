@@ -5,6 +5,8 @@ import { getModelos } from '@/lib/modelos';
 import { RevealGroup, RevealItem } from '@/components/reveal';
 import { PageHero } from '@/components/site/page-hero';
 import { Secao } from '@/components/site/secao';
+import { JsonLd } from '@/components/json-ld';
+import { trilhaLd } from '@/lib/schema';
 
 export const metadata: Metadata = {
   title: 'Modelos e materiais gratuitos',
@@ -24,6 +26,7 @@ export default async function ModelosIndex() {
   const modelos = await getModelos();
   return (
     <>
+      <JsonLd data={trilhaLd([{ nome: 'Início', caminho: '/' }, { nome: 'Modelos e materiais gratuitos', caminho: '/modelos' }])} />
       <PageHero
         trilha={[{ label: 'Materiais' }]}
         rotulo="Materiais gratuitos"
