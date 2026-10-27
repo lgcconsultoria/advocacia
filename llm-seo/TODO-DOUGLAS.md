@@ -46,3 +46,8 @@ Decisões provisórias do controlador (27/10/2026, na ausência do Douglas) e pe
 - **Revisão independente de peça** (`revisao-peca`): esta rodada usou o validador jurídico por fonte primária, duas
   vezes (versão inicial e versão corrigida). Quem publica pode pedir a revisão do Douglas por amostra antes do merge.
 - **Aviso e autor:** vêm do template do blog; conferir se o aviso padrão do template atende ao CED (art. 39 a 47).
+- **Ajustes opcionais da revisão final (não aplicados):** atraso de pagamento (lead e resumo sem o "pelo texto" da
+  contagem a partir da nota fiscal); reajuste (lead diz "mão de obra dedicada" e omite "predominância"); sanções (resumo
+  diz "análise jurídica favorável", o art. 163, V, diz "posicionamento conclusivo"); improbidade art. 12, § 1º (omite o
+  "em caráter excepcional"); documento faltante (citar a divergência do TCU, Acórdãos 1211/2021 e 2443/2021, depois de
+  conferir o inteiro teor no portal do TCU).
