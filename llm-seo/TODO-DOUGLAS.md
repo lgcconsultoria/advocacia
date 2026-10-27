@@ -31,3 +31,18 @@ Decisões provisórias do controlador (27/10/2026, na ausência do Douglas) e pe
 - [ ] Reenviar o sitemap no Search Console e no Bing Webmaster (agora com os artigos novos).
 - [ ] Imagem OG única para todas as páginas; `Article.image` genérica. Criar imagens por artigo (decisão de design).
 - [ ] Fragilidade herdada: a API `senturiao-os` fora do ar tira os modelos do sitemap e do `/llms.txt` até o próximo ISR.
+
+## Editorial (artigos e reforços)
+
+- **Publicar:** nada foi mergeado nem publicado. O deploy acontece quando o branch `llm-seo` entrar no branch padrão
+  (Vercel). Os 6 artigos novos têm `publishedDate: 2026-10-27`; ajuste a data se for publicar em outro dia.
+- **Improbidade (ADIs 7156/7236, julgadas em 28/05, 24/06 e 01/07/2026):** o artigo cita as decisões a partir das
+  notícias oficiais do STF e avisa que falta o acórdão. Conferir o acórdão quando sair e atualizar o texto.
+- **TCU, Acórdão 1211/2021-Plenário:** o validador lembrou que o TCU admitiu juntar documento em diligência em
+  situação específica. Não foi citado porque o inteiro teor não foi conferido. Se quiser, conferir e incluir no artigo
+  sobre documento faltante.
+- **Súmula 271/STF** (post de mandado de segurança): enunciado conferido só em fonte secundária; conferir no portal do STF.
+- **Tema 485/STF** (post de eliminação em concurso): tese conferida em notícia do STF; ok, mas vale conferir o acórdão.
+- **Revisão independente de peça** (`revisao-peca`): esta rodada usou o validador jurídico por fonte primária, duas
+  vezes (versão inicial e versão corrigida). Quem publica pode pedir a revisão do Douglas por amostra antes do merge.
+- **Aviso e autor:** vêm do template do blog; conferir se o aviso padrão do template atende ao CED (art. 39 a 47).
