@@ -13,6 +13,7 @@ const nextConfig = {
         { source: '/parceria-cnp', has: proposta, destination: '/clientes/oqofnhztdb' },
         { source: '/ecx-governo', has: proposta, destination: '/clientes/lfohksfmcx' },
         { source: '/bugpay', has: proposta, destination: '/clientes/lkcermebzw' },
+        { source: '/codifica', has: proposta, destination: '/clientes/nbcbzqoyyf' },
       ],
     };
   },
