@@ -2,7 +2,7 @@ import type { ConteudoFrente } from './tipos';
 
 /**
  * Fontes: Lei 14.181/2021, que acrescentou ao CDC (Lei 8.078/1990) os arts. 54-A a 54-G
- * e 104-A a 104-C; Lei 11.101/2005 (recuperação judicial e extrajudicial).
+ * e 104-A a 104-C; Lei 11.101/2005 (recuperação judicial e extrajudicial). Conferidas no Planalto em 09/11/2026.
  */
 export const SUPERENDIVIDAMENTO: ConteudoFrente = {
   frente: 'superendividamento',
@@ -44,7 +44,7 @@ export const SUPERENDIVIDAMENTO: ConteudoFrente = {
   ],
   pergunta: {
     rotulo: 'Quais dívidas pesam mais hoje e quantos são os credores?',
-    exemplo: 'Ex.: cartão de crédito, empréstimo consignado e financiamento. Valores aproximados bastam.',
+    exemplo: 'Ex.: cartão de crédito, empréstimo consignado e cheque especial. Valores aproximados bastam.',
   },
   mostrarEmpresa: false,
   interesse: 'outro',
@@ -52,22 +52,22 @@ export const SUPERENDIVIDAMENTO: ConteudoFrente = {
     {
       question: 'O que é superendividamento?',
       answer:
-        'Pela Lei 14.181/2021, que alterou o Código de Defesa do Consumidor, é a impossibilidade manifesta de a pessoa física, de boa-fé, pagar o conjunto de suas dívidas de consumo sem comprometer o mínimo existencial (CDC, art. 54-A, § 1º).',
+        'Pela Lei 14.181/2021, que alterou o Código de Defesa do Consumidor, é a impossibilidade manifesta de a pessoa natural, de boa-fé, pagar a totalidade de suas dívidas de consumo, exigíveis e vincendas, sem comprometer o mínimo existencial, nos termos da regulamentação (CDC, art. 54-A, § 1º).',
     },
     {
       question: 'Como a lei ajuda a renegociar as dívidas?',
       answer:
-        'A pessoa física pode pedir a repactuação das dívidas, com audiência de conciliação com os credores e plano de pagamento (CDC, art. 104-A). Se não houver acordo, a lei prevê um processo judicial de revisão dos contratos e plano compulsório (art. 104-B).',
+        'A pessoa natural pode pedir ao juiz a repactuação das dívidas, com audiência de conciliação com os credores e proposta de plano de pagamento de até 5 anos (CDC, art. 104-A). Se não houver acordo com algum credor, a lei prevê, a pedido do consumidor, um processo judicial de revisão dos contratos e plano judicial compulsório (art. 104-B). O resultado depende do caso e da decisão do juiz.',
     },
     {
       question: 'Todas as dívidas entram?',
       answer:
-        'Não. A lei trata de dívidas de consumo da pessoa física, e há exceções, como dívidas contraídas de má-fé, sem intenção de pagar. Por isso o primeiro passo é separar o que entra no plano.',
+        'Não. A lei trata de dívidas de consumo da pessoa natural e não se aplica a dívidas contraídas mediante fraude ou má-fé, a contratos feitos com o propósito de não pagar e a produtos e serviços de luxo de alto valor (art. 54-A, § 3º). Também ficam fora do processo de repactuação os créditos com garantia real, os financiamentos imobiliários e o crédito rural (art. 104-A, § 1º). Por isso o primeiro passo é separar o que entra no plano.',
     },
     {
       question: 'E se eu for empresário?',
       answer:
-        'A Lei 14.181/2021 protege o consumidor pessoa física. Para a empresa e o empresário, a reestruturação das dívidas segue outros caminhos, como a negociação direta e os instrumentos da Lei 11.101/2005 (recuperação judicial e extrajudicial), conforme o caso. A análise indica se algum deles faz sentido.',
+        'A Lei 14.181/2021 protege o consumidor pessoa natural. Para a empresa e o empresário, a reestruturação das dívidas segue outros caminhos, como a negociação direta e os instrumentos da Lei 11.101/2005 (recuperação judicial e extrajudicial), conforme o caso. A análise indica se algum deles faz sentido.',
     },
   ],
   textoWhatsapp:

@@ -1,7 +1,8 @@
 import type { ConteudoFrente } from './tipos';
 
 /**
- * Fontes: Lei 8.213/1991 (art. 103, prazo para revisão), Lei 8.742/1993 (BPC/LOAS).
+ * Fontes: Lei 8.213/1991 (art. 103, prazo para revisão), Lei 8.742/1993 (art. 20, BPC/LOAS).
+ * Conferidas no Planalto em 09/11/2026.
  */
 export const PREVIDENCIA: ConteudoFrente = {
   frente: 'previdencia',
@@ -53,17 +54,17 @@ export const PREVIDENCIA: ConteudoFrente = {
     {
       question: 'O INSS negou. Acabou?',
       answer:
-        'Não necessariamente. A negativa pode ser contestada por recurso administrativo e, se for o caso, por ação judicial. Às vezes falta só um documento ou uma comprovação. A análise diz qual caminho faz sentido, sem garantia de resultado.',
+        'Não necessariamente. A negativa pode ser contestada por recurso administrativo, que tem prazo próprio, e, se for o caso, por ação judicial. Às vezes falta só um documento ou uma comprovação. A análise diz qual caminho faz sentido, sem garantia de resultado.',
     },
     {
       question: 'O que é o BPC/LOAS?',
       answer:
-        'É um benefício assistencial pago à pessoa idosa ou com deficiência em situação de baixa renda. Não depende de contribuições anteriores ao INSS, mas exige a comprovação dos requisitos previstos em lei, e cada um deles é analisado no seu caso.',
+        'É um benefício assistencial de um salário mínimo mensal, devido à pessoa com deficiência (impedimento de longo prazo) ou ao idoso com 65 anos ou mais que não tenham meios de se manter nem de tê-la provida pela família (Lei 8.742/1993, art. 20). Não depende de contribuições anteriores ao INSS, mas exige a comprovação dos requisitos da lei, em especial a baixa renda familiar, e cada um deles é analisado no seu caso.',
     },
     {
       question: 'Dá para revisar um benefício que já recebo?',
       answer:
-        'Em alguns casos, sim, por exemplo quando há erro de cálculo ou documentos que não foram considerados. A revisão tem prazo-limite previsto em lei, por isso quanto antes a análise, melhor. Cada situação precisa ser verificada.',
+        'Em alguns casos, sim, por exemplo quando há erro de cálculo ou documentos que não foram considerados. A revisão tem prazo-limite previsto em lei (decadência de 10 anos, Lei 8.213/1991, art. 103), contado conforme o caso, por isso quanto antes a análise, melhor. Cada situação precisa ser verificada.',
     },
     {
       question: 'Que documentos devo reunir?',
@@ -78,6 +79,6 @@ export const PREVIDENCIA: ConteudoFrente = {
     aposentadoria: 'Aposentadoria: veja se você já tem direito',
     bpc: 'BPC/LOAS negado? Entenda o que ainda pode ser feito',
     revisao: 'Revisão de benefício do INSS: veja se há o que rever',
-    'auxilio-doenca': 'Auxílio-doença negado? Veja o que fazer',
+    'auxilio-doenca': 'Auxílio-doença (incapacidade temporária) negado? Veja o que fazer',
   },
 };

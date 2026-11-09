@@ -1,8 +1,9 @@
 import type { ConteudoFrente } from './tipos';
 
 /**
- * Fontes: CPC (títulos executivos, art. 784; ação monitória, art. 700; impenhorabilidades,
- * art. 833), Lei 8.009/1990 (bem de família). Atuação contra a Fazenda Pública: área
+ * Fontes: CPC (cumprimento de sentença, art. 523; títulos executivos extrajudiciais, art. 784;
+ * ação monitória, art. 700; citação e prazos, arts. 829 e 915; impenhorabilidades, art. 833),
+ * Lei 8.009/1990 (arts. 1º e 3º), CF art. 100. Conferidas no Planalto em 09/11/2026. Atuação contra a Fazenda Pública: área
  * "Execuções e Cobranças" do site.
  */
 export const EXECUCAO: ConteudoFrente = {
@@ -54,28 +55,28 @@ export const EXECUCAO: ConteudoFrente = {
     {
       question: 'Todo documento permite cobrar por execução?',
       answer:
-        'Não. A execução direta exige um título executivo, como uma sentença ou certos documentos previstos em lei (por exemplo cheque, nota promissória e contrato assinado nas formas exigidas). Sem título, o caminho pode ser outro, como a ação monitória ou a ação de cobrança. A análise do documento diz qual.',
+        'Não. A cobrança forçada exige um título executivo: uma sentença (cumprimento de sentença) ou um dos documentos que o CPC lista no art. 784, como cheque, nota promissória e documento particular assinado pelo devedor e por duas testemunhas (ou com assinatura eletrônica nas condições do § 4º). Sem título, o caminho pode ser outro: a ação monitória, que exige prova escrita (art. 700), ou a ação de cobrança. A análise do documento diz qual.',
     },
     {
       question: 'Fui citado em uma execução. O que fazer primeiro?',
       answer:
-        'Não ignore: os prazos para pagar ou se defender são curtos e contam da citação. Envie a citação e os documentos o quanto antes para que a defesa possível seja avaliada.',
+        'Não ignore: os prazos para pagar ou se defender são curtos (na execução de título extrajudicial, 3 dias para pagar, contados da citação, e 15 dias para os embargos, contados na forma do art. 231; no cumprimento de sentença, 15 dias após a intimação). Envie a citação ou a intimação e os documentos o quanto antes para que a defesa possível seja avaliada.',
     },
     {
       question: 'Meu salário ou minha casa podem ser penhorados?',
       answer:
-        'A lei protege certos bens da penhora, como o imóvel de moradia da família (Lei 8.009/1990) e, em regra, os salários, com exceções. O que vale no seu caso depende dos fatos e precisa ser analisado.',
+        'A lei protege certos bens da penhora. O imóvel residencial próprio da família é, em regra, impenhorável (Lei 8.009/1990, art. 1º), mas há exceções, como o financiamento do próprio imóvel, a pensão alimentícia e a fiança em contrato de locação (art. 3º). Salários e proventos também são impenhoráveis (CPC, art. 833, IV), ressalvadas a pensão alimentícia e as quantias acima de 50 salários mínimos mensais (§ 2º). O que vale no seu caso depende dos fatos e precisa ser analisado.',
     },
     {
       question: 'Vocês atuam em cobrança contra órgão público?',
       answer:
-        'Sim. O escritório atua em cobranças e execuções contra particulares e contra a Fazenda Pública, incluindo cumprimento de sentença, precatórios e requisições de pequeno valor (RPV).',
+        'Sim. O escritório atua em cobranças e execuções contra particulares e contra a Fazenda Pública, incluindo cumprimento de sentença, precatórios e requisições de pequeno valor (RPV), que seguem o rito próprio do art. 100 da Constituição.',
     },
   ],
   textoWhatsapp: 'Olá! Tenho uma dívida a cobrar (ou fui executado) e gostaria de analisar o caso.',
   titulosPorTermo: {
     cobranca: 'Dívida a receber? Veja como cobrar na Justiça',
-    'execucao-de-titulo': 'Execução de título: cheque, nota promissória e contrato',
+    'execucao-de-titulo': 'Execução de título: cheque, nota promissória e outros documentos',
     'defesa-em-execucao': 'Citado em execução? Veja a defesa possível e os prazos',
     'cobranca-empresarial': 'Cliente não pagou? Veja o caminho da cobrança',
     precatorio: 'Crédito contra o poder público: veja o caminho',

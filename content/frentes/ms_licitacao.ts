@@ -1,7 +1,8 @@
 import type { ConteudoFrente } from './tipos';
 
 /**
- * Fontes: Lei 14.133/2021 (art. 165, I e § 1º), Lei 12.016/2009 (arts. 1º, 5º, I, e 23).
+ * Fontes: Lei 14.133/2021 (arts. 164, 165, I e § 1º, 168 e 183), Lei 13.303/2016 (art. 59, § 1º),
+ * Lei 12.016/2009 (arts. 1º, 5º, I, e 23). Conferidas no Planalto em 09/11/2026.
  * Os mesmos fundamentos já estão na página /licitacoes/mandado-de-seguranca.
  */
 export const MS_LICITACAO: ConteudoFrente = {
@@ -54,12 +55,12 @@ export const MS_LICITACAO: ConteudoFrente = {
     {
       question: 'Qual é o prazo para recorrer de uma inabilitação?',
       answer:
-        'Na Lei 14.133/2021, a intenção de recorrer deve ser manifestada imediatamente e as razões apresentadas em 3 dias úteis (art. 165, I, e § 1º). Em estatais (Lei 13.303/2016) e em editais com regras próprias, os prazos podem ser outros. Por isso é importante enviar o edital junto com a decisão.',
+        'Na Lei 14.133/2021, o recurso contra a habilitação, a inabilitação ou o julgamento das propostas tem prazo de 3 dias úteis; a intenção de recorrer deve ser manifestada imediatamente, sob pena de preclusão, e o prazo das razões começa na intimação ou na lavratura da ata (art. 165, I, b e c, e § 1º, I). Licitações regidas por outra lei têm outros prazos: nas estatais (Lei 13.303/2016), por exemplo, o recurso é de 5 dias úteis após a habilitação (art. 59, § 1º). Por isso é importante enviar o edital junto com a decisão.',
     },
     {
       question: 'Cabe mandado de segurança contra a decisão?',
       answer:
-        'Pode caber quando a decisão é ilegal ou abusiva e a prova é documental, dentro de 120 dias da ciência do ato (Lei 12.016/2009, arts. 1º e 23). Em regra, enquanto ainda cabe recurso administrativo com efeito suspensivo, o caminho começa por ele (art. 5º, I). Só a análise do caso diz qual é a via.',
+        'Pode caber quando há ilegalidade ou abuso de poder que viole direito líquido e certo, provado por documentos, dentro de 120 dias da ciência do ato (Lei 12.016/2009, arts. 1º e 23). A lei não admite mandado de segurança contra ato do qual caiba recurso administrativo com efeito suspensivo (art. 5º, I), e o recurso da Lei 14.133/2021 tem esse efeito (art. 168); por isso o recurso costuma vir primeiro, sem esquecer o prazo de 120 dias. Só a análise do caso diz qual é a via.',
     },
     {
       question: 'Vocês garantem a liminar ou a reversão da decisão?',
