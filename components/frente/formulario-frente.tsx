@@ -13,7 +13,7 @@ import { BotaoWhatsapp } from './botao-whatsapp';
  * Formulário curto das landings de frente: nome, WhatsApp, e-mail, cidade,
  * (empresa, se a frente for de empresa) e uma pergunta aberta da frente.
  * Envia pela porta do escritório (enviarLead) com `frente`, `cidade` e `detalhe`;
- * a porta ainda exige empresa, então vazio vai como "Pessoa física". No sucesso
+ * e-mail e empresa são opcionais para a porta; empresa vazia vai como "Pessoa física". No sucesso
  * dispara `generate_lead` (GA4), `Lead` (Pixel) e a conversão do Ads (se houver
  * rótulo), todos com a frente, e mostra "Falar agora no WhatsApp", que abre a
  * janela de 24 h pelo próprio lead.
@@ -63,7 +63,7 @@ export function FormularioFrente({
     const e: Partial<Record<Campo, string>> = {};
     if (v.nome.trim().length < 2) e.nome = 'Informe seu nome.';
     if (v.telefone.replace(/\D/g, '').length < 10) e.telefone = 'Informe o WhatsApp com DDD.';
-    if (!EMAIL_RE.test(v.email.trim())) e.email = 'Informe um e-mail válido.';
+    if (v.email.trim() && !EMAIL_RE.test(v.email.trim())) e.email = 'Confira o e-mail ou deixe em branco.';
     if (v.cidade.trim().length < 2) e.cidade = 'Informe a cidade.';
     return e;
   }
@@ -184,7 +184,7 @@ export function FormularioFrente({
       <div className="mt-5 grid gap-3 sm:grid-cols-2">
         {campo('nome', 'Seu nome', { required: true, autoComplete: 'name', maxLength: 120, enterKeyHint: 'next', autoCapitalize: 'words' })}
         {campo('telefone', 'WhatsApp', { required: true, type: 'tel', autoComplete: 'tel-national', inputMode: 'tel', maxLength: 16, enterKeyHint: 'next' })}
-        {campo('email', 'E-mail', { required: true, type: 'email', autoComplete: 'email', inputMode: 'email', maxLength: 160, enterKeyHint: 'next', autoCapitalize: 'off', spellCheck: false })}
+        {campo('email', 'E-mail (opcional)', { type: 'email', autoComplete: 'email', inputMode: 'email', maxLength: 160, enterKeyHint: 'next', autoCapitalize: 'off', spellCheck: false })}
         {campo('cidade', 'Cidade', { required: true, autoComplete: 'address-level2', maxLength: 80, enterKeyHint: 'next' })}
         {mostrarEmpresa && (
           <div className="sm:col-span-2">
