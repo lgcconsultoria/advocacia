@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import { useEffect, useState, type MouseEvent, type ReactNode } from 'react';
 import { registrarContatoWhatsapp } from '@/lib/medicao';
+import { CODIGO, type Frente } from '@/lib/frentes';
 import {
   assuntoDaPagina,
   linkWhatsappCom,
@@ -28,11 +29,14 @@ function utmsDaSessao(): Utms {
  * `Contact` (Pixel) e `whatsapp_click` (GA4), só com consentimento.
  *
  * `texto`/`codigo` substituem o assunto da página (botões com pedido próprio).
+ * `frente` acrescenta o código da frente (`[MS]`, `[PV]`…) no fim da mensagem,
+ * que o 360 lê para classificar a conversa; `outro` ou ausente não leva código.
  */
 export function LinkWhatsapp({
   whatsapp,
   texto,
   codigo,
+  frente,
   className,
   children,
   'aria-label': ariaLabel,
@@ -41,24 +45,26 @@ export function LinkWhatsapp({
   texto?: string;
   /** Código da dor (substitui o da página). */
   codigo?: string;
+  frente?: Frente;
   className?: string;
   children: ReactNode;
   'aria-label'?: string;
 }) {
   const caminho = usePathname() || '/';
+  const sufixo = frente && CODIGO[frente] ? ` [${CODIGO[frente]}]` : '';
   const montar = (utms: Utms | null) =>
-    linkWhatsappCom(whatsapp, mensagemWhatsapp({ caminho, texto, ref: codigo, utms }));
+    linkWhatsappCom(whatsapp, mensagemWhatsapp({ caminho, texto, ref: codigo, utms }) + sufixo);
   const [href, setHref] = useState(() => montar(null));
 
   useEffect(() => {
     setHref(montar(utmsDaSessao()));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [caminho, whatsapp, texto, codigo]);
+  }, [caminho, whatsapp, texto, codigo, sufixo]);
 
   function clicar(e: MouseEvent<HTMLAnchorElement>) {
     // a campanha pode ter chegado depois da montagem: recalcula na hora do clique
     e.currentTarget.href = montar(utmsDaSessao());
-    registrarContatoWhatsapp({ pagina: caminho, ref: codigo ?? assuntoDaPagina(caminho).ref });
+    registrarContatoWhatsapp({ pagina: caminho, ref: codigo ?? assuntoDaPagina(caminho).ref, frente });
   }
 
   return (

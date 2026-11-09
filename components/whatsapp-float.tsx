@@ -1,13 +1,21 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
 import { LinkWhatsapp } from '@/components/link-whatsapp';
+import { frenteDoCaminho } from '@/lib/frentes';
 
 /**
- * Botão flutuante do WhatsApp. A mensagem muda conforme a página (a "dor") e
- * leva a origem — ver lib/contato/whatsapp.ts.
+ * Botão flutuante do WhatsApp, global. Vai para o número oficial da advocacia
+ * (lib/frentes.ts); a mensagem muda conforme a página (a "dor"), leva a origem
+ * (lib/contato/whatsapp.ts) e, nas páginas que já são de uma frente, o código
+ * dela (`[MS]`, `[PV]`…) no fim.
  */
 export function WhatsappFloat({ whatsapp }: { whatsapp: string }) {
+  const frente = frenteDoCaminho(usePathname() || '/');
   return (
     <LinkWhatsapp
       whatsapp={whatsapp}
+      frente={frente}
       className="fixed bottom-4 right-4 z-[90] grid h-[54px] w-[54px] place-items-center rounded-full border border-sinal/40 bg-marca text-white shadow-[0_14px_34px_-10px_rgb(11_10_46/0.65)] ring-4 ring-white/40 transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-tinta sm:bottom-5 sm:right-5 sm:h-14 sm:w-14"
       aria-label="Falar no WhatsApp"
     >

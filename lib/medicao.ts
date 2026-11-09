@@ -1,4 +1,5 @@
 import { medicaoAutorizada } from '@/lib/consentimento';
+import type { Frente } from '@/lib/frentes';
 
 /**
  * Medição (Meta Pixel, GA4 e Google Ads), sempre condicionada ao consentimento.
@@ -44,14 +45,15 @@ type Janela = Window & {
  * a Meta usa para desduplicar o evento do pixel com o da Conversions API do 360.
  */
 export function registrarLead(
-  dados: { categoria?: string; nome?: string; eventId?: string } = {},
+  dados: { categoria?: string; nome?: string; eventId?: string; frente?: Frente } = {},
 ): void {
   if (typeof window === 'undefined' || !medicaoAutorizada()) return;
   const w = window as Janela;
   try {
     if (typeof w.fbq === 'function') {
+      const categoria = dados.frente ?? dados.categoria;
       const parametros = {
-        ...(dados.categoria ? { content_category: dados.categoria } : {}),
+        ...(categoria ? { content_category: categoria } : {}),
         ...(dados.nome ? { content_name: dados.nome } : {}),
       };
       if (dados.eventId) w.fbq('track', 'Lead', parametros, { eventID: dados.eventId });
@@ -65,6 +67,7 @@ export function registrarLead(
       w.gtag('event', 'generate_lead', {
         ...(dados.categoria ? { lead_source: dados.categoria } : {}),
         ...(dados.nome ? { item_name: dados.nome } : {}),
+        ...(dados.frente ? { frente: dados.frente } : {}),
       });
       if (IDS_MEDICAO.ads && IDS_MEDICAO.adsRotuloLead) {
         w.gtag('event', 'conversion', { send_to: `${IDS_MEDICAO.ads}/${IDS_MEDICAO.adsRotuloLead}` });
@@ -101,19 +104,26 @@ export function registrarVisualizacao(dados: { categoria: string; nome?: string 
  * Não é `Lead`: lead é quem deixou os dados no formulário. Só com
  * consentimento; nunca lança e nunca atrasa a abertura do WhatsApp.
  */
-export function registrarContatoWhatsapp(dados: { pagina: string; ref: string }): void {
+export function registrarContatoWhatsapp(dados: { pagina: string; ref: string; frente?: Frente }): void {
   if (typeof window === 'undefined' || !medicaoAutorizada()) return;
   const w = window as Janela;
   try {
     if (typeof w.fbq === 'function') {
-      w.fbq('track', 'Contact', { content_category: 'whatsapp', content_name: dados.ref });
+      w.fbq('track', 'Contact', {
+        content_category: dados.frente ?? 'whatsapp',
+        content_name: dados.ref,
+      });
     }
   } catch {
     /* medição nunca derruba o clique */
   }
   try {
     if (typeof w.gtag === 'function') {
-      w.gtag('event', 'whatsapp_click', { page_path: dados.pagina, lead_source: dados.ref });
+      w.gtag('event', 'whatsapp_click', {
+        page_path: dados.pagina,
+        lead_source: dados.ref,
+        ...(dados.frente ? { frente: dados.frente } : {}),
+      });
       if (IDS_MEDICAO.ads && IDS_MEDICAO.adsRotuloWhatsapp) {
         w.gtag('event', 'conversion', { send_to: `${IDS_MEDICAO.ads}/${IDS_MEDICAO.adsRotuloWhatsapp}` });
       }
@@ -121,4 +131,15 @@ export function registrarContatoWhatsapp(dados: { pagina: string; ref: string })
   } catch {
     /* idem */
   }
+}
+
+/**
+ * Clique no WhatsApp de uma landing de frente (`/f/<frente>`): o mesmo que
+ * `registrarContatoWhatsapp` (Pixel `Contact` com `content_category: frente`,
+ * GA4 `whatsapp_click` com o parâmetro `frente` e a conversão do Ads se houver
+ * rótulo `NEXT_PUBLIC_GOOGLE_ADS_WHATSAPP_LABEL`; sem a env, é só o GA4).
+ */
+export function registrarWhatsapp(frente: Frente): void {
+  if (typeof window === 'undefined') return;
+  registrarContatoWhatsapp({ pagina: window.location.pathname, ref: frente, frente });
 }

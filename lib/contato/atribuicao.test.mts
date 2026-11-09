@@ -154,3 +154,36 @@ test('novoEventId funciona sem crypto.randomUUID', () => {
   const id = novoEventId({ getRandomValues: (v: Uint8Array) => v.fill(7) } as unknown as Crypto);
   assert.match(id, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/);
 });
+
+test('lê gclid, gbraid e wbraid da URL', () => {
+  const p = parametrosDaUrl('?gclid=Cj0KCQ_abc-1&gbraid=0AAAAA_x&wbraid=CjkKCQ');
+  assert.deepEqual(p, { gclid: 'Cj0KCQ_abc-1', gbraid: '0AAAAA_x', wbraid: 'CjkKCQ' });
+});
+
+test('descarta gclid fora do formato ou grande demais', () => {
+  assert.deepEqual(parametrosDaUrl('?gclid=a%20b'), {});
+  assert.deepEqual(parametrosDaUrl('?gclid=<script>'), {});
+  assert.deepEqual(parametrosDaUrl(`?gclid=${'x'.repeat(201)}`), {});
+});
+
+test('gclid é guardado na sessão e volta na página seguinte, sem precisar de consentimento', () => {
+  const s = memoria();
+  const primeira = atribuicaoDaVisita({
+    search: '?gclid=teste123&utm_source=google',
+    armazenamento: s,
+    cookies: '',
+    consentimento: null,
+    agora: AGORA,
+  });
+  assert.equal(primeira.gclid, 'teste123');
+  const segunda = atribuicaoDaVisita({ search: '', armazenamento: s, cookies: '', consentimento: RECUSADO, agora: AGORA + 5000 });
+  assert.equal(segunda.gclid, 'teste123');
+  assert.equal(segunda.consentimento_marketing, false);
+});
+
+test('um gclid novo na URL substitui o guardado', () => {
+  const s = memoria();
+  atribuicaoDaVisita({ search: '?gclid=velho', armazenamento: s, cookies: '', consentimento: null, agora: AGORA });
+  const a = atribuicaoDaVisita({ search: '?gclid=novo', armazenamento: s, cookies: '', consentimento: null, agora: AGORA + 1 });
+  assert.equal(a.gclid, 'novo');
+});

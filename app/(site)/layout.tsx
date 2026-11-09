@@ -5,6 +5,7 @@ import SmoothScroll from '@/components/smooth-scroll';
 import { Medicao } from '@/components/medicao';
 import { ProvedorDiagnostico } from '@/components/diagnostico/contexto';
 import { getAreas, getSettings } from '@/lib/reader';
+import { WHATSAPP_ADVOCACIA } from '@/lib/frentes';
 
 export default async function SiteLayout({
   children,
@@ -23,7 +24,7 @@ export default async function SiteLayout({
       <SiteHeader />
       <main id="conteudo">{children}</main>
       <SiteFooter areas={areaLinks} settings={settings} />
-      <WhatsappFloat whatsapp={settings.whatsapp} />
+      <WhatsappFloat whatsapp={WHATSAPP_ADVOCACIA} />
       <Medicao />
     </ProvedorDiagnostico>
   );

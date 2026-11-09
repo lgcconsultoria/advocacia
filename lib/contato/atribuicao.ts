@@ -2,7 +2,8 @@
  * Atribuição de anúncio do lead: de qual anúncio da Meta a pessoa veio e os
  * identificadores que o 360 usa para devolver o evento à Meta (Conversions API).
  *
- * - Da URL (sempre, como os utm_*): `fbclid`, `ad_id` e `campaign_id` (ou
+ * - Da URL (sempre, como os utm_*): `gclid`/`gbraid`/`wbraid` (Google Ads),
+ *   `fbclid`, `ad_id` e `campaign_id` (ou
  *   `utm_id`, que vale como campaign_id). Guardados em sessionStorage na
  *   primeira página da sessão, para chegar ao formulário mesmo se a pessoa
  *   navegou antes.
@@ -22,6 +23,10 @@ export type ParametrosAnuncio = {
   fbclid?: string;
   ad_id?: string;
   campaign_id?: string;
+  /** Identificadores de clique do Google Ads (web, app iOS e web-para-app iOS). */
+  gclid?: string;
+  gbraid?: string;
+  wbraid?: string;
 };
 
 export type AtribuicaoLead = ParametrosAnuncio & {
@@ -37,7 +42,11 @@ export type ConsentimentoLido = { medicao: boolean; ts: number } | null;
 
 type Guardado = ParametrosAnuncio & { fbclid_ts?: number };
 
+const CLIQUES_GOOGLE = ['gclid', 'gbraid', 'wbraid'] as const;
+
 const RE_FBCLID = /^[A-Za-z0-9_-]{1,500}$/;
+// gclid/gbraid/wbraid: a porta aceita até 200 caracteres do mesmo alfabeto.
+const RE_CLIQUE_GOOGLE = /^[A-Za-z0-9_-]{1,200}$/;
 const RE_ID_META = /^\d{1,30}$/;
 // Mesmo formato que a porta aceita; o sufixo opcional é o do Parameter Builder da Meta (".Bg").
 const RE_FBC = /^fb\.\d\.\d{1,16}\.[A-Za-z0-9_.-]{1,600}$/;
@@ -53,6 +62,10 @@ export function parametrosDaUrl(search: string): ParametrosAnuncio {
   if (ad && RE_ID_META.test(ad)) saida.ad_id = ad;
   const campanha = p.get('campaign_id') ?? p.get('utm_id');
   if (campanha && RE_ID_META.test(campanha)) saida.campaign_id = campanha;
+  for (const k of CLIQUES_GOOGLE) {
+    const v = p.get(k);
+    if (v && RE_CLIQUE_GOOGLE.test(v)) saida[k] = v;
+  }
   return saida;
 }
 
@@ -87,6 +100,10 @@ function lerGuardado(armazenamento: Storage | null): Guardado {
     if (typeof o.fbclid === 'string' && RE_FBCLID.test(o.fbclid)) g.fbclid = o.fbclid;
     if (typeof o.ad_id === 'string' && RE_ID_META.test(o.ad_id)) g.ad_id = o.ad_id;
     if (typeof o.campaign_id === 'string' && RE_ID_META.test(o.campaign_id)) g.campaign_id = o.campaign_id;
+    for (const k of CLIQUES_GOOGLE) {
+      const v = o[k];
+      if (typeof v === 'string' && RE_CLIQUE_GOOGLE.test(v)) g[k] = v;
+    }
     if (typeof o.fbclid_ts === 'number' && Number.isFinite(o.fbclid_ts)) g.fbclid_ts = o.fbclid_ts;
     return g;
   } catch {

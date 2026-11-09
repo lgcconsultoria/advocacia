@@ -12,7 +12,8 @@
  * - `tempo_ms`: quanto tempo se passou entre o formulário aparecer e o envio.
  *   A porta recusa envio com menos de 2 segundos.
  *
- * Vão juntos a atribuição de anúncio (fbclid, ad_id, campaign_id; _fbc/_fbp só
+ * Vão juntos a atribuição de anúncio (gclid/gbraid/wbraid do Google; fbclid, ad_id,
+ * campaign_id; _fbc/_fbp só
  * com consentimento), o consentimento de marketing e um `event_id` por envio
  * (ver ./atribuicao.ts) — o mesmo `event_id` deve ir no `registrarLead`.
  *
@@ -22,6 +23,7 @@
  */
 
 import { lerConsentimento } from '@/lib/consentimento';
+import type { Frente } from '@/lib/frentes';
 import { atribuicaoDaVisita, novoEventId, type AtribuicaoLead } from './atribuicao';
 
 export { novoEventId } from './atribuicao';
@@ -37,6 +39,12 @@ export type DadosLead = {
   telefone: string;
   empresa: string;
   interesse?: Interesse | null;
+  /** Assunto da landing (lib/frentes.ts). A porta descarta valor desconhecido. */
+  frente?: Frente;
+  /** Cidade informada na landing (a porta corta em 80 caracteres). */
+  cidade?: string;
+  /** Resposta à pergunta da frente, em texto livre (a porta corta em 500 caracteres). */
+  detalhe?: string;
   /** Valor do campo-isca escondido. Humano deixa vazio; robô preenche. */
   website?: string;
 };
@@ -175,6 +183,9 @@ export async function enviarLead(
     telefone: dados.telefone,
     empresa: dados.empresa,
     interesse: dados.interesse ?? null,
+    ...(dados.frente ? { frente: dados.frente } : {}),
+    ...(dados.cidade?.trim() ? { cidade: dados.cidade.trim().slice(0, 80) } : {}),
+    ...(dados.detalhe?.trim() ? { detalhe: dados.detalhe.trim().slice(0, 500) } : {}),
     pagina: pagina ?? null,
     ...utmsDaVisita(),
     ...atribuicaoDoNavegador(),
