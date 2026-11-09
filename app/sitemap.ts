@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { getAreas, getPosts } from '@/lib/reader';
 import { getModelos } from '@/lib/modelos';
+import { FRENTES_COM_LANDING } from '@/lib/frentes';
 import { PAGINA_PRINCIPAL } from '@/lib/areas';
 import {
   ATUALIZACAO_PADRAO,
@@ -67,5 +68,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }));
 
-  return [...staticRoutes, ...areaRoutes, ...postRoutes, ...modeloRoutes];
+  // landings de anúncio por frente (/f/<frente>)
+  const frenteRoutes = FRENTES_COM_LANDING.map((frente) => ({
+    url: `${BASE}/f/${frente}`,
+    lastModified: ATUALIZACAO_PADRAO,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...frenteRoutes, ...areaRoutes, ...postRoutes, ...modeloRoutes];
 }
