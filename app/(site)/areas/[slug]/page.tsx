@@ -2,11 +2,13 @@ import type { Metadata } from 'next';
 import { metaSocial } from '@/lib/seo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getArea, getAreas } from '@/lib/reader';
+import { getArea, getAreas, getSettings } from '@/lib/reader';
 import { renderMarkdoc } from '@/lib/markdoc';
 import { Reveal } from '@/components/reveal';
 import { FaqAccordion } from '@/components/faq-accordion';
 import { JsonLd } from '@/components/json-ld';
+import { Autoria } from '@/components/site/autoria';
+import { paginaLd, trilhaLd } from '@/lib/schema';
 import { PageHero } from '@/components/site/page-hero';
 import { Cabecalho, Secao } from '@/components/site/secao';
 import { CtaFaixa } from '@/components/site/cta-faixa';
@@ -49,7 +51,7 @@ export default async function AreaPage({
   const area = await getArea(slug);
   if (!area) notFound();
 
-  const intro = await area.intro();
+  const [intro, settings] = await Promise.all([area.intro(), getSettings()]);
   const hasAchieves = area.achieves.length > 0;
   const hasNotice = area.notice.title || area.notice.body;
 
@@ -63,25 +65,22 @@ export default async function AreaPage({
     })),
   };
 
-  const base = 'https://www.senturiaoadv.com.br';
-  const breadcrumbLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Início', item: `${base}/` },
-      { '@type': 'ListItem', position: 2, name: 'Áreas', item: `${base}/areas` },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: area.title,
-        item: `${base}/areas/${slug}`,
-      },
-    ],
-  };
+  const breadcrumbLd = trilhaLd([
+    { nome: 'Início', caminho: '/' },
+    { nome: 'Áreas', caminho: '/areas' },
+    { nome: area.title, caminho: `/areas/${slug}` },
+  ]);
 
   return (
     <>
       <JsonLd data={breadcrumbLd} />
+      <JsonLd
+        data={paginaLd({
+          caminho: `/areas/${slug}`,
+          nome: area.metaTitle || area.heroTitle,
+          descricao: area.metaDescription,
+        })}
+      />
       <VerConteudo categoria={`area:${slug}`} nome={area.title} />
       {area.faq.length > 0 && <JsonLd data={faqLd} />}
 
@@ -96,6 +95,7 @@ export default async function AreaPage({
             {area.sidebarCta}
           </BotaoDiagnostico>
         </div>
+        <Autoria nome={settings.lawyerName} oab={settings.oab} />
       </PageHero>
 
       <Secao>

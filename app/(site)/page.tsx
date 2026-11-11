@@ -8,7 +8,7 @@ import { REFERENCIA_ESTIMADA, simularDemo } from '@/lib/tributario/simulador';
 import { Reveal } from '@/components/reveal';
 import { JsonLd } from '@/components/json-ld';
 import { metaSocial } from '@/lib/seo';
-import { ID_ESCRITORIO, PERFIS, TEMAS, pessoaLd } from '@/lib/schema';
+import { pessoaLd } from '@/lib/schema';
 import { Cabecalho, Secao } from '@/components/site/secao';
 import { PostCard } from '@/components/site/post-card';
 import { HeroV2 } from '@/components/home/hero-v2';
@@ -46,49 +46,11 @@ export default async function HomePage() {
     aoVivo: false,
   };
 
-  const legalServiceLd = {
-    '@context': 'https://schema.org',
-    '@type': ['LegalService', 'Attorney'],
-    '@id': ID_ESCRITORIO,
-    name: settings.firmName,
-    alternateName: 'Douglas Senturião — Direito Tributário e Público para empresas',
-    description:
-      'Escritório de advocacia para empresas em Direito Tributário (Reforma Tributária: IBS e CBS, LC 214/2025), licitações e contratos públicos e direito público. Sede em São Paulo e atuação em todo o Brasil.',
-    url: 'https://www.senturiaoadv.com.br/',
-    image: 'https://www.senturiaoadv.com.br/assets/img/og-image.png',
-    logo: 'https://www.senturiaoadv.com.br/assets/img/logo-horizontal.png',
-    telephone: `+55${settings.whatsapp.replace(/^55/, '').replace(/\D/g, '')}`,
-    email: settings.email,
-    priceRange: '$$',
-    areaServed: [
-      { '@type': 'City', name: 'São Paulo' },
-      { '@type': 'Country', name: 'Brasil' },
-    ],
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Av. Brigadeiro Faria Lima, 1768',
-      addressLocality: 'São Paulo',
-      addressRegion: 'SP',
-      postalCode: '01451-001',
-      addressCountry: 'BR',
-    },
-    contactPoint: {
-      '@type': 'ContactPoint',
-      contactType: 'Atendimento',
-      telephone: `+55${settings.whatsapp.replace(/^55/, '').replace(/\D/g, '')}`,
-      email: settings.email,
-      availableLanguage: 'Portuguese',
-    },
-    knowsAbout: TEMAS,
-    sameAs: PERFIS,
-  };
-
   const pessoa = pessoaLd(settings);
 
 
   return (
     <>
-      <JsonLd data={legalServiceLd} />
       <JsonLd data={pessoa} />
 
       <HeroV2 oab={settings.oab} />

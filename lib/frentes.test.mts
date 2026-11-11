@@ -75,3 +75,12 @@ test('frenteDoCaminho: páginas de uma frente levam o código; o resto é "outro
   assert.equal(frenteDoCaminho('/sobre'), 'outro');
   assert.equal(frenteDoCaminho('/tributario'), 'outro');
 });
+
+test('frenteDoCaminho: artigos do time de SEO levam a frente do tema', () => {
+  assert.equal(frenteDoCaminho('/blog/edital-restritivo-clausulas-ilegais-como-impugnar'), 'ms_licitacao');
+  assert.equal(frenteDoCaminho('/blog/conta-bloqueada-sisbajud-desbloqueio-cpc'), 'execucao');
+  assert.equal(frenteDoCaminho('/blog/bpc-loas-negado-motivos-recurso-lei-8742'), 'previdencia');
+  assert.equal(frenteDoCaminho('/blog/consignado-limite-de-desconto-e-superendividamento'), 'superendividamento');
+  assert.equal(frenteDoCaminho('/blog/acordo-de-socios-clausulas-validade-quando-fazer'), 'empresarial');
+  assert.equal(frenteDoCaminho('/blog/outro-artigo-qualquer'), 'outro');
+});

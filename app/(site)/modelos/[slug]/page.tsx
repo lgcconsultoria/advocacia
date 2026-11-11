@@ -6,6 +6,7 @@ import { getModelo, getModelos } from '@/lib/modelos';
 import { ModeloForm } from '@/components/modelo-form';
 import { Reveal } from '@/components/reveal';
 import { JsonLd } from '@/components/json-ld';
+import { trilhaLd } from '@/lib/schema';
 import { PageHero } from '@/components/site/page-hero';
 import { Secao } from '@/components/site/secao';
 import { CtaFaixa } from '@/components/site/cta-faixa';
@@ -42,6 +43,13 @@ export default async function ModeloPage({
 
   return (
     <>
+      <JsonLd
+        data={trilhaLd([
+          { nome: 'Início', caminho: '/' },
+          { nome: 'Modelos e materiais gratuitos', caminho: '/modelos' },
+          { nome: m.titulo, caminho: `/modelos/${slug}` },
+        ])}
+      />
       <JsonLd
         data={{
           '@context': 'https://schema.org',
