@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import { metaSocial } from '@/lib/seo';
 import { getSettings } from '@/lib/reader';
 import { PageHero } from '@/components/site/page-hero';
+import { JsonLd } from '@/components/json-ld';
+import { ID_ESCRITORIO, ID_SITE, trilhaLd } from '@/lib/schema';
+import { SITE } from '@/lib/seo';
 import { Secao } from '@/components/site/secao';
 import { FormularioDiagnostico } from '@/components/diagnostico/formulario';
 import { BorderBeam } from '@/components/ui/border-beam';
@@ -43,8 +46,22 @@ export default async function ContatoPage() {
     ['Horário', 'Segunda a sexta, das 9h às 18h.'],
   ];
 
+  const contatoLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    '@id': `${SITE}/contato#pagina`,
+    url: `${SITE}/contato`,
+    name: 'Contato — Douglas Senturião Advocacia',
+    inLanguage: 'pt-BR',
+    isPartOf: { '@id': ID_SITE },
+    about: { '@id': ID_ESCRITORIO },
+    mainEntity: { '@id': ID_ESCRITORIO },
+  };
+
   return (
     <>
+      <JsonLd data={contatoLd} />
+      <JsonLd data={trilhaLd([{ nome: 'Início', caminho: '/' }, { nome: 'Contato', caminho: '/contato' }])} />
       <PageHero
         trilha={[{ label: 'Contato' }]}
         rotulo="Atendimento por agendamento"

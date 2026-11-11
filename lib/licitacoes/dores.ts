@@ -14,6 +14,9 @@
 
 import type { FaqItem } from '@/components/faq-accordion';
 
+/** Data da validação jurídica dos textos (cabeçalho deste arquivo). Aparece como "Última revisão" nas páginas. */
+export const REVISADO_EM = '2026-10-21';
+
 export type Dor = {
   slug: string;
   /** código da dor: vai na mensagem do WhatsApp e no Lead do Pixel */

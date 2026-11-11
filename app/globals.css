@@ -490,14 +490,14 @@
   transition: transform .35s var(--ease-mola);
 }
 .faq-trigger[data-state="open"]::after { transform: rotate(135deg); }
-.faq-content { overflow: hidden; color: var(--cinza); }
-.faq-content[data-state="open"] { animation: acc-down .28s var(--ease); }
-.faq-content[data-state="closed"] { animation: acc-up .22s var(--ease); }
+/* O painel fica sempre no HTML (a resposta precisa chegar a quem lê sem JS);
+   fechado, recolhe a 0 de altura. components/faq-accordion.tsx marca `inert`. */
+.faq-content { display: grid; grid-template-rows: 0fr; color: var(--cinza); transition: grid-template-rows .22s var(--ease); }
+.faq-content[data-state="open"] { grid-template-rows: 1fr; transition-duration: .28s; }
+.faq-content-clip { min-height: 0; overflow: hidden; }
 .faq-content-inner { padding: 0 3.6rem 1.3rem 1.3rem; line-height: 1.65; }
 .faq-content-inner p { margin: 0 0 .9em; }
 .faq-content-inner p:last-child { margin-bottom: 0; }
-@keyframes acc-down { from { height: 0; } to { height: var(--radix-accordion-content-height); } }
-@keyframes acc-up { from { height: var(--radix-accordion-content-height); } to { height: 0; } }
 @media (max-width: 520px) {
   .faq-trigger { padding-left: 1rem; }
   .faq-content-inner { padding: 0 1rem 1.2rem; }
