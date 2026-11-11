@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getAreas, getPost, getPosts, getSettings } from '@/lib/reader';
 import { renderMarkdoc, extractToc } from '@/lib/markdoc';
+import { extrairFaq, faqLd } from '@/lib/faq-post';
 import { JsonLd } from '@/components/json-ld';
 import { metaSocial, OG_IMAGEM, SITE } from '@/lib/seo';
 import { ID_PESSOA, ID_SITE, PERFIS, publicadorLd, trilhaLd } from '@/lib/schema';
@@ -91,6 +92,8 @@ export default async function PostPage({
     inLanguage: 'pt-BR',
   };
 
+  const faqJsonLd = faqLd(extrairFaq(content.node), `${SITE}/blog/${slug}`);
+
   const breadcrumbLd = trilhaLd([
     { nome: 'Início', caminho: '/' },
     { nome: 'Blog', caminho: '/blog' },
@@ -101,6 +104,7 @@ export default async function PostPage({
     <>
       <JsonLd data={articleLd} />
       <JsonLd data={breadcrumbLd} />
+      {faqJsonLd && <JsonLd data={faqJsonLd} />}
 
       <PageHero
         trilha={[{ href: '/blog', label: 'Blog' }, { label: post.area }]}
