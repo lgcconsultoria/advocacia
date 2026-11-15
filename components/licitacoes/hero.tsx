@@ -90,7 +90,7 @@ export function HeroLicitacoes({ whatsapp }: { whatsapp: string }) {
             </BotaoDiagnostico>
             <LinkWhatsapp
               whatsapp={whatsapp}
-              texto="Olá, gostaria de falar sobre o departamento jurídico de licitações."
+              texto="gostaria de falar sobre o departamento jurídico de licitações."
               className={buttonVariants({ variant: 'contorno-claro', size: 'lg' })}
             >
               Falar pelo WhatsApp
