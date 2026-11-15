@@ -23,9 +23,9 @@ import { LinkWhatsapp } from '@/components/link-whatsapp';
 const URL_PAGINA = 'https://www.senturiaoadv.com.br/tributario';
 
 export const metadata: Metadata = {
-  title: 'Assessoria tributária para empresas: Reforma Tributária, Simples híbrido e split payment',
+  title: { absolute: 'Reforma Tributária para empresas | Senturião' },
   description:
-    'A Reforma Tributária chegou à sua nota fiscal. Diagnóstico com os números da empresa, simulação ano a ano de 2027 a 2033, opção do Simples (puro ou híbrido), cláusulas de preço e reequilíbrio nos contratos e defesa em autuações. Simulador ilustrativo na página.',
+    'Entenda o impacto de IBS e CBS na sua empresa. Diagnóstico tributário, simulações e análise de contratos, com atendimento em todo o Brasil.',
   alternates: { canonical: '/tributario' },
   ...metaSocial({
     titulo: 'Assessoria tributária para empresas — Douglas Senturião Advocacia',

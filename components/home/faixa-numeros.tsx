@@ -95,7 +95,8 @@ export function FaixaNumeros({
     };
   }, [visto]);
 
-  const v = (n: number) => (visto ? n : 0);
+  // O HTML inicial deve mostrar o valor recebido do servidor, sem depender de rolagem.
+  // O observador continua limitando somente a atualização ao vivo do PNCP.
 
   const itens: {
     chave: string;
@@ -108,8 +109,10 @@ export function FaixaNumeros({
   }[] = [
     {
       chave: 'abertas',
-      numero: <NumberFlow value={v(pncp.abertas)} locales="pt-BR" />,
-      rotulo: 'contratações públicas recebendo propostas agora',
+      numero: <NumberFlow value={pncp.abertas} locales="pt-BR" />,
+      rotulo: pncp.aoVivo
+        ? 'contratações públicas recebendo propostas agora'
+        : 'contratações públicas recebendo propostas na consulta indicada',
       fonte: (
         <>
           <span className={cn('inline-block h-1.5 w-1.5 rounded-full', pncp.aoVivo ? 'animate-brilho bg-[#5ee0a0]' : 'bg-cinza-escuro')} />
@@ -121,8 +124,10 @@ export function FaixaNumeros({
     },
     {
       chave: 'p30',
-      numero: <NumberFlow value={v(pncp.publicadas30d)} locales="pt-BR" />,
-      rotulo: 'editais publicados no PNCP nos últimos 30 dias',
+      numero: <NumberFlow value={pncp.publicadas30d} locales="pt-BR" />,
+      rotulo: pncp.aoVivo
+        ? 'editais publicados no PNCP nos últimos 30 dias'
+        : 'editais publicados nos 30 dias anteriores à consulta indicada',
       fonte: <>Portal Nacional de Contratações Públicas</>,
       href: '/licitacoes#termometro',
       classe: 'lg:col-span-2',
@@ -130,7 +135,7 @@ export function FaixaNumeros({
     {
       chave: 'ref',
       numero: (
-        <NumberFlow value={v(referencia)} locales="pt-BR" format={{ style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 2 }} />
+        <NumberFlow value={referencia} locales="pt-BR" format={{ style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 2 }} />
       ),
       rotulo: 'referência de IBS + CBS, a soma dos novos tributos sobre o consumo',
       fonte: <>estimativa · Res. CGIBS 14/2026 · não é a alíquota legal</>,
@@ -141,7 +146,7 @@ export function FaixaNumeros({
       chave: 'anos',
       numero: (
         <>
-          <NumberFlow value={v(7)} locales="pt-BR" /> <span className="text-[0.42em] font-[650] tracking-[-0.01em]">anos</span>
+          <NumberFlow value={7} locales="pt-BR" /> <span className="text-[0.42em] font-[650] tracking-[-0.01em]">anos</span>
         </>
       ),
       rotulo: 'de transição, de 2027 a 2033, até o novo sistema valer por inteiro',
@@ -153,7 +158,7 @@ export function FaixaNumeros({
       chave: 'demo',
       numero: (
         <NumberFlow
-          value={v(Math.abs(economiaCliente))}
+          value={Math.abs(economiaCliente)}
           locales="pt-BR"
           format={{ style: 'currency', currency: 'BRL', minimumFractionDigits: 2 }}
           prefix="− "
@@ -192,12 +197,14 @@ export function FaixaNumeros({
           <GridBeam rows={2} cols={4} className="absolute inset-0" linhas="rgb(142 139 255 / 0.0)" />
           <ul className="relative m-0 grid list-none gap-px bg-sinal/15 p-0 sm:grid-cols-2 lg:grid-cols-6">
             {itens.map((it) => (
-              <li key={it.chave} className={cn('group relative bg-tinta/85 backdrop-blur-sm', it.classe)}>
+              <li key={it.chave} className={cn('group relative min-w-0 bg-tinta/85 backdrop-blur-sm', it.classe)}>
                 <Link href={it.href} className="flex h-full flex-col p-6 no-underline sm:p-7">
                   <span
                     className={cn(
-                      'expandida num block text-[clamp(2.1rem,4.2vw,3.3rem)] font-[800] leading-none tracking-[-0.04em]',
-                      it.destaque ? 'text-madeira' : 'text-white',
+                      'expandida num block font-[800] leading-none tracking-[-0.04em]',
+                      it.destaque
+                        ? 'text-[clamp(1.5rem,4.2vw,3.3rem)] text-madeira'
+                        : 'text-[clamp(2.1rem,4.2vw,3.3rem)] text-white',
                     )}
                   >
                     {it.numero}

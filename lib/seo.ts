@@ -67,11 +67,13 @@ export function metaSocial({
  * a data do build: o Google ignora `lastmod` que muda a cada deploy).
  */
 export const ATUALIZADO_EM: Record<string, string> = {
-  '': '2026-10-16',
+  '/blog/embargos-a-execucao-prazo-e-o-que-alegar': '2026-11-15',
+  '/blog/lei-do-superendividamento-repactuacao-de-dividas-como-funciona': '2026-11-15',
+  '': '2026-11-15',
   '/sobre': '2026-10-07',
   '/areas': '2026-10-07',
-  '/tributario': '2026-10-07',
-  '/licitacoes': '2026-10-21',
+  '/tributario': '2026-11-15',
+  '/licitacoes': '2026-11-15',
   '/licitacoes/fui-inabilitado': '2026-10-21',
   '/licitacoes/desclassificada-no-pregao': '2026-10-21',
   '/licitacoes/recurso-administrativo': '2026-10-21',

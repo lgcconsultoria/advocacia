@@ -26,9 +26,9 @@ export const revalidate = 120;
 const URL_PAGINA = 'https://www.senturiaoadv.com.br/licitacoes';
 
 export const metadata: Metadata = {
-  title: 'Departamento de Licitações e Contratos Públicos: assessoria jurídica para empresas',
+  title: { absolute: 'Assessoria em licitações para empresas | Senturião' },
   description:
-    'Departamento jurídico de licitações para empresas: análise de edital e matriz de riscos, habilitação, impugnações, suporte na sessão, recursos, mandado de segurança, contratos, reequilíbrio (inclusive IBS/CBS) e defesa em sanções. Com o termômetro ao vivo das contratações públicas do PNCP.',
+    'Assessoria jurídica em licitações: edital, habilitação, recursos, contratos e sanções. Atendimento a empresas em todo o Brasil.',
   alternates: { canonical: '/licitacoes' },
   ...metaSocial({
     titulo: 'Departamento de Licitações e Contratos Públicos — Douglas Senturião Advocacia',

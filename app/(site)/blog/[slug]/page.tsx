@@ -14,6 +14,18 @@ import { CtaFaixa } from '@/components/site/cta-faixa';
 import { buttonVariants } from '@/components/ui/button';
 import { BotaoDiagnostico } from '@/components/diagnostico/botao';
 
+// Experimento de snippet: manter URL, H1, corpo e dados estruturados do artigo.
+const SNIPPETS_SEO: Record<string, { title: string; description: string }> = {
+  'embargos-a-execucao-prazo-e-o-que-alegar': {
+    title: 'Embargos à execução: prazo e defesa | Senturião',
+    description: 'Entenda o prazo dos embargos à execução, a contagem em dias úteis, o que pode ser alegado e quando há efeito suspensivo.',
+  },
+  'lei-do-superendividamento-repactuacao-de-dividas-como-funciona': {
+    title: 'Lei do Superendividamento: como funciona | Senturião',
+    description: 'Veja quem pode pedir a repactuação de dívidas, quais dívidas entram e como funciona o plano de pagamento da Lei do Superendividamento.',
+  },
+};
+
 export async function generateStaticParams() {
   const posts = await getPosts();
   return posts.map((p) => ({ slug: p.slug }));
@@ -28,9 +40,10 @@ export async function generateMetadata({
   const post = await getPost(slug);
   if (!post) return {};
   const url = `/blog/${slug}`;
+  const ajuste = SNIPPETS_SEO[slug];
   return {
-    title: post.title,
-    description: post.description,
+    title: ajuste ? { absolute: ajuste.title } : post.title,
+    description: ajuste?.description ?? post.description,
     alternates: { canonical: url },
     ...metaSocial({
       titulo: post.title,
