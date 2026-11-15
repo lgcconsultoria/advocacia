@@ -5,7 +5,7 @@ import { useEffect, useId, useRef, useState, type FormEvent } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ArrowRight, Check, Copy, LoaderCircle } from 'lucide-react';
 import { enviarLead, novoEventId, type Interesse } from '@/lib/contato/enviar-lead';
-import { registrarLead } from '@/lib/medicao';
+import { registrarContatoWhatsapp, registrarLead } from '@/lib/medicao';
 import { cn } from '@/lib/utils';
 
 /**
@@ -200,6 +200,7 @@ export function FormularioDiagnostico({
           href={linkWhatsapp(whatsapp, msg)}
           target="_blank"
           rel="noopener"
+          onClick={() => registrarContatoWhatsapp({ pagina: window.location.pathname, ref: 'continuar-pos-diagnostico' })}
           className="btn btn-lg btn-block mt-7 border-[#1f9d55] bg-[#1f9d55] text-white hover:bg-[#178246]"
         >
           Continuar no WhatsApp <ArrowRight className="seta h-4 w-4" aria-hidden="true" />
@@ -291,6 +292,7 @@ export function FormularioDiagnostico({
               <p className="m-0">{erroEnvio}</p>
               <a
                 className="mt-2 inline-flex items-center gap-1.5 font-[650] underline underline-offset-2"
+                onClick={() => registrarContatoWhatsapp({ pagina: window.location.pathname, ref: 'falha-envio-diagnostico' })}
                 href={linkWhatsapp(
                   whatsapp,
                   `${apresentacao} Gostaria de um diagnóstico sobre ${ROTULO_INTERESSE[interesse].toLowerCase()}.${valores.email.trim() ? ` Meu e-mail: ${valores.email.trim()}.` : ''}`,

@@ -9,6 +9,7 @@ import { NumeroVivo } from './numero-vivo';
 import { PilulaStatus } from './status';
 import { MarcaEstimado } from './termometro';
 import { BotaoDiagnostico } from '@/components/diagnostico/botao';
+import { LinkWhatsapp } from '@/components/link-whatsapp';
 
 /**
  * Abertura do Departamento de Licitações: vídeo do mapa (mudo, em loop; parado
@@ -32,7 +33,6 @@ export function HeroLicitacoes({ whatsapp }: { whatsapp: string }) {
     return () => io.disconnect();
   }, []);
 
-  const texto = encodeURIComponent('Olá, gostaria de falar sobre o departamento jurídico de licitações.');
 
   return (
     <section className="planta relative isolate overflow-hidden" aria-labelledby="licitacoes-titulo">
@@ -88,14 +88,13 @@ export function HeroLicitacoes({ whatsapp }: { whatsapp: string }) {
             <BotaoDiagnostico variant="claro" size="lg" interesse="licitacoes">
               Fazer diagnóstico
             </BotaoDiagnostico>
-            <a
-              href={`https://wa.me/${whatsapp}?text=${texto}`}
-              target="_blank"
-              rel="noopener"
+            <LinkWhatsapp
+              whatsapp={whatsapp}
+              texto="Olá, gostaria de falar sobre o departamento jurídico de licitações."
               className={buttonVariants({ variant: 'contorno-claro', size: 'lg' })}
             >
               Falar pelo WhatsApp
-            </a>
+            </LinkWhatsapp>
           </div>
         </div>
 
