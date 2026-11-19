@@ -15,6 +15,7 @@ const nextConfig = {
         { source: '/bugpay', has: proposta, destination: '/clientes/lkcermebzw' },
         { source: '/codifica', has: proposta, destination: '/clientes/nbcbzqoyyf' },
         { source: '/barraca-fernando', has: proposta, destination: '/clientes/pznttfccyx' },
+        { source: '/diagnostico-da0b09', has: proposta, destination: '/clientes/gznojcezwo' },
       ],
     };
   },
