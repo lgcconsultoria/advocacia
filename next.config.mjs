@@ -14,6 +14,7 @@ const nextConfig = {
         { source: '/ecx-governo', has: proposta, destination: '/clientes/lfohksfmcx' },
         { source: '/bugpay', has: proposta, destination: '/clientes/lkcermebzw' },
         { source: '/codifica', has: proposta, destination: '/clientes/nbcbzqoyyf' },
+        { source: '/barraca-fernando', has: proposta, destination: '/clientes/pznttfccyx' },
       ],
     };
   },
